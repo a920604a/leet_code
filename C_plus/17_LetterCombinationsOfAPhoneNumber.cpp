@@ -1,6 +1,7 @@
 class Solution
 {
 public:
+    // permutation
     map<int, string> dict = {
         {2, "abc"},
         {3, "def"},
@@ -10,28 +11,29 @@ public:
         {7, "pqrs"},
         {8, "tuv"},
         {9, "wxyz"}};
-    vector<string> ret;
-    void dfs(string s, int cur, string temp)
+
+    void dfs(string digits, int cur, string cand, vector<string> &ret)
     {
         if (cur >= 0)
         {
-            for (char c : dict[s[cur] - '0'])
+            for (char c : dict[digits[cur] - '0'])
             {
-                dfs(s, cur - 1, c + temp);
+                dfs(digits, cur - 1, c + cand, ret);
             }
         }
+
         else
         {
-            ret.push_back(temp);
-            return;
+            ret.push_back(cand);
         }
     }
     vector<string> letterCombinations(string digits)
     {
         int n = digits.length();
+        vector<string> ret;
         if (n <= 0)
             return ret;
-        dfs(digits, n - 1, "");
+        dfs(digits, n - 1, "", ret);
         return ret;
     }
 };

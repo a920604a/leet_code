@@ -3,22 +3,25 @@ class Solution
 public:
     int searchInsert(vector<int> &nums, int target)
     {
-        if (target < nums[0])
-            return 0;
-        if (target > nums[nums.size() - 1])
-            return nums.size();
-        int l = 0;
-        while (l < nums.size())
+
+        // option 1 O(logn) binary search
+        //         int l=0, r= nums.size()-1;
+
+        //         while(l<=r){
+        //             int mid = (l+r)/2;
+
+        //             if(target==nums[mid]) return mid;
+        //             else if(target>nums[mid]) l = mid+1;
+        //             else r = mid-1;
+        //         }
+        //         return l;
+
+        // option 2
+        for (int i = 0; i < nums.size(); ++i)
         {
-            if (nums[l] == target)
-                return l;
-            else if (nums[l] < target)
-                l++;
-            else
-            {
-                return l;
-            }
+            if (nums[i] >= target)
+                return i;
         }
-        return l;
+        return nums.size();
     }
 };

@@ -25,7 +25,7 @@ public:
             {
                 //merge
                 v[1] = max(v[1], intervals[a][1]);
-                v[0] = min(v[0], intervals[a][0]);
+                // v[0] = min(v[0], intervals[a][0]);
                 a++;
                 ret.pop_back();
                 ret.push_back(v);

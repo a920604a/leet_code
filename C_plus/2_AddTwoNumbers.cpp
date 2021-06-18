@@ -13,13 +13,11 @@ class Solution
 public:
     ListNode *addTwoNumbers(ListNode *l1, ListNode *l2)
     {
-        ListNode *ret = new ListNode();
-        ListNode *result = ret;
+        ListNode *res = new ListNode();
+        ListNode *ret = res;
         int carry = 0;
-        while (l1 || l2 || carry)
+        while (l1 || l2)
         {
-            ret->next = new ListNode();
-            ret = ret->next;
             int sum = carry;
             if (l1)
             {
@@ -31,16 +29,15 @@ public:
                 sum += l2->val;
                 l2 = l2->next;
             }
-
-            ret->val = sum % 10;
+            ListNode *cur = new ListNode(sum % 10);
             carry = sum / 10;
+            res->next = cur;
+            res = res->next;
         }
         if (carry)
         {
-            ret->next = new ListNode();
-            ret = ret->next;
-            ret->val = carry;
+            res->next = new ListNode(carry);
         }
-        return result->next;
+        return ret->next;
     }
 };

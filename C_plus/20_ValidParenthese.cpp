@@ -3,27 +3,26 @@ class Solution
 public:
     bool isValid(string s)
     {
-        stack<char> ret;
+        stack<char> sta;
         for (char c : s)
         {
             if (c == '(' || c == '[' || c == '{')
-            {
-                ret.push(c);
-            }
+                sta.push(c);
+
             else
             {
-                if (ret.empty())
+                if (sta.empty())
                     return false;
-                else if (c == ')' && ret.top() == '(')
-                    ret.pop();
-                else if (c == ']' && ret.top() == '[')
-                    ret.pop();
-                else if (c == '}' && ret.top() == '{')
-                    ret.pop();
+                else if (c == ')' && sta.top() == '(')
+                    sta.pop();
+                else if (c == ']' && sta.top() == '[')
+                    sta.pop();
+                else if (c == '}' && sta.top() == '{')
+                    sta.pop();
                 else
                     return false;
             }
         }
-        return ret.empty() ? true : false;
+        return sta.empty() ? true : false;
     }
 };

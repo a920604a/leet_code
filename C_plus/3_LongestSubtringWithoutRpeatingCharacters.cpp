@@ -3,6 +3,7 @@ class Solution
 public:
     int lengthOfLongestSubstring(string s)
     {
+        // n^2 logn
         int res = 0;
         for (int i = 0; i < s.size(); ++i)
         {
@@ -17,5 +18,7 @@ public:
             res = max(res, int(tmp.size()));
         }
         return res;
+
+        // n logn   improve it.
     }
 };
