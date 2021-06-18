@@ -4,11 +4,9 @@ public:
     int maxProfit(vector<int> &prices)
     {
         int ret = 0;
-        int _min = INT_MAX;
-        for (int i : prices)
+        for (int i = 1; i < prices.size(); ++i)
         {
-            ret = max(ret, i - _min);
-            _min = min(i, _min);
+            ret += (prices[i] - prices[i - 1]) > 0 ? (prices[i] - prices[i - 1]) : 0;
         }
         return ret;
     }

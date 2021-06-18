@@ -12,20 +12,20 @@
 class Solution
 {
 public:
-    void postorder(TreeNode *root, vector<int> &ret)
+    bool symmteric(TreeNode *left, TreeNode *right)
     {
-
-        if (root)
+        if (!left && !right)
+            return true;
+        else if (!left || !right)
+            return false;
+        if (left->val == right->val)
         {
-            postorder(root->left, ret);  // L
-            postorder(root->right, ret); // R
-            ret.push_back(root->val);    // V
+            return symmteric(left->right, right->left) && symmteric(right->right, left->left);
         }
+        return false;
     }
-    vector<int> postorderTraversal(TreeNode *root)
+    bool isSymmetric(TreeNode *root)
     {
-        vector<int> ret;
-        postorder(root, ret);
-        return ret;
+        return symmteric(root->left, root->right);
     }
 };

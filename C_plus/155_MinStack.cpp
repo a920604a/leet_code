@@ -1,16 +1,10 @@
-/*
- * @Author: yuan
- * @Date: 2021-04-29 14:24:47
- * @LastEditTime: 2021-04-29 14:24:47
- * @FilePath: /C_plus/155_MinStack.cpp
- */
 class MinStack
 {
 public:
     /** initialize your data structure here. */
-
+    stack<int> minsta;
     stack<int> sta;
-    stack<int> min;
+
     MinStack()
     {
     }
@@ -18,15 +12,19 @@ public:
     void push(int val)
     {
         sta.push(val);
-        if (min.empty() || val <= min.top())
-            min.push(val);
+        if (minsta.empty() || val <= minsta.top())
+            minsta.push(val);
     }
 
     void pop()
     {
-        if (sta.top() == min.top())
-            min.pop();
+        int tmp;
+
+        tmp = sta.top();
         sta.pop();
+
+        if (!minsta.empty() && tmp == minsta.top())
+            minsta.pop();
     }
 
     int top()
@@ -36,7 +34,7 @@ public:
 
     int getMin()
     {
-        return min.top();
+        return minsta.top();
     }
 };
 

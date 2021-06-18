@@ -3,18 +3,22 @@ class Solution
 public:
     vector<vector<int> > generate(int numRows)
     {
-        vector<vector<int> > ret;
-        ret.push_back({1});
+        vector<vector<int> > ret = {{1}};
         for (int i = 2; i <= numRows; ++i)
         {
-            vector<int> tmp = ret[ret.size() - 1];
-            tmp.push_back(1);
-            for (int j = 1; j < i - 1; ++j)
+            vector<int> temp = ret[ret.size() - 1];
+            int var = temp[0];
+            for (int j = 1; j < temp.size(); ++j)
             {
-                tmp[j] = ret[ret.size() - 1][j] + ret[ret.size() - 1][j - 1];
+                int copy = temp[j];
+                temp[j] = temp[j] + var;
+                var = copy;
             }
-            ret.push_back(tmp);
+
+            temp.push_back(1);
+            ret.push_back(temp);
         }
+
         return ret;
     }
 };

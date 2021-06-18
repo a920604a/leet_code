@@ -1,26 +1,31 @@
-/*
- * @Author: yuan
- * @Date: 2021-04-08 10:53:47
- * @LastEditTime: 2021-04-08 12:01:00
- * @FilePath: /C_plus/70_ClimbingStairs.cpp
- */
 class Solution
 {
 public:
     int climbStairs(int n)
-    { // 1 2 3 5 8
+    {
+        // option 1 recurrent, time out O(2^n)
+        // if(n <=3) return n;
+        // else return climbStairs(n-1) + climbStairs(n-2);
 
-        if (n <= 3)
+        // option 2 for-loop
+        // if(n<=3) return n;
+        // int a = 1, b=2;
+        // int c = a+b;
+        // for(int i=4;i<=n;++i){
+        //     a = b;
+        //     b = c;
+        //     c =a+b;
+        // }
+        // return c;
+
+        // option 3 dp
+        vector<int> dp(n + 1, 1);
+        if (n <= 2)
             return n;
-
-        int a = 1, b = 2;
-        int c;
-        for (int i = 3; i <= n; ++i)
+        for (int i = 2; i <= n; ++i)
         {
-            c = a + b;
-            a = b;
-            b = c;
+            dp[i] = dp[i - 1] + dp[i - 2];
         }
-        return c;
+        return dp[n];
     }
 };

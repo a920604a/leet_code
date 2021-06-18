@@ -3,19 +3,22 @@ class Solution
 public:
     vector<int> getRow(int rowIndex)
     {
-        vector<int> tmp;
-        for (int i = 0; i <= rowIndex; ++i)
+        vector<int> ret = {1};
+        for (int i = 1; i <= rowIndex; ++i)
         {
+            vector<int> temp = ret;
 
-            tmp.push_back(1);
-            int temp1 = tmp[0], temp2 = tmp[0];
-            for (int j = 1; j <= i - 1; ++j)
+            int var = temp[0];
+            for (int j = 1; j < temp.size(); ++j)
             {
-                temp1 = tmp[j];
-                tmp[j] = tmp[j] + temp2;
-                temp2 = temp1;
+                int copy = temp[j];
+                temp[j] = temp[j] + var;
+                var = copy;
             }
+            ret = temp;
+            ret.push_back(1);
         }
-        return tmp;
+
+        return ret;
     }
 };

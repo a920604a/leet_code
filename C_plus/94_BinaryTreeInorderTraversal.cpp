@@ -12,14 +12,21 @@
 class Solution
 {
 public:
-    int minDepth(TreeNode *root)
+    void inorder(TreeNode *root, vector<int> &ret)
     {
-        if (!root)
-            return 0;
-        else if (!root->left)
-            return 1 + minDepth(root->right);
-        else if (!root->right)
-            return 1 + minDepth(root->left);
-        return 1 + min(minDepth(root->left), minDepth(root->right));
+        if (root)
+        {
+            inorder(root->left, ret);
+            ret.push_back(root->val);
+            inorder(root->right, ret);
+        }
+    }
+    vector<int> inorderTraversal(TreeNode *root)
+    {
+        // LVR in-order
+        vector<int> ret;
+
+        inorder(root, ret);
+        return ret;
     }
 };

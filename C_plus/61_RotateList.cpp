@@ -1,9 +1,3 @@
-/*
- * @Author: yuan
- * @Date: 2021-04-07 21:46:52
- * @LastEditTime: 2021-04-07 22:14:32
- * @FilePath: /C_plus/61_RotateList.cpp
- */
 /**
  * Definition for singly-linked list.
  * struct ListNode {
@@ -19,27 +13,39 @@ class Solution
 public:
     ListNode *rotateRight(ListNode *head, int k)
     {
-        if (!head)
+        if (head == nullptr || head->next == nullptr || k == 0)
             return head;
-        ListNode *p1 = head;
-        ListNode *p2 = head;
-        int length = 1;
-        while (p2->next)
+
+        ListNode *p = head;
+        int len = 1;
+        // 串列長度
+        while (p->next)
         {
-            p2 = p2->next;
-            length++;
+            p = p->next;
+            len++;
         }
-        p2->next = head;
-        for (int i = 0; i < length - k % length; ++i)
+        p->next = head; // 串列變成cycle
+        cout << "length of list: " << len << endl;
+
+        ListNode *start = head;
+        // 決定起點
+        int n = len - k % len;
+        while (n)
         {
-            p1 = p1->next;
+            start = start->next;
+            n--;
         }
-        ListNode *ret = p1;
-        for (int i = 0; i < length - 1; ++i)
+        cout << "start's value: " << start->val << endl;
+        ListNode *res = start;
+        //決定終點
+        len--;
+        while (len)
         {
-            p1 = p1->next;
+            start = start->next;
+            len--;
         }
-        p1->next = NULL;
-        return ret;
+        start->next = nullptr;
+
+        return res;
     }
 };

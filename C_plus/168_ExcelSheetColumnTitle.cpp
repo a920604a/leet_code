@@ -1,22 +1,16 @@
-/*
- * @Author: yuan
- * @Date: 2021-04-29 15:55:57
- * @LastEditTime: 2021-04-29 15:55:58
- * @FilePath: /C_plus/168_ExcelSheetColumnTitle.cpp
- */
 class Solution
 {
 public:
     string convertToTitle(int columnNumber)
     {
+        int n = columnNumber;
         string ret = "";
-        char tmp;
-        while (columnNumber)
+        while (n)
         {
-            columnNumber--;
-            tmp = (columnNumber % 26) + 'A';
-            ret = tmp + ret;
-            columnNumber /= 26;
+            n--;
+            char c = 'A' + (n % 26);
+            ret = c + ret;
+            n /= 26;
         }
         return ret;
     }

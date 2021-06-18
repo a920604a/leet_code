@@ -1,27 +1,31 @@
-/*
- * @Author: yuan
- * @Date: 2021-05-12 18:48:29
- * @LastEditTime: 2021-05-12 18:48:40
- * @FilePath: /leetcode/C_plus/62_UniquePath.cpp
- */
-class Solution {
+class Solution
+{
 public:
-    double level(int l, int r){
-        double ret= 1;
-        for(int i=l;i<=r;++i)  ret *=i;
-        return ret;
-        
-    }
-    double level(int n){
-        if(n<=1) return 1;
-        double ret = 1;
-        for(int i=2;i<=n;++i) ret *=i;
-        return ret;
-    }
-    int uniquePaths(int m, int n) {
-        int max_ = max(n-1,m-1);
-        double ret = level( max_+1 ,m+n-2 );
-        int min_ = min(m-1,n-1);
-        return ret/level(min_);
+    int uniquePaths(int m, int n)
+    {
+        // option 1 dynamic programming
+        //         vector<vector<int>> dp(m , vector<int>(n,1));
+
+        //         for(int i=0;i<m;++i){
+        //             for(int j=0;j<n;++j){
+        //                 if(i==0 || j==0) continue;
+        //                 else{
+        //                     dp[i][j] = dp[i-1][j] + dp[i][j-1];
+        //                 }
+        //             }
+        //         }
+        //         return dp[m-1][n-1];
+
+        // option 2 dp slove space
+        vector<int> dp(n, 1);
+        for (int i = 1; i < m; ++i)
+        {
+            for (int j = 1; j < n; ++j)
+            {
+                dp[j] += dp[j - 1];
+            }
+        }
+
+        // math
     }
 };

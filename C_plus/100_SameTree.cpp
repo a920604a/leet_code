@@ -1,9 +1,3 @@
-/*
- * @Author: yuan
- * @Date: 2021-04-09 20:07:05
- * @LastEditTime: 2021-04-27 14:18:51
- * @FilePath: /C_plus/100_SameTree.cpp
- */
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -15,18 +9,17 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
-class Solution {
+class Solution
+{
 public:
-    bool isSameTree(TreeNode* p, TreeNode* q) {
-        if(!p && !q){
+    bool isSameTree(TreeNode *p, TreeNode *q)
+    {
+        if (p == nullptr && q == nullptr)
             return true;
-        }
-        else if(!p || !q){
+        else if (!q || !p)
             return false;
-        }
-        else if(p->val !=q->val){
-            return false;    
-        }
-        return isSameTree(p->left, q->left) && isSameTree(p->right, q->right);
+        else if (p->val == q->val)
+            return isSameTree(p->left, q->left) && isSameTree(p->right, q->right);
+        return false;
     }
 };

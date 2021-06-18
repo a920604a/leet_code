@@ -12,14 +12,19 @@
 class Solution
 {
 public:
-    int minDepth(TreeNode *root)
+    int depth(TreeNode *root)
     {
         if (!root)
             return 0;
-        else if (!root->left)
-            return 1 + minDepth(root->right);
-        else if (!root->right)
-            return 1 + minDepth(root->left);
-        return 1 + min(minDepth(root->left), minDepth(root->right));
+
+        return 1 + max(depth(root->left), depth(root->right));
+    }
+    bool isBalanced(TreeNode *root)
+    {
+        if (!root)
+            return true;
+        int left = depth(root->left);
+        int right = depth(root->right);
+        return abs(right - left) <= 1 && isBalanced(root->left) && isBalanced(root->right);
     }
 };

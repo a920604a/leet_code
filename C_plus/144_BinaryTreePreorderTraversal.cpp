@@ -1,9 +1,3 @@
-/*
- * @Author: yuan
- * @Date: 2021-04-27 15:44:33
- * @LastEditTime: 2021-04-27 15:45:02
- * @FilePath: /C_plus/144_BinaryTreeInorderTraversal.cpp
- */
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -20,18 +14,19 @@ class Solution
 public:
     void preorder(TreeNode *root, vector<int> &ret)
     {
-        if (root)
-        {
-            ret.push_back(root->val); //V
-            if (root->left)
-                preorder(root->left, ret); //L
-            if (root->right)
-                preorder(root->right, ret); //R
-        }
+        if (!root)
+            return;
+        ret.push_back(root->val);   // V
+        preorder(root->left, ret);  // L
+        preorder(root->right, ret); // R
     }
     vector<int> preorderTraversal(TreeNode *root)
     {
+        // preorder VLR
         vector<int> ret;
+        if (!root)
+            return ret;
+
         preorder(root, ret);
         return ret;
     }
