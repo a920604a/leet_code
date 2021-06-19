@@ -1,29 +1,39 @@
-/*
- * @Author: yuan
- * @Date: 2021-05-02 11:22:17
- * @LastEditTime: 2021-05-02 11:22:26
- * @FilePath: /C_plus/287_FindDuplicateNumber.cpp
- */
 class Solution
 {
 public:
     int findDuplicate(vector<int> &nums)
     {
-        // int n = nums.size()-1;
-        // vector<int> v(n,0);
-        // for(int i:nums){
-        //     if(v[i-1]>=1) return i;
-        //     v[i-1]++;
+        // option 1
+        // make use of use O(n) space, O(nlogn) time
+        // set<int>s;
+        // for(int n:nums) {
+        //     if(s.find(n)!=s.end()) return n;
+        //     s.insert(n);
         // }
         // return -1;
-        set<int> s;
-        for (int i : nums)
+
+        // option 2 O(1) space
+        // slow fast pointer
+        int slow = 0, fast = 0, t = 0;
+        // detect cycle exists
+        while (1)
         {
-            if (s.find(i) == s.end())
-                s.insert(i);
-            else
-                return i;
+            slow = nums[slow];
+            fast = nums[nums[fast]];
+            if (slow == fast)
+                break;
         }
-        return -1;
+        // find begining of cycle
+        while (1)
+        {
+            slow = nums[slow];
+            t = nums[t];
+            if (t == slow)
+                break;
+        }
+        return slow;
+
+        // option 3
+        // bit-wise hard
     }
 };

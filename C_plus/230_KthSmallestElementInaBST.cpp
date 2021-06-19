@@ -1,9 +1,3 @@
-/*
- * @Author: yuan
- * @Date: 2021-05-01 19:06:36
- * @LastEditTime: 2021-05-01 19:06:36
- * @FilePath: /C_plus/230_KthSmallestElementInaBST.cpp
- */
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -22,18 +16,43 @@ public:
     {
         if (root)
         {
-            ret.push_back(root->val);
+
             if (root->left)
-                traverse(root->left, ret);
+                traverse(root->left, ret); // L
+            ret.push_back(root->val);      // V
             if (root->right)
-                traverse(root->right, ret);
+                traverse(root->right, ret); // R
         }
     }
     int kthSmallest(TreeNode *root, int k)
     {
-        vector<int> ret;
-        traverse(root, ret);
-        sort(ret.begin(), ret.end());
-        return ret[k - 1];
+        // option 1
+        // use vector to save each node value ,and sort the vector. wheather any tree traverse
+        // if inorder traverse , get sorted vector
+        // vector<int> ret;
+        // traverse(root, ret);
+        // sort(ret.begin(), ret.end()); // if inorder traverse , get sorted vector
+        // return ret[k-1];
+
+        // option 2
+        // use stack + inorder non-recurrent
+        int cnt = 0;
+        stack<TreeNode *> s;
+        TreeNode *p = root;
+        while (p || !s.empty())
+        {
+            while (p)
+            { // find the smallest node
+                s.push(p);
+                p = p->left;
+            }
+            p = s.top();
+            s.pop();
+            cnt++;
+            if (cnt == k)
+                return p->val;
+            p = p->right;
+        }
+        return 0;
     }
 };

@@ -12,7 +12,7 @@ public:
         int ret = 0;
         int m = grid.size();
         int n = grid[0].size();
-        vector<vector<bool> > visit(m, vector<bool>(n));
+        vector<vector<bool> > visit(m, vresector<bool>(n));
         for (int i = 0; i < m; ++i)
         {
             for (int j = 0; j < n; ++j)

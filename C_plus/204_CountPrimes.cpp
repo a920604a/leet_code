@@ -1,36 +1,21 @@
-/*
- * @Author: yuan
- * @Date: 2021-05-01 13:36:03
- * @LastEditTime: 2021-05-01 13:36:03
- * @FilePath: /C_plus/204_CountPrimes.cpp
- */
-class Solution
-{
+class Solution {
 public:
-    int countPrimes(int n)
-    {
-        int ret = 0;
-        if (n <= 1)
-            return ret;
-        vector<bool> v(n, true);
-        v[0] = false;
-        v[1] = false;
-        for (int i = 2; i < sqrt(n); ++i)
-        {
-            if (v[i])
-            {
-                for (int j = 2; i * j < n; j++)
-                {
-                    v[i * j] = false;
+    int countPrimes(int n) {
+        int ret=0;
+        if(n<=1) return ret;
+        vector<bool> visit(n, true);
+        visit[0] =false, visit[1] = false;
+        for(int i =2;i<=sqrt(n);++i){
+            if(visit[i]== true){
+                for(int j =i+i; j<n ;j+=i){ 
+                    visit[j] = false;
                 }
+                
             }
         }
-        for (bool b : v)
-        {
-            if (b)
-                ret++;
-        }
-
+        
+        for(bool b:visit) ret += b?1:0;
+        
         return ret;
     }
 };

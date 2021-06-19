@@ -1,9 +1,3 @@
-/*
- * @Author: yuan
- * @Date: 2021-05-01 13:05:50
- * @LastEditTime: 2021-05-01 13:05:51
- * @FilePath: /C_plus/203_RemoveLinkedListElements.cpp
- */
 /**
  * Definition for singly-linked list.
  * struct ListNode {
@@ -19,22 +13,21 @@ class Solution
 public:
     ListNode *removeElements(ListNode *head, int val)
     {
-        if (!head)
+        //
+        if (head == nullptr)
             return head;
-        ListNode *cur = new ListNode(0);
-        ListNode *ret = cur;
-        cur->next = head;
-        while (cur->next)
+        ListNode *dummy = new ListNode(-1), *p = dummy;
+        p->next = head;
+
+        while (p->next)
         {
-            if (cur->next->val == val)
+            if (p->next->val == val)
             {
-                cur->next = cur->next->next;
+                p->next = p->next->next;
             }
             else
-            {
-                cur = cur->next;
-            }
+                p = p->next;
         }
-        return ret->next;
+        return dummy->next;
     }
 };

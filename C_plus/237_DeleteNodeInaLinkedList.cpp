@@ -1,9 +1,3 @@
-/*
- * @Author: yuan
- * @Date: 2021-05-01 19:33:33
- * @LastEditTime: 2021-05-01 19:33:43
- * @FilePath: /C_plus/237_DeleteNodeInaLinkedList.cpp
- */
 /**
  * Definition for singly-linked list.
  * struct ListNode {
@@ -17,9 +11,11 @@ class Solution
 public:
     void deleteNode(ListNode *node)
     {
-        ListNode *p = node->next;
-        node->val = p->val;
-        node->next = p->next;
-        delete p;
+
+        // option 1 copy the next node's value and delete it.
+        node->val = node->next->val;
+        ListNode *delnode = node->next;
+        node->next = node->next->next;
+        delete delnode;
     }
 };

@@ -1,9 +1,3 @@
-/*
- * @Author: yuan
- * @Date: 2021-05-01 18:45:08
- * @LastEditTime: 2021-05-01 18:45:08
- * @FilePath: /C_plus/236_InvertBinaryTree.cpp
- */
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -15,25 +9,34 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
-class Solution
-{
+class Solution {
 public:
-    void swapChild(TreeNode *root)
-    {
-        if (!root)
-            return;
-        else if (root)
-        {
-            TreeNode *node = root->right;
-            root->right = root->left;
-            root->left = node;
-            swapChild(root->left);
-            swapChild(root->right);
-        }
+    void swapChild(TreeNode * root){
+        
+        if (!root) return;
+        TreeNode * tempnode = root->left;
+        root->left = root->right;
+        root->right = tempnode;
+        swapChild(root->left);
+        swapChild(root->right);
+        
+        
+        
     }
-    TreeNode *invertTree(TreeNode *root)
-    {
+    TreeNode* invertTree(TreeNode* root) {
+        
+        // option 1
+        // return TreeNode* imply can new new tree
+        // if(!root) return root;
+        // TreeNode * newroot = new TreeNode(root->val);
+        // newroot->left = invertTree(root->right);
+        // newroot->right = invertTree(root->left);
+        // return newroot;
+        
+        // option 2 
+        // in-place , use swap child
         swapChild(root);
         return root;
+        
     }
 };

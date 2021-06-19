@@ -1,9 +1,3 @@
-/*
- * @Author: yuan
- * @Date: 2021-05-01 18:24:16
- * @LastEditTime: 2021-05-01 18:24:16
- * @FilePath: /C_plus/225_ImplementStackUsingQueue.cpp
- */
 class MyStack
 {
 public:
@@ -22,26 +16,24 @@ public:
     /** Removes the element on top of the stack and returns that element. */
     int pop()
     {
-        if (q.empty())
-            return -1;
-        int val = q.back();
-        int size = q.size() - 1;
+        int size = q.size();
+        int ret;
+        size--;
         while (size)
         {
-            int top = q.front();
-            q.push(top);
+            ret = q.front();
             q.pop();
             size--;
+            q.push(ret);
         }
+        ret = q.front();
         q.pop();
-        return val;
+        return ret;
     }
 
     /** Get the top element. */
     int top()
     {
-        if (q.empty())
-            return -1;
         return q.back();
     }
 

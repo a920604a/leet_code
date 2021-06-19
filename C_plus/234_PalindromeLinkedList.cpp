@@ -1,9 +1,3 @@
-/*
- * @Author: yuan
- * @Date: 2021-05-01 19:25:42
- * @LastEditTime: 2021-05-01 19:25:42
- * @FilePath: /C_plus/234_PalindromeLinkedList.cpp
- */
 /**
  * Definition for singly-linked list.
  * struct ListNode {
@@ -19,21 +13,52 @@ class Solution
 public:
     bool isPalindrome(ListNode *head)
     {
-        stack<int> s;
-        ListNode *p = head;
+        // option 1  O(n) space O(n) time
+        // 切半
+        //         if(!head || !head->next) return true;
+        //         stack<int> sta;
+
+        //         // make use of stack property to determine
+        //         ListNode *p = head;
+        //         while(p){
+        //             sta.push(p->val);
+        //             p=p->next;
+        //         }
+        //         p =head;
+        //         while(p){
+        //             if(p->val != sta.top()) return false;
+        //             sta.pop();
+        //             p=p->next;
+        //         }
+        //         return true;
+
+        // option 2
+
+        // two pointer + reverse last half of linked list
         if (!head || !head->next)
             return true;
-        while (p)
+        ListNode *slow = head, *fast = head;
+        while (fast->next && fast->next->next)
         {
-            s.push(p->val);
-            p = p->next;
+            fast = fast->next->next;
+            slow = slow->next;
         }
-        while (head)
+        ListNode *last = slow->next, *p = head;
+        // reverse half of linked list
+        while (last->next)
         {
-            if (head->val != s.top())
+            ListNode *temp = last->next;
+            last->next = temp->next;
+            temp->next = slow->next;
+            slow->next = temp;
+        }
+
+        while (slow->next)
+        {
+            slow = slow->next;
+            if (p->val != slow->val)
                 return false;
-            s.pop();
-            head = head->next;
+            p = p->next;
         }
         return true;
     }
