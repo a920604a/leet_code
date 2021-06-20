@@ -3,6 +3,9 @@ public:
     int mySqrt(int x) {
         // return sqrt(x);
         
+        
+        // option 1 
+        // binary search 
         if (x <= 1) return x;
         int left = 0, right = x;
         while (left < right) {

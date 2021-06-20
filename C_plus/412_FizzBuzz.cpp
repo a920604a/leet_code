@@ -1,25 +1,19 @@
-/*
- * @Author: yuan
- * @Date: 2021-05-03 10:35:20
- * @LastEditTime: 2021-05-03 10:35:21
- * @FilePath: /C_plus/412_FizzBuzz.cpp
- */
 class Solution
 {
 public:
     vector<string> fizzBuzz(int n)
     {
-        vector<string> ret;
+        vector<string> ret(n, "");
         for (int i = 1; i <= n; ++i)
         {
             if (i % 15 == 0)
-                ret.push_back("FizzBuzz");
+                ret[i - 1] = "FizzBuzz";
             else if (i % 5 == 0)
-                ret.push_back("Buzz");
+                ret[i - 1] = "Buzz";
             else if (i % 3 == 0)
-                ret.push_back("Fizz");
+                ret[i - 1] = "Fizz";
             else
-                ret.push_back(to_string(i));
+                ret[i - 1] = to_string(i);
         }
         return ret;
     }

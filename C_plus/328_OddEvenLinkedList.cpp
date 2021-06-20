@@ -1,9 +1,3 @@
-/*
- * @Author: yuan
- * @Date: 2021-05-02 12:15:16
- * @LastEditTime: 2021-05-02 12:15:16
- * @FilePath: /C_plus/328_OddEvenLinkedList.cpp
- */
 /**
  * Definition for singly-linked list.
  * struct ListNode {
@@ -19,20 +13,33 @@ class Solution
 public:
     ListNode *oddEvenList(ListNode *head)
     {
+        // option 1
+        // two pointer , pointer odd, even
+        // if(!head || !head->next) return head;
+        // ListNode* odd =head, *even = head->next;
+        // ListNode *p = even;
+        // while(odd->next && even->next){
+        //     odd->next = even->next;
+        //     even->next = even->next->next;
+        //     odd=odd->next;
+        //     even=even->next;
+        // }
+        // odd->next = p;
+        // return head;
+
+        // option 2
         if (!head || !head->next)
             return head;
-        ListNode *odd = head;
-        ListNode *even = head->next;
-        ListNode *e = even;
-
-        while (even && even->next)
+        ListNode *pre = head, *cur = head->next;
+        while (cur && cur->next)
         {
-            odd->next = odd->next->next;
-            even->next = even->next->next;
-            odd = odd->next;
-            even = even->next;
+            ListNode *tmp = pre->next;
+            pre->next = cur->next;
+            cur->next = cur->next->next;
+            pre->next->next = tmp;
+            pre = pre->next;
+            cur = cur->next;
         }
-        odd->next = e;
 
         return head;
     }

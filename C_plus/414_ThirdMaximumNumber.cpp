@@ -1,35 +1,32 @@
-/*
- * @Author: yuan
- * @Date: 2021-05-03 10:58:48
- * @LastEditTime: 2021-05-03 10:58:48
- * @FilePath: /C_plus/414_ThirdMaximumNumber.cpp
- */
 class Solution
 {
 public:
     int thirdMax(vector<int> &nums)
     {
+        int first = 0, second = 0, third = 0;
         long max_1 = LONG_MIN, max_2 = LONG_MIN, max_3 = LONG_MIN;
-        for (int i : nums)
+        for (int n : nums)
         {
-            if (i == max_1 || i == max_2 || i == max_3)
+            if (n == max_1 || n == max_2 || n == max_3)
                 continue;
-            if (i > max_1)
+
+            if (n > max_1)
             {
                 max_3 = max_2;
                 max_2 = max_1;
-                max_1 = i;
+                max_1 = n;
             }
-            else if (i > max_2)
+            else if (n > max_2)
             {
                 max_3 = max_2;
-                max_2 = i;
+                max_2 = n;
             }
-            else if (i > max_3)
+            else if (n > max_3)
             {
-                max_3 = i;
+                max_3 = n;
             }
         }
+
         return max_3 == LONG_MIN ? max_1 : max_3;
     }
 };

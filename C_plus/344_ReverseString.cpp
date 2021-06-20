@@ -4,26 +4,25 @@ public:
     void reverseString(vector<char> &s)
     {
         // option 1
-        // stack<int> sta;
-        // for(char c:s){
-        //     sta.push(c);
-        // }
-        // s.clear();
+        // use stack O(n) time O(n) space
+        // stack<char> sta;
+        // for(char t:s) sta.push(t);
+        // string ret ="";
         // while(!sta.empty()){
-        //     char c = sta.top();
-        //     s.push_back(c);
+        //     ret += sta.top();
         //     sta.pop();
         // }
-        //option 2  雙指針
+        // for(int i=0;i<ret.size();++i){
+        //     s[i]  = ret[i];
+        // }
+
+        // option 2
+        // two pointer to swtich  in-place
+        // O(n) time O(1) space
         int l = 0, r = s.size() - 1;
         while (l < r)
         {
-            //switch
-            char tmp = s[l];
-            s[l] = s[r];
-            s[r] = tmp;
-            l++;
-            r--;
+            swap(s[l++], s[r--]);
         }
     }
 };
