@@ -1,20 +1,25 @@
-/*
- * @Author: yuan
- * @Date: 2021-05-04 17:31:04
- * @LastEditTime: 2021-05-04 17:31:05
- * @FilePath: /C_plus/771_JewelsAndStones.cpp
- */
 class Solution
 {
 public:
     int numJewelsInStones(string jewels, string stones)
     {
-        int ret = 0;
-        map<char, int> m;
+        // option 1 O( nlogn)
+        //         set<char> s(jewels.begin(), jewels.end());
+
+        //         int ret = 0;
+        //         for(char c:stones){
+        //             if(s.find(c)!=s.end()) ret++;
+        //         }
+
+        //         return ret;
+
+        // option 2 O(n)
+        vector<int> v(128, 0);
         for (char c : stones)
-            m[c]++;
+            v[c]++;
+        int ret = 0;
         for (char c : jewels)
-            ret += (m[c]);
+            ret += v[c];
         return ret;
     }
 };

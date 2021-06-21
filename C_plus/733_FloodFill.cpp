@@ -1,27 +1,29 @@
-/*
- * @Author: yuan
- * @Date: 2021-05-04 17:27:00
- * @LastEditTime: 2021-05-04 17:27:00
- * @FilePath: /C_plus/733_FloodFill.cpp
- */
 class Solution
 {
 public:
-    void fill(vector<vector<int> > &image, int i, int j, int color, int newColor)
+    void flood(int i, int j, int color, int newColor, vector<vector<int> > &ret)
     {
-        if (i < 0 || i > image.size() - 1 || j < 0 || j > image[0].size() - 1 || image[i][j] != color)
+        if (i < 0 || j < 0 || i > ret.size() - 1 || j > ret[0].size() - 1 || ret[i][j] != color)
             return;
-        image[i][j] = newColor;
-        fill(image, i - 1, j, color, newColor);
-        fill(image, i + 1, j, color, newColor);
-        fill(image, i, j - 1, color, newColor);
-        fill(image, i, j + 1, color, newColor);
+        ret[i][j] = newColor;
+
+        flood(i - 1, j, color, newColor, ret);
+
+        flood(i + 1, j, color, newColor, ret);
+        flood(i, j - 1, color, newColor, ret);
+        flood(i, j + 1, color, newColor, ret);
     }
     vector<vector<int> > floodFill(vector<vector<int> > &image, int sr, int sc, int newColor)
     {
+
+        // option 1 DFS
         if (image[sr][sc] == newColor)
             return image;
-        fill(image, sr, sc, image[sr][sc], newColor);
-        return image;
+        int m = image.size(), n = image[0].size();
+        vector<vector<int> > ret = image;
+
+        flood(sr, sc, image[sr][sc], newColor, ret);
+
+        return ret;
     }
 };
