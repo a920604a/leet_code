@@ -1,9 +1,3 @@
-/*
- * @Author: yuan
- * @Date: 2021-05-05 13:52:52
- * @LastEditTime: 2021-05-05 13:52:52
- * @FilePath: /C_plus/993_CousinsinBinaryTree.cpp
- */
 /**
  * Definition for a binary tree node.
  * struct TreeNode {

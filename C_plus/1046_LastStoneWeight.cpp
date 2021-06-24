@@ -1,36 +1,23 @@
-/*
- * @Author: yuan
- * @Date: 2021-05-05 16:02:09
- * @LastEditTime: 2021-05-05 16:02:16
- * @FilePath: /C_plus/1046_LastStoneWeight.cpp
- */
 class Solution
 {
 public:
     int lastStoneWeight(vector<int> &stones)
     {
-
+        // use STL priority_queue O(nlogn)
+        int ret = 0;
         priority_queue<int> q;
         for (int i : stones)
             q.push(i);
-        while (!q.empty())
+
+        while (q.size() > 1)
         {
-            //             cout<<q.top()<<" ";
-            //             q.pop();
-            int top = q.top();
+            int y = q.top();
             q.pop();
-            if (!q.empty())
-            {
-                int sec = q.top();
-                q.pop();
-                top = top - sec;
-                q.push(top);
-            }
-            else
-            {
-                return top;
-            }
+            int x = q.top();
+            q.pop();
+            int sum = y - x;
+            q.push(sum);
         }
-        return 1;
+        return q.top();
     }
 };
