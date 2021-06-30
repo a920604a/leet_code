@@ -3,11 +3,11 @@ class Solution
 public:
     int climbStairs(int n)
     {
-        // option 1 recurrent, time out O(2^n)
+        // option 1 recurrent, time out  O(2^n) time and O(n) space
         // if(n <=3) return n;
         // else return climbStairs(n-1) + climbStairs(n-2);
 
-        // option 2 for-loop
+        // option 2 for-loop O(n) time
         // if(n<=3) return n;
         // int a = 1, b=2;
         // int c = a+b;
