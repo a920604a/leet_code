@@ -63,16 +63,22 @@ int FibonacciSearch(vector<int> &nums); // https://www.geeksforgeeks.org/fibonac
 
 int main()
 {
-    int arr[] = {2, 3, 4, 10, 40};
-    int size = sizeof(arr) / sizeof(arr[0]);
-    int result = ExponentialSearch(arr, size, 4);
+    // int arr[] = {2, 3, 4, 10, 40};
+    // int size = sizeof(arr) / sizeof(arr[0]);
+    // int result = ExponentialSearch(arr, size, 4);
 
-    if (result == -1)
-    {
-        std::cout << "not found" << endl;
+    // if (result == -1)
+    // {
+    //     std::cout << "not found" << endl;
+    // }
+    // else
+    //     std::cout << result << endl;
+
+    // std::vector<bool> vec {false, false};
+    std::vector<char> vec {'a', 'b'};
+    for(auto &x : vec) {
+        x = 'z'; // all elements be true. 直接修改原始vec
     }
-    else
-        std::cout << result << endl;
-
+    for(auto x : vec)  cout<<x<<endl;
     return 0;
 }
