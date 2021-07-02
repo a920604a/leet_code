@@ -34,7 +34,7 @@ public:
 
         // option 2
 
-        // two pointer + reverse last half of linked list
+        // O(n) two pointer + reverse last half of linked list
         if (!head || !head->next)
             return true;
         ListNode *slow = head, *fast = head;
@@ -61,5 +61,7 @@ public:
             p = p->next;
         }
         return true;
+
+        // option 3 Recursion & backtracking
     }
 };
