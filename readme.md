@@ -2,7 +2,7 @@
 
 ###### tags: `course notes`
 
-
+[toc]
 
 ## [contain](https://en.cppreference.com/w/cpp/container)
 - Linked list
@@ -62,9 +62,10 @@ find compare
 
 * 常用方法 push pop front back size empty swap emplace
 * back() front() push_back() pop_front()
-### priority_queue 用vector 實作
+### priority_queue 用vector 實作 但資料結構是 max-heap
 * 常用方法 push pop top size empty swap emplace
 * front() push_back() pop_back()
+* heap 插入刪除元素時間 O(logn)
 
 ### deque
 * 存取方法 deq.at(i)/deq[i] front back
@@ -123,11 +124,12 @@ find compare
 
 ## sort
 
-| case         | Bubble sort | insertion sort | selection sort | merge sort | quick sort |
-| ------------ | ----------- | -------------- | -------------- | ---------- | ---------- |
-| best case    | $N$         | $N$            | $N^2$          | $NlogN$    | $NlogN$    |
-| average case | $N^2$       | $N^2$          | $N^2$          | $NlogN$    | $NlogN$    |
-| worst case   | $N^2$       | $N^2$          | $N^2$          | $NlogN$    | $N^2$      |
+| case         | Bubble sort | insertion sort | selection sort | merge sort | quick sort | Radix Sort |
+| ------------ | ----------- | -------------- | -------------- | ---------- | ---------- | ---------- |
+| best case    | $N$         | $N$            | $N^2$          | $NlogN$    | $NlogN$    |      kN      |
+| average case | $N^2$       | $N^2$          | $N^2$          | $NlogN$    | $NlogN$    |            |
+| worst case   | $N^2$       | $N^2$          | $N^2$          | $NlogN$    | $N^2$      |            |
+| Memory       | 1       | 1           | 1        | Depends    | logN   |            |
 
 
 
