@@ -12,24 +12,28 @@ public:
     ListNode *detectCycle(ListNode *head)
     {
 
-        ListNode *slow = head;
-        ListNode *fast = head;
+        // option 1
+        // 1. 快慢指標判斷有無交點
+        // 2. 若無交點，返回nullptr
+        // 3. 有交點，此時fast從相遇點走到下次相遇點距離，等於slow從起點走到下次相遇點。
+        ListNode *slow = head, *fast = head;
+
         while (fast && fast->next)
         {
             slow = slow->next;
             fast = fast->next->next;
             if (fast == slow)
-                break;
+                break; // detect cycle
         }
         if (fast == nullptr || fast->next == nullptr)
             return nullptr;
+
         slow = head;
-        // head 到環的起點+環的起點到相遇的點的距離 與 環一圈相等
         while (slow != fast)
         {
-            slow = slow->next;
             fast = fast->next;
+            slow = slow->next;
         }
-        return fast;
+        return slow;
     }
 };

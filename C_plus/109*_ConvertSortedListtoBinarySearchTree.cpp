@@ -54,21 +54,23 @@ public:
         return sortedArrayToBST(v);
 
         // option 2 slow-fast pointer
+        // 先決定root，再分兩部分left, right
         if (!head)
             return nullptr;
+        // use slow fast to determine root node
+        ListNode *slow = head, *fast = head, *pre = nullptr;
 
-        ListNode *fast = head, *slow = head, *pre = nullptr;
         while (fast && fast->next)
         {
-            fast = fast->next->next;
             pre = slow;
             slow = slow->next;
+            fast = fast->next->next;
         }
+        // partition
         if (pre != nullptr)
             pre->next = nullptr;
         else
             head = nullptr;
-
         TreeNode *root = new TreeNode(slow->val);
         root->left = sortedListToBST(head);
         root->right = sortedListToBST(slow->next);
