@@ -959,8 +959,201 @@ Result commonAncestorHelper(TreeNode root, TreeNode p, TreeNode q){
 
 ##### **Random Node**: You are implementing a binary tree class from scratch which, in addition to insert, find, and delete, has a method getRandomNode() which returns a random node from the tree. All nodes should be equally likely to be chosen. Design and implement an algorithm for getRandomNode, and explain how you would implement the rest of the methods.
 
+- 用array存取每個樹中每個節點，return 隨機元素 O(N) space O(N) time
+- 用array存取每個樹中每個節點，return 隨機元素並刪除該元素 O(N) space O(N) time
+- 可以用Inoreder traverse 標註樹中每個節點1...N，並隨機生成一個數字介於1到N之間，用binary search tree search t ofid the index O(N) time
+- [Not working]
+    - 1/3 odds traverse the current root
+    - 1/3 odds traverse left 
+    - 1/3 odds traverse right
+    - 或是隨機決定深度
 
+- 假設當初在建樹時有紀錄size，知道節點個數，針對上面方法做改善，O(logN) time
+
+```java=
+class TreeNode{
+    private int data;
+    public TreeNode left;
+    public TreeNode right;
+    private int size = 0;
+    public TreeNode(int d){
+        data = d;
+        size = 1;
+    }
+    public TreeNode getRandomNote(){
+        int leftSize = left ==null?0:left.size();
+        Random random = new Random();
+        int index = random.nextInt(size);
+        if(index<leftSize){
+            return left.getRandomNode();
+           
+        }
+        else if (index==leftSize){
+            return this;
+        }
+        else  return right.getRandomNode();
+    }
+    publoc void insertInOrder(int d){
+        if(d<=data){
+            if(left ==null){
+                left = new TreeNode(d);
+                
+            }
+            else{
+                left.insertInOrder(d);
+            }
+        }
+        else{
+            if(right==null)
+            {
+                right = new TreeNode(d);
+            }
+            else{
+                right.insertInOrder(d);
+            }
+        }
+        size++;
+
+    }
+    public int size(){return size;}
+    public int data() {return data;
+
+    public TreeNode find(int d){
+        if(d==data){
+            return this;
+        }
+        else if(d<= data){
+            return left != null? left.find(d): null;
+        }
+        else if(d>data){
+            return right != null?right.find(d):null;
+        }
+        return null;
+    }
+}
+```
+
+
+
+O(logN)
+
+```java=
+
+class Tree{
+    TreeNode root= nullptr;
+    public int size() {return root ==null ?0 : root.size();}
+    public TreeNode getRandomNode(){
+        if(root==null) return null;
+
+        Random random = new Random();
+        int i = random.nextInt(size());
+        return root.getIthNode(i);
+    }
+    public void insertInOrder(int value){
+        if(root=null){
+            root = new TreeNode(value);
+        }
+        else{
+            root.insertInOrder(value);
+        }
+    }
+}
+class TreeNode{
+    
+    public TreeNode getIthNode(int i){
+        int leftSize = left ==null ?0:left.size();
+        if(i<leftSize){
+            return left.getIthNode(i);
+        }
+        else if(i==leftSize){
+            return this;
+        }
+        else{
+            return right.getIthNode(i - (leftSize+1));
+        }
+    }
+    public void insertInOrder(int d){
+        if(d<=data){
+            if(left ==null){
+                left = new TreeNode(d);
+                
+            }
+            else{
+                left.insertInOrder(d);
+            }
+        }
+        else{
+            if(right==null)
+            {
+                right = new TreeNode(d);
+            }
+            else{
+                right.insertInOrder(d);
+            }
+        }
+        size++;
+    }
+    public int size(){return size;}
+    public TreeNode find(int d){
+        if(d==data){
+            return this;
+        }
+        else if(d<= data){
+            return left != null? left.find(d): null;
+        }
+        else if(d>data){
+            return right != null?right.find(d):null;
+        }
+        return null;
+
+    }
+}
+```
 ##### **Paths with Sum**: You are given a binary tree in which each node contains an integer value (which might be positive or negative). Design an algorithm to count the number of paths that sum to a given value. The path does not need to start or end at the root or a leaf, but it must go downwards (traveling only from parent nodes to child nodes).
+
+
+- Leetcode 112. Path Sum
+- Leetcode 113. Path Sum II
+- Leetcode 437. Path Sum III
+- Leetcode 666. Path Sum IV
+
+
+
+437. Path Sum III
+```cpp=
+int countPathsWithSumFromNode(TreeNode *node, int targetSum , int currentSum ){
+        if(!node) return 0;
+        
+        currentSum += node->val;
+        int totalPaths = 0;
+        if (currentSum == targetSum) { // Found a path from the root
+            totalPaths++;
+        }
+        
+        totalPaths += countPathsWithSumFromNode(node->left, targetSum, currentSum);
+        totalPaths += countPathsWithSumFromNode(node->right, targetSum, currentSum);
+        return totalPaths;
+            
+        
+    }
+    int countPathsWithSum(TreeNode* root, int targetSum){
+        if(!root) return 0;
+        
+        /* Count paths with sum starting from the root. */
+        int pathsFromRoot = countPathsWithSumFromNode(root, targetSum, 0);
+        
+        /* Try the nodes on the left and right. */
+        int pathsOnLeft = countPathsWithSum(root->left, targetSum);
+        int pathsOnRight = countPathsWithSum(root->right, targetSum);
+        return pathsFromRoot + pathsOnLeft + pathsOnRight;
+    }
+    
+    int pathSum(TreeNode* root, int targetSum) {
+        return countPathsWithSum(root, targetSum);
+    }
+  
+```  
+
 
 ### Bit Manipulation
 x^ 000000 = x
