@@ -1,8 +1,29 @@
 class Solution
 {
 public:
+    void getSubsets(vector<int> &nums, int idx, vector<vector<int> > &ret, vector<int> &cand)
+    {
+
+        ret.push_back(cand);
+
+        for (int i = idx; i < nums.size(); ++i)
+        {
+            cand.push_back(nums[i]);
+            getSubsets(nums, i + 1, ret, cand);
+            cand.pop_back();
+        }
+    }
+
     vector<vector<int> > subsets(vector<int> &nums)
     {
+
+        // option 1 Recursion
+        vector<vector<int> > ret;
+        vector<int> cand;
+        getSubsets(nums, 0, ret, cand);
+        return ret;
+
+        // option 2 iterative
         vector<vector<int> > ret;
         ret.push_back({});
         for (int n : nums)
