@@ -150,7 +150,5 @@
 ## Miscellaneous
 - Kth Smallest Number (hard) *
 
-
-
 ## 參考資料
 - [Grokking the Coding Interview Patterns for Coding Questions](https://github.com/Chanda-Abdul/Grokking-the-Coding-Interview-Patterns)
