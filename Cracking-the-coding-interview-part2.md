@@ -6,9 +6,7 @@
 
 [toc]
 
-
-
-### C and C++
+## C and C++
 must know
 - Classes and Inheritance
 - Constructors and Destructors
@@ -20,19 +18,298 @@ must know
 - Templates
 
 
-1. **Last K Lines**: Write a method to print the last K lines of an input file using C++.
-2. **Reverse String**: Implement a function void reverse(char* str) in C or C++ which reverses a null-terminated string.
-3. **Hash Table vs. STL Map**: Compare and contrast a hash table and an STL map. How is a hash table implemented? If the number of inputs is small, which data structure options can be used instead of a hash table?
-4. Virtual Functions: How do virtual functions work in C++?
-5. Shallow vs. Deep Copy: What is the difference between deep copy and shallow copy? Explain how you would use each.
-6. **Volatile**: What is the significance of the keyword "volatile" in C?
-7. **Virtual Base Class**: Why does a destructor in base class need to be declared virtual?
-8. **Copy Node**: Write a method that takes a pointer to a Node structure as a parameter and returns a complete copy of the passed in data structure. The Node data structure contains two pointers to other Nodes.
-9. **Smart Pointer**: Write a smart pointer class. A smart pointer is a data type, usually implemented with templates, that simulates a pointer while also providing automatic garbage collection. It automati­ cally counts the number of references to a SmartPointer<T*> object and frees the object of type T when the reference count hits zero.
-10. **Malloc**: Write an aligned malloc and free function that supports allocating memory such that the memory address returned is divisible by a specific power of two.
-11. **20Alloc**: Write a function in C called my2DA1loc which allocates a two-dimensional array.Minimize the number of calls to malloc and make sure that the memory is accessible by the notation arr[i][j ].
+##### **Last K Lines**: Write a method to print the last K lines of an input file using C++.
 
-### Java
+```cpp
+void printLast10Lines(char * fileName){
+    const int k = 10;
+    ifstream file(fileName);
+    string L[K];
+    int size = 0;
+
+    while(file.peek()!= EOF){
+        getline(file, L[size % K]);
+        size++;
+    }
+    int start = size> K ? (size%k) : 0;
+    int count = min(K, size);
+
+    for(int i = 0;i<count ;i++>){
+        cout<<L[(start + i) % K] <<endl;
+    }
+
+}
+```
+#####  **Reverse String**: Implement a function void reverse(char* str) in C or C++ which reverses a null-terminated string.
+
+- Leetcode 344. Reverse String
+
+##### **Hash Table vs. STL Map**: Compare and contrast a hash table and an STL map. How is a hash table implemented? If the number of inputs is small, which data structure options can be used instead of a hash table?
+
+
+In a hash table, a value is stored by calling a hash function on a key.
+the hash table will be implemented with an array of linked lists, where each node in the linked list holds two pieces of data: the value and the original key.
+
+##### Virtual Functions: How do virtual functions work in C++?
+
+virtual function依賴於“vtable”或“Virtual Table”：如果類的任何函數被聲明為虛函數，則構造一個 vtable 來存儲該類的虛函數的地址。編譯器還添加了一個隱藏的 vptr 變量 在所有指向該類的vtable的類中，**如果在子類中沒有覆蓋虛函數，則子類的vtable在其父類中存儲該函數的地址**。vtable用於解析地址 調用虛函數時的函數，**C++中的動態綁定是通過vtable機制進行的**。
+
+C++ non-virtual function調用在編譯時用靜態綁定解析，而virtual function調用在運行時用動態綁定解析。
+
+##### Shallow vs. Deep Copy: What is the difference between deep copy and shallow copy? Explain how you would use each.
+
+淺拷貝將所有成員值從一個對象複製到另一個對象。 深拷貝完成所有這些，並且還深拷貝任何指針對象。
+
+```cpp
+struct Test{
+    char * ptr;
+};
+
+void shallow_copy(Test &src, Test &dest){
+    dest.ptr = src.ptr;
+}
+void deep_copy(Test &src, Test & dest){
+    dest.ptr = (char*)malloc(strlen(src.ptr)+1)
+    strcpy(dest.ptr, src.ptr);
+}
+
+```
+##### **Volatile**: What is the significance of the keyword "volatile" in C?
+
+關鍵字 volatile 通知編譯器它所應用的變量的值可以從外部更改，而無需程式碼進行任何更新。 這可以由操作系統、硬體或另一個執行緒完成。 由於該值可能會意外更改，因此編譯器每次都會從記憶體中重新加載該值。
+
+Volatile variables are not optimized, which can be very useful. Imagine this function:
+
+```cpp
+int opt = 1;
+void Fn(void) {
+    start:
+        if(opt==1) goto start;
+        else break;
+}
+
+// At first glance, our code appears to loop infinitely. The compiler may try to optimize it to:
+void Fn(void) {
+    start:
+    int opt = 1;
+    if(true) 
+    goto start;
+}
+// This becomes an infinite loop. However, an external operation might write'O'to the location of variable opt, thus breaking the loop.
+volatile int opt = 1;
+void Fn(void) {
+    start:
+        if(opt==1) goto start;
+        else break;
+```
+##### **Virtual Base Class**: Why does a destructor in base class need to be declared virtual?
+
+Destructors are used to clean up memory and resources.
+```cpp
+class Foo{
+    public:
+        void f();
+};
+class Bar : public Foo{
+    public:
+        cvoid f();
+}
+Foo *p = new Bar();
+p->f();
+// Calling p->f() will result in a call to Foo: :f().
+```
+
+If Foo's destructor were not virtual, then Foo's destructor would be called, even when p is really of type Bar.
+This is why we declare destructors to be virtual; we want to ensure that the destructor for the most derived class is called.
+
+- 不要去繼承沒有 virtual destructor 的 class
+- 在 class 裡寫到 virtual function 的時候就幫他加個 virtual destructor 以絕後患
+##### **Copy Node**: Write a method that takes a pointer to a Node structure as a parameter and returns a complete copy of the passed in data structure. The Node data structure contains two pointers to other Nodes.
+
+```cpp
+typedef map<Node* , Node*> NodeMap;
+
+
+Node *copy_recursive(Node *cur, NodeMap & nodeMap){
+    if(cur == nullptr){
+        return nullptr;
+    }
+
+    NodeMap::iterator i = nodeMap.find(cur);
+    if(i != nodeMap.end()){ // we've been here before, return the copy.
+        return i->second;
+    }
+    Node *node = new Node;
+    nodeMap[cur] = node;  //map current before traversing links
+    node->ptr1 = copy_recursive(cur->ptr1, nodeMap);
+    node->ptr2 = copy_recursive(cur->ptr2, nodeMap);
+    return node;
+}
+
+
+Node *copy_recursive(Node *root){
+    NodeMap nodeMap; //we will need an empty map
+    return copy_recursive(root, nodeMap);
+}
+
+
+```
+
+#####  **Smart Pointer**: Write a smart pointer class. A smart pointer is a data type, usually implemented with templates, that simulates a pointer while also providing automatic garbage collection. It automati­ cally counts the number of references to a SmartPointer<T*> object and frees the object of type T when the reference count hits zero.
+
+it provides safety via automatic memory management. It avoids issues like dangling pointers, memory leaks and allocation failures
+
+```cpp
+// pseudocode
+template <class T> class SmartPointer{
+    T* obj;
+    unsigned *ref_count;
+}
+SmartPointer(T *object){
+/* We want to set the value of T* obj, and set the reference counter to 1.*/
+}
+SmartPointer(SmartPointer<T> & sptr){
+/* This constructor creates a new smart pointer that points to an existing
+* object. We will need to first set obj and ref_count to pointer to sptr's obj
+* and ref_count. Then, because we created a new reference to obj, we need to
+* increment ref_count.*/
+}
+~SmartPointer(SmartPointer <T>  sptr){
+/* We are destroying a reference to the object. Decrement ref_count. If
+14 * ref count is 0, then free the memory created by the integer and destroy the object */
+}
+
+onSetEquals(SmartPoint<T> ptrl, SmartPoint<T> ptr2) {
+
+}
+```
+
+```cpp
+template<class T> class SmartPointer{
+    public:
+        SmartPointer(T* ptr){
+            ref = ptr;
+            ref_count = (unsigned*)malloc(sizeof(unsigned));
+            *ref_count = 1;
+        }
+        SmartPointer(SmartPointer<T> & sptr){
+            ref = sptr.ref;
+            ref_count = sptr_ref_count();
+            ++(*ref_count);
+        }
+        /* Override the equal operator, so that when you set one smart pointer equal to  another the old smart pointer has its reference count decremented and the new smart pointer has its reference count incrememented. */
+
+        SmartPointer<T> & operator=(SmartPointer<T> & sptr) {
+            if(this == &sptr) return *thi;
+
+            /* If already assigned to an object, remove one reference. */
+            if (*ref_count > 0) {
+                remove();
+            }
+
+            ref = sptr.ref;
+            ref_count = sptr.ref_count;
+            ++(*ref_count);
+            return *this;
+        }
+        ~SmartPointer(){ 
+            remove(); // Remove one reference to object.
+        }
+
+        T getValue(){ 
+            return *ref;
+        }
+
+    protected:
+        void remove(){ 
+            --(*ref_count);
+            if(*rer_count==0){
+                delete ref;
+                free(ref_count);
+                ref = nullptr;
+                ref_count = nullptr;
+            }
+        }
+
+        T *ref ;
+        unsigned *ref_count;
+}
+```
+
+
+#####  **Malloc**: Write an aligned malloc and free function that supports allocating memory such that the memory address returned is divisible by a specific power of two.
+
+```
+EXAMPLE
+align_malloc(1000, 128) will return a memory address that is a multiple of 128 and that points to memory of size 1000 bytes.
+aligned_free() will free memory allocated by align_malloc.
+```
+
+```cpp
+void* aligned_malloc(size_t required_bytes, size_t alignment) {
+    int offset = alignment - 1;
+    void* p= (void*) malloc(required_bytes + offset);
+    void* q = (void*) (((size_t)(p) + offset) & =(alignment - 1));
+    return q;
+}
+void* aligned_malloc(size_t required_bytes, size t alignment) {
+    void* pl;// initial block
+    void* p2; // aligned block inside initial block
+    int offset= alignment - 1 + sizeof(void*);
+    if ((pl= (void*)malloc(required_bytes + offset))==nullptr){
+        return nullptr;
+    }
+    p2 = (void*)(((size_t)(pl) + offset) & =(alignment - 1));
+    ((void **)p2)[-1] = pl;
+    return p2;
+}
+
+void aligned_free(void *p2){
+    /* for consistency, we use the same names as aligned_malloc*/
+    void *p1 = ((void**)p2)[-1];
+    free(p1);
+
+}
+```
+
+#####  **2D Alloc**: Write a function in C called my2DA1loc which allocates a two-dimensional array.Minimize the number of calls to malloc and make sure that the memory is accessible by the notation arr[i][j].
+
+
+```cpp
+int** my2DA1loc(int rows, int cols) {
+    int** rowptr;
+    int i ;
+    rowptr = (int**) malloc(rows * sizeof(int*));
+    for(i=0;i<rows;i++) {
+        rowptr[i] = (int*) malloc(cols * sizeof(int));
+    }
+    return rowptr;
+}
+
+void my2DDealloc(int** rowptr, int rows) {
+    for (i = 0; i < rows; i++) {
+        free(rowptr[i]);
+    }
+    free(rowptr);
+
+}
+
+int** my2DA1loc(int rows, int cols) {
+    int i ;
+    int header = rows * sizeof(int*);
+    int data = rows * cols * sizeof(int);
+    int **rowptr = (int**)malloc(header + data);
+    if(rowptr==nullptr) return nullptr;
+
+    int *buf = (int*)(rowptr  + rows);
+    for(int i=0;i<rows;++i){
+        rowptr[i] = buf + i*cols;
+    }
+    return rowptr;
+
+```
+
+## Java
 
 - Overloading vs. Overriding
 - Collection Framework
@@ -46,7 +323,7 @@ must know
 7. **Lambda Expressions**: There is a class Country that has methods `getContinent()` and `getPopulation()`. Write a function int `getPopulation(List<Country> countries, String continent)` that computes the total population of a given continent, given a  list of all countries and the name of a continent.
 8. **Lambda Random**: Using Lambda expressions, write a function `List<Integer> getRandomSubset(List<Integer> list)` that returns a random subset of arbitrary size. All subsets (including the empty set) should be equally likely to be chosen
 
-### Databases
+## Databases
 must know
 - SQL Syntax and Variations
 - Denormalized vs. Normalized Databases
@@ -61,7 +338,7 @@ must know
 6. **Entity-Relationship Diagram**: Draw an entity-relationship diagram for a database with companies, people, and professionals (people who work for companies).
 7. **Design Grade Database**: Imagine a simple database storing information for students' grades. Design what this database might look like and provide a SQL query to return a list of the honor roll students (top 10%), sorted by their grade point average
  
-### Threads and Locks
+## Threads and Locks
 
 - Threads in Java
 - Synchronization and Locks
@@ -83,7 +360,7 @@ The same instance of Foo will be passed to three different threads. ThreadA will
 
 
 
-### Testing
+## Testing
 
 1. **Mistake**: Find the mistake(s) in the following code:
 2. **Random Crashes**: You are given the source to an application which crashes when it is run. After running it ten times in a debugger, you find it never crashes in the same place. The application is single threaded, and uses only the C standard library. What programming errors could be causing this crash? H ow would you test each one
@@ -92,7 +369,7 @@ The same instance of Foo will be passed to three different threads. ThreadA will
 5. **Test a Pen**: How would you test a pen?
 6. **Test an ATM**: How would you test an ATM in a distributed banking system?
 
-### Object-Oriented Design
+## Object-Oriented Design
 1. **Deck of Cards**: Design the data structures for a generic deck of cards. Explain how you would subclass the data structures to implement blackjack.
 2. **Call Center**: Imagine you have a call center with three levels of employees: respondent, manager, and director. An incoming telephone call must be first allocated to a respondent who is free. If the respondent can't handle the call, he or she must escalate the call to a manager. If the manager is not free or not able to handle it, then the call should be escalated to a director. Design the classes and data structures for this problem. Implement a method dispatchCall() which assigns a call to the first available employee.
 3. **Jukebox**: Design a musical jukebox using object-oriented principles.
@@ -107,7 +384,7 @@ The same instance of Foo will be passed to three different threads. ThreadA will
 file system. Illustrate with an example in code where possible.
 12. **Hash Table**: Design and implement a hash table which uses chaining (linked lists) to handle colli­ sions.
 
-### System Design and Scalability
+## System Design and Scalability
 1. Stock Data: Imagine you are building some sort of service that will be called by up to 1,000 client applications to get simple end-of-day stock price information (open, close, high, low). You may assume that you already have the data, and you can store it in any format you wish. How would you design the client-facing service that provides the information to client applications?You are respon­ sible for the development, rollout, and ongoing monitoring and maintenance of the feed. Describe the different methods you considered and why you would recommend your approach. Your service can use any technologies you wish, and can distribute the information to the client applications in any mechanism you choose.
 2. Social Network: How would you design the data structures for a very large social network like Face­ book or LinkedIn? Describe how you would design an algorithm to show the shortest path between two people (e.g., Me -> Bob -> Susan -> Jason -> You).
 3. Web Crawler: If you were designing a web crawler, how would you avoid getting into infinite loops?
@@ -119,7 +396,7 @@ file system. Illustrate with an example in code where possible.
 
 
 
-### Moderate
+## Moderate
 
 1. **Number Swapper**: Write a function to swap a number in place (that is, without temporary variables).
 2. **Word Frequencies**: Design a method to find the frequency of occurrences of any given word in a book. What if we were running this algorithm multiple times?
@@ -162,7 +439,7 @@ Write a program to simulate the first K moves that the ant makes and print the f
 
 
 
-### Hard
+## Hard
 
 
 1. Add Without Plus: Write a function that adds two numbers. You should not use+ or any arithmetic operators.

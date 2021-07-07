@@ -8,7 +8,7 @@
 [toc]
 
 
-### Array and Strings 
+## Array and Strings 
 
 
 
@@ -304,7 +304,7 @@ bool rotateString(string s, string goal) {
     }
 ```
 
-### Linked Lists
+## Linked Lists
 
 
 
@@ -439,7 +439,7 @@ Approach 2: Flexible Divisions
 ##### **Animal Shelter**: An animal shelter, which holds only dogs and cats, operates on a strictly"first in, first out" basis. People must adopt either the"oldest" (based on arrival time) of all animals at the shelter, or they can select whether they would prefer a dog or a cat (and will receive the oldest animal of that type). They cannot select which specific animal they would like. Create the data structures to maintain this system and implement operations such as enqueue, dequeueAny, dequeueDog, and dequeueCat. You may use the built-in Linked list data structure.
 
 
-### Trees and Graph
+## Trees and Graph
 recursive
 - pre-order and other forms of tree traversal are a form of DFS
 - assumption that BFS is recursive.
@@ -1186,7 +1186,7 @@ void incrementHashTable(HashMap<Integer, Integer> hashTable, int key, int delta)
     
 ```
 
-### Bit Manipulation
+## Bit Manipulation
 x^ 000000 = x
 x^ 111111 = ~x
 x^ x = 0
@@ -1633,7 +1633,7 @@ void drawLine(byte[] screen , int width, int x1, int x2, int y){
 ```
 
 
-### Math and Logic Puzzles
+## Math and Logic Puzzles
 
 ##### **The Heavy Pill**: You have 20 bottles of pills. 19 bottles have 1.0 gram pills, but one has pills of weight 1.1 grams. Given a scale that provides an exact measurement, how would you find the heavy bottle? You can only use the scale once.
 
@@ -1657,7 +1657,7 @@ Similarly, find the probability of collision with n ants on an n-vertex polygon
 
 
 
-### Recursion and Dynamic Programming
+## Recursion and Dynamic Programming
 * Recursive algorithms can be very space inefficient.
 * All recursive algorithms can be implemented iteratively, although sometimes the code to do so is much more complex. 
 
@@ -1750,7 +1750,7 @@ int magicFast(int []array , int start, int end){
 
 
 
-5. **Recursive Multiply**: Write a recursive function to multiply two positive integers without using the *operator.You can use addition, subtraction, and bit shifting, but you should minimize the number of those operations.
+##### **Recursive Multiply**: Write a recursive function to multiply two positive integers without using the *operator.You can use addition, subtraction, and bit shifting, but you should minimize the number of those operations.
 
 
 ```java=
@@ -2108,7 +2108,7 @@ boolean checkValid(Integer[] columns, int row1, int column1){
 ##### **Boolean Evaluation**: Given a boolean expression consisting of the symbols 0 (false), 1 (true), & (AND), I (OR), and /\ (XOR), and a desired boolean result value result, implement a function to count the number of ways of parenthesizing the expression such that it evaluates to result.
 
 
-### Sorting and Searching
+## Sorting and Searching
 
 ##### **Sorted Merge**: You are given two sorted arrays, A and B, where A has a large enough buffer at the end to hold B. Write a method to merge B into A in sorted order.
 
