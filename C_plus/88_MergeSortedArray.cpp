@@ -4,27 +4,44 @@ public:
     void merge(vector<int> &nums1, int m, vector<int> &nums2, int n)
     {
 
-        // option 1
-        // 串起來
-        int j = 0;
-        for (int i = m; i < nums1.size(); ++i)
-        {
-            nums1[i] = nums2[j++];
-        }
-        for (int n : nums1)
-            cout << n << " ";
+        // option 1 先串起來在用插入排序 O(n^2) time
 
-        // insert sort
-        for (int i = m; i < nums1.size(); ++i)
+        //         for(int i=m, j=0;i<nums1.size(), j<n;++i,++j){
+        //             nums1[i] = nums2[j];
+        //         }
+
+        //         for(int i =m;i<nums1.size();++i){
+        //             int key = nums1[i];
+        //             int j = i-1;
+        //             while( j>-1 && key<nums1[j]){
+        //                 nums1[j+1] = nums1[j];
+        //                 j--;
+        //             }
+        //             nums1[j+1] = key;
+        //         }
+
+        // option 2 Merge sort , O(a+b) time and O(a+b) space
+        vector<int> nums(m + n, 0);
+
+        int i = 0, j = 0, k = 0;
+        while (i < m && j < n)
         {
-            int key = nums1[i];
-            int j = i - 1;
-            while (j > -1 && nums1[j] > key)
+            if (nums1[i] <= nums2[j])
             {
-                nums1[j + 1] = nums1[j];
-                j--;
+                nums[k++] = nums1[i];
+                i++;
             }
-            nums1[j + 1] = key;
+            else if (nums1[i] > nums2[j])
+            {
+                nums[k++] = nums2[j];
+                j++;
+            }
         }
+
+        while (i < m)
+            nums[k++] = nums1[i++];
+        while (j < n)
+            nums[k++] = nums2[j++];
+        nums1 = nums;
     }
 };

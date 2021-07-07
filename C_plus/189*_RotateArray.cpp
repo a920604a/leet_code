@@ -5,15 +5,17 @@ public:
     {
 
         // option 1 tricky 作弊方法 space O(n)
-        //         int n= nums.size();
-        //         int start = n - k%n ;
-        //         vector<int> temp (n, 0);
-        //         int j=0;
-        //         for(int i=start ;i<n;++i) temp[j++] =nums[i];
-        //         for(int i = 0;i<start;++i) temp[j++] =  nums[i];
-
-        //         nums = temp;
-        //         temp.clear();
+        //         int n = nums.size();
+        //         k = k%n;
+        //         int p = n-k;
+        //         vector<int> vec(n,0);
+                
+        //         for(int i=0;i<n;++i){
+        //             vec[i] = nums[(p+n)%n];
+        //             p++;
+        //         }
+        //         nums = vec;
+        //         vec.clear();
 
         // option 2  O(n) one-by-one  hrad to think
 

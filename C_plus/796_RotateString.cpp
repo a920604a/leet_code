@@ -10,6 +10,13 @@ public:
             if(s.find(goal) != std::string::npos) return true;
         }
         return false;
+
+
+        // option 1.1 improved
+        if(goal.size() < s.size()) return false;
+        s+=s;
+        return  s.find(goal) == std::string::npos ? false:true;
+    }
         
     }
 };
