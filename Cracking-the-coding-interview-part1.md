@@ -17,7 +17,7 @@
 
 ##### **Is Unique**: Implement an algorithm to determine if a string has all unique characters. What if you cannot use additional data structures?
 assume ASCII string not Unicode string
-```java=
+```java
 boolean isUniqueChars(String str){
     if(str.length()>128) return false;
     
@@ -36,7 +36,7 @@ boolean isUniqueChars(String str){
 ```
 time complexity O(n), space complexity O(1), but with additional data structures
 
-```java=
+```java
 boolean isUniqueChars(String str){
     int checker = 0;
     for(int i = 0;i<str.length() ; i++){
@@ -54,7 +54,7 @@ time complexity O(n^2), space complexity O(1), without additional data structure
 ##### **Check Permutation**: Given two strings,write a method to decide if one is a permutation of the other.
 
 option 1 sorted the strings
-```java=
+```java
 String sort(Strings s){
     char[] content = s.toCharArray();
     java.util.Array.sort(content);
@@ -68,7 +68,7 @@ boolean permutation(String s, String t){
 ```
 
 option 2 check if the two strings have identical character counts.
-```java=
+```java
 boolean permutation(String s, String t){
     if(s.length() != t.length()){
         return false;
@@ -95,7 +95,7 @@ boolean permutation(String s, String t){
 
 ##### URLify: Write a method to replace all spaces in a string with '%20'. 
 You may assume that the string has sufficient space at the end to hold the additional characters, and that you are given the "true" length of the string. (Note: if implementing in Java, please use a character array so that you can perform this operation in place.)
-```java=
+```java
 EXAMPLE
 Input: "Mr John Smith ", 13 
 Output: "Mr%20John%20Smith"
@@ -125,7 +125,7 @@ void replaceSpaces(char[] str, int trueLength){
 }
 
 ```
-```cpp=
+```cpp
 string replaceSpaces(string str, int trueLength){
     int splaceCount = 0, index , i = 0;
     for(i = 0;i<trueLength ; ++i){
@@ -163,7 +163,7 @@ string replaceSpaces(string str, int trueLength){
 1. use a hash table to count how many times each character appears.
 
 
-```java=
+```java
 EXAMPLE
 Input: Tact Coa
 Output: True (permutations: "taco cat'; "atc o eta·; etc.)
@@ -178,7 +178,7 @@ Output: True (permutations: "taco cat'; "atc o eta·; etc.)
 ##### **One Away**: There are three types of edits that can be performed on strings: insert a character, remove a character, or replace a character. Given two strings, write a function to check if they are one edit (or zero edits) away.
 
 
-```java=
+```java
 EXAMPLE
 pale, ple true 
 pales, pale -> true 
@@ -194,7 +194,7 @@ pale, bae -> false
 - leetcode 443. String Compression
 - option 1 At each iteration, check if the current character is the same as the next character. If not, add its compressed version to the result. O(p+k^2)
 
-```cpp=
+```cpp
 class Solution {
 public:
     int compress(vector<char>& chars) {
@@ -228,7 +228,7 @@ public:
 
 - 48. Rotate Image
 
-```cpp=
+```cpp
 class Solution {
 public:
     void rotate(vector<vector<int>>& matrix) {
@@ -263,7 +263,7 @@ public:
 ##### **Zero Matrix**: Write an algorithm such that if an element in an MxN matrix is 0, its entire row and column are set to 0.
 
 - Leetcode 73. Set Matrix Zeroes
-```cpp=
+```cpp
 class Solution {
 public:
     void setZeroes(vector<vector<int>>& matrix) {
@@ -289,7 +289,7 @@ public:
 ##### **String Rotation**:Assume you have a method is Substring which checks if one word is a substring of another. Given two strings, sl and s2, write code to check if s2 is a rotation of sl using only one call to isSubstring (e.g.,"waterbottle" is a rotation of"erbottlewat").
 
 - 將字串s1 = s1+s1 在判斷s2是否為s1子字串
-```cpp=
+```cpp
 bool rotateString(string s, string goal) {
         // option 1 O(len a + len b)
         // 將字串s1 = s1+s1 在判斷s2是否為s1子字串
@@ -315,7 +315,7 @@ bool rotateString(string s, string goal) {
 - leetcode 82 83 
 
 
-```cpp=
+```cpp
 class Solution {
 public:
     ListNode* deleteDuplicates(ListNode* head) {
@@ -449,7 +449,7 @@ recursive
 
 ##### **Route Between Nodes**: Given a directed graph, design an algorithm to find out whether there is a route between two nodes
 
-```java=
+```java
 enum State { Unvisited, Visited, Visiting; }
 boolean search(Graph g, Node start, Node end) {
     if (start == end) return true;
@@ -485,7 +485,7 @@ boolean search(Graph g, Node start, Node end) {
 ##### **Minimal Tree**: Given a sorted (increasing order) array with unique integer elements, write an algorithm to create a binary search tree with minimal height.
 
 - Leetcode 108. Convert Sorted Array to Binary Search Tree
-```cpp=
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -522,7 +522,7 @@ public:
 
 
 
-```cpp=
+```cpp
 int maxDepth(TreeNode* root) {
         if(!root) return 0;
         return 1+max(maxDepth(root->left), maxDepth(root->right));
@@ -530,7 +530,7 @@ int maxDepth(TreeNode* root) {
 ```
 
 
-```cpp=
+```cpp
 int minDepth(TreeNode* root) {
         if(!root) return 0;
         if(!root->left) return 1+minDepth(root->right);
@@ -540,7 +540,7 @@ int minDepth(TreeNode* root) {
     
 ```
 
-```cpp=
+```cpp
 
 TreeNode* sortedListToBST(ListNode* head) {
         // 先決定root，再分兩部分left, right
@@ -573,7 +573,7 @@ TreeNode* sortedListToBST(ListNode* head) {
 - Leetcode 1382. Balance a Binary Search Tree 
 
 
-```cpp=
+```cpp
 
 int getHeight(TreeNode *root){
         if(!root) return 0;
@@ -635,7 +635,7 @@ Traversal issue
 - Solution #2: The Min / Max Solution
 
 
-```java=
+```java
 int index = 0;
 void copyBST(TreeNode root, int[] array) {
     if(root==null) return ;
@@ -660,7 +660,7 @@ boolean checkBST(TreeNode root) {
 ```
 
 
-```java=
+```java
 Integer last_printed = null;
 
 boolean checkBST(TreeNode n) {
@@ -688,7 +688,7 @@ boolean checkBST(TreeNode n) {
 
 ```
 
-```java=
+```java
 // O(n) time and O(logN) space
 boolean checkBST(TreeNode n) {
 
@@ -723,7 +723,7 @@ boolean checkBST(TreeNode n, Integer min, Intefet max){
  
 pseudcode
 
-```cpp=
+```cpp
 Node inorderSucc(Node n){
     if(n has a right subtree){
         return leftmost child of right subtree;
@@ -738,7 +738,7 @@ Node inorderSucc(Node n){
 
 ```
 
-```java=
+```java
 TreeNode inorderSucc(TreeNode n) {
     if(n==null) return null;
     if(n.right!=null){
@@ -770,7 +770,7 @@ TreeNode leftMostChild(TreeNode n){
 ```
 
 
-```cpp=
+```cpp
 Node* inorderSuccessor(Node* node) {
         if (!node) return nullptr;
         Node *res = nullptr;
@@ -800,7 +800,7 @@ Node* inorderSuccessor(Node* node) {
 - Solution #3: Without Links to Parents
 - Solution #4: Optimized
 
-```java=
+```java
 // O(d) time, d is the depth of the deeper node.
 TreeNode * commonAncestor(TreeNode p, TreeNode q){
     int delta = depth(p)- depth(q);
@@ -833,7 +833,7 @@ int depth(TreeNode node){
 }
 ```
 
-```java=
+```java
 // O(t) time , t is the size of the subtree for the first common ancestor
 
 TreeNode commonAncestor(TreeNode root, TreeNOde p, TreeNode q){
@@ -863,7 +863,7 @@ TreeNode getSibling(TreeNode node){
 ```
 
 
-```java=
+```java
 
 TreeNode commonAncestor(TreeNode root, TreeNOde p, TreeNode q){
     if(!covers(root, p) || !covers(root, q)){
@@ -896,7 +896,7 @@ bool covers(TreeNode root, TreeNode p){
 ```
 
 
-```java=
+```java
 class Result{
     public TreeNode node;
     public boolean isAncestor;
@@ -968,7 +968,7 @@ Result commonAncestorHelper(TreeNode root, TreeNode p, TreeNode q){
 
 - 假設當初在建樹時有紀錄size，知道節點個數，針對上面方法做改善，O(logN) time
 
-```java=
+```java
 class TreeNode{
     private int data;
     public TreeNode left;
@@ -1035,7 +1035,7 @@ class TreeNode{
 
 O(logN)
 
-```java=
+```java
 
 class Tree{
     TreeNode root= nullptr;
@@ -1119,7 +1119,7 @@ class TreeNode{
 
 437 Path Sum III 
 Brute force O(N log N)in a balanced tree
-```cpp=
+```cpp
 int countPathsWithSumFromNode(TreeNode *node, int targetSum , int currentSum ){
         if(!node) return 0;
         
@@ -1156,7 +1156,7 @@ int countPathsWithSumFromNode(TreeNode *node, int targetSum , int currentSum ){
 O(N) time
 O(logN)in a balanced tree
 
-```java=
+```java
 int countPathWithSum(TreeNode root, int targetSum){
         return countPathWitheSum(root, targetSum, 0, new HashMap<Integer, Integer>());
 }
@@ -1195,7 +1195,7 @@ x | x = x
 ##### **Insertion**: You are given two 32-bit numbers, N and M, and two bit positions, i and j. Write a method to insert M into N such that M starts at bit j and ends at bit i. You can assume that the bits j through i have enough space to fit all of M. That is, if M = 10011, you can assume that there are at least 5 bits between j and i. You would not, for example, have j = 3 and i = 2, because M could not fully fit between bit 3 and bit 2.
 
 
-```java=
+```java
 
 int updateBits(int n, int m, int i , int ,j){
     // EXAMPLE
@@ -1230,7 +1230,7 @@ int updateBits(int n, int m, int i , int ,j){
 
 
 
-```java=
+```java
 String printBinary(double num){
     if(num>=1 || num<=0) return "ERROR";
 
@@ -1258,7 +1258,7 @@ String printBinary(double num){
 
 
 
-```java=
+```java
 
 String printBinary(double num){
     if(num>=1 || num<=0) return "ERROR";
@@ -1291,7 +1291,7 @@ String printBinary(double num){
 
 - [Find longest sequence of 1’s in binary representation with one flip](https://www.geeksforgeeks.org/find-longest-sequence-1s-binary-representation-one-flip/)
 
-```java=
+```java
 // brute force
 // EXAMPLE 
 // input : 1175 (or: 11011101111) seq =  [0,4,1,3,1,2,21] reading bfrom right to left
@@ -1350,7 +1350,7 @@ int findLongestSequence(ArrayList<Integer> seq){
 
 
 
-```java=
+```java
 
 // O(b) time  but O(1) space
 // When we see a zero, update previous Length:
@@ -1383,7 +1383,7 @@ int flipBit(int a){
 
 ##### **Next Number**: Given a positive integer, print the next smallest and the next largest number that have the same number of 1 bits in their binary representation.
 
-```java=
+```java
 
 // Bit Manipulation for Get Next Number
 // EXAMPLE 13948 = 1101101111100
@@ -1545,7 +1545,7 @@ int getPrevArith(int n){
 -  XOR 
 
 
-```java=
+```java
 int bitSwapRequired(int a, int b){
     int count = 0;
     for(int c = a^b ; c!=0 ; c =c >>1){
@@ -1574,7 +1574,7 @@ int bitSwapRequired(int a, int b){
 we take a number n and move the odd bits over by 1
 mask all odd bits with 10101010 in binary(which is 0xAA), then shift them right by 1 to put them in the even spots.
 fro the even bits , we do an equivalent operation.
-```java=
+```java
 0xa =  1010 , 0x5 = 0101
 
 int swapOddEvenBits(int x){
@@ -1591,7 +1591,7 @@ A better solution is to recognize that if xl and x2 are far away from each other
 These full bytes can be set one at a time by doing screen[byte_pos] 0xFF.
 he residual start and end of the line can be set using masks.
 
-```java=
+```java
 void drawLine(byte[] screen , int width, int x1, int x2, int y){
     int start_offset = x1%8;
     int first_full_byte = x1 / 8;
@@ -1683,7 +1683,7 @@ Similarly, find the probability of collision with n ants on an n-vertex polygon
 ##### **Magic Index**: A magic index in an array A[ 0••• n -1] is defined to be an index such that A[ i] = i. Given a sorted array of distinct integers, write a method to find a magic index, if one exists, in array A.
 
 brute force 
-```java=
+```java
 
 // brute force 
 int magicSlow(int []array){
@@ -1700,7 +1700,7 @@ int magicSlow(int []array){
 
 
 binary search
-```java=
+```java
 // assume elements are distinct 
 int magicFast(int []array){
     return magicFast(array, 0 ,array.length-1);   
@@ -1753,7 +1753,7 @@ int magicFast(int []array , int start, int end){
 ##### **Recursive Multiply**: Write a recursive function to multiply two positive integers without using the *operator.You can use addition, subtraction, and bit shifting, but you should minimize the number of those operations.
 
 
-```java=
+```java
 int minProduct(int a, int b){
     int bigger = a<b?b:a;
     int smaller = a<b?a:b;
@@ -1775,7 +1775,7 @@ int minProductHelper(int smaller, int bigger){
 memo 
 
 
-```java=
+```java
 
 int minProduct(int a, int b, int []memo){
     int bigger = a<b?b:a;
@@ -1801,7 +1801,7 @@ int minProductHelper(int smaller, int bigger, int []memo){
 
 
 O(log s) time, s is the smaller of two numbers.
-```java=
+```java
 
 int minProduct(int a, int b){
     int bigger = a<b?b:a;
@@ -1833,7 +1833,7 @@ Write a program to move the disks from the first tower to the last using stacks.
 - [Towers of Hanoi](https://www.geeksforgeeks.org/c-program-for-tower-of-hanoi/)
 
 
-```java=
+```java
 
 void main(String [] args){
     int n = 3;
@@ -1887,7 +1887,7 @@ class Tower{
 Approach 1: Building from permutations of first n-1 characters.
 
 
-```java=
+```java
 
 Arraylist<String> getPerms(String str) {
     if (str == null) return null;
@@ -1917,7 +1917,7 @@ String insertCharAt(String word, char c, int i) {
 ```
 
 Approach 2: Building from permutations of all n-1 character substrings.
-```java=
+```java
 
 Arraylist<String> getPerms(String str) {
     Arraylist<String> result = new Arraylist<String>();
@@ -1949,7 +1949,7 @@ void getPerms(String prefix, String remainder, Arraylist<String> result) {
 用vector 或是 hash 去判斷是否拜訪過
 
 
-```java=
+```java
 Arraylist<String> printPerms(String s) {
     Arraylist<String> result;
     HashMap<Character, Integer> map = buidFreqTable(s);
@@ -2009,7 +2009,7 @@ void printPerms(HashMap<Character, Integer> map, String prefix, int remaining,Ar
 
 
 
-```java=
+```java
 int makeChanges(int amount , int []denoms, int index){
     if(index > denoms.length-1) return 1; //last denom
 
@@ -2064,7 +2064,7 @@ int makeChanges(int n){
 - Leetcode 51. N-Queens
 - Leetcode 52. N-Queens II
 
-```java=
+```java
 
 int GRID_SIZE = 8 ;
 
@@ -2146,7 +2146,7 @@ exponential search
 ##### **Sparse Search**: Given a sorted array of strings that is interspersed with empty strings, write a method to find the location of a given string.
 
 
-```java=
+```java
 EXAMPLE
 INPUT: ball , {"at","","","","ball","","","car","","","dad","",""}
 OUTPUT: 4 
@@ -2213,7 +2213,7 @@ int search(String[] strings, String str){
 
 ##### **Missing Int**: Given an input file with four billion non-negative integers, provide an algorithm to generate an integer that is not contained in the file. Assume you have 1 GB of memo ry available for this task.
 
-```java=
+```java
 FOLLOW UP
 What if you have only 10 MB of memory? Assume that all the values are distinct and we now have no more than one billion non-negative integers.
 
@@ -2350,7 +2350,7 @@ int findZero(byte[] bitVector) {
 - Leetcode 83. Remove Duplicates from Sorted List
 - Leetcode 82. Remove Duplicates from Sorted List II
 
-```java=
+```java
 
 void checkDuplicates(int[] array) {
     BitSet bs = new BitSet(32000);

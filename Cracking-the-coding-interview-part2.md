@@ -456,7 +456,8 @@ Write a program to simulate the first K moves that the ant makes and print the f
 10. Majority Element: A majority element is an element that makes up more than half of the items in an array. Given a positive integers array, find the majority element. If there is no majority element, return-1. Do this inO(N) time and 0(1) space.
 11. WordDistance:Youhavealargetextfilecontainingwords.Givenanytwowords,findtheshortest distance(in terms of number of words) between them in the file. If the operation will be repeated many times for the same file(but different pairs of words),can you optimize your solution?
 12. BiNode: Consider a simple data structure called BiNode, which has pointers to two other nodes. 
-```cpp=
+
+```cpp
 public class BiNode {
     public BiNode nodel, node2;
     public int data;
