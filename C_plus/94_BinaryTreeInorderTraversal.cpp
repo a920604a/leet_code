@@ -28,5 +28,27 @@ public:
 
         inorder(root, ret);
         return ret;
+
+        // without recursive
+        vector<int> ret;
+        stack<TreeNode * > sta;
+        addLeftToStack(sta, root);
+        
+        while(!sta.empty()){
+            TreeNode *cur = sta.top();
+            sta.pop();
+            cout<<cur->val<<endl;
+            ret.push_back(cur->val);
+            addLeftToStack(sta, cur->right);
+        }
+        
+        return ret;
+        
+    }
+    void addLeftToStack(stack<TreeNode*> &sta, TreeNode * root){
+        while(root!=nullptr){
+            sta.push(root);
+            root = root->left;
+        }
     }
 };

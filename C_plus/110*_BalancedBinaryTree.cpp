@@ -29,9 +29,11 @@ public:
         if (rightHeight == INT_MIN)
             return INT_MIN; // Pass error up
 
-        // What do we use for an error code? The height of a null tree is generally defined to be -1, so that's not a great idea for an error code. Instead, we' ll use Integer. MIN_VALUE.
+        /* What do we use for an error code? The height of a null tree is generally defined to be -1, 
+        so that's not a great idea for an error code. 
+        Instead, we' ll use Integer. MIN_VALUE. */
         int heightDiff = leftHeight - rightHeight;
-        if (heightDiff > 1)
+        if (abs(heightDiff) > 1)
             return INT_MIN;
         else
             return max(leftHeight, rightHeight) + 1;

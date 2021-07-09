@@ -40,27 +40,29 @@ public:
         // 1. 快慢指針決定中點
         // 2. 中點後的串列reverse 或是靠stack
         // 3. 用兩指針，一個指向頭、另一個指向中點，遍歷並比較是否相同
-        //         if(!head || !head->next) return true;
-        //         ListNode *slow =head, *fast = head;
+        // if(!head || !head->next) return true;
+        //         ListNode *slow  = head, *fast = head;
         //         while(fast->next && fast->next->next){
         //             slow = slow->next;
         //             fast = fast->next->next;
         //         }
-
-        //         ListNode *cur = slow, *post = slow->next;
-        //         while(post->next){
-        //             ListNode *temp = post->next;
-        //             post->next = temp->next;
-        //             temp->next = slow->next;
-        //             slow->next = temp;
+                
+        //         ListNode *cur = slow, *post = slow->next, *pre = nullptr;
+                
+        //         while(post){
+        //             cur->next = pre;
+        //             pre = cur;
+        //             cur = post;
+        //             post = post->next;
         //         }
-
+        //         cur->next = pre;
+                
+        //         slow = cur;
         //         cur = head;
         //         while(slow->next){
-        //             slow=slow->next;
-        //             if(cur->val!=slow->val) return false;
+        //             if(cur->val != slow->val) return false;
         //             cur=cur->next;
-
+        //             slow = slow->next;           
         //         }
         //         return true;
 

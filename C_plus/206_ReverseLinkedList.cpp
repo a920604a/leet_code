@@ -44,5 +44,14 @@ public:
         }
         head = temp;
         return head;
+
+
+        // option 3 recursive
+
+        if(head==nullptr || head->next==nullptr ) return head;
+        ListNode* node = reverseList(head->next);
+        head->next->next = head;
+        head->next = nullptr;
+        return node;
     }
 };

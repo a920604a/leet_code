@@ -4,7 +4,7 @@ public:
     int findDuplicate(vector<int> &nums)
     {
         // option 1
-        // make use of use O(n) space, O(nlogn) time
+        // make use of set O(n) space, O(nlogn) time
         // set<int>s;
         // for(int n:nums) {
         //     if(s.find(n)!=s.end()) return n;

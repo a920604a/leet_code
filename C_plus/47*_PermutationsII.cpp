@@ -25,10 +25,30 @@ public:
     }
     vector<vector<int> > permuteUnique(vector<int> &nums)
     {
+        //option 1 
         sort(nums.begin(), nums.end());
         set<vector<int> > ret;
         vector<int> out, visited(nums.size(), 0);
         permuteUniqueDFS(nums, 0, visited, out, ret);
         return vector<vector<int> >(ret.begin(), ret.end());
+
+        // option 2 is
+        set<vector<int>> res;
+        permute(nums, 0, res);
+        return vector<vector<int>> (res.begin(), res.end());
+    }
+
+
+    void permute(vector<int>& nums, int start, set<vector<int>>& ret){
+        
+        if(start >= nums.size()) ret.insert(nums);
+        
+        for(int i = start ; i<nums.size();++i){
+            if (i != start && nums[i] == nums[start]) continue;
+            swap(nums[start], nums[i]);
+            permute(nums, start+1, ret);
+            swap(nums[start], nums[i]);
+            
+        }
     }
 };

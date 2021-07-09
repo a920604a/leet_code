@@ -26,5 +26,16 @@ public:
                 return true;
         }
         return false;
+
+        // option 2 
+        // set<ListNode*> s;
+        
+        // for(ListNode *cur = head;cur;cur=cur->next){
+        //     if(s.find(cur)!= s.end()) return true;
+            
+        //     s.insert(cur);
+        // }
+        
+        // return false;
     }
 };

@@ -15,6 +15,6 @@ public:
                     dp[i] = min(dp[i], 1 + dp[i - coin]);
             }
         }
-        return dp[amount] > amount ? -1 : dp[amount];
+        return dp[amount]==amount+1 ? -1 : dp[amount];
     }
 };

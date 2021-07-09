@@ -3,7 +3,9 @@ class Solution
 public:
     double findMedianSortedArrays(vector<int> &nums1, vector<int> &nums2)
     {
-        // option 1  O(n^2)
+        // option 1  O(n^2) 
+        // 1. use insert sort to merge to one sorted list 
+        // 2. get size/2 index value
         int size = nums1.size() + nums2.size();
         vector<int> merge(size, 0);
         double ret = 0.0;
@@ -38,7 +40,9 @@ public:
 
         return ret;
 
-        // option 2 two-pointer O(log (m+n))
+        // option 2 two-pointer O(n logn)
+        // 1. merge sort to merge two array
+        // 2. determine merage array length is odd or even , and get median.
         //         vector<int> merge;
         //         int l = 0, r = 0;
         //         while(l<nums1.size() && r<nums2.size()){
