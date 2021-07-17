@@ -46,16 +46,42 @@ void printLast10Lines(char * fileName){
 
 ##### **Hash Table vs. STL Map**: Compare and contrast a hash table and an STL map. How is a hash table implemented? If the number of inputs is small, which data structure options can be used instead of a hash table?
 
-
-In a hash table, a value is stored by calling a hash function on a key.
-the hash table will be implemented with an array of linked lists, where each node in the linked list holds two pieces of data: the value and the original key.
-
+hash table 是通過鏈接串列實現的，每個節點包含鍵值與數值，且不是有序的。此外尋找或插入數據的時間複雜度都是O(1)假設沒有發生碰撞
+C++ Map 是通過紅黑樹(二元樹)基於鍵值/數值來實現的，所以不需處理碰撞發生。輸入資料比較小時，我們也可以用Map或是二元樹來實現，時間複雜度為O(logn)，但其實因為輸入資料小，其實沒什麼大差別。
 ##### Virtual Functions: How do virtual functions work in C++?
 
-virtual function依賴於“vtable”或“Virtual Table”：如果類的任何函數被聲明為虛函數，則構造一個 vtable 來存儲該類的虛函數的地址。編譯器還添加了一個隱藏的 vptr 變量 在所有指向該類的vtable的類中，**如果在子類中沒有覆蓋虛函數，則子類的vtable在其父類中存儲該函數的地址**。vtable用於解析地址 調用虛函數時的函數，**C++中的動態綁定是通過vtable機制進行的**。
+virtual function依賴於“vtable”即“Virtual Table”：如果類中定義了虛函數，一個虛表格就建立了用來保存該類虛函數的地址。編譯器還會在該類添加一個隱藏的 vptr 虛指標變量 在所有指向該類的vtable的類中，**如果在子類中虛函數沒有被重寫，則子類的vtable存的仍然是其父類中該虛函數的地址**。vtable用於解析地址 調用虛函數時的函數，**C++中的動態綁定是通過vtable機制進行的**。
 
 C++ non-virtual function調用在編譯時用靜態綁定解析，而virtual function調用在運行時用動態綁定解析。
 
+```cpp
+class Shape {
+public:
+    int edge_len;
+    virtual int circumference() {
+        cout << "Circumference of Base Class\n";
+        return 0;
+    }
+};
+
+class Triangle: public Shape {
+public:
+    int circumference() {
+        cout << "Circumference of Triangle Class\n";
+        return 3 * edge_len;
+    }
+};
+
+int main() {
+
+    Shape *x = new Shape(); 
+    x->circumference(); // "Circumference of Base Class"
+    Shape *y = new Triangle();
+    y->circumference(); // "Circumference of Triangle Class"
+    
+    return 0;
+}
+```
 ##### Shallow vs. Deep Copy: What is the difference between deep copy and shallow copy? Explain how you would use each.
 
 淺拷貝將所有成員值從一個對象複製到另一個對象。 深拷貝完成所有這些，並且還深拷貝任何指針對象。
@@ -74,12 +100,21 @@ void deep_copy(Test &src, Test & dest){
 }
 
 ```
+
+淺拷貝有時會引起許多運行錯誤，尤其是在創建和刪除對象時後。淺拷貝不常使用，深拷貝應該是大多情況下使用。
 ##### **Volatile**: What is the significance of the keyword "volatile" in C?
 
-關鍵字 volatile 通知編譯器它所應用的變量的值可以從外部更改，而無需程式碼進行任何更新。 這可以由操作系統、硬體或另一個執行緒完成。 由於該值可能會意外更改，因此編譯器每次都會從記憶體中重新加載該值。
+關鍵字 volatile 通知編譯器它所應用的變數的值可以從外部更改，如作業系統、硬體或另一個執行緒。 由於該值可能會意外更改，因此編譯器每次都會從記憶體中重新加載該值。
 
 Volatile variables are not optimized, which can be very useful. Imagine this function:
-
+```cpp
+// 定義整數型變量
+int volatile x;
+volatile int x;
+// 定義指標變數
+volatile int *x;
+int volatile *x;
+```
 ```cpp
 int opt = 1;
 void Fn(void) {
@@ -87,7 +122,7 @@ void Fn(void) {
         if(opt==1) goto start;
         else break;
 }
-
+// 乍看之下，上面程式是死循環，編譯器會自動優化成
 // At first glance, our code appears to loop infinitely. The compiler may try to optimize it to:
 void Fn(void) {
     start:
@@ -95,12 +130,14 @@ void Fn(void) {
     if(true) 
     goto start;
 }
+// 的確是死循環，但外部操作可以給變量opt 賦值0，這樣可以跳出迴圈。
 // This becomes an infinite loop. However, an external operation might write'O'to the location of variable opt, thus breaking the loop.
 volatile int opt = 1;
 void Fn(void) {
     start:
         if(opt==1) goto start;
         else break;
+// votlatile 變量可以再多執行緒程序中有全局變量且每個執行序可以改變共享值時非常方便，我們不想這些共享變數被優化
 ```
 ##### **Virtual Base Class**: Why does a destructor in base class need to be declared virtual?
 
@@ -112,18 +149,19 @@ class Foo{
 };
 class Bar : public Foo{
     public:
-        cvoid f();
+        void f();
 }
 Foo *p = new Bar();
 p->f();
+// 調用p->f()會調用父類中的f()，這是因為f()不是虛函數。為了能調用子類中的f()，我們需要在父類定義其為虛函數。
 // Calling p->f() will result in a call to Foo: :f().
 ```
-
+如果父類解構子不是虛函數，那子類也只會調用父類的解構子，而不會調用子類的解構子。這就是我們要定義解構子函數為虛函數的原因。
 If Foo's destructor were not virtual, then Foo's destructor would be called, even when p is really of type Bar.
 This is why we declare destructors to be virtual; we want to ensure that the destructor for the most derived class is called.
 
-- 不要去繼承沒有 virtual destructor 的 class
-- 在 class 裡寫到 virtual function 的時候就幫他加個 virtual destructor 以絕後患
+> 不要去繼承沒有 virtual destructor 的 class
+> 在 class 裡寫到 virtual function 的時候就幫他加個 virtual destructor 以絕後患
 ##### **Copy Node**: Write a method that takes a pointer to a Node structure as a parameter and returns a complete copy of the passed in data structure. The Node data structure contains two pointers to other Nodes.
 
 ```cpp
@@ -158,6 +196,13 @@ Node *copy_recursive(Node *root){
 #####  **Smart Pointer**: Write a smart pointer class. A smart pointer is a data type, usually implemented with templates, that simulates a pointer while also providing automatic garbage collection. It automati­ cally counts the number of references to a SmartPointer<T*> object and frees the object of type T when the reference count hits zero.
 
 it provides safety via automatic memory management. It avoids issues like dangling pointers, memory leaks and allocation failures
+
+所謂智慧指標，就是除了普通指標的功能外，還能通過自動記憶體管理來提供安全性。避免一系列問題，如記憶體洩漏、分配失敗、迷途指標(指向非法物件的指標)。智慧指標必須維護一個飲用計數變數來統計給定對象的所有引用。實現過程主要有幾個部分：
+1. 建構函數
+2. 拷貝建構函數(通過另一個值會指標物件建造)
+3. 等號重載函數
+4. 解構函數
+5. 移除引用函數
 
 ```cpp
 // pseudocode

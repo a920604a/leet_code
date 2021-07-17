@@ -1,3 +1,9 @@
+/*
+ * @Author: yuan
+ * @Date: 2021-03-20 15:06:39
+ * @LastEditTime: 2021-07-15 14:14:59
+ * @FilePath: /leet_code/C_plus/1_TwoSum.cpp
+ */
 class Solution
 {
 public:
@@ -13,7 +19,7 @@ public:
         // }
         // return {};
 
-        // option 2 Hashing O(n) time and O(n) space
+        option 2 Hashing O(n) time and O(n) space
         map<int, int> tmp;
         for (int i = 0; i < nums.size(); i++)
         {
@@ -25,5 +31,8 @@ public:
             tmp[nums.at(i)] = i;
         }
         return {};
+
+        
+
     }
 };

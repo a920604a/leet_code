@@ -2110,6 +2110,7 @@ boolean checkValid(Integer[] columns, int row1, int column1){
 
 ## Sorting and Searching
 
+
 ##### **Sorted Merge**: You are given two sorted arrays, A and B, where A has a large enough buffer at the end to hold B. Write a method to merge B into A in sorted order.
 
 
@@ -2410,3 +2411,8 @@ binary search or 雙指標並從左下或右上開始搜尋
 
 
 
+
+
+## 別人的解答
+
+- [解答](https://www.cnblogs.com/grandyang/p/5162994.html)
