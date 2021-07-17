@@ -382,26 +382,6 @@ digraph hierarchy {
 Question: Given a tree, write a function to find the length of the longest branch of nodes in increasing consecutive order.
 
 
-
-```graphviz
-digraph hierarchy {
-
-                nodesep=1.0 // increases the separation between nodes
-                
-                node [color=Red,fontname=Courier,shape=box] //All nodes will this shape and colour
-                edge [color=Blue, style=dashed] //All the lines look like this
-                0->{1 2}
-                1->{1 2}
-                2->{1 3}           
-}
-
-
-```
-
-```
-length = 3
-```
-
 - Leetcode 298. Binary Tree Longest Consecutive Sequence 
 - Leetcode 549. Binary Tree Longest Consecutive Sequence II 
 
