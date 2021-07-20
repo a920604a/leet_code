@@ -11,7 +11,7 @@ public:
     {
         // option 1 maybe timeout
         // vector<bool> canReach(nums.size(), false);
-        // canReach[0] = true;
+        // canReach[0] = true; // cause initially positioned at the first index
         // for (int i = 0; i < nums.size(); ++i)
         // {
         //     if (canReach[i])
@@ -25,6 +25,12 @@ public:
         // return canReach[nums.size() - 1];
 
         // improved option 1 dp
+        // 2 3 1 1 4
+        // 0 1 2 1 0
+        
+        // 3 2 1 0 4
+        // 0 2 1 0 -1
+
         // int n = nums.size();
         // vector<int> dp(n,0);
 

@@ -14,7 +14,7 @@ public:
             while (r < n - 1 && s[r] == s[r + 1])
                 r++;
             i = r + 1;
-            while (l > 0 && r < n && s[l - 1] == s[r + 1])
+            while (l > 0 && r < n-1 && s[l - 1] == s[r + 1])
             {
                 l--;
                 r++;
