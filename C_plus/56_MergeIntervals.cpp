@@ -3,21 +3,24 @@ class Solution
 public:
     vector<vector<int> > merge(vector<vector<int> > &intervals)
     {
-        sort(intervals.begin(), intervals.end());
+
+        sort(intervals.begin(), intervals.end(), [](vector<int> &a, vector<int> &b)
+             {
+                 if (a[0] == b[0])
+                     return a[1] > b[1]; //終點降序排序
+                 return a[0] < b[0];     // 起點做升序排序
+             });
+
         vector<vector<int> > ret;
-        ret.push_back(intervals[0]);
         int n = intervals.size();
+        ret.push_back(intervals[0]);
         for (int i = 1; i < n; ++i)
         {
-            vector<int> v = ret[ret.size() - 1];
-            if (intervals[i][0] <= v[1])
-            { //merge
-                ret.pop_back();
-                v[1] = max(v[1], intervals[i][1]);
-                ret.push_back(v);
-            }
+            vector<int> cur = intervals[i];
+            if (cur[0] <= ret.back()[1])
+                ret.back()[1] = max(cur[1], ret.back()[1]);
             else
-                ret.push_back(intervals[i]);
+                ret.push_back(cur);
         }
         return ret;
     }

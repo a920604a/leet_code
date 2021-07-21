@@ -13,6 +13,7 @@ public:
         }
         return dp_i_0;
     }
+
     int maxProfit(int k, vector<int> &prices)
     {
         if (prices.empty())
@@ -20,6 +21,7 @@ public:
         int n = prices.size();
         if (k > n / 2)
             return maxProfit(prices);
+        // 因為一次買入和賣出，至少需要兩天，所以k應該不超過n/2。如果超過就相當於沒有約束，相當於k=+infinity
 
         vector<vector<vector<int> > > dp(n, vector<vector<int> >(k + 1, vector<int>(2, 0)));
         for (int i = 0; i < n; ++i)
