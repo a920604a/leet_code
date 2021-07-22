@@ -17,7 +17,7 @@ public:
         //  1   0   0   0   0   0   , initialize
         //  1   1   1   1   1   1   , i = 1 , coins[i-1] = 1
         //  1   1   2   2   3   3   , i = 2 coins[i-1] = 2
-        //  1   1   2   2   2   4   , i = 3 coins[i-1]  = 5
+        //  1   1   2   2   3   4   , i = 3 coins[i-1]  = 5
 
         int n = coins.size();
         vector<vector<int> > dp(n + 1, vector<int>(amount + 1, 0));

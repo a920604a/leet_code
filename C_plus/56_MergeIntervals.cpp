@@ -17,10 +17,15 @@ public:
         for (int i = 1; i < n; ++i)
         {
             vector<int> cur = intervals[i];
-            if (cur[0] <= ret.back()[1])
-                ret.back()[1] = max(cur[1], ret.back()[1]);
-            else
+            if(ret.back()[1] >= cur[1]){
+                continue;
+            }
+            else if(ret.back()[1]>= cur[0] && ret.back()[1] <= cur[1]){
+                ret.back()[1] = cur[1];
+            }
+            else if( ret.back()[1] < cur[0]){
                 ret.push_back(cur);
+            }
         }
         return ret;
     }

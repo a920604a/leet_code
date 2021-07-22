@@ -26,24 +26,23 @@ public:
         int ret = 0;
         for (int i = 1; i < intervals.size(); ++i)
         {
-            vector<int> interval = intervals[i];
+            vector<int> cur = intervals[i];
 
             // 情況一，覆蓋區間
-            if (start <= interval[0] && end >= interval[1])
+            if (start <= cur[0] && end >= cur[1])
             {
                 ret++;
             }
             // 情況二，兩區間可以合併，形成一個大區間
-            if (end >= interval[0] && end <= interval[1])
+            else if (start <= cur[0] && cur[0] <= end && end <= cur[1])
             {
-                // start 必定小於interval[0]，因為先前排序過了
-                end = interval[1];
+                end = cur[1];
             }
             // 情況三，兩區間不相交
-            if (end < interval[0])
+            else if (end < cur[0])
             {
-                start = interval[0];
-                end = interval[1];
+                start = cur[0];
+                end = cur[1];
             }
         }
         return intervals.size() - ret;

@@ -48,12 +48,6 @@ public:
     }
     int minFallingPathSum(vector<vector<int> > &matrix)
     {
-        // 2 1 3     2 1 1
-        // 6 5 4  => 6 5 4   => dp[i][j] = min(m[i][j-1], m[i][j])
-        // 7 8 9     7 7 8
-
-        // -19 57     -19 -19
-        // -40 -5   =>-40 -40
         // option 1 brute force  time out 不愧是medium題目
         // int n = matrix.size();
         // int ret = INT_MAX;

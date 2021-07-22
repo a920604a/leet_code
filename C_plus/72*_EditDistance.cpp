@@ -10,7 +10,7 @@ public:
             return i + 1;
 
         if (s1[i] == s2[j])
-            return dp(s1, s2, i - 1, j - 1);
+            return dp(s1, s2, i - 1, j - 1); // 往前走
         else
         {
             return Getmin(
@@ -26,7 +26,7 @@ public:
     }
     int minDistance(string word1, string word2)
     {
-        // option 1 dp brute force
+        // option 1 dp brute force  -> time out
         // 三種操作 替代、刪除、插入
         // 雙指標從字串尾部開始遍歷，遇到字符相同，就什麼都別做skip，i--,j--
         // if s1[i] == s2[j]:
