@@ -46,21 +46,39 @@ public:
 
         // option 2 recursive
 
-        while (root)
-        {
-            if (root->left)
-            {
-                flatten(root->left);
-                TreeNode *right = root->right;
-                root->right = root->left;
-                root->left = NULL;
-                while (root->right)
-                {
-                    root = root->right;
-                }
-                root->right = right;
-            }
-            root = root->right;
-        }
+        // while (root) {
+        //     if (root -> left) {
+        //         flatten(root -> left);
+        //         TreeNode* right = root -> right;
+        //         root -> right = root -> left;
+        //         root -> left = NULL;
+        //         while (root -> right) {
+        //             root = root -> right;
+        //         }
+        //         root -> right = right;
+        //     }
+        //     root = root -> right;
+        // }
+
+        // option 2.1 version 2
+        if (root == nullptr)
+            return;
+
+        flatten(root->left);
+        flatten(root->right);
+
+        /**** 后序遍历位置 ****/
+        // step1. 左右子樹已經被拉成一條linked list
+        TreeNode *left = root->left;
+        TreeNode *right = root->right;
+        // step2. 將左子樹作為右子樹
+        root->left = nullptr;
+        root->right = left;
+
+        // step3. 將原先的右子樹揪到當前右子樹的末端
+        TreeNode *p = root;
+        while (p->right != nullptr)
+            p = p->right;
+        p->right = right;
     }
 };

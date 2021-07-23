@@ -14,6 +14,7 @@ private:
     unordered_map<TreeNode*,int> memo;
 public:
     int rob(TreeNode* root) {
+        // 事關三層
         if(root==nullptr) return 0;
         
         if(memo[root]) return memo[root];

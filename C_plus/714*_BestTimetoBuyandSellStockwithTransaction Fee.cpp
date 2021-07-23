@@ -7,6 +7,18 @@ public:
         // dp[i][1] = max(dp[i-1][1], dp[i-1][0] - prices[i] - fee)
         // 解释：相当于买入股票的价格升高了。
         // 在第一个式子里减也是一样的，相当于卖出股票的价格减小了。
+        //      1   3   2   8   4   9  fee = 2
+        
+        //  dp[i][0] = max(dp[i-1][0] , dp[i-1][1] + prices[i] );
+        //  dp[i][1] = max(dp[i-1][1], dp[i-1][0] - prices[i] - fee);
+        //      sell(0)     hold(1)
+        //1     0           -3
+        //3     0           -3
+        //2     0           -3
+        //8     5           -3         
+        //4     5           -1
+        //9     8           -1
+        
         // int n = prices.size();
         // vector<vector<int>> dp(n ,vector<int>(2,0));
         // dp[0][0] = 0;

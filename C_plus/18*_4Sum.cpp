@@ -28,7 +28,7 @@ public:
         //         }
         //         return vector<vector<int>>(res.begin(), res.end());
 
-        // optnio 2 instead of set , use math
+        // optnio 2 instead of set , use math 
         vector<vector<int> > res;
         sort(nums.begin(), nums.end());
         int n = nums.size();

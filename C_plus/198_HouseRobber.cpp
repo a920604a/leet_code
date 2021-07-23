@@ -16,7 +16,7 @@ public:
         // }
         // return dp[n-1];
 
-        // option 1.1 improved dp
+        // option 1.1 improved  dp
         // 根據我的觀察，只需要兩個變數代替dp，因為狀態轉移式子，最多只根據前兩個紀錄
         int n = nums.size();
         if (n == 1)

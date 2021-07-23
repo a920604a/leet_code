@@ -4,6 +4,18 @@ public:
     int maxProfit(vector<int> &prices)
     {
         // option 1 use dp
+
+        //      7   1   5   3   6   4
+        //      sell(0) hold(1)
+        //  dp[i][0] = max( dp[i-1][0], dp[i-1][1] + prices[i]);
+        //  dp[i][1] = max( dp[i-1][1], dp[i-1][0] - prices[i]);
+        //7     0     -7
+        //1     0     0
+        //5     0     0
+        //3     0     0
+        //6     0     0   
+        //4     0     0
+        
         //         int n = prices.size();
         //         vector<vector<int>> dp(n ,vector<int>(2,0));
         //         dp[0][0] = 0;

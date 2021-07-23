@@ -1,82 +1,92 @@
 class Solution
 {
 public:
-    // dp(n) =  0 , n=0
-    // dp(n) = -1,  n<-1
-    // dp(n) = min{dp(n-coin) + 1 | for all coin in coins}, n>0
-    int dp(int n, vector<int> &coins)
+    int change(vector<int> &coins, int amount)
     {
         // base case
-        if (n == 0)
+        if (amount == 0)
             return 0;
-        if (n < 0)
+        if (amount < 0)
             return -1;
 
         int ret = INT_MAX;
         for (int coin : coins)
         {
-            int subproblem = dp(n - coin, coins);
-            // # 子問題無解，跳過
+            int subproblem = change(coins, amount - coin);
             if (subproblem == -1)
                 continue;
             ret = min(ret, 1 + subproblem);
         }
+        return ret == INT_MAX ? -1 : ret;
+    }
+    int change(vector<int> &coins, int amount, unordered_map<int, int> &memo)
+    {
+        // 查看備忘錄是否已存在
+        if (memo.count(amount))
+            return memo[amount];
 
-        return ret != INT_MAX ? ret : -1;
+        // base case
+        if (amount == 0)
+            return 0;
+        if (amount < 0)
+            return -1;
+
+        int ret = INT_MAX;
+
+        for (int coin : coins)
+        {
+            int subproblem = change(coins, amount - coin, memo);
+            if (subproblem == -1)
+                continue;
+            ret = min(ret, 1 + subproblem);
+        }
+        // 放進備忘錄
+        memo[amount] = ret == INT_MAX ? -1 : ret;
+        return memo[amount];
     }
     int coinChange(vector<int> &coins, int amount)
     {
-        // option 1 brute force => time out
-        // return dp(amount, coins);
 
-        // option memo pattern 消除一下重叠子问题
-        // O(kn) time
-        // map<int,int> memo;
-        // return dp(amount, coins, memo);
+        // option 1 brute force recursive
+        // Time Limit Exceeded
 
-        //option 2 dp
-        //  1 2 5
-        //   0  1    2   3   4   5   6   7   8   9  10  11    = i
-        //   0  12  12  12  12  12  12  12  12  12  12  12
+        // 想求amount = 11 時最少硬幣數，必須先知道amount = 10時最少硬幣數，以此類推。
+        // return change(coins, amount);
+
+        // option 2 memo pattern
+        unordered_map<int, int> memo;
+        return change(coins, amount, memo);
+
+        // option 3 dp
         //
-        //   0   1   1   2   3   1   2   2   3   3   2   3
+        //      0   1   2   3   4   5   6   7   8   9   10  11
+        //      11  11  11  11  11  11  11  11  11  11  11  11
+        //  1   0   1   2   3   4   5   6   7   8   9   10  11
+        //  2   0   1   1
+        //  5   0
+        //  if(j>= coins[i] ) dp[i][j] = min(dp[i-1][j], dp[i][j-coins[i]] + 1);
+        //  else dp[i][j] = dp[i-1][j];
+        // int n = coins.size();
+        // vector<vector<int>> dp(n+1, vector<int>(amount+1,amount+1));
+        // for(int i=0;i<=n ; ++i)  dp[i][0] = 0; //initialize
+        // for(int i=1;i<=n ;++i){
+        //     for(int j=1;j<=amount ;++j){
+        //         if(j >= coins[i-1]) dp[i][j] = min(dp[i-1][j], dp[i][j-coins[i-1]] + 1);
+        //         else dp[i][j] = dp[i-1][j];
+        //     }
+        // }
+        // return dp[n][amount] == amount+1?-1:dp[n][amount];
 
-        vector<int> dp(amount + 1, amount + 1);
-        dp[0] = 0;
-        for (int i = 1; i <= amount; ++i)
-        {
+        // option 4 壓縮 dp
 
-            for (int coin : coins)
-            {
-                if (i - coin < 0)
-                    continue;
-                dp[i] = min(dp[i], 1 + dp[i - coin]);
-            }
-        }
-        return dp[amount] == amount + 1 ? -1 : dp[amount];
-    }
-
-    int dp(int n, vector<int> &coins, map<int, int> &memo)
-    {
-        if (memo.count(n))
-            return memo[n];
-
-        // base case
-        if (n == 0)
-            return 0;
-        if (n < 0)
-            return -1;
-
-        int ret = INT_MAX;
-        for (int coin : coins)
-        {
-            int subproblem = dp(n - coin, coins, memo); // O(k)
-            // # 子問題無解，跳過
-            if (subproblem == -1)
-                continue;
-            ret = min(ret, 1 + subproblem);
-        }
-        memo[n] = ret != INT_MAX ? ret : -1;
-        return memo[n];
+        // int n = coins.size();
+        // vector<int> dp(amount+1,amount+1);
+        // dp[0] = 0; //initialize
+        // for(int i=0;i<n ;++i){
+        //     for(int j=1;j<=amount ;++j){
+        //         if( j >= coins[i]) dp[j] = min(dp[j], dp[j-coins[i]] +1 );
+        //     }
+        // }
+        // return dp[amount] == amount+1?-1:dp[amount];
     }
 };

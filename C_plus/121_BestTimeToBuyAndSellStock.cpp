@@ -15,6 +15,19 @@ public:
         //         状态转移方程：
         //         dp[i][k][0] = max(dp[i-1][k][0], dp[i-1][k][1] + prices[i])
         //         dp[i][k][1] = max(dp[i-1][k][1], dp[i-1][k-1][0] - prices[i])
+        
+        //      7   1   5   3   6   4
+        //      sell(0) hold(1)  
+        // dp[i][0] = max(dp[i-1][0], dp[i-1][1] + prices[i]);
+        // dp[i][1] = max(dp[i-1][1], - prices[i]);
+        //7     0       -7
+        //1     0       -1
+        //5     4       -1
+        //3     4       -1
+        //6     5       -1
+        //4     5       -1
+        
+        
         int n = prices.size();
         vector<vector<int> > dp(n, vector<int>(2, 0));
         for (int i = 0; i < n; ++i)
@@ -44,6 +57,7 @@ public:
         //             dp_i_1 = max(dp_i_1,  -prices[i]);
         //         }
         //         return dp_i_0;
+
 
         // option 2
         // int _min = INT_MAX;

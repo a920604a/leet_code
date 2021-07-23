@@ -12,11 +12,15 @@
 class Solution {
 public:
     void swapChild(TreeNode * root){
-        
+        // base case
         if (!root) return;
+        
+        /**** 前序遍历位置 ****/
         TreeNode * tempnode = root->left;
         root->left = root->right;
         root->right = tempnode;
+        
+        // 左右子樹繼續翻轉他們的子樹
         swapChild(root->left);
         swapChild(root->right);
         

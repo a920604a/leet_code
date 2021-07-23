@@ -17,7 +17,7 @@ public:
     }
     int rob(vector<int>& nums) {
         // option 1 因為只會發生兩種情況。
-        // 從第一家開始搶，就不能搶第n-1
+        // 從第一家開始搶，就不能搶第 n-1
         // 從第二家開始搶，就可以一直搶下去
         int n =nums.size();
         if(n==1) return nums[0];
