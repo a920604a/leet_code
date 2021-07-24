@@ -85,7 +85,7 @@ public:
             }
             //判斷窗口左側是否要收縮
             while(valid == need.size()){
-
+                // 说明 T 中所有字符已经被覆盖
                 // 符合答案候選條件
                 if(right - left <len){
                     start = left;
@@ -108,13 +108,5 @@ public:
         return len==INT_MAX? "":s.substr(start, len);
         
         
-    }
-    bool valid(string s, string t){
-        vector<int> vec(26,0);
-        for(char s:t ) vec[s-'a']++;
-        for(int i=0;i<s.size();++i){
-            if(vec[s[i]-'a']>0 )vec[s[i]-'a']--;
-        }
-        return vec==vector<int>(26,0);
     }
 };

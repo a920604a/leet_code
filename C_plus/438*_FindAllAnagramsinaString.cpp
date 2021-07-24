@@ -16,10 +16,10 @@ public:
 //                 if(window[c] == need[c]) valid++;
 //             }
             
-//             while(right - left >= p.size()){
+//             while(right - left == p.size()){
                 
 //                 // 找到子串p的anagram
-//                 if(valid == need.size() && right-left == p.size()){
+//                 if(valid == need.size() ){
 //                     ret.push_back(left);
 //                 }
                 

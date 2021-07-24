@@ -4,7 +4,7 @@ public:
     int lengthOfLongestSubstring(string s)
     {
         //  option 1 滑動窗口 O(n+m)
-        //         int left = 0, right = 0, valid = 0;
+        //         int left = 0, right = 0;
         //         unordered_map<char, int> window;
         //         int ans = 0;
         //         while(right <s.size()){
