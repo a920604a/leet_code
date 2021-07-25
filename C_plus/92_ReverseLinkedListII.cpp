@@ -10,47 +10,40 @@
  */
 class Solution
 {
+private:
+    ListNode *successor = nullptr;
+
 public:
+    ListNode *reverseN(ListNode *head, int n)
+    {
+        if (n == 1)
+        {
+            successor = head->next;
+            return head;
+        }
+        ListNode *node = reverseN(head->next, n - 1);
+        head->next->next = head;
+        head->next = successor;
+        return node;
+    }
     ListNode *reverseBetween(ListNode *head, int left, int right)
     {
-        // option 1  O(N) time
-        if (!head)
-            return head;
-        ListNode *pre = new ListNode(-1), *ret = pre;
-        ret->next = head;
-        ListNode *p1 = new ListNode(-1), *p2 = new ListNode(-1), *p3 = new ListNode(-1);
-        ListNode *a = p1, *b = p2, *c = p3;
-        stack<int> s;
-        int l = 1;
-        for (ListNode *p = head; p; p = p->next, l++)
-        {
-            if (l < left)
-            {
-                p1->next = new ListNode(p->val);
-                p1 = p1->next;
-            }
-            else if (l >= left && l <= right)
-            {
+        // if(!head) return head;
+        // ListNode *pre = new ListNode(-1), *ret = pre;
+        // pre->next = head;
+        // for(int i=0;i<left-1;++i) pre = pre->next;
+        // ListNode *cur = pre->next;
+        // for(int i=left;i<right;++i){
+        //     ListNode *temp = cur->next;
+        //     cur->next = temp->next;
+        //     temp->next = pre->next;
+        //     pre->next = temp;
+        // }
+        // return ret->next;
+        if (left == 1)
+            return reverseN(head, right);
 
-                s.push(p->val);
-            }
-            else
-            {
-                p3->next = new ListNode(p->val);
-                p3 = p3->next;
-            }
-        }
-        // reverse p2
-        while (!s.empty())
-        {
-            p2->next = new ListNode(s.top());
-            s.pop();
-            p2 = p2->next;
-        }
-
-        // concatenate
-        p1->next = b->next;
-        p2->next = c->next;
-        return a->next;
+        head->next = reverseBetween(head->next, left - 1, right - 1);
+        return head;
     }
 };

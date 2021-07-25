@@ -10,13 +10,14 @@
  */
 class Solution
 {
+private:
+    ListNode *left;
 public:
-    bool flag = true;
-    ListNode *cur = nullptr;
     bool isPalindrome(ListNode *head)
     {
         // option 1 stack O(n) time and O(n) space
-        // 1. 前半部push到stack，後半部pop stack並比較其值是否相同
+        // 1. 前半部push到stack，後半部pop stack並比較其值是否相同，
+        // 2. 整條list push 到stack，在比較也可以
         // if(!head || !head->next) return true;
         // stack <int> sta;
         // int len = 0;
@@ -98,21 +99,16 @@ public:
         // return true;
 
         // option 5 recursive O(n) time and O(n) space
-
-        cur = head;
-        isPalind(head);
-        return flag;
+        left = head;
+        return travese(head->next);
     }
 
-    void isPalind(ListNode *head)
-    {
-        if (!head)
-            return;
-        isPalind(head->next);
-
-        // cout<<head->val<<" "<<cur->val<<endl;
-        if (head->val != cur->val)
-            flag = false;
-        cur = cur->next;
+    bool travese(ListNode *right){
+        if(right==nullptr) return true;
+        
+        bool ret = travese(right->next);
+        ret = ret && (right->val == left->val);
+        left = left->next;
+        return ret;
     }
 };
