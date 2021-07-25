@@ -19,7 +19,7 @@ public:
         //         // base case 找到空位置
         //         if(!root) return new TreeNode(val);
 
-        //         // 假設不會插入重複的元素
+        //         // 假設不會有插入重複的元素
         //         // if(root->val == val)
 
         //         if(root->val < val) root->right = insertIntoBST(root->right, val);

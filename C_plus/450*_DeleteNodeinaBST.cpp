@@ -38,7 +38,7 @@ public:
             // 處理情況三
             // 找右子樹最小節點
             TreeNode *minNode = getMin(root->right);
-            // 替代
+            // 替代策略
             root->val = minNode->val;
             root->right = deleteNode(root->right, minNode->val);
         }

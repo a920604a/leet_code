@@ -34,7 +34,7 @@ public:
     TreeNode *searchBST(TreeNode *root, int val)
     {
 
-        // option 1 brute force wheather it is BST
+        // option 1 brute force whether it is BST
         // ans = new TreeNode(-1);
         // traverse(root, val);
         // if(ans->val == -1) return nullptr;

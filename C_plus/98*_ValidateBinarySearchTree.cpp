@@ -59,7 +59,6 @@ public:
         // preorder traverse and insert to vector and then check vector it is ascend
         //         vector<int> vec;
         //         traverse(root, vec);
-
         //         for(int i=1;i<vec.size(); ++i){
         //             if(vec[i]<= vec[i-1]) return false;
         //         }
