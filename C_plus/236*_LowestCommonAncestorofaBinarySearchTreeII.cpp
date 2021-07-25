@@ -41,15 +41,21 @@ public:
 
         // return ancestorHelper(root, p, q);
 
-        // option 2
-
-        if (!root || root == p || root == q)
+        // option 2 recursive postorder
+        if (root == nullptr)
+            return nullptr;
+        if (root == p || root == q)
             return root;
 
         TreeNode *left = lowestCommonAncestor(root->left, p, q);
         TreeNode *right = lowestCommonAncestor(root->right, p, q);
-        if (right && left)
+        // 情況一， p q 都是在以root 為根的樹中
+        if (left != nullptr && right != nullptr)
             return root;
-        return left ? left : right;
+        // 情況二，p q都不在以root為根的樹中
+        if (left == nullptr && right == nullptr)
+            return nullptr;
+        // 情況三，如果p q只有其中一點 存在於root中，返回該點
+        return left == nullptr ? right : left;
     }
 };

@@ -37,8 +37,7 @@ public:
     Node *connect(Node *root)
     {
 
-        if (root == nullptr)
-            return root;
+        if (root == nullptr)  return root;
 
         connectTwoNode(root->left, root->right);
         return root;
