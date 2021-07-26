@@ -26,12 +26,12 @@ public:
 
         bool pIsOnLeft = covers(root->left, p);
         bool qIsOnLeft = covers(root->left, q);
-        if (pIsOnLeft != qIsOnLeft)
-            return root;
-
-        TreeNode *childSide = pIsOnLeft ? root->left : root->right;
-
-        return ancestorHelper(childSide, p, q);
+        if(pIsOnLeft != qIsOnLeft) return root;
+        TreeNode *childSide;
+        if(pIsOnLeft==false && qIsOnLeft == false) childSide = root->right;
+        if(pIsOnLeft==true && qIsOnLeft==true ) childSide = root->left;
+        
+        return ancestor(childSide, p,q);
     }
     TreeNode *lowestCommonAncestor(TreeNode *root, TreeNode *p, TreeNode *q)
     {
