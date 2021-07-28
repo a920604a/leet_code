@@ -72,7 +72,7 @@ public:
         }
         return ret;
         
-        // option 4 mono stack
+        // option 4 mono stack  O(n) 順向
         stack<int> sta;
         int size = nums2.size();
         vector<int> mono(size,-1);
@@ -85,15 +85,43 @@ public:
             }
             sta.push(i);
         }
-        for(int m:mono) cout<<m<<" ";
         
         vector<int> ret;
-        for(int i =0;i<nums1.size();++i){
-            vector<int>::iterator it =  std::find(nums2.begin(), nums2.end(), nums1[i]);
+        for(int n:nums1){
+            auto it =  std::find(nums2.begin(), nums2.end(), n );
             int idx = std::distance(nums2.begin(), it);
             ret.push_back(mono[idx]);
             
         }
         return ret;
+
+        // option 4 mono stack  O(n) 逆向
+        // step1. 先對nums2 數列求得下個更大值的數組
+        // step2. 在遍歷nums1 用索引找到nums2對應的值，
+        // 利用該索引找出對應下個更大值的數組的值
+        int size = nums2.size();
+        // 存放下個更大的數組
+        vector<int> ret(size, -1);
+        stack<int> sta;
+        for(int i=size-1;i>-1;i--){
+            
+            while(!sta.empty() && sta.top() <= nums2[i]){
+                sta.pop();
+            }
+            ret[i] = sta.empty()?-1:sta.top();
+            
+            sta.push(nums2[i]);
+        }
+        
+        vector<int> ans;
+        for(int n:nums1){
+            auto it = find(nums2.begin(),nums2.end() , n);
+            int idx = std::distance(nums2.begin(), it);
+            
+            ans.push_back( ret[idx] );
+            
+        }
+        
+        return ans;
     }
 };

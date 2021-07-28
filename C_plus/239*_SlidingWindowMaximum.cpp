@@ -1,5 +1,33 @@
 class Solution
 {
+private:
+    struct MonotonicQueue
+    {
+    private:
+        list<int> q;
+
+    public:
+        void push(int n)
+        { // O(1)
+            while (!q.empty() && q.back() < n)
+            {
+                q.pop_back();
+            }
+            q.push_back(n);
+        }
+        void pop(int n)
+        { // O(1)
+            if (n == q.front())
+            {
+                q.erase(q.begin());
+            }
+        }
+        int max()
+        { // O(1)
+            return q.front();
+        }
+    };
+
 public:
     vector<int> maxSlidingWindow(vector<int> &nums, int k)
     {
@@ -19,6 +47,42 @@ public:
 
         //         }
         //         return maxWindow;
+
+        // option 1.1 sliding window time out
+        int n = nums.size();
+        vector<int> ret;
+        if (n < k)
+        {
+            int _max = INT_MIN;
+            for (int i = 0; i < n; ++i)
+            {
+                _max = max(_max, nums[i]);
+                ret.push_back(_max);
+            }
+            return ret;
+        }
+
+        queue<int> window;
+        for (int r = 0; r < n; r++)
+        {
+            window.push(nums[r]);
+            if (r >= k - 1)
+            {
+                if (r != k - 1)
+                    window.pop();
+                // search queue local max
+                int size = window.size(), local_max = INT_MIN;
+                while (size)
+                {
+                    local_max = max(window.front(), local_max);
+                    window.push(window.front());
+                    window.pop();
+                    size--;
+                }
+                ret.push_back(local_max);
+            }
+        }
+        return ret;
 
         // option 2 O(nlogn) STL multiset 紅黑樹 插入 刪除 O(logn)
         //         vector<int> maxWindow ;
@@ -66,5 +130,23 @@ public:
         }
 
         return maxWindow;
+
+        // option 5 monotonic queue
+        int n = nums.size();
+        MonotonicQueue window;
+        vector<int> ret;
+
+        for (int i = 0; i < n; ++i)
+        {
+            window.push(nums[i]);
+            if (i >= k - 1)
+            {
+
+                ret.push_back(window.max());
+                window.pop(nums[i - k + 1]);
+            }
+        }
+
+        return ret;
     }
 };
