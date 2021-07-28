@@ -85,7 +85,7 @@ public:
             }
             //判斷窗口左側是否要收縮
             while(valid == need.size()){
-                // 说明 T 中所有字符已经被覆盖
+                // 說明 window 中所有字符已經被覆盖
                 // 符合答案候選條件
                 if(right - left <len){
                     start = left;

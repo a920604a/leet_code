@@ -11,12 +11,14 @@ public:
         //     else if(target >numbers[l] + numbers[r]) l++;
         //     else if(target <numbers[l] + numbers[r]) r--;
         // }
-        // return {};
+        // return {-1,-1};
 
-        //option 2  O(nlogn)
+
+
+        //option 2  O(n)
         // map
 
-        map<int, int> m;
+        unordered_map<int,int> m;
         for (int i = 0; i < numbers.size(); ++i)
         {
 

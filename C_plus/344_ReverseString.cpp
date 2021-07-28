@@ -3,22 +3,28 @@ class Solution
 public:
     void reverseString(vector<char> &s)
     {
-        // option 1
-        // use stack O(n) time O(n) space
+        // option 1 stack support   not in-place
+        //         stack<char> sta;
+        //         vector<char> ret;
+        //         for(char c:s) sta.push(c);
+
+        //         while(!sta.empty()){
+        //             ret.push_back(sta.top());
+        //             sta.pop();
+        //         }
+        //         s = ret;
+
+        // option 1.1 stack support  in-place
         // stack<char> sta;
-        // for(char t:s) sta.push(t);
-        // string ret ="";
+        // vector<char> ret;
+        // for(char c:s) sta.push(c);
+        // int i=0;
         // while(!sta.empty()){
-        //     ret += sta.top();
+        //     s[i++] = sta.top();
         //     sta.pop();
         // }
-        // for(int i=0;i<ret.size();++i){
-        //     s[i]  = ret[i];
-        // }
 
-        // option 2
-        // two pointer to swtich  in-place
-        // O(n) time O(1) space
+        // option 2 two point and swap
         int l = 0, r = s.size() - 1;
         while (l < r)
         {

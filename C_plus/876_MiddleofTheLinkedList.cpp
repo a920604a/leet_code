@@ -30,12 +30,12 @@ public:
         // return p;
 
         // option 2 O(n) slow fast point
-        // ListNode *slow =head, *fast=head;
-        // while(fast && fast->next){
-        //     slow = slow->next;
-        //     fast= fast->next->next;
-        // }
-        // return slow;
+        ListNode *slow =head, *fast=head;
+        while(fast && fast->next){
+            slow = slow->next;
+            fast= fast->next->next;
+        }
+        return slow;
 
         // option 3 use STL
         vector<ListNode *> ret(100);

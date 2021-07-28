@@ -25,6 +25,7 @@ public:
             if (fast == slow)
                 break; // detect cycle
         }
+        // fast遇到空指標，代表沒有環
         if (fast == nullptr || fast->next == nullptr)
             return nullptr;
 

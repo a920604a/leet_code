@@ -21,7 +21,7 @@ public:
         //             }
 
         //             //判斷窗口左側是否要收縮
-        //             while(right - left >= s1.size()){
+        //             while(right - left == s1.size()){
 
         //                 // 找到合法子字串
         //                 if (valid == need.size()) return true;

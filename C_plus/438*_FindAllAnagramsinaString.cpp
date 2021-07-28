@@ -26,7 +26,7 @@ public:
 //                 char d = s[left];
 //                 left ++;
                 
-//                 // update sliding window info.
+//                 // update sliding window information
 //                 if(need.count(d)){
                     
 //                     if(window[d] == need[d]) valid--;

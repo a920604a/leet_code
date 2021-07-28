@@ -14,29 +14,41 @@ public:
     ListNode *removeNthFromEnd(ListNode *head, int n)
     {
         // option 1  two pointer 不知道串列長度 iterative
-        //         ListNode *first = new ListNode(-1);
-        //         ListNode *second = new ListNode(-1);
-        //         first->next = head;
-        //         second->next = head;
-        //         int m=n;
-        //         while(m){
-        //             second = second->next;
-        //             m--;
-        //         }
+        // ListNode *fast = new ListNode(0), *slow = fast, *ret = slow;
+        // fast->next = head;
+        // while (n)
+        // {
+        //     fast = fast->next;
+        //     n--;
+        // }
 
-        //         if(second->next==nullptr){ // remove head
-        //             ListNode * delnode = first->next;
-        //             head = first->next->next;
-        //             return head;
-        //         }
-        //         while(second->next){
-        //             first = first->next;
-        //             second= second->next;
-        //         }
-        //         ListNode *delnode = first->next;
-        //         first->next = first->next->next;
-        //         delete delnode;
-        //         return head;
+        // while (fast->next)
+        // {
+        //     slow = slow->next;
+        //     fast = fast->next;
+        // }
+
+        // slow->next = slow->next->next;
+        // return ret->next;
+
+        // option 1.1 不額外使用space
+        // ListNode *slow , *fast ;
+        // slow = fast = head;
+
+        // // 會先做 n>0 再 n--
+        // while(n-- >0) fast = fast->next;
+
+        // // 表示刪除鏈接串列的頭
+        // if(fast == nullptr) return head->next;
+
+        // while(fast && fast->next){
+        //     slow = slow->next;
+        //     fast = fast->next;
+        // }
+
+        // slow->next = slow->next->next;
+
+        // return head;
 
         // option 2 Recursive
         int curr = -1;

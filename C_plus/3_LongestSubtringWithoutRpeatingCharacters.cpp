@@ -6,7 +6,7 @@ public:
         //  option 1 滑動窗口 O(n+m)
         //         int left = 0, right = 0;
         //         unordered_map<char, int> window;
-        //         int ans = 0;
+        //         int ret = 0;
         //         while(right <s.size()){
         //             char c = s[right];
         //             right++;
@@ -19,10 +19,10 @@ public:
         //                 window[d]--;
 
         //             }
-        //             ans = max(ans, right - left);
+        //             ret = max(ret, right - left);
 
         //         }
-        //         return ans;
+        //         return ret;
 
         // n^2 logn brute force
         int res = 0;
