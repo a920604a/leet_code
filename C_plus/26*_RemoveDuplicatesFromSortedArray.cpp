@@ -3,21 +3,23 @@ class Solution
 public:
     int removeDuplicates(vector<int> &nums)
     {
-        if (nums.size() == 0)
+
+        if (nums.empty())
             return 0;
-        if (nums.size() == 1)
-            return 1;
-        int i = 0;
-        for (int j = 1; j < nums.size(); ++j)
+        int slow = 0, fast = 0;
+        while (fast < nums.size())
         {
-            if (nums[j] != nums[i])
+
+            if (nums[fast] != nums[slow])
             {
-                i++;
-                int tmp = nums[i];
-                nums[i] = nums[j];
-                nums[j] = tmp;
+                slow++;
+                // 維護nums[0...slow] 無重複就好
+                nums[slow] = nums[fast];
             }
+
+            fast++;
         }
-        return i + 1;
+
+        return slow + 1;
     }
 };
