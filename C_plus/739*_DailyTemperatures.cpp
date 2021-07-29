@@ -19,7 +19,7 @@ public:
         }
         return ret;
 
-        //option 2 monotonic stack 逆向
+        //option 2 monotonic stack 
         int size = temperatures.size();
         // 放元素索引
         vector<int> ret(size);
