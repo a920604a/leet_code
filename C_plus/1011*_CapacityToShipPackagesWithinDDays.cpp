@@ -32,7 +32,6 @@ public:
     int shipWithinDays(vector<int> &weights, int days)
     {
 
-        // 左側邊界 二元搜尋
         // 初始化left, right
         // 船的最小載重 是 貨物最大值，最大載重一定是 所有貨物總重
         int left = 0, right = 1;
@@ -41,18 +40,26 @@ public:
             left = max(left, w);
             right += w;
         }
-        while (left < right)
+
+        // 窮舉法
+        for (int i = left; i <= right; ++i)
         {
-            // 一開始假設 1 + (501-1)/2 = 船的容量 251，則一天就可以元算完，
-            // 迭代式逼近 預估天數小於等於 days
-            // 假設船的容量是mid，則需要f(weights, mid)天可運完。
-            int mid = left + (right - left) / 2;
-            int evalDays = f(weights, mid);
-            if (evalDays <= days)
-                right = mid;
-            else
-                left = mid + 1;
+            int target = f(weights, i);
+            if (target <= days)
+                return i;
         }
+
+        // 左側邊界 二元搜尋
+        // while(left < right){
+        //     // 一開始假設 1 + (501-1)/2 = 船的容量 251，則一天就可以元算完，
+        //     // 迭代式逼近 預估天數小於等於 days
+        //     // 假設船的容量是mid，則需要f(weights, mid)天可運完。
+        //     int mid = left + (right - left)/2;
+        //     int evalDays = f(weights, mid);
+        //     if(evalDays <= days) right = mid ;
+        //     else left = mid +1 ;
+        // }
+
         return left;
     }
 };

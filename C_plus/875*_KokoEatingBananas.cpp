@@ -29,40 +29,55 @@ public:
         // 所以left, right變數不再是維護索引，而是索引之值。
         // 1 <= piles[i] <= 1e+9
         // tips 合併冗余if 可增加效率
-        //         int left = 1;
-        //         int right = 1e+9 +1; // 因為搜尋空間是左閉右開，所以+1
-
-        //         // f() 單調遞減，左側邊界 二元搜尋法
-
-        //         while(left < right){
-        //             // 假設 每小時吃mid 根香蕉
-        //             int mid = left + (right- left)/2;
-        //             cout<<mid<<" "<<f(piles, mid)<<endl;
-
-        //             // f(piles, mid) 每小時吃mid個香蕉，共要多久吃完全部香蕉
-        //             if(f(piles, mid) ==h ){
-        //                 right = mid; // 因為左側邊界
-        //             }
-        //             // 因為 f() 單調遞減
-        //             else if(f(piles, mid) > h ) left = mid +1;
-        //             else if(f(piles, mid) < h ) right = mid;
-        //         }
-        //         return left;
-
-        // option 1.1 improved
         int left = 1;
         int right = 1e+9 + 1; // 因為搜尋空間是左閉右開，所以+1
 
+        // option 1 窮舉法
+        // for(int i = left;i<right;++i){
+        //     int n = f(piles, i);
+        //     if(n<=h) return i;
+        // }
+
+        // option 2 左側邊界 二元搜尋法
+        // f(15) = 4, f(8) = 5, f(4) = 8, f(2) = 15 ,  f(3) = 10
+        // f 單調遞減
+        // f() 單調遞減，左側邊界 二元搜尋法
+
         while (left < right)
         {
+            // 假設 每小時吃mid 根香蕉
             int mid = left + (right - left) / 2;
-            int target = f(piles, mid);
-            if (target <= h)
-                right = mid;
-            else
-                left = mid + 1;
-        }
+            cout << mid << " " << f(piles, mid) << endl;
 
+            // f(piles, mid) 每小時吃mid個香蕉，共要多久吃完全部香蕉
+            if (f(piles, mid) == h)
+            {
+                right = mid; // 因為左側邊界
+            }
+            // 因為 f() 單調遞減
+            else if (f(piles, mid) > h)
+            {
+                // 怎們讓f(x) 變小，x變大
+                left = mid + 1;
+            }
+            else if (f(piles, mid) < h)
+            {
+                // 怎們讓f(x) 變大，x變小
+                right = mid;
+            }
+        }
         return left;
+
+        // option 2.1 improved
+
+        //         while(left < right){
+        //             int mid = left + (right - left)/2;
+        //             int target = f(piles ,mid);
+        //             cout<<left<<" "<<right<<" "<<mid<<" "<<target<<endl;
+        //             if(target<= h) right = mid;
+        //             else left = mid+1;
+        //         }
+
+        //         return left;
     }
 };
