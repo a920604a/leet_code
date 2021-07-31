@@ -1,5 +1,6 @@
 class RandomizedSet {
 private:
+    //  藉由hash 插入刪除都為O(1)的特性，紀錄索引
     unordered_map<int,int> valToIndex;
     vector<int> nums;
 public:

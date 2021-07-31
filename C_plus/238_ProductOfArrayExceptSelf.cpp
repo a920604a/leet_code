@@ -20,6 +20,7 @@ public:
         int m = nums.size();
         vector<int> ret(m,1);
         for(int i=1;i<m;++i){
+            // 先將ret 當作 left
             ret[i] = ret[i-1] *nums[i-1];
         }
         int right = 1;

@@ -6,4 +6,4 @@
  # @FilePath: /leet_code/DataStruct/run.sh
 ### 
 
-g++ -std=c++11 ./queue.cpp && ./a.out
+g++ -std=c++11 ./sort.cpp && ./a.out
