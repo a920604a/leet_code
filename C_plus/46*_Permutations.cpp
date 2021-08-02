@@ -1,6 +1,6 @@
 class Solution {
 public:
-    void generatePermute(vector<int>& nums, vector<int> out, vector<vector<int>> & ret){
+    void backtrack(vector<int>& nums, vector<int> out, vector<vector<int>> & ret){
         
         // backtrack 框架
         // void traverse(TreeNode root) {
@@ -30,7 +30,7 @@ public:
             // 做選擇
             out.push_back(nums[i]);
             // 進入下一層決策樹
-            generatePermute(nums,out, ret);
+            backtrack(nums,out, ret);
             // 撤銷選擇
             out.pop_back();
             
@@ -56,7 +56,7 @@ public:
         // option 1 brute force solution
         // vector<vector<int>>  ret;
         // vector<int> out;
-        // generatePermute(nums, out,ret);
+        // backtrack(nums, out,ret);
         // return ret;
         
         // option 1.1 brute force solution - swap version
