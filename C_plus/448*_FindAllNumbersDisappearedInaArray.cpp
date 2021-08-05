@@ -12,18 +12,27 @@ public:
         // return ret;
         
         //option 2 O(n) without extra space
-        // each number is postive , can use 相反數, 座標及數值間相互轉換
-//         vector<int> ret;
-//         for(int i=0;i<nums.size();++i){
-//             int idx = abs(nums[i])-1;
-//             nums[idx] = nums[idx]>0? -nums[idx]:nums[idx];
-//         }
+        // option 2 O(N) time and O(1) space
+        // 拜訪過的用index 取負號
+        //index  1 2 3 4 5 6 7 8 9
+        //val    1 2 3 4 5 6 7 8 9
+            //   0  1   2   3   4   5   6   7
+        //       4  3   2   7   8   2   3   1
+        //       -4 -3   -2  -7  8   2   -3  -1
+        vector<int> ret;
+        for(int i=0;i<nums.size();++i){
+            int idx = abs(nums[i])-1;
+            
+            if(nums[idx]>0) nums[idx] *=-1;
+            
+        }
+        // for(int n:nums) cout<<n<<" ";
+        for(int i=0;i<nums.size();++i){
+            if(nums[i]>0) ret.push_back(i+1);
+        }
+        return ret;
+
         
-//         // select postive, 代表該索引是答案
-//         for(int i=0;i<nums.size();++i){
-//             if(nums[i]>0) ret.push_back(i+1);
-//         }
-//         return ret;
         
         // option 3 O(n) without extra space
         // 座標及數值間相互轉換 + 排序

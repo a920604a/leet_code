@@ -16,7 +16,7 @@ public:
         // }
         // return ret;
 
-        // option 2 simplift brute time out
+        // option 2 simplify brute time out
         //         int  n= nums.size(), ret=0;
         //         vector<int> sum =nums;
         //         for(int i=1;i<n;++i){
@@ -31,16 +31,23 @@ public:
 
         //         return ret;
 
-        // option 3 O(nlogn)
-
-        // map<int,int> m;  // sum mapping the number of k occur
-        // int sum=0,ret= 0;
-        // m[0]++;
-        // for(int i=0;i<nums.size();++i){
-        //     sum += nums[i];
-        //     if(m.find(sum-k)!=m.end()) ret += m[sum-k];
-        //     m[sum]++;
-        // }
-        // return ret;
+        // option 3 O(n) time and O(n) space 
+        // 前綴和主要適用場景是原始數組不會步修改的情況下，頻繁的查詢某個區間的累加和。
+        int n = nums.size();
+        vector<int> sum = vector<int>(n+1,0);
+        for(int i=1;i<=n;++i) sum[i] = sum[i-1] + nums[i-1];
+        unordered_map<int,int> mp;
+        //base case
+        mp[0] = 1;
+        int ret = 0;
+        for(int i=1;i<=n ;++i){
+            int target = sum[i] - k;
+            if(mp.count(target)){
+                ret += mp[target];
+            }
+            mp[sum[i]]++;
+        }
+        return ret;
+        
     }
 };

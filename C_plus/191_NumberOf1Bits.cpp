@@ -3,7 +3,16 @@ class Solution
 public:
     int hammingWeight(uint32_t n)
     {
-        // option 1  bitwise
+
+        // bit manipulation can avoid overflow
+        // option 1
+        // int ret = 0;
+        // for (int i = 0; i < 32; ++i)
+        // {
+        //     ret += (n % 2);
+        //     n = n >> 1;
+        // }
+        // option 1.2  bitwise
         // int ret = 0;
         // while(n){
         //     ret += (n&1);
@@ -11,13 +20,14 @@ public:
         // }
         // return ret;
 
-        // option 2
+        // option 2 make use of n & (n-1)=0 可以將最低位的1消除
         int ret = 0;
-        for (int i = 0; i < 32; ++i)
+        while (n)
         {
-            ret += (n % 2);
-            n = n >> 1;
+            ret += 1;
+            n = n & (n - 1);
         }
+        return ret;
         return ret;
     }
 };

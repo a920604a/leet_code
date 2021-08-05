@@ -60,15 +60,16 @@ public:
     int getRandom()
     {
 
-        int ret = head->val, i = 2;
-        ListNode *cur = head->next;
-        while (cur)
+        int i = 0, ret = 0;
+        ListNode *p = head;
+        while (p)
         {
-            int j = rand() % i;
-            if (j == 0)
-                ret = cur->val;
             i++;
-            cur = cur->next;
+            // rand()%i 相當於 生成 [0,i) 的整數
+            // rand()%i ==0 相當於 這個整數等於0 的機率是 1/i
+            if (rand() % i == 0)
+                ret = p->val;
+            p = p->next;
         }
         return ret;
     }

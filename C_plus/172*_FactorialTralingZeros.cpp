@@ -4,12 +4,10 @@ public:
     int trailingZeroes(int n)
     {
         // option 1
-        // 看有幾個5，就有幾個0
+        // 看有幾個5，就有幾個0 avoid overflow;
         int ret = 0;
-        while (n)
-        {
-            ret += n / 5;
-            n /= 5;
+        for(int d = n;d/5>0 ;d/=5){
+            ret += d/5;
         }
         return ret;
 

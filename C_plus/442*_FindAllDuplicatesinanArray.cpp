@@ -22,7 +22,7 @@ public:
         // 依序 scan 陣列，如果先前沒遇到，並將arr[i] = -arr[i] 相反數，有遇過 則為負數則將arr[i]放置set
         //
 
-        set<int> ret;
+        vector<int> ret;
         for (int i = 0; i < nums.size(); ++i)
         {
             int index = abs(nums[i]) - 1;
@@ -30,8 +30,8 @@ public:
             if (nums[index] > 0)
                 nums[index] = -nums[index];
             else
-                ret.insert(abs(nums[i]));
+                ret.push_back(abs(nums[i]));
         }
-        return vector<int>(ret.begin(), ret.end());
+        return ret;
     }
 };
