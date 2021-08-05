@@ -50,20 +50,22 @@ public:
         
         
         while(!q.empty()){
-            TreeNode *t  = q.front();
-            q.pop();
-            if (!t->left && !t->right) {
-                if (t->val == targetSum) return true;
+            int size = q.size();
+            for(int i=0;i<size;++i){
+                TreeNode *t  = q.front();
+                q.pop();
+                if (!t->left && !t->right) {
+                    if (t->val == targetSum) return true;
+                }
+                if(t->right){
+                    t->right->val += t->val;
+                    q.push(t->right);
+                }
+                if(t->left){
+                    t->left->val += t->val;
+                    q.push(t->left);  
+                }
             }
-            if(t->right){
-                t->right->val += t->val;
-                q.push(t->right);
-            }
-            if(t->left){
-                t->left->val += t->val;
-                q.push(t->left);  
-            }
-            
         }
         return false;
         

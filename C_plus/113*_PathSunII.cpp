@@ -12,19 +12,19 @@
 class Solution
 {
 public:
-    void findPaths(TreeNode *root, int targetSum, vector<int> &path, vector<vector<int> > &paths)
+    void findPaths(TreeNode *root, int target, vector<int> &path, vector<vector<int> > &paths)
     {
         if (!root)
             return;
+        target -= root->val;
         path.push_back(root->val);
-        if (root->val == targetSum && !root->left && !root->right)
+        if (!root->left && !root->right && target == 0)
         {
-            paths.push_back(path);
+            ret.push_back(path);
         }
 
-        int target = targetSum - root->val;
-        findPaths(root->left, target, path, paths);
-        findPaths(root->right, target, path, paths);
+        traverse(root->left, target, path, ret);
+        traverse(root->right, target, path, ret);
         path.pop_back();
     }
     vector<vector<int> > pathSum(TreeNode *root, int targetSum)
@@ -39,5 +39,4 @@ public:
 
         // option 2 BFS
     }
-
 };

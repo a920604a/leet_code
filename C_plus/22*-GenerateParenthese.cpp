@@ -1,29 +1,31 @@
 class Solution
 {
 public:
-    void generateParenthesisDFS(int left, int right, string out, vector<string> &res)
+    void traverse(int r, int l, string path, vector<string> &ret)
     {
-        if (left > right)
+        if (l > r)
             return;
-        if (left == 0 && right == 0)
-            res.push_back(out);
-        else
+        if (l < 0 || r < 0)
+            return;
+        if (l == 0 && r == 0)
         {
-            if (left > 0)
-                generateParenthesisDFS(left - 1, right, out + '(', res);
-            if (right > 0)
-                generateParenthesisDFS(left, right - 1, out + ')', res);
+            ret.push_back(path);
+            return;
         }
-    }
 
+        path.push_back('(');
+        traverse(r, l - 1, path, ret);
+        path.pop_back();
+
+        path.push_back(')');
+        traverse(r - 1, l, path, ret);
+        path.pop_back();
+    }
     vector<string> generateParenthesis(int n)
     {
-
-        // option 1
         vector<string> ret;
-        generateParenthesisDFS(n, n, "", ret);
+        string r = "";
+        traverse(n, n, r, ret);
         return ret;
     }
 };
-
-
