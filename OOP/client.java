@@ -1,114 +1,102 @@
-//按鈕接口：抽象產品
-interface Button {
+import java.util.*;
+
+// 抽象原型類 
+//抽象公文接口，也可定定義為抽象類，提供clone()方法的實現，將業務方法聲明為抽象方法
+interface OfficialDocument extends Cloneable {
+	public OfficialDocument clone();
+
 	public void display();
 }
 
-//Spring按鈕類：具體產品
-class SpringButton implements Button {
+// 可行性分析報告(Feasibility Analysis Report)類
+class FAR implements OfficialDocument {
+	public OfficialDocument clone() {
+		OfficialDocument far = null;
+		try {
+			far = (OfficialDocument) super.clone();
+		} catch (CloneNotSupportedException e) {
+			System.out.println("不支持複製！");
+		}
+		return far;
+	}
+
 	public void display() {
-		System.out.println("顯示淺綠色按鈕");
-	}
-}
- 
-//Summer按鈕類：具體產品
-class SummerButton implements Button {
-	public void display() {
-		System.out.println("顯示淺藍色按鈕");
-	}	
-}
- 
-//文本框接口：抽象產品
-interface TextField {
-	public void display();
-}
- 
-//Spring文本框類：具體產品
-class SpringTextField implements TextField {
-	public void display() {
-		System.out.println("顯示淺綠色邊框文本框。");
-	}
-}
- 
-//Summer文本框類：具體產品
-class SummerTextField implements TextField {
-	public void display() {
-		System.out.println("顯示藍色邊框文本框。");
-	}	
-}
- 
-//组合框接口：抽象產品
-interface ComboBox {
-	public void display();
-}
- 
-//Spring组合框類：具體產品
-class SpringComboBox implements ComboBox {
-	public void display() {
-		System.out.println("顯示綠色邊框組合框。");
-	}
-}
- 
-//Summer組合框類：具體產品
-class SummerComboBox implements ComboBox {
-	public void display() {
-		System.out.println("顯示藍色邊框組合框。");
-	}	
-}
- 
-//界面主題工廠接口：抽象工廠
-interface SkinFactory {
-	public Button createButton();
-	public TextField createTextField();
-	public ComboBox createComboBox();
-}
- 
-//Spring主題工廠：具體工廠 產品族
-class SpringSkinFactory implements SkinFactory {
-	public Button createButton() {
-		return new SpringButton();
-	}
- 
-	public TextField createTextField() {
-		return new SpringTextField();
-	}
- 
-	public ComboBox createComboBox() {
-		return new SpringComboBox();
-	}
-}
- 
-//Summer主題工廠：具體工廠 產品族
-class SummerSkinFactory implements SkinFactory {
-	public Button createButton() {
-		return new SummerButton();
-	}
- 
-	public TextField createTextField() {
-		return new SummerTextField();
-	}
- 
-	public ComboBox createComboBox() {
-		return new SummerComboBox();
+		System.out.println("《可行性分析報告》");
 	}
 }
 
+// 軟體需求規格說明書(Software Requirements Specification)類
+class SRS implements OfficialDocument {
+	public OfficialDocument clone() {
+		OfficialDocument srs = null;
+		try {
+			srs = (OfficialDocument) super.clone();
+		} catch (CloneNotSupportedException e) {
+			System.out.println("不支持複製！");
+		}
+		return srs;
+
+	}
+	public void display() {
+		System.out.println("《軟體需求規格說明書》");
+	}
+}
+
+// 原型管理器（使用餓漢式單例模式實現）
+class PrototypeManager
+
+{
+	// 定義一個hash table，用於存儲原型對象
+	private Hashtable ht = new Hashtable();
+	private static PrototypeManager pm = new PrototypeManager();
+	// 為Hash table增加公文對象
+	private PrototypeManager() {
+		ht.put("far", new FAR());
+		ht.put("srs", new SRS());
+
+	}
+	// 增加新的公文對象
+	public void addOfficialDocument(String key, OfficialDocument doc)
+	{
+		ht.put(key, doc);
+	}
+
+	// 通過淺拷貝獲取新的公文對象
+	public OfficialDocument getOfficialDocument(String key) {
+		return ((OfficialDocument) ht.get(key)).clone();
+	}
+
+	public static PrototypeManager getPrototypeManager() {
+		return pm;
+	}
+
+}
+
+// 客戶端
+public class client {
+	public static void main(String[] args) throws CloneNotSupportedException {
+
+		// 獲取原型管理器對象，PrototypeManager是單例類
+		PrototypeManager pm = PrototypeManager.getPrototypeManager();
 
 
-class Client {
-	public static void main(String args[]) {
-        //使用抽象層定義
-		SkinFactory factory;
-		Button bt;
-		TextField tf;
-		ComboBox cb;
-		// factory = (SkinFactory)XMLUtil.getBean();  // 配置文件配置
-        factory = new SpringSkinFactory() ;
-        // 不同產品等級的產品，但同品牌，都是 SpringSkinFactory 具體工廠提供
-		bt = factory.createButton();
-		tf = factory.createTextField();
-		cb = factory.createComboBox();
-		bt.display();
-		tf.display();
-		cb.display();
+		OfficialDocument doc1, doc2, doc3, doc4;
+		doc1 = pm.getOfficialDocument("far");
+
+		doc1.display();
+
+		doc2 = pm.getOfficialDocument("far");
+
+		doc2.display();
+
+		System.out.println(doc1 == doc2); // 簡單驗證兩份可行性分析報告是否是同一個
+
+		doc3 = pm.getOfficialDocument("srs");
+		doc3.display();
+
+		doc4 = pm.getOfficialDocument("srs");
+		doc4.display();
+
+		System.out.println(doc3 == doc4); // 簡單驗證兩份軟體需求規格報告書是否是同一個
 	}
 }

@@ -3,7 +3,7 @@ class Solution
 public:
     long trailingZeroes(long n)
     {
-        // 給一個數返回該數階層後有多少的0
+        // n 階層後面有幾個零
         // 遞增函數
         // input 0~4 => 0
         // input 5~9 => 1
@@ -34,6 +34,7 @@ public:
         // return ret;
 
         // binary search O(logK)
+        // 有多少數字的階層後面有k 個0
         // 因為單調trailingZeroes是遞增函數，那答案就相當於求
         // 二元搜尋右側邊界 - 二元搜尋右側邊界  +1
         return right_bound(k) - lower_bound(k) + 1;

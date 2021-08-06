@@ -49,7 +49,7 @@ public:
 
         // option 2 DFS + hash table O(N) or O(logN) for balanced tree
         unordered_map<int, int> pathCount;
-        // pathCount[0] = 1;
+        pathCount[0] = 1;
         int ret = countPathWitheSum(root, targetSum, 0, pathCount);
 
         return ret;
@@ -63,21 +63,21 @@ public:
         /* Count paths with sum ending at the the current node */
         curSum += root->val;
         int sum = curSum - targetSum;
-        // int totalPaths = pathCount.count(sum)?pathCount[sum]:0;
-        int totalPaths = pathCount[sum];
+        int totalPaths = 0;
 
         /*  If curSum eaquls targetSum , then one additionl path starts at root. 
         Add in this path */
-        if (curSum == targetSum)
-            totalPaths++;
+        if (pathCount.count(sum))
+            totalPaths = pathCount[sum];
 
         /*  Increment pathCount, recurse, then decrement pathCount. */
-        // incrementHashTable(pathCount, curSum, 1);
-        pathCount[curSum]++;
+
+        pathCount[curSum]++; // incrementHashTable(pathCount, curSum, 1);
+
         totalPaths += countPathWitheSum(root->left, targetSum, curSum, pathCount);
         totalPaths += countPathWitheSum(root->right, targetSum, curSum, pathCount);
-        // incrementHashTable(pathCount, curSum, -1);
-        pathCount[curSum]--;
+
+        pathCount[curSum]--; // incrementHashTable(pathCount, curSum, -1);
         return totalPaths;
     }
     void incrementHashTable(unordered_map<int, int> &pathCount, int key, int delta)
@@ -90,5 +90,3 @@ public:
             pathCount[key] = newCount;
     }
 };
-
-

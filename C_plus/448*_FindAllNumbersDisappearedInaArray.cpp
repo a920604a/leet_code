@@ -11,7 +11,6 @@ public:
         // }
         // return ret;
         
-        //option 2 O(n) without extra space
         // option 2 O(N) time and O(1) space
         // 拜訪過的用index 取負號
         //index  1 2 3 4 5 6 7 8 9
@@ -32,7 +31,7 @@ public:
         }
         return ret;
 
-        
+
         
         // option 3 O(n) without extra space
         // 座標及數值間相互轉換 + 排序

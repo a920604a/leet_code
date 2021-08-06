@@ -19,7 +19,7 @@ public:
         // while(n%2==0) n/=2;
         // return n==1;
 
-        //option 3
+        //option 3 因為2的指數二進位 只會有一個1 的關係
         // bit-wise
         // int ret = 0 ;
         // if(n<=0) return false;
@@ -27,13 +27,23 @@ public:
         //    ret += (n&1);
         //    n >>=1;
         // }
-        // return ret==1?true:false;
+        // return ret==1;
+
+        //option 3.1 因為2的指數二進位 只會有一個1 的關係
+        // bit-wise
+        // int ret = 0 ;
+        // if(n<=0) return false;
+        // while(n){
+        //    ret++;
+        //    n = n &(n-1);
+        // }
+        // return ret==1;
 
         //option 4
-        // without loops/recursion
+        // make use of n&(n-1) 因為2的指數二進位 只會有一個1 的關係
+        // 注意括號的優先級
         // if(n<=0) return false;
-        // bool ret = (n-1)&n;
-        // return !ret;
+        // return (n&(n-1)) == 0;
 
         // return (n>0) && (!((n-1)&n));
 
