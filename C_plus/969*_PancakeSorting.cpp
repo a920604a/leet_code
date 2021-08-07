@@ -40,17 +40,27 @@ public:
         sort(arr, arr.size());
         return ret;
 
-        // iterative
-        //         vector<int> ret;
-        //         int x,i;
-        //         for( x = arr.size() ;x>0 ; x--){
-        //             for(i=0; arr[i]!= x ; ++i) ;
-        //             reverse(arr.begin(), arr.begin() + 1+i);
-        //             ret.push_back(  i+1);
-        //             reverse(arr.begin(), arr.begin() + x);
-        //             ret.push_back(x);
+        // iteratively
+        int n = arr.size();
+        for (int i = n; i >= 1; --i)
+        {
+            if (i == 1)
+                continue;
+            int idx = 0, val = 0;
+            for (int k = 0; k < i; ++k)
+            {
+                if (arr[k] > val)
+                {
+                    val = arr[k];
+                    idx = k;
+                }
+            }
 
-        //         }
-        //         return ret;
+            reverse(arr.begin(), arr.begin() + idx + 1);
+            reverse(arr.begin(), arr.begin() + i);
+            ret.push_back(idx + 1);
+            ret.push_back(i);
+        }
+        return ret;
     }
 };

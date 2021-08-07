@@ -63,7 +63,7 @@ public:
         // option 2 以 這 k 個桶子的視角，對於每個桶都要遍歷nums 中的 n 個數字，然後選擇是否將當前遍歷的數字裝到自己這個桶子里
         // 從第 k 個桶開始
         vector<bool> used(nums.size(), false);
-        cout << target << endl;
+        
         return BucketTraverse(nums, k, 0, used, 0, target);
     }
     bool BucketTraverse(vector<int> &nums, int k, int bucketSum, vector<bool> &used, int start, int target)

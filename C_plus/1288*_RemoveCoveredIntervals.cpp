@@ -10,7 +10,7 @@ public:
         // 計算覆蓋區間有多少個，在用區間總數減去就是剩餘區間數
 
         // 兩區間相對位置有三種可能
-        // 1. 覆蓋區間                    例 [3,6] [2,5]
+        // 1. 覆蓋區間                    例 [1,6] [2,5]
         // 2. 兩區間可以合併，形成一個大區間  例 [1,3] [2,5] => [1,5]
         // 3. 兩區間不相交                 例 [1,2] [10,12]
 
@@ -29,18 +29,20 @@ public:
             vector<int> cur = intervals[i];
 
             // 情況一，覆蓋區間
-            if (start <= cur[0] && end >= cur[1])
+            if ( end >= cur[1])
             {
                 ret++;
             }
             // 情況二，兩區間可以合併，形成一個大區間
-            else if (start <= cur[0] && cur[0] <= end && end <= cur[1])
+            else if ( cur[0] <= end && end <= cur[1])
             {
+                // 因為  cur[0] 大於等於 start，因為有排序
                 end = cur[1];
             }
             // 情況三，兩區間不相交
             else if (end < cur[0])
             {
+                // 前進
                 start = cur[0];
                 end = cur[1];
             }

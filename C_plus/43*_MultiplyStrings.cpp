@@ -21,10 +21,9 @@ public:
                 res[p1] += sum / 10;
             }
         }
-        // 結果前綴可能是0
+        // remove zero-leading
         int i = 0;
-        while (i < res.size() && res[i] == 0)
-            i++;
+        for(; i<res.size() && res[i]==0 ;i++);
 
         // 結果轉為字串
         string str;

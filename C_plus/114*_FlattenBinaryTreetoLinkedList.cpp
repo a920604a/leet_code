@@ -32,7 +32,7 @@ public:
         //         }
         //         root = ret->right;
 
-        // option 1 version 2  iterative without stack
+        // option 1 version 2  iterative without finction call stack
         // while(root){
         //     if(root->left){
         //         TreeNode * pre = root->left;
@@ -60,7 +60,7 @@ public:
                 while(p->right) p=p->right;
                 p->right = temp;
 
-        // option 3 recursive
+        // option 3 recursive + iterative
         // while (root)
         // {
         //     if (root->left)

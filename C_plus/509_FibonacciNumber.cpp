@@ -15,16 +15,18 @@ public:
     {
         //  0   1   1   2   3   5   8   13
 
-        // option 1 brute force solution recusrive O(n!) time
+        // option 1 brute force solution recusrive O(2^n) time
         // if(n==0 || n==1) return n;
         // return fib(n-1) + fib(n-2);
 
-        // option 2 memo pattern 備忘錄 用 vector 或 hash table 紀錄出現過的避免大量重複運算
+        // option 2 memo pattern 備忘錄 O(n) time and O(n) space
+        // 自頂向下 用 vector 或 hash table 紀錄出現過的避免大量重複運算
 
         // vector<int> memo(n+1, 0);
         // return helper(memo, n);
 
-        // option 2 dp solution
+        // option 2.1 O(n) time and O(n) space
+        //  dp solution 自底向上
 
         // if(n ==0 || n == 1) return n;
         // vector<int> dp(n+1,0);
@@ -36,7 +38,7 @@ public:
         // }
         // return dp[n];
 
-        // option 3 reduce dp by variable
+        // option 3 reduce dp 
 
         if (n == 0 || n == 1)
             return n;

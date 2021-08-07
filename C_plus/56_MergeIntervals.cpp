@@ -27,6 +27,19 @@ public:
                 ret.push_back(cur);
             }
         }
+
+        // option 2 
+        // for(int i=1;i<n ;++i){
+        //     vector<int> cur = intervals[i];
+        //     if(cur[0] <= ret.back()[1]){
+        //         // overlap
+        //         ret.back()[0] =  min(ret.back()[0], cur[0]);
+        //         ret.back()[1] =  max(ret.back()[1], cur[1]);                
+        //     }
+        //     else{
+        //         ret.push_back({cur[0], cur[1]});
+        //     }
+        // }
         return ret;
     }
 };

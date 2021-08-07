@@ -26,7 +26,7 @@ public:
         // }
         // return ret;
 
-        // option 1.1 improvec dp O(n) time O(1) 1 space
+        // option 1.1 improved dp O(n) time O(1) 1 space
         // int n= nums.size();
         // int dp_0 = nums[0];
         // int dp_1 = 0 , ret = dp_0;
