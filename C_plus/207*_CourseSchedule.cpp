@@ -1,43 +1,55 @@
 class Solution
 {
 public:
+    vector<bool> visited;
+    vector<bool> onPath;
+    bool hasCycle = false;
+    void traverse(vector<list<int> > &graph, int s)
+    {
+        if (onPath[s])
+        {
+            hasCycle = true;
+            return;
+        }
+        if (visited[s])
+            return;
+        // pre-order
+        // 將節點 標記已遍歷
+        visited[s] = true;
+        // 開始遍歷節點
+        onPath[s] = true;
+
+        for (int to : graph[s])
+        {
+            traverse(graph, to);
+        }
+        onPath[s] = false;
+    }
     bool canFinish(int numCourses, vector<vector<int> > &prerequisites)
     {
+        // Graph
+        // topological Sort 有向無環圖
 
-        // 有向圖 檢測是否有環
-        vector<vector<int> > graph(numCourses, vector<int>());
-        vector<int> in(numCourses);
-        for (auto a : prerequisites)
+        // prerequisites = [[3,0],[3,1],[6,3],[7,3],[5,4],[9,5],[9,7]]
+        vector<list<int> > graph(numCourses); // 相鄰串列
+
+        for (auto edge : prerequisites)
         {
-            graph[a[1]].push_back(a[0]);
-            in[a[0]]++;
+            int from = edge[1];
+            int to = edge[0];
+            graph[from].push_back(to);
         }
 
-        queue<int> q;
+        // 檢查圖是否有環
+        visited = vector<bool>(numCourses, false);
+        onPath = vector<bool>(numCourses, false);
         for (int i = 0; i < numCourses; ++i)
         {
-            if (in[i] == 0)
-                q.push(i);
+            // 因為可能不是所有節點都有相連
+            traverse(graph, i);
         }
-
-        while (!q.empty())
-        {
-            int t = q.front();
-            q.pop();
-
-            for (auto a : graph[t])
-            {
-                in[a]--;
-                if (in[a] == 0)
-                    q.push(a);
-            }
-        }
-
-        for (int i = 0; i < numCourses; ++i)
-        {
-            if (in[i] != 0)
-                return false;
-        }
-        return true;
+        for (bool b : visited)
+            cout << b << " ";
+        return !hasCycle;
     }
 };
