@@ -3,6 +3,7 @@ class Solution
 public:
     int intervalSchedule(vector<vector<int> > &points)
     {
+        // 最多有多少個區間不會重叠
         if (points.size() == 0)
             return 0;
         sort(points.begin(), points.end(), [](vector<int> a, vector<int> b)
@@ -16,6 +17,7 @@ public:
             int x_start = point[0];
             if (x_start > x_end)
             {
+                // [1,2],[2,3] 算重疊
                 count++;
                 x_end = point[1];
             }

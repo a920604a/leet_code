@@ -71,5 +71,64 @@ public:
         unordered_map<string, int> memo;
 
         return dp(nums, 0, target, memo);
+
+        // option 3
+        // 將 nums 分成兩個集合 A B分別代表 分配+  - 的個數，那麼
+        // sum(A) - sum(B) = target
+        // sum(A) = target + sum(B)
+        // sum(A) + sum(A) = target + sum(B) + sum(A)
+        // 2 * sum(A) = target + sum(nums)
+        // 將問題變成 nums 中存在幾個子集 A，使得A 中元素的和為 (target + sum(nums))/2 = 4
+        // dp 背包問題，容量為 4 ，現在給你 N 個物品，第 i 個物品中 nums[i-1]，每個物品只有一個，請問有幾種方法恰好能滿背包
+        //sum = 0   1   2   3   4
+        //      1   0   0   0   0
+        //1     1   1   0   0   0
+        //1     1   2   1   0   0
+        //1     1   3   3   1   0
+        //1     1   4   6   4   1
+        //1     1   5   10  10  5
+        // 背包問題 通解 if( j >= nums[i-1]) dp[i][j] = dp[i-1][j] + dp[i-1][j - nums[i-1]];
+        // 把 第 i-1 物品裝入背包 或不裝入背包的總方法數
+
+        //         int sum =0;
+        //         int n = nums.size();
+        //         for(int i = 0; i < n; i++)
+        //              sum += nums[i];
+        //         // 不可能存在合法子集
+        //         if(sum < target || (sum + target)%2 == 1 ) return 0;
+        //         sum = (sum + target)/2;
+
+        //         vector<vector<int>> dp(n+1, vector<int>(sum+1,0));
+        //         for(int i=0 ;i<=n ;++i) dp[i][0] = 1;
+        //         for(int i = 1;i<=n;++i){
+        //             for(int j=0;j<=sum ; ++j){
+        //                 if((j >= nums[i-1])) dp[i][j] = dp[i-1][j] + dp[i-1][j - nums[i-1]];
+        //                 else dp[i][j] = dp[i-1][j];
+        //             }
+
+        //         }
+        //         return dp[n][sum];
+
+        // option 4 reduce dp
+        int sum = 0;
+        int n = nums.size();
+        for (int i = 0; i < n; i++)
+            sum += nums[i];
+        if (sum < target || (sum + target) % 2 == 1)
+            return 0;
+        sum = (sum + target) / 2;
+        vector<int> dp(sum + 1, 0);
+        dp[0] = 1;
+        for (int i = 1; i <= n; ++i)
+        {
+            for (int j = sum; j >= 0; j--)
+            {
+                // 注意 背包問題化為一維時，要反向搜尋
+                if (j >= nums[i - 1])
+                    dp[j] += dp[j - nums[i - 1]];
+            }
+        }
+
+        return dp[sum];
     }
 };

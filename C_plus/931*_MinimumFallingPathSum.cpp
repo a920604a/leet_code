@@ -71,7 +71,7 @@ public:
         int n = matrix.size(), m = matrix[0].size();
         if (n == 1)
             return matrix[0][0];
-        vector<vector<int> > dp(matrix.begin(), matrix.end());
+        vector<vector<int> > dp = matrix;
         int ret = INT_MAX;
         for (int i = 1; i < n; ++i)
         {

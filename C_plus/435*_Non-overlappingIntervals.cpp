@@ -3,6 +3,8 @@ class Solution
 public:
     int intervalSchedule(vector<vector<int> > &intervals)
     {
+        // 刪除最少區間能使個區間不重疊 [1,3] [3,5] 不算重疊
+        // 總區間個數減去 －  最多有多少個區間不會重叠
         // step1. 將intervals用end升序排列
         // step2. 選擇一個區間x，他結束時間是最早的
         // step3. 把所有與x區間相交的都移除

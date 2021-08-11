@@ -18,7 +18,8 @@ public:
         //         return dp[N][W]
 
         // 可容納重量為 sum/2 的背包，有n個物品，每個物品重量為nums[i]
-
+        
+        
         // 維護一個dp，表示數組是否能取出若干個數，其和為i
         // nums[i-1]  第i個物品重量
         //  dp[i - 1][j-nums[i-1]] 裝了第i個物品，背包剩餘重量 j - nums[i-1] 限制下能否被裝滿
@@ -64,6 +65,7 @@ public:
         {
             for (int j = sum; j >= 0; j--)
             {
+                // 背包問題 一維dp 須反向搜尋
                 if (j - nums[i] >= 0)
                     dp[j] = dp[j] || dp[j - nums[i]];
             }

@@ -1,6 +1,34 @@
 class Solution
 {
 public:
+    map<tuple<int, int>, int> memo;
+    int distance(string s1, string s2, int i, int j)
+    {
+
+        if (i == -1)
+            return j + 1;
+        if (j == -1)
+            return i + 1;
+
+        if (memo.count(make_pair(i, j)))
+            return memo[make_pair(i, j)];
+
+        if (s1[i] == s2[j])
+        {
+            memo[make_pair(i, j)] = distance(s1, s2, i - 1, j - 1);
+            return memo[make_pair(i, j)];
+        }
+
+        memo[make_pair(i, j)] = min(min(
+                                        distance(s1, s2, i - 1, j) + 1, // 刪除，
+                                        distance(s1, s2, i, j - 1) + 1  // 插入，相當於在 s1 後面插入 s2[j] ，插入後 j--
+
+                                        ),
+                                    distance(s1, s2, i - 1, j - 1) + 1 // 替換
+        );
+        return memo[make_pair(i, j)];
+    }
+
     int dp(string s1, string s2, int i, int j)
     {
         //base case
@@ -43,47 +71,41 @@ public:
         // return dp(word1, word2, word1.size()-1, word2.size()-1);
 
         // option 2 memo 避免重疊子問題
-
+        return distance(word1, word2, word1.size() - 1, word2.size() - 1);
         // s1[i-1] !=s2[j-1] , dp[i][j] = min(insert, delete, replace)
         // s1[i-1] !=s2[j-1] , dp[i][j] = min(dp[i][j-1] +1 , dp[i-1][j]+1, dp[i-1][j-1])
         // s1[i] == s2[j] , dp[i][j] = dp[i-1][j-1]
         // option 3 dp
-        //       r   o   s
-        //    0  1   2   3
-        // h  1  1   2   3
-        // o  2  2   1   2
-        // r  3  2   2   2
-        // s  4  3   3   2
-        // e  5  4   4   3
+        //dp
+        //          h   o   r   s   e
+        //      0   1   2   3   4   5
+        //r     1   1   2   2   3   4
+        //o     2   2   1   2   3   4
+        //s     3   3   2   2   2   3
 
-        int n = word1.size(), m = word2.size();
-        vector<vector<int> > dp(n + 1, vector<int>(m + 1, 0));
-        for (int i = 1; i <= n; ++i)
+        // 替換/跳過   刪除
+        // 插入       現在狀態
+        //    dp[i][j] = dp[i-1][j-1]
+        //    dp[i][j] = min(  dp[i-1][j-1], dp[i-1][j], dp[i][j-1]);
+
+        int m = word1.size(), n = word2.size();
+        vector<vector<int> > dp(m + 1, vector<int>(n + 1, 0));
+        for (int i = 0; i <= m; ++i)
             dp[i][0] = i;
-        for (int j = 1; j <= m; ++j)
+        for (int j = 0; j <= n; ++j)
             dp[0][j] = j;
 
-        for (int i = 1; i <= n; ++i)
+        for (int i = 1; i <= m; ++i)
         {
-            for (int j = 1; j <= m; ++j)
+            for (int j = 1; j <= n; ++j)
             {
                 if (word1[i - 1] == word2[j - 1])
                     dp[i][j] = dp[i - 1][j - 1];
                 else
-                {
-                    dp[i][j] = Getmin(
-                        1 + dp[i][j - 1],
-                        1 + dp[i - 1][j],
-                        1 + dp[i - 1][j - 1]);
-                }
+                    dp[i][j] = min(
+                        dp[i - 1][j] + 1, min(dp[i - 1][j - 1] + 1, dp[i][j - 1] + 1));
             }
         }
-        for (auto d : dp)
-        {
-            for (int dd : d)
-                cout << dd << " ";
-            cout << endl;
-        }
-        return dp[n][m];
+        return dp[m][n];
     }
 };
