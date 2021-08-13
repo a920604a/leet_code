@@ -86,7 +86,7 @@ public:
             // 剪枝，拜訪 沒拜訪過的
             if (used[i] == false)
             {
-                // 該桶子裝不下 nums[i]
+                // 剪枝，該桶子裝不下 nums[i]
                 if (bucketSum + nums[i] > target)
                     continue;
 

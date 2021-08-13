@@ -14,25 +14,32 @@ public:
         // 假設交集區間為 [c1, c2], c1 = max(a1, b1) , c2 = min(a2, b2)，得知這可以大幅簡化
 
         vector<vector<int> > ret;
-        int l = 0, r = 0;
+
         int n = firstList.size(), m = secondList.size();
+        int l = 0, r = 0;
         while (l < n && r < m)
         {
-            int a1 = firstList[l][0], a2 = firstList[l][1];
-            int b1 = secondList[r][0], b2 = secondList[r][1];
 
-            // 有交集，情況二
-            if (b2 >= a1 && a2 >= b1)
+            vector<int> first = firstList[l];
+            vector<int> second = secondList[r];
+            if (first[1] < second[0])
             {
-                ret.push_back({max(a1, b1), min(a2, b2)});
+                l++;
             }
-
-            // 指針前進
-            if (b2 < a2)
+            else if (second[1] < first[0])
                 r++;
             else
-                l++;
+            {
+                // overlap
+                ret.push_back({max(first[0], second[0]), min(first[1], second[1])});
+
+                if (second[1] < first[1])
+                    r++;
+                else
+                    l++;
+            }
         }
+
         return ret;
     }
 };

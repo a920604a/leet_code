@@ -23,6 +23,7 @@ public:
         }
         // remove zero-leading
         int i = 0;
+        // while(  i<ret.size() &&  ret[i]==0) i++;
         for(; i<res.size() && res[i]==0 ;i++);
 
         // 結果轉為字串

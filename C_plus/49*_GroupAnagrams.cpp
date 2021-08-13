@@ -3,21 +3,26 @@ class Solution
 public:
     vector<vector<string> > groupAnagrams(vector<string> &strs)
     {
-
-        // option 1 O(n^2 logn) time
         vector<vector<string> > ret;
-        map<string, int> m;
+        unordered_map<string, int> m;
 
-        for (string str : strs)
+        int n = strs.size();
+
+        for (int i = 0; i < n; ++i)
         {
-            string cand = str;
+            string cand = strs[i];
             sort(cand.begin(), cand.end());
-            if (!m.count(cand))
+            if (m.count(cand))
+            {
+                int idx = m[cand];
+                ret[idx].push_back(strs[i]);
+            }
+            else
             {
                 m[cand] = ret.size();
                 ret.push_back({});
+                ret.back().push_back(strs[i]);
             }
-            ret[m[cand]].push_back(str);
         }
         return ret;
     }

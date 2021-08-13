@@ -28,8 +28,10 @@ public:
         totalPaths += countPathsWithSumFromNode(node->right, targetSum, currentSum);
         return totalPaths;
     }
-    int countPathsWithSum(TreeNode *root, int targetSum)
+
+    int pathSum(TreeNode *root, int targetSum)
     {
+        // option1 DFS O(N log N) times
         if (!root)
             return 0;
 
@@ -37,15 +39,10 @@ public:
         int pathsFromRoot = countPathsWithSumFromNode(root, targetSum, 0);
 
         /* Try the nodes on the left and right. */
-        int pathsOnLeft = countPathsWithSum(root->left, targetSum);
-        int pathsOnRight = countPathsWithSum(root->right, targetSum);
+        int pathsOnLeft = pathSum(root->left, targetSum);
+        int pathsOnRight = pathSum(root->right, targetSum);
         return pathsFromRoot + pathsOnLeft + pathsOnRight;
-    }
 
-    int pathSum(TreeNode *root, int targetSum)
-    {
-        // option1 DFS O(N log N) times
-        // return countPathsWithSum(root, targetSum);
 
         // option 2 DFS + hash table O(N) or O(logN) for balanced tree
         unordered_map<int, int> pathCount;
