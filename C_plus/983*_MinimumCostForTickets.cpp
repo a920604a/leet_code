@@ -22,7 +22,7 @@ public:
 
             for (int j = 1; j <= i; ++j)
             {
-                // cout<<i<<" "<<j<<endl;
+                // j<=i 要加等號，因為可能 7天票價 比1天假票便宜
                 // 如果 [i] - [j] 差距小於7天，可以用 j-1天的錢 加上 [j...i] 買一張 七天票即可
                 if (days[i - 1] - days[j - 1] < 7)
                     dp[i] = min(dp[i], dp[j - 1] + costs[1]);

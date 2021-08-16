@@ -44,7 +44,27 @@ public:
         //         return q.top();
 
         // option 3 binary search
-
-        // option 4 從左下角開始搜尋
+        int left = matrix[0][0], right = matrix.back().back();
+        // 左側邊界 二元搜尋
+        while (left < right)
+        {
+            int mid = left + (right - left) / 2;
+            int cnt = 0;
+            for (int i = 0; i < matrix.size(); ++i)
+            {
+                cnt += upper_bound(matrix[i].begin(), matrix[i].end(), mid) - matrix[i].begin();
+                // upper_bound 找出大於 val 的最小位置
+            }
+            // 第一個元素大於 mid 8 的位置 2, 索引從 1 開始 => 小於 mid=8 數字有2個
+            // 第一個元素大於 mid 12 的位置 6
+            // 遍歷完，可以找出mid 中間數，是第幾小的數字
+            if (cnt == k)
+                right = mid;
+            else if (cnt < k)
+                left = mid + 1;
+            else
+                right = mid;
+        }
+        return left;
     }
 };

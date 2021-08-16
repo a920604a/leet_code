@@ -3,27 +3,23 @@ class Solution
 public:
     string toHex(int num)
     {
-        string res = "";
-        vector<string> v{"a", "b", "c", "d", "e", "f"};
-        int n = 7;
+        string ret, hex = "0123456789abcdef";
         unsigned int x = num;
-        if (num < 0)
-            x = UINT_MAX + num + 1;
         while (x > 0)
         {
-            int t = pow(16, n);
-            int d = x / t;
-            if (d >= 10)
-                res += v[d - 10];
-            else if (d >= 0)
-                res += to_string(d);
-            x %= t;
-            --n;
+            ret = hex[x % 16] + ret;
+            x /= 16;
         }
-        while (n-- >= 0)
-            res += to_string(0);
-        while (!res.empty() && res[0] == '0')
-            res.erase(res.begin());
-        return res.empty() ? "0" : res;
+        return ret.empty() ? "0" : ret;
+
+        // bit manuipulation
+        // string ret, str= "0123456789abcdef";
+        // int cnt = 0;
+        // while (num != 0  && cnt++ < 8){
+        // // for(int i =0;i<8;++i){
+        //     ret = str[num& 15]+ret;
+        //     num >>=4;
+        // }
+        // return ret==""? "0": ret;
     }
 };

@@ -71,5 +71,36 @@ public:
             }
         }
         return dp[sum];
+
+        // dp but time out
+        int total = 0;
+        for(int n:nums) total +=n;
+        if(total%2!=0) return false;
+        int n = nums.size();
+        vector<bool> used(n, false);
+        return dp(nums, total/2,0, 0, 2, used);
     }
+
+
+    bool dp(vector<int> &nums, int target, int s , int cur, int k, vector<bool> & used){
+        // time error
+        int n= nums.size();
+        if(k==0) return true;
+        if(cur == target) return dp(nums, target, 0, 0, k-1, used);
+        
+        
+        for(int i =s;i<n;++i){
+            if(used[i]) continue;
+            
+            if(nums[i] + cur > target) continue;
+            used[i] = true;
+            cur += nums[i];
+            if(dp(nums, target, i+1, cur, k, used) ) return true;
+            used[i] = false;
+            cur -= nums[i];
+        }
+        
+        return false;
+    }
+
 };

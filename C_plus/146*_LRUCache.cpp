@@ -77,6 +77,13 @@ public:
         tail->prev->next = x;
         tail->prev = x;
         size++;
+
+        // Node *t = tail->prev;
+        // x->next = tail;
+        // tail->prev = x;
+        // x->prev = t;
+        // t->next = x;
+        // size++;
     }
     // 由於是雙向鏈接串列且給定目標Node節點，O(1)
     void remove(Node *x)
