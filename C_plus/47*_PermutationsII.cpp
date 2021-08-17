@@ -32,7 +32,7 @@ public:
         permuteUniqueDFS(nums, 0, visited, out, ret);
         return vector<vector<int> >(ret.begin(), ret.end());
 
-        // option 2 is
+        // option 2 
         set<vector<int>> res;
         permute(nums, 0, res);
         return vector<vector<int>> (res.begin(), res.end());
@@ -44,6 +44,7 @@ public:
         if(start >= nums.size()) ret.insert(nums);
         
         for(int i = start ; i<nums.size();++i){
+            // prune
             if (i != start && nums[i] == nums[start]) continue;
             swap(nums[start], nums[i]);
             permute(nums, start+1, ret);

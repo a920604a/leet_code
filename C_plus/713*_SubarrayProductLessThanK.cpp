@@ -4,15 +4,17 @@ public:
     int numSubarrayProductLessThanK(vector<int> &nums, int k)
     {
         // sliding window
-
-        int ret = 0, n = nums.size();
-        int prod = 1, left = 0;
-        for (int i = 0; i < n; ++i)
+        int n = nums.size();
+        int prod = 1, ret = 0;
+        int l = 0;
+        for (int r = 0; r < n; ++r)
         {
-            prod *= nums[i];
-            while (left <= i && prod >= k)
-                prod /= nums[left++];
-            ret += (i - left + 1);
+            prod *= nums[r];
+
+            while (l <= r && prod >= k)
+                prod /= nums[l++];
+
+            ret += (r - l + 1);
         }
         return ret;
     }

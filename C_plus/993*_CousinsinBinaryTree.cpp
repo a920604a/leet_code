@@ -12,18 +12,43 @@
 class Solution
 {
 public:
-    void dfs(TreeNode *root, map<int, pair<TreeNode *, int> > &m, TreeNode *parent, int depth)
-    {
-        if (!root)
-            return;
-        m[root->val] = make_pair(parent, depth);
-        dfs(root->left, m, root, depth + 1);
-        dfs(root->right, m, root, depth + 1);
-    }
     bool isCousins(TreeNode *root, int x, int y)
     {
-        map<int, pair<TreeNode *, int> > m;
-        dfs(root, m, nullptr, 0);
-        return (m[x].first != m[y].first) && (m[x].second == m[y].second);
+
+        // level order 因為是cousin 必定在同一層
+        queue<TreeNode *> q;
+        q.push(root);
+        bool stepX = false, stepY = false;
+
+        while (!q.empty())
+        {
+            int size = q.size();
+            for (int i = 0; i < size; ++i)
+            {
+                TreeNode *p = q.front();
+                q.pop();
+                if (p->val == x)
+                    stepX = true;
+                if (p->val == y)
+                    stepY = true;
+                if (p->left && p->right)
+                {
+                    // 檢查是否為兄弟
+                    int left = p->left->val, right = p->right->val;
+                    if ((left == x) && (right == y) || (left == y) && (right == x))
+                        return false;
+                }
+
+                if (p->left)
+                    q.push(p->left);
+                if (p->right)
+                    q.push(p->right);
+            }
+            if (stepX && stepY)
+                return true;
+            if (stepX || stepY)
+                return false;
+        }
+        return false;
     }
 };

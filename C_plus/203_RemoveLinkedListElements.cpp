@@ -29,5 +29,22 @@ public:
                 p = p->next;
         }
         return dummy->next;
+
+        // slow fast pointer
+        ListNode *ret = new ListNode(-1);
+        ret->next = head;
+        ListNode *slow = ret, *fast = head;
+
+        while (fast)
+        {
+            if (fast->val == val)
+            {
+                slow->next = fast->next;
+            }
+            else
+                slow = slow->next;
+            fast = fast->next;
+        }
+        return ret->next;
     }
 };

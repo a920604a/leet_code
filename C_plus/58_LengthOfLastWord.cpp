@@ -15,5 +15,18 @@ public:
                 ret = 0;
         }
         return ret;
+
+        //  option 2
+        int l = -1, r = s.size() - 1;
+        while (r > l && s[r] == ' ')
+            r--;
+        for (int i = 0; i <= r; ++i)
+        {
+            if (s[i] == ' ')
+                l = i;
+        }
+        if (l == -1)
+            return r + 1;
+        return r - l;
     }
 };

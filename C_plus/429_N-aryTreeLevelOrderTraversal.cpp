@@ -1,10 +1,4 @@
 /*
- * @Author: yuan
- * @Date: 2021-07-16 20:22:57
- * @LastEditTime: 2021-07-16 20:22:57
- * @FilePath: /leet_code/C_plus/429_N-aryTreeLevelOrderTraversal.cpp
- */
-/*
 // Definition for a Node.
 class Node {
 public:
@@ -29,27 +23,28 @@ class Solution
 public:
     vector<vector<int> > levelOrder(Node *root)
     {
+        vector<vector<int> > ret;
         if (!root)
             return {};
-        vector<vector<int> > ret;
         queue<Node *> q;
         q.push(root);
         while (!q.empty())
         {
             int size = q.size();
-            vector<int> tmp;
-            while (size)
+            vector<int> temp;
+            for (int i = 0; i < size; ++i)
             {
-                Node *cur = q.front();
+                Node *p = q.front();
                 q.pop();
-                tmp.push_back(cur->val);
-                for (Node *child : cur->children)
-                    q.push(child);
-                size--;
-            }
-            ret.push_back(tmp);
-        }
+                temp.push_back(p->val);
 
+                for (Node *x : p->children)
+                {
+                    q.push(x);
+                }
+            }
+            ret.push_back(temp);
+        }
         return ret;
     }
 };

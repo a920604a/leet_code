@@ -24,9 +24,6 @@ public:
     {
         // preorder VLR
         vector<int> ret;
-        if (!root)
-            return ret;
-
         preorder(root, ret);
         return ret;
     }

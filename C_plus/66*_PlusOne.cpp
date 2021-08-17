@@ -19,8 +19,6 @@ public:
 
         if (digits.front() == 0)
             digits.insert(digits.begin(), 1);
-        for (int d : digits)
-            cout << d << " ";
         return digits;
     }
 };

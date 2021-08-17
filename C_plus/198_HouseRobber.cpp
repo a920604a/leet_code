@@ -21,15 +21,17 @@ public:
         int n = nums.size();
         if (n == 1)
             return nums[0];
-        int a = nums[0];
-        int b = max(nums[1], a);
-        int cur = 0;
+        int dp_0 = nums[0];
+        int dp_1 = max(nums[1], dp_0);
+        int ret;
         for (int i = 2; i < n; ++i)
         {
-            cur = max(b, a + nums[i]);
-            a = b;
-            b = cur;
+            // dp[i] = max(dp[i-1] , dp[i-2] + nums[i]);
+            // ret = max(ret, dp[i]);
+            ret = max(dp_1, dp_0 + nums[i]);
+            dp_0 = dp_1;
+            dp_1 = ret;
         }
-        return max(cur, b);
+        return ret;
     }
 };

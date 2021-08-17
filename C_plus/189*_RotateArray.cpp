@@ -17,7 +17,7 @@ public:
         //         nums = vec;
         //         vec.clear();
 
-        // option 2  O(n) one-by-one  hrad to think
+        // option 2  O(n) one-by-one  hard to think
 
         //         if (nums.empty() || (k %= nums.size()) == 0) return;
         //         int start = 0, idx = 0, pre = 0, cur = nums[0], n = nums.size();
@@ -33,7 +33,7 @@ public:
 
         //         }
 
-        // option 3 reverse again
+        // option 3 reverse 
 
         int n = nums.size(), start = n - k % n;
         reverse(nums.begin(), nums.begin() + start);

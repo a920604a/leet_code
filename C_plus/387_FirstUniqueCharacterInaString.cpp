@@ -33,5 +33,25 @@ public:
                 return i;
         }
         return -1;
+
+
+        // option 3
+        // vector to recorder last index
+         // O(n) time and O(1)  space
+        int n = s.size();
+        vector<int> vec(26,0);
+        for(int i=0;i<n;++i){
+            vec[s[i] - 'a'] = i;
+        }
+        for(int i=0;i<n;++i){
+            if(vec[s[i]-'a'] == i){
+                return i;
+            }
+            else{
+                vec[s[i] - 'a'] = -1;
+            }
+        }
+        return -1 ;
+
     }
 };

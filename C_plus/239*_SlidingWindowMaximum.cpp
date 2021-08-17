@@ -114,22 +114,28 @@ public:
         //         return maxWindow;
 
         // option 4 O(n) deque
-        vector<int> maxWindow;
-        int n = nums.size();
-        deque<int> q;
-        for (int i = 0; i < n; ++i)
+        // option 1 dequeue 回護他的頭 是最大值
+        deque<int> dq;
+        vector<int> ret;
+        for (int i = 0; i < nums.size(); ++i)
         {
-            if (!q.empty() && q.front() == i - k)
-                q.pop_front();
-            while (!q.empty() && nums[q.back()] < nums[i])
-                q.pop_back();
+            while (!dq.empty() && nums[i] > dq.back())
+            {
+                dq.pop_back();
+            }
 
-            q.push_back(i);
+            dq.push_back(nums[i]);
+
+            // 縮減左側
+            if (i >= k && nums[i - k] == dq.front())
+                dq.pop_front();
+
+            // 存入結果
             if (i >= k - 1)
-                maxWindow.push_back(nums[q.front()]);
+                ret.push_back(dq.front());
         }
 
-        return maxWindow;
+        return ret;
 
         // option 5 monotonic queue
         int n = nums.size();

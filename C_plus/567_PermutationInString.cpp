@@ -39,20 +39,7 @@ public:
         //         }
         //         return false;
 
-        // option 2 O(n*26 or n*m)
-
-        // vector<int> need(26,0);
-        // int n = s1.size(), n2 = s2.size();
-        // if(n>n2) return false;
-        // for(char c:s1) need[c-'a']++;
-        // for(int i=0;i<=s2.size()-n;++i){
-        //     vector<int> tmp(26,0);
-        //     for(int j=i;j<i+n;++j)    tmp[s2[j]-'a']++;
-        //     if(tmp==need) return true;
-        // }
-        // return false;
-
-        // option 3 簡化移動窗口 及 option 2  O(n)
+        // option 2 簡化移動窗口 及 option 2  O(n)
         vector<int> window(26, 0);
         vector<int> need(26, 0);
         for (char c : s1)

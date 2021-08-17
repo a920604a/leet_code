@@ -25,7 +25,6 @@ public:
     {
         // LVR in-order
         vector<int> ret;
-
         inorder(root, ret);
         return ret;
 

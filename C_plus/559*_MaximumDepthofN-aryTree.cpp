@@ -27,26 +27,15 @@ public:
 class Solution
 {
 public:
-    int childDepth(Node *root)
-    {
-
-        if (root == nullptr)
-            return 0;
-        vector<Node *> tmp;
-        if (root->children == tmp)
-            return 1;
-        int _max = 0;
-        for (Node *child : root->children)
-        {
-            _max = max(childDepth(child), _max);
-        }
-        return 1 + _max;
-    }
     int maxDepth(Node *root)
     {
-        if (root == nullptr)
+        if (!root)
             return 0;
-        int ret = 0;
-        return childDepth(root);
+        int ret = 1;
+        for (Node *x : root->children)
+        {
+            ret = max(1 + maxDepth(x), ret);
+        }
+        return ret;
     }
 };

@@ -1,9 +1,3 @@
-/*
- * @Author: yuan
- * @Date: 2021-07-16 21:31:46
- * @LastEditTime: 2021-07-16 21:31:54
- * @FilePath: /leet_code/C_plus/637_AverageofLevelsinBinaryTree.cpp
- */
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -18,32 +12,29 @@
 class Solution
 {
 public:
-    void levelorder(TreeNode *root, vector<double> &ret)
+    vector<double> averageOfLevels(TreeNode *root)
     {
+        if (!root)
+            return {};
+        vector<double> ret;
         queue<TreeNode *> q;
         q.push(root);
         while (!q.empty())
         {
             int size = q.size();
-            double total = 0, cap = size;
-            while (size)
+            double avg = 0.0;
+            for (int i = 0; i < size; ++i)
             {
-                TreeNode *cur = q.front();
+                TreeNode *p = q.front();
                 q.pop();
-                total += cur->val;
-                if (cur->left)
-                    q.push(cur->left);
-                if (cur->right)
-                    q.push(cur->right);
-                size--;
+                avg += p->val;
+                if (p->left)
+                    q.push(p->left);
+                if (p->right)
+                    q.push(p->right);
             }
-            ret.push_back(total / cap);
+            ret.push_back(avg / size);
         }
-    }
-    vector<double> averageOfLevels(TreeNode *root)
-    {
-        vector<double> ret;
-        levelorder(root, ret);
         return ret;
     }
 };
