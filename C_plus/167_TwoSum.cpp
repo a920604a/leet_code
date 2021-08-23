@@ -3,6 +3,24 @@ class Solution
 public:
     vector<int> twoSum(vector<int> &numbers, int target)
     {
+        // option 0
+        // binary search O(nlogn) time
+        // 選定 索引為 i 的數字 ，在用binary search 找 另一個數字使總和為target
+        int n = numbers.size();
+        
+        for(int i=0;i<n;++i){
+            int sum = target - numbers[i], l= i+1, r = n;
+            
+            while(l<r){
+                int mid = l + (r-l)/2;
+                if(numbers[mid] == sum) return {i+1, mid+1};
+                else if(numbers[mid] < sum) l = mid+1;
+                else  r = mid;
+                
+            }
+        }
+        return {};
+
         // option 1 O(n)
         // two pointer
         // int l =0, r = numbers.size()-1;

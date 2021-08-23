@@ -36,10 +36,32 @@ public:
     }
     Node *connect(Node *root)
     {
+        
 
+        // option 1 preorder
         if (root == nullptr)  return root;
 
         connectTwoNode(root->left, root->right);
+        return root;
+
+
+        // option 2 level order traverse
+        if(!root) return nullptr;
+        queue<Node*>q;
+        q.push(root);
+        while(!q.empty()){
+            int size =  q.size();
+            for(int i = 0; i <size ; ++i){
+                Node *p = q.front();
+                q.pop();
+                if(i<size-1 ) p->next = q.front(); 
+                else p->next = nullptr;
+                
+                if(p->left) q.push(p->left);
+                if(p->right) q.push(p->right);
+            }
+        }
+            
         return root;
     }
 };

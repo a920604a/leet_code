@@ -1,15 +1,3 @@
-'''
-Author: yuan
-Date: 2021-07-15 20:35:22
-LastEditTime: 2021-07-15 20:35:31
-FilePath: /leet_code/HackerRank/Arrays/NewYearChaos.py
-'''
-"""
-Author: yuan
-Date: 2021-07-15 20:35:22
-LastEditTime: 2021-07-15 20:35:23
-FilePath: /leet_code/HackerRank/Arrays/NewYearChaos.py
-"""
 #!/bin/python3
 
 import math

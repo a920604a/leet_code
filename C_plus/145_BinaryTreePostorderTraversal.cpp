@@ -24,8 +24,13 @@ public:
     }
     vector<int> postorderTraversal(TreeNode *root)
     {
+        // option 1 recursive O(n) space
         vector<int> ret;
         postorder(root, ret);
         return ret;
+
+        // option 2 non-recursive O(n) space
+        // option 3 Morris Traversal O(1) space
+        
     }
 };

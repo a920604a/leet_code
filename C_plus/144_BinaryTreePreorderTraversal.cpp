@@ -22,9 +22,12 @@ public:
     }
     vector<int> preorderTraversal(TreeNode *root)
     {
-        // preorder VLR
+        // option 1 recursive O(n) space
         vector<int> ret;
         preorder(root, ret);
         return ret;
+
+        // option 2 non-recursive O(n) space
+        // option 3 Morris Traversal O(1) space
     }
 };

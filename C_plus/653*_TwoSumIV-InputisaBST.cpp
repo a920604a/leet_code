@@ -42,12 +42,31 @@ public:
         // }
         // return false;
 
-        // option 1.1 use set
+        // option 2 use set + DFS
         if (!root)
             return false;
         if (s.count(k - root->val))
             return true;
         s.insert(root->val);
         return findTarget(root->left, k) || findTarget(root->right, k);
+
+
+        // option 2.1 BFS +queue
+        unordered_set<int> s;
+        queue<TreeNode *> q;
+        q.push(root);
+        while(!q.empty()){
+            TreeNode *p = q.front();
+            q.pop();
+            if(s.count(k - p->val )) return true;
+            s.insert(p->val);
+            if(p->left) q.push(p->left);
+            if(p->right) q.push(p->right);
+                   
+            
+        }
+        
+        return false;
+
     }
 };
