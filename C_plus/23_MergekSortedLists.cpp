@@ -53,18 +53,38 @@ public:
         // return ret;
 
         // option 2 divide and conquer
-        if (lists.empty())
-            return nullptr;
-        int n = lists.size();
-        while (n > 1)
+        // if(lists.empty()) return nullptr;
+        // int n = lists.size();
+        // while(n>1){
+        //     int k = (n+1)/2;
+        //     for(int i=0;i<n/2;i++){
+        //         lists[i] = mergeTwoLists(lists[i], lists[i+k]);
+        //     }
+        //     n = k;
+        // }
+        // return lists[0];
+
+        // option 3 min heap O(n*m*logk)
+        ListNode *ret = new ListNode(-1), *ans = ret;
+        auto cmp = [](ListNode *&a, ListNode *&b)
         {
-            int k = (n + 1) / 2;
-            for (int i = 0; i < n / 2; i++)
-            {
-                lists[i] = mergeTwoLists(lists[i], lists[i + k]);
-            }
-            n = k;
+            return a->val > b->val;
+        };
+        priority_queue<ListNode *, vector<ListNode *>, decltype(cmp)> list(cmp);
+        for (ListNode *v : lists)
+        {
+            if (v)
+                list.push(v);
         }
-        return lists[0];
+        while (!list.empty())
+        {
+            ListNode *cur = list.top();
+            list.pop();
+            ret->next = cur;
+            ret = ret->next;
+            if (cur->next)
+                list.push(cur->next);
+        }
+        return ans->next;
     }
 };
