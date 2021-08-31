@@ -23,18 +23,18 @@ public:
         //         }
         //         return ret;
 
-        // option 2
+        // option 2 O(n) time and O(n) space
         // make use to map instead of two vector
-        // vector<int> ret;
-        // map<int,int> m;
-        // for(int i:nums1) m[i]++;
-        // for(int i:nums2){
-        //     if(m[i]!=0){
-        //         ret.push_back(i);
-        //         m[i]--;
-        //     }
-        // }
-        // return ret;
+        vector<int> ret;
+        unordered_map<int,int> m;
+        for(int n:nums1) m[n]++;
+        for(int n:nums2){
+            if(m[n]>0){
+                ret.push_back(n);
+                m[n]--;
+            }
+        }
+        return ret;
 
         // option 3
         // use two pointer O(n)

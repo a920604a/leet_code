@@ -33,7 +33,7 @@ public:
 
 
 
-        //option 2  O(n)
+        //option 2  O(n) time and O(1) space
         // map
 
         unordered_map<int,int> m;

@@ -9,6 +9,7 @@ public:
         if (matrix.empty() || matrix[0].empty())
             return false;
 
+        // 找哪一行第一個元素第一個大於等於target的行數
         int l = 0, r = matrix.size();
         while (l < r)
         {

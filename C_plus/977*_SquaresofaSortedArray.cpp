@@ -10,6 +10,14 @@ public:
         // sort(ret.begin(),ret.end());
         // return ret;
 
+        // option 1.1 O(nlogn0) time
+        //         sort(nums.begin(), nums.end(), [](int a, int b){
+        //             return abs(a)<abs(b);
+        //         });
+
+        //         for(int &a:nums) a = a*a;
+        //         return nums;
+
         // option 2  O(n) two pointer
         // int n = nums.size();
         // vector<int> ret;
