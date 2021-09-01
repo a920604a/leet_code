@@ -15,23 +15,33 @@ public:
         //             nums[j+1]=key;
 
         //         }
-        //         for(int n:nums) cout<<n<<" ";
 
         // option 2 create vector to record
-        vector<int> vec = {0, 0, 0};
+        // option cheap O(n)
+        vector<int> his(3, 0);
         for (int n : nums)
-            vec[n]++;
-        int j = 0;
-        for (int i = 0; i < nums.size();)
+            his[n]++;
+        for (int i = 0, j = 0; i < nums.size(); ++i)
         {
-            if (vec[j] > 0)
-            {
-                nums[i] = j;
-                vec[j]--;
-                ++i;
-            }
-            else
+            while (his[j] == 0)
                 j++;
+            his[j]--;
+            nums[i] = j;
+        }
+
+        // option 3 two pointer
+        int n = nums.size();
+        int red = 0, blue = n - 1;
+        for (int i = 0; i <= blue; ++i)
+        {
+            if (nums[i] == 0)
+            {
+                swap(nums[i], nums[red++]);
+            }
+            else if (nums[i] == 2)
+            {
+                swap(nums[i--], nums[blue--]);
+            }
         }
     }
 };

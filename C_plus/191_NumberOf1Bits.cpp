@@ -24,10 +24,9 @@ public:
         int ret = 0;
         while (n)
         {
-            ret += 1;
+            ret ++;
             n = n & (n - 1);
         }
-        return ret;
         return ret;
     }
 };

@@ -13,7 +13,7 @@ class Solution
 public:
     ListNode *sortList(ListNode *head)
     {
-        // option 1 beacause of return , so can use STL story each node and generate linked list
+        // option 0 beacause of return , so can use STL story each node and generate linked list
         // if(!head || !head->next) return head;
         // vector<int> v;
         // ListNode *p = head;
@@ -28,6 +28,38 @@ public:
         //     p->next = new ListNode(v[i]);
         // }
         // return ret;
+
+        // option 1 insert sort
+        // O(n^2) => time out
+        if (!head || !head->next)
+            return head;
+        ListNode *ret = head, *p = ret;
+        ListNode *cur = head->next;
+        ret->next = nullptr;
+        while (cur)
+        {
+            ListNode *k = cur;
+            cur = cur->next;
+            ListNode *j = ret, *pre = ret;
+            while (j && j->val < k->val)
+            {
+                pre = j;
+                j = j->next;
+            }
+            if (j == ret)
+            {
+                // insert first node
+                k->next = j;
+                ret = k;
+            }
+            else
+            {
+                pre->next = k;
+                k->next = j;
+            }
+        }
+
+        return ret;
 
         // option 2 O(nlogn) , so quick sort or quick sort
         // merge sort

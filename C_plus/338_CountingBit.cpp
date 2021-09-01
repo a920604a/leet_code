@@ -1,6 +1,17 @@
 class Solution
 {
 public:
+    int count(int d)
+    {
+        int ret = 0;
+        while (d)
+        {
+            ret++;
+            d = d & (d - 1);
+        }
+        return ret;
+    }
+
     vector<int> countBits(int n)
     {
         // option 1 baseline O(nlogn)
@@ -17,6 +28,16 @@ public:
 
         //         }
         //         return ret;
+
+        // option 1.1
+        if (n == 0)
+            return {0};
+        vector<int> v = {0, 1};
+        for (int i = 2; i <= n; ++i)
+        {
+            v.emplace_back(count(i));
+        }
+        return v;
 
         // option 2  inspiration from hint 2
         // O(n)
