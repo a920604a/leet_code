@@ -34,11 +34,8 @@ public:
         //         if(s.size()!=t.size()) return false;
         //         int n = s.size();
         //         for(int i=0;i<n;++i) vec[ s[i] - 'a' ]++;
-
         //         for(int i=0;i<n;++i) vec[t[i] -'a']--;
-
-        //         vector<int> b(26,0);
-        //         return vec==b;
+        //         return vec==vector<int>(26,0);
     }
     int countchar(char c, string s)
     {

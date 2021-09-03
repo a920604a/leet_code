@@ -3,6 +3,22 @@ class Solution
 public:
     bool canJump(vector<int> &nums)
     {
+        // option 0 time out
+        //      2   3   1   1   4
+        //      f   t   t
+        //      f   t   t   t   t
+        
+        // int n = nums.size();
+        // vector<int> dp(n,false) ;
+        // dp[0] = true;
+        // for(int i=0;i<n ; ++i){
+        //     for(int j =i+1;j<=i + nums[i] && j<n; j++){
+        //         dp[j] = dp[i];
+        //     }
+        // }
+        // return dp[n-1];
+
+
         // option 1 dp策略
         //  2   3   1   1   4
         //  0   0   0   0   0    initialize dp

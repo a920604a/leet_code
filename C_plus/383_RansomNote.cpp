@@ -5,14 +5,13 @@ public:
     {
         // option 1
         //         if(ransomNote.size() > magazine.size()) return false;
-        //         vector<int> vec(26,0); // you can also use map
-
-        //         for(int a:magazine) vec[a-'a']++;
-        //         for(int a:ransomNote) vec[a-'a']--;
-        //         for(int a:vec){
-        //             if(a<0) return false;
-        //         }
-        //         return true;
+        // vector<int> vec(26,0); // you can also use map
+        // for(char c:magazine) vec[c-'a']++;
+        // for(char c:ransomNote){
+        //     if(vec[c-'a']==0) return false;
+        //     vec[c-'a']--;
+        // }
+        // return true;
 
         // option 2
         map<char, int> m;
