@@ -40,4 +40,9 @@ long flippingBits(long n) {
 
 }
 
+// option 3
+long flippingBits(long n) { 
+    return (n^(0xffffffff));
+}
+
 ```

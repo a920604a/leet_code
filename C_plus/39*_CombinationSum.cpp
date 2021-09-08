@@ -1,34 +1,29 @@
-/*
- * @Author: yuan
- * @Date: 2021-05-09 20:35:00
- * @LastEditTime: 2021-05-09 20:35:01
- * @FilePath: /C_plus/39_CombinationSum.cpp
- */
 class Solution
 {
 public:
-    vector<vector<int> > combinationSum(vector<int> &candidates, int target)
+    vector<vector<int> > ret;
+    void traverse(vector<int> &cand, int target, int l, int r, vector<int> &path)
     {
-        sort(candidates.begin(), candidates.end());
-        vector<vector<int> > ret;
-        vector<int> combination;
-        combinationSum(candidates, target, ret, combination, 0);
+        if (target < 0)
+            return;
 
-        return ret;
-    }
-
-    void combinationSum(vector<int> &candidates, int target, vector<vector<int> > &ret, vector<int> &combination, int begin)
-    {
-        if (!target)
+        if (target == 0)
         {
-            ret.push_back(combination);
+            ret.push_back(path);
             return;
         }
-        for (int i = begin; i != candidates.size() && target >= candidates[i]; ++i)
+
+        for (int i = l; i <= r; ++i)
         {
-            combination.push_back(candidates[i]);
-            combinationSum(candidates, target - candidates[i], ret, combination, i);
-            combination.pop_back();
+            path.push_back(cand[i]);
+            traverse(cand, target - cand[i], i, r, path);
+            path.pop_back();
         }
+    }
+    vector<vector<int> > combinationSum(vector<int> &candidates, int target)
+    {
+        vector<int> path;
+        traverse(candidates, target, 0, candidates.size() - 1, path);
+        return ret;
     }
 };

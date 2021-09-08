@@ -28,11 +28,11 @@ public:
         // 4    16  20  24  28  32  36  40  44
         vector<bool> visited(n, true);
 
-        for (int i = 2; i * i < n; ++i)
+        for (int i = 2; i <= n / i; ++i)
         {
             if (visited[i])
             {
-                for (int j = i * i; j < n; j += i)  // 這樣比較快
+                for (int j = i * i; j < n; j += i) // 這樣比較快
                 {
                     visited[j] = false;
                 }
@@ -46,4 +46,6 @@ public:
         }
         return ret;
     }
+
+    // option 3 
 };

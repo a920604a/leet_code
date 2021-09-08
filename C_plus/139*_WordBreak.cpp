@@ -1,53 +1,47 @@
 class Solution
 {
 public:
-    bool check(string s, unordered_set<string> &dict)
+    unordered_map<string, bool> memo;
+    bool check(string &s, unordered_set<string> &words)
     {
-        if (dict.count(s))
-            return true;
-
-        for (int i = 1; i <= s.size(); ++i)
-        {
-            string left = s.substr(0, i);
-            string rest = s.substr(i, s.size());
-            if (dict.count(left) && check(rest, dict))
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-    bool wordBreak(string s, vector<string> &wordDict)
-    {
-        // option 1 brute
-        // unordered_set<string> dict(wordDict.begin(), wordDict.end());
-        // return check(s, dict);
-
-        // option 2
-        // dp
-
-        map<string, bool> memo;
-        unordered_set<string> dict(wordDict.begin(), wordDict.end());
-        return check(s, dict, memo);
-    }
-    bool check(string s, unordered_set<string> &dict, map<string, bool> &memo)
-    {
-        if (dict.count(s))
+        if (words.count(s))
             return true;
         if (memo.count(s))
             return memo[s];
-
         for (int i = 1; i <= s.size(); ++i)
         {
             string left = s.substr(0, i);
-            string rest = s.substr(i, s.size());
-            if (dict.count(left) && check(rest, dict, memo))
+            string right = s.substr(i, s.size());
+            if (words.count(left) && check(right, words))
+                return memo[s] = true;
+        }
+        return memo[s] = false;
+    }
+    bool wordBreak(string s, vector<string> &wordDict)
+    {
+        // option 0 brute force => time out
+        // option 1 brute force + memo
+        // unordered_set<string> words(wordDict.begin(), wordDict.end());
+        // return check(s, words);
+
+        // option 2 dp
+        //      l   e   e   t   c   o   d   e
+        //  t   f   f   f   f   f   f   f   f
+        //  t   f   f   f   t   f   f   f   t
+        unordered_set<string> words(wordDict.begin(), wordDict.end());
+        vector<bool> dp(s.size() + 1, false);
+        dp[0] = true;
+        for (int i = 0; i < dp.size(); ++i)
+        {
+            for (int j = 0; j < i; ++j)
             {
-                memo[s] = true;
-                return true;
+                if (dp[j] && words.count(s.substr(j, i - j)))
+                {
+                    dp[i] = true;
+                    break;
+                }
             }
         }
-        memo[s] = false;
-        return false;
+        return dp.back();
     }
 };

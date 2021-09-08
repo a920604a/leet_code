@@ -24,3 +24,17 @@ n & (n-1)
 - 292 Nim Game (Easy)
 - 877 Stone Game (Medium)
 - 319 Bulb Switcher (Medium) 
+
+
+[補充]
+- 263 Ugly Number
+- 264 Ugly Number II
+- 1201 Ugly Number III
+- 313 Super Ugly Number
+- 279 Perfect Squares
+
+
+
+
+
+
