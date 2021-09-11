@@ -25,6 +25,21 @@ public:
         head->next->next = head;
         head->next = successor;
         return node;
+
+        // option 2
+        if (!head || !head->next)
+            return head;
+        ListNode *pre = new ListNode(-1), *cur = head;
+        pre->next = head;
+        // while(cur->next){
+        for (int i = 0; i < r-1; ++i)
+        {
+            ListNode *temp = cur->next;
+            cur->next = temp->next;
+            temp->next = pre->next;
+            pre->next = temp;
+        }
+        return pre->next;
     }
     ListNode *reverseBetween(ListNode *head, int left, int right)
     {

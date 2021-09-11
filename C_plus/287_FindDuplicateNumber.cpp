@@ -3,6 +3,21 @@ class Solution
 public:
     int findDuplicate(vector<int> &nums)
     {
+        // O(nlogn) time and O(10) space
+        sort(nums.begin(), nums.end());
+        for(int i=1;i<nums.size() ;++i) {
+            if(nums[i]==nums[i-1]) return nums[i];
+        }
+        return -1;
+
+        // option 
+        for(int i=0;i<nums.size() ;++i){
+            int idx = abs(nums[i])-1;
+            if(nums[idx]<0) return abs(nums[i]);
+            nums[idx] *=-1;
+        }
+        return -1;
+
         // option 1
         // make use of set O(n) space, O(nlogn) time
         // set<int>s;

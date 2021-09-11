@@ -16,6 +16,19 @@ public:
         //         }
         //         return l;
 
+
+        // binary search
+        // lower bound
+        int l= 0 , r = nums.size();
+        while(l<r){
+            int mid = l + (r-l)/2;
+            if(nums[mid]==target) return mid;
+            else if(nums[mid]< target) l = mid+1;
+            else r= mid;
+        }
+        return l;
+
+        
         // option 2
         for (int i = 0; i < nums.size(); ++i)
         {
