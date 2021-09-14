@@ -24,6 +24,23 @@ public:
         //         }
         //         return ret;
 
+        // option 2
+        vector<int> window(128, 0);
+        int l = 0, r = 0, ans = 0;
+        while (r < s.size())
+        {
+            char c = s[r++];
+
+            window[c]++;
+            while (window[c] > 1)
+            {
+                char d = s[l++];
+                window[d]--;
+            }
+            ans = max(ans, r - l);
+        }
+        return ans;
+
         // n^2 logn brute force
         int res = 0;
         for (int i = 0; i < s.size(); ++i)
