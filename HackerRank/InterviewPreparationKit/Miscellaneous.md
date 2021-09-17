@@ -1,4 +1,6 @@
 ## Flipping bits
+
+
 ```cpp
 long flippingBits(long n) {
     vector<int> v;
@@ -46,3 +48,36 @@ long flippingBits(long n) {
 }
 
 ```
+```python 
+def flippingBits(n):
+    # Write your code here
+    temp , cnt = 0,32
+    while cnt:
+        cnt-=1
+        temp <<=1
+        temp += 1 if n&1==0 else 0
+        n >>=1
+    ans, cnt = 0, 32
+    while cnt:
+        cnt-=1
+        ans <<=1
+        ans += temp&1
+        temp>>=1
+    return ans
+    # return n^(2**32-1)
+```
+
+## Time Complexity: Primality
+
+
+```python
+def primality(n):
+    # Write your code here
+    if(n==1): return "Not prime"
+    for i in range(2, 1+int(math.sqrt( n ) )):
+        if(n%i==0): return "Not prime"
+    return "Prime"
+```
+
+
+
