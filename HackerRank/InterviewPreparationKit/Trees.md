@@ -7,14 +7,7 @@ def height(root):
         return 0
     if root.left is None and root.right is None:
         return 0
-    
-    if root.left is None:
-        return 1+height(root.right)
-    
-    if root.right is None:
-        return 1+height(root.left)
-    
-    return 1+ max(height(root.left), height(root.right))
+    return 1+max(height(root.left), height(root.right))
 
 ```
 
@@ -23,19 +16,17 @@ def height(root):
 
 ```python
 def lca(root, v1, v2):
-  #Enter your code here
-    n , m = v1,v2
-    v1 = min(n,m)
-    v2 = max(n,m)
-    
-    if root.info == v1 or root.info == v2:
+    if root is None:
+        return None
+    if root.info == v1 or root.info ==v2:
         return root
-    if root.info > v1 and root.info < v2:
-        return root
-    elif root.info < v1 and root.info < v2:
+
+    if root.info < v1 and root.info <v2:
         return lca(root.right, v1, v2)
-    else:
+    elif root.info > v1 and root.info > v2:
         return lca(root.left, v1, v2)
+    else:
+        return root
     
 ```
 
@@ -43,22 +34,15 @@ def lca(root, v1, v2):
 
 ```python
 
-
 def isValid(root, mn, mx):
-    
     if root is None:
         return True
     
-    if mn>= root.data:
+    if root.data <= mn or root.data >=mx:
         return False
-    if mx<= root.data:
-        return False
-    
     return isValid(root.left, mn, root.data) and isValid(root.right, root.data, mx)
-
+    
 def checkBST(root):
-    if root is None:
-        return True
     return isValid(root, 0,10000)
     
 
@@ -66,6 +50,7 @@ def checkBST(root):
 
 
 ## Tree: Huffman Decoding
+
 
 
 ```python
@@ -84,3 +69,7 @@ def decodeHuff(root, s):
             curr=root
     print(ans)
 ```
+# Fail
+
+## Balanced Forest
+

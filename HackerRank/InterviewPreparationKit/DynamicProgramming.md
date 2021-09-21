@@ -1,5 +1,7 @@
 ## Max Array Sum
 
+
+類leetcode Robber
 ```python
 
 def maxSubsetSum(arr):
@@ -18,7 +20,7 @@ def maxSubsetSum(arr):
 ```
 
 ## Candies
-
+leetcode 135. Candy
 ```python
 def candies(n, arr):
     # Write your code here
@@ -51,15 +53,14 @@ def candies(n, arr):
 
 
 def abbreviation(a, b):
-    # Write your code here
-    #       d   a   B   c   d
-    #   t   t   t   f   f   f
-    #A  f   f   t   f   f   f   
-    #B  f   f   f   t   t   t
-    #C  f  f    f   f   t   t
+    #       A   b   c   D   E
+    #   t   f   f   f   f   f
+    #A  f   t   t   t   f   f
+    #B  f   f   t   t   f   f
+    #D  f   f   f   f   t   f
+    #E  f   f   f   f   f   t
 
     m, n  = len(a), len(b)
-    ret = 0
     dp = [[False for i in range(m+1)] for j in range(n+1)]
     dp[0][0] = True
     for i in range(n+1):

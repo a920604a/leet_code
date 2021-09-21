@@ -29,7 +29,6 @@ SinglyLinkedListNode* insertNodeAtPosition(SinglyLinkedListNode* llist, int data
 ```python
 
 def insertNodeAtPosition(llist, data, position):
-    # Write your code here
     position-=1
     p = llist
     while position:

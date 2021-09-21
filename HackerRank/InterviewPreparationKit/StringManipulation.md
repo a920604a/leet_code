@@ -106,59 +106,33 @@ def substrCount(n, s):
 
 ## Alternating Characters
 
-
+紀錄上一個字母，比較當前字母，相同則加一
 ```python
 def alternatingCharacters(s):
-    # Write your code here
-    if len(s) ==1:
-        return 0
-    
+    cur = s[0]
     ret = 0
-    prev = s[0]
-    for cur in s[1:]:
-        if prev==cur:
+    for a in s[1:]:
+        if a==cur:
             ret+=1
-        else:
-            prev = cur
+        elif a!=cur:
+            cur =a
     return ret
 ```
 ## Strings: Making Anagrams
 
-
+直接統計字母出現頻率
 ```python
-def makeAnagram(a, b):
-    # Write your code here
-    ret = 0
-    ma, mb = defaultdict(int), defaultdict(int)
-    s = set()
-    for c in a:
-        ma[c]+=1
-        s.add(c)
-    for c in b:
-        mb[c]+=1
-        s.add(c)
-    
-    for c in s:        
-        if ma[c] == mb[c]:
-            continue
-        elif ma[c]!=0 and mb[c]!=0:
-            ret += abs(mb[c]-ma[c])
-        elif ma[c]>0 and mb[c]==0:
-            ret += ma[c]
-        elif mb[c]>0 and ma[c]==0:
-            ret += mb[c]
-            
-    return ret
 
-#  option 2
-freq = [0 for _ in range(26)]
+def makeAnagram(a, b):
+    histA = [0 for i in range(26)]
+    histB = [0 for i in range(26)]
+    ret = 0 
     for c in a:
-        freq[ ord(c) - 97] +=1
+        histA[ord(c)-ord('a')]+=1
     for c in b:
-        freq[ ord(c) - 97] -=1
-        
+        histB[ord(c)-ord('a')]+=1
     for i in range(26):
-        ret += abs(freq[i])
+        ret += abs(histB[i]-histA[i])
     return ret
 ```
 

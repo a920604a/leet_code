@@ -4,25 +4,22 @@
 
 ```python
 def isBalanced(s):
-    # Write your code here
-    ret = []
+    stack = []
     for c in s:
-        if c=='(' or c=='{' or c=='[':
-            ret.append(c)
+        if c=='(' or c=='[' or c=='{':
+            stack.append(c)
         else:
-            if not ret:
+            if not stack:
                 return "NO"
-            elif ret[-1] == '[' and c==']':
-                ret.pop()
-            elif ret[-1] == '{' and c=='}':
-                ret.pop()
-            elif ret[-1] == '(' and c==')':
-                ret.pop()
+            elif c==')' and stack[-1] =='(':
+                stack.pop(-1)
+            elif c==']' and stack[-1] =='[':
+                stack.pop(-1)
+            elif c=='}' and stack[-1] =='{':
+                stack.pop(-1)
             else:
                 return "NO"
-    if ret :
-        return "NO"
-    return "YES"
+    return "YES" if not stack else "NO"
 ```
 
 ## Largest Rectangle
@@ -49,12 +46,14 @@ def largestRectangle(h):
 
 
 
-## 
+
 # Fail
 ## Min Max Riddle
 
+
 ```python 
 # time out sliding window
+# monotonic queue
 def minWindow(arr, w):
     n = len(arr)
     if w==1:
@@ -74,4 +73,56 @@ def riddle(arr):
         temp = minWindow(arr, w)
         ret.append(temp)
     return ret
+```
+
+
+## Queues: A Tale of Two Stacks
+
+
+```python
+class MyQueue(object):
+    def __init__(self):
+        self.sta=[]
+        self.sta2 = []
+    
+    def peek(self):
+        if not self.sta2:
+            while self.sta:
+                self.sta2.append(self.sta.pop(-1))                
+        return self.sta2[-1]
+        
+        
+    def pop(self):
+        if not self.sta2:
+              while self.sta:
+                self.sta2.append(self.sta.pop(-1))                
+        return self.sta2.pop() 
+            
+        
+    def put(self, value):
+        self.sta.append(value)
+        
+
+```
+
+
+## Poisonous Plants
+
+
+```python
+def poisonousPlants(plants):
+    stack = []
+    maxDays = 0
+    for p in plants:
+        days= 1
+
+        while stack and stack[-1][0] >= p:
+            _, d = stack.pop()
+            days = max(days, d+1)
+        if not stack:
+            days = 0
+        maxDays = max(maxDays, days)
+        stack.append((p, days))
+    return maxDays
+
 ```

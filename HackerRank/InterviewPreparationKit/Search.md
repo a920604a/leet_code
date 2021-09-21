@@ -8,6 +8,7 @@ def whatFlavors(cost, money):
     for i, c in enumerate(cost):
         if money-c in ht:
             print(ht[money-c]+1, i+1)
+            return
         ht[c] = i
     
     
@@ -15,6 +16,8 @@ def whatFlavors(cost, money):
 
 ## Pairs
 
+
+binary search
 
 ```python 
 def pairs(k, arr):
@@ -77,6 +80,13 @@ def triplets(a, b, c):
 ```
 
 
+# Fail
+
+## Swap Nodes [Algo]
+
+
+## Making Candies
+
 ## Maximum Subarray Sum
 
 ```python 
@@ -137,10 +147,3 @@ def minTime(machines, goal):
 
 ```
 
-
-# Fail
-
-## Swap Nodes [Algo]
-
-
-## Making Candies

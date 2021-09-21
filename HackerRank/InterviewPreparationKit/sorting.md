@@ -37,10 +37,25 @@ class Player:
 ```
 
 ## Mark and Toys
-
 ```python
 def maximumToys(prices, k):
     # Write your code here
+    prices.sort()
+    n = len(prices)
+    ret = 0
+    for i in range(n):
+        j = i
+        total = prices[i]
+        while j<n-1 and total + prices[j+1] < k:
+            j+=1
+            total+=prices[j]
+        ret = max(ret, j-i+1)
+    return ret
+
+```
+
+```python
+def maximumToys(prices, k):
     prices.sort()
     count = 0
     for p in prices:
@@ -95,11 +110,6 @@ def countInversions(arr):
     return MergeSort(arr, 0, len(arr)-1)
     
 ```
-
-
-
-
-
 
 # Fail
 ## Fraudulent Activity Notifications
