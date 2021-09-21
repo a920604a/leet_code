@@ -1,11 +1,3 @@
-"""
-Author: yuan
-Date: 2021-07-14 21:37:29
-LastEditTime: 2021-07-14 21:37:29
-FilePath: /leet_code/Python/64_MinimumPathSum.py
-"""
-
-
 class Solution:
     def minPathSum(self, grid: List[List[int]]) -> int:
         # 1 3 1      1 4 5

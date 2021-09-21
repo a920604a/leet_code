@@ -1,9 +1,3 @@
-'''
-Author: yuan
-Date: 2021-07-14 20:59:46
-LastEditTime: 2021-07-14 21:13:09
-FilePath: /leet_code/Python/2_AddTwoNumbers.py
-'''
 # Definition for singly-linked list.
 # class ListNode:
 #     def __init__(self, val=0, next=None):

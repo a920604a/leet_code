@@ -31,6 +31,7 @@ public:
             }
         }
         return ret;
-        // option 2 BFS  + queue
+        // option 2 DFS without space 
+        // 將拜訪過的改成0
     }
 };

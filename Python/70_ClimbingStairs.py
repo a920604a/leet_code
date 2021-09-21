@@ -1,9 +1,3 @@
-'''
-Author: yuan
-Date: 2021-07-14 21:42:28
-LastEditTime: 2021-07-14 21:42:29
-FilePath: /leet_code/Python/70_ClimbingStairs.py
-'''
 class Solution:
     def climbStairs(self, n: int) -> int:
         # n = 1 -> 1

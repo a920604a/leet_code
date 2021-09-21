@@ -1,11 +1,3 @@
-"""
-Author: yuan
-Date: 2021-07-14 21:27:37
-LastEditTime: 2021-07-14 21:27:38
-FilePath: /leet_code/Python/41_FirstMissingPositive.py
-"""
-
-
 class Solution:
     def firstMissingPositive(self, nums: List[int]) -> int:
         # option 1 O(nlogn) time

@@ -1,55 +1,55 @@
 class Solution
 {
 public:
-    void permuteUniqueDFS(vector<int> &nums, int level, vector<int> &visited, vector<int> &out, set<vector<int> > &ret)
+    void traverse(vector<int> &nums, vector<int> &path, set<vector<int> > &ret, vector<bool> &used)
     {
 
-        if (level >= nums.size())
+        if (nums.size() == path.size())
         {
-            // ret.push_back(out);
-            ret.insert(out);
+            ret.insert(path);
             return;
         }
+
         for (int i = 0; i < nums.size(); ++i)
         {
-            if (visited[i] == 1)
+            if (used[i])
                 continue;
-            if (i > 0 && nums[i] == nums[i - 1] && visited[i - 1] == 0)
-                continue;
-            visited[i] = 1;
-            out.push_back(nums[i]);
-            permuteUniqueDFS(nums, level + 1, visited, out, ret);
-            out.pop_back();
-            visited[i] = 0;
+            used[i] = true;
+            path.push_back(nums[i]);
+            traverse(nums, path, ret, used);
+            path.pop_back();
+            used[i] = false;
         }
     }
     vector<vector<int> > permuteUnique(vector<int> &nums)
     {
-        //option 1 
-        sort(nums.begin(), nums.end());
-        set<vector<int> > ret;
-        vector<int> out, visited(nums.size(), 0);
-        permuteUniqueDFS(nums, 0, visited, out, ret);
-        return vector<vector<int> >(ret.begin(), ret.end());
+        //option 1
+        set<vector<int>> ret;
+        vector<int> path;
+        vector<bool> used(nums.size(), false);
+        traverse(nums, path, ret, used);
+        return vector<vector<int>>(ret.begin(), ret.end());
 
-        // option 2 
-        set<vector<int>> res;
+        // option 2
+        set<vector<int> > res;
         permute(nums, 0, res);
-        return vector<vector<int>> (res.begin(), res.end());
+        return vector<vector<int> >(res.begin(), res.end());
     }
 
+    void permute(vector<int> &nums, int start, set<vector<int> > &ret)
+    {
 
-    void permute(vector<int>& nums, int start, set<vector<int>>& ret){
-        
-        if(start >= nums.size()) ret.insert(nums);
-        
-        for(int i = start ; i<nums.size();++i){
+        if (start >= nums.size())
+            ret.insert(nums);
+
+        for (int i = start; i < nums.size(); ++i)
+        {
             // prune
-            if (i != start && nums[i] == nums[start]) continue;
+            if (i != start && nums[i] == nums[start])
+                continue;
             swap(nums[start], nums[i]);
-            permute(nums, start+1, ret);
+            permute(nums, start + 1, ret);
             swap(nums[start], nums[i]);
-            
         }
     }
 };

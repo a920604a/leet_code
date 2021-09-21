@@ -3,50 +3,36 @@ class Solution
 public:
     vector<int> spiralOrder(vector<vector<int> > &matrix)
     {
-        vector<pair<int, int> > action = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
-        vector<int> ret;
-        set<pair<int, int> > s;
-        int i = 0, j = 0;
-        int width = matrix[0].size(), height = matrix.size();
-        int n = width * height;
-        int a = 0;
-        while (n)
+        int n = matrix.size(), m = matrix[0].size();
+        vector<int> paths;
+        vector<vector<bool> > used(n, vector<bool>(m, false));
+        vector<int> acts = {0, 1, 0, -1};
+        // {0,1} {1,0} {0,-1} {-1,0}
+        int p = n * m, a = 0;
+        int i = 0, j = -1;
+        int pre_x = 0, pre_y = 0;
+        int x = 0, y = 0;
+        while (p)
         {
-            cout << i << " " << j << endl; // trace code
-
-            if (s.find(make_pair(i, j)) != s.end())
-            { // select all possible direct
-                for (int jj = 0; jj < 4; ++jj)
-                {
-                    i -= action[a].first;
-                    j -= action[a].second;
-                    a++;
-                    a = a % 4;
-                    i += action[a].first;
-                    j += action[a].second;
-                    if (s.find(make_pair(i, j)) == s.end())
-                        break;
-                }
-            }
-            if (i > height - 1 || i < 0 || j > width - 1 || j < 0)
-            { // bomp! , change direct
-                i -= action[a].first;
-                j -= action[a].second;
+            x = i + acts[a % 4], y = j + acts[(a + 1) % 4];
+            // cout<<x<<" "<<y<<endl;
+            while (x > n - 1 || y > m - 1 || x < 0 || y < 0 || used[x][y] == true)
+            {
                 a++;
-                a = a % 4;
-                i += action[a].first;
-                j += action[a].second;
+                x = i + acts[a % 4];
+                y = j + acts[(a + 1) % 4];
+                // cout<<"the corner\t, reannge:\t"<<x<<" "<<y<<endl;
             }
-            if (s.find(make_pair(i, j)) == s.end())
-            { // not yet visit, visiting
-                ret.push_back(matrix[i][j]);
-                s.insert(make_pair(i, j));
-                i += action[a].first;
-                j += action[a].second;
+            if (!used[x][y])
+            {
+                paths.push_back(matrix[x][y]);
+                // cout<<"visited:\t"<<x<<" "<<y<<endl;
+                used[x][y] = true;
+                i = x;
+                j = y;
+                p--;
             }
-
-            n--;
         }
-        return ret;
+        return paths;
     }
 };
