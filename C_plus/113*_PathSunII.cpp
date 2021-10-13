@@ -12,31 +12,44 @@
 class Solution
 {
 public:
-    void findPaths(TreeNode *root, int target, vector<int> &path, vector<vector<int> > &paths)
+    void traverse(TreeNode *root, int target, vector<int> &path, vector<vector<int> > &ret)
     {
+
         if (!root)
             return;
-        target -= root->val;
+
         path.push_back(root->val);
-        if (!root->left && !root->right && target == 0)
+        target -= root->val;
+
+        if (!root->left && !root->right)
         {
-            ret.push_back(path);
+            if (target == 0)
+            {
+                ret.push_back(path);
+            }
+            return;
         }
 
-        traverse(root->left, target, path, ret);
-        traverse(root->right, target, path, ret);
-        path.pop_back();
+        if (root->left)
+        {
+            traverse(root->left, target, path, ret);
+            path.pop_back();
+        }
+        if (root->right)
+        {
+            traverse(root->right, target, path, ret);
+            path.pop_back();
+        }
     }
     vector<vector<int> > pathSum(TreeNode *root, int targetSum)
     {
-        // option 1 DFS
-        vector<vector<int> > paths;
-        vector<int> path;
-        findPaths(root, targetSum, path, paths);
-        for (int p : path)
-            cout << p << " ";
-        return paths;
 
-        // option 2 BFS
+        vector<vector<int> > ret;
+        vector<int> path;
+        traverse(root, targetSum, path, ret);
+        return ret;
     }
-};
+    // option 2 BFS
+}
+}
+;
