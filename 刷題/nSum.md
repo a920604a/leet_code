@@ -6,6 +6,7 @@
 **排序、雙指針**
 
 - 15 3Sum (Medium)
+- 16 3Sum Closest
 - 18 4Sum (Medium)
 - 454 4Sum (Medium)
 

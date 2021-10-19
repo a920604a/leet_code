@@ -2,6 +2,7 @@ class Solution
 {
 private:
     vector<int> vec;
+    int size = 0;
 
 public:
     Solution(vector<int> &nums)
@@ -11,7 +12,8 @@ public:
         // 對於每一個S[j]項（j ≥ k）：
         // 隨機產生一個範圍從0到j的整數r
         // 若 r < k 則把水塘中的第r項換成S[j]項
-        vec = nums;
+        this->vec = nums;
+        size = vec.size(); 
     }
 
     int pick(int target)
@@ -28,6 +30,13 @@ public:
         }
 
         return ret;
+
+        // option 2
+        int i = rand()%size;
+        while(vec[i]!=target){
+            i = rand()%size;
+        }
+        return i;
     }
 };
 

@@ -3,7 +3,7 @@ class Solution
 public:
     bool isValid(string s)
     {
-        
+
         stack<char> sta;
         for (char c : s)
         {
@@ -24,6 +24,6 @@ public:
                     return false;
             }
         }
-        return sta.empty() ? true : false;
+        return sta.empty();
     }
 };

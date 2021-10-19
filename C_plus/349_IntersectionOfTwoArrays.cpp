@@ -43,6 +43,19 @@ public:
         }
 
         return vector<int>(ret.begin(), ret.end());
+
+        // option 4 O(n) time and O(1) space
+        vector<int> ret;
+        vector<bool> his(1000, false);
+        for (int n : nums1)
+            his[n] = true;
+        for (int n : nums2)
+        {
+            if (his[n])
+                ret.push_back(n);
+            his[n] = false;
+        }
+        return ret;
     }
     bool BinarySearch(vector<int> &nums, int target)
     {

@@ -74,3 +74,22 @@ public:
         return ret;
     }
 };
+
+
+// option 3
+
+class Solution {
+private:
+    vector<int> vec;
+    int size  =0;
+public:
+    Solution(ListNode* head) {        
+        for(ListNode *p =head;p; p=p->next){
+            vec.push_back(p->val);
+            size++;
+        }        
+    }    
+    int getRandom() {
+        return vec[rand()%size];        
+    }
+};

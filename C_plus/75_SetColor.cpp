@@ -23,8 +23,7 @@ public:
             his[n]++;
         for (int i = 0, j = 0; i < nums.size(); ++i)
         {
-            while (his[j] == 0)
-                j++;
+            while (his[j] == 0)  j++;
             his[j]--;
             nums[i] = j;
         }

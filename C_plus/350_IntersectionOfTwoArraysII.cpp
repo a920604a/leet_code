@@ -36,6 +36,20 @@ public:
         }
         return ret;
 
+        // option 2.2 one vector 
+        vector<int> his(1000,0);
+        vector<int> ret;
+        for(int n:nums1) his[n]++;
+        for(int n:nums2){
+            if(his[n]>0){
+                ret.push_back(n);
+                his[n]--;
+            }
+        }
+        return ret;
+
+
+
         // option 3
         // use two pointer O(n)
         sort(nums1.begin(), nums1.end());

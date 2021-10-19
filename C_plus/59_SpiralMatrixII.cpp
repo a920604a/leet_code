@@ -3,57 +3,26 @@ class Solution
 public:
     vector<vector<int> > generateMatrix(int n)
     {
-        if (n == 1)
-            return {{1}};
-        vector<pair<int, int> > action = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
-        vector<vector<int> > res(n, vector<int>(n, 0));
-        set<pair<int, int> > s;
-        int times = n * n;
-        int i = 0, j = 0, a = 0;
-        int v = 0;
-        while (times)
+        vector<int> acts = {0, 1, 0, -1};
+        vector<vector<int> > ret(n, vector<int>(n, 0));
+        vector<vector<bool> > used(n, vector<bool>(n, false));
+        int i = 0, j = -1, a = 0, p = 1;
+        while (p <= n * n)
         {
-            if (i < 0 || j < 0 || i > n - 1 || j > n - 1)
-            { // bomb! change direct
-                i -= action[a].first;
-                j -= action[a].second;
-                a++;
-                a = a % 4;
-                i += action[a].first;
-                j += action[a].second;
-                // cout<<"change x-y"<<endl;
-                // cout<<i<<" "<<j<<endl;
-            }
+            int x = i + acts[a % 4];
+            int y = j + acts[(a + 1) % 4];
 
-            cout << i << " " << j << endl;
-            if (s.find(make_pair(i, j)) != s.end())
+            while (x < 0 || x > n - 1 || y > n - 1 || y < 0 || used[x][y])
             {
-                for (int jj = 0; jj < 4; ++jj)
-                {
-                    i -= action[a].first;
-                    j -= action[a].second;
-                    a++;
-                    a = a % 4;
-                    i += action[a].first;
-                    j += action[a].second;
-                    if (s.find(make_pair(i, j)) == s.end())
-                        break;
-                }
-
-                cout << i << " " << j << endl;
+                a++;
+                x = i + acts[a % 4];
+                y = j + acts[(a + 1) % 4];
             }
-
-            if (s.find(make_pair(i, j)) == s.end())
-            { //not yet visit
-                v++;
-                res[i][j] = v;
-                s.insert(make_pair(i, j));
-                i += action[a].first;
-                j += action[a].second;
-            }
-
-            times--;
+            ret[x][y] = p++;
+            used[x][y] = true;
+            i = x;
+            j = y;
         }
-        return res;
+        return ret;
     }
 };

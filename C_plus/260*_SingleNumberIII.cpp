@@ -30,6 +30,8 @@ public:
         for (int n : nums)
             diff ^= n;
         diff &= -diff;
+        //-diff 110 => reverse bit and + 1 => 001 -> 010 
+        // set this diff bit to divide two part
         vector<int> ret(2, 0);
         for (int a : nums)
         {

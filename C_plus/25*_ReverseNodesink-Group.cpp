@@ -27,15 +27,16 @@ public:
     }
     ListNode *reverse(ListNode *cur, ListNode *nextHead)
     {
-        ListNode *pre = nullptr, *now = cur, *post;
-        while (now != nextHead)
+        ListNode *pre = new ListNode(-1);
+        pre->next = cur;
+        while (cur->next != newHead)
         {
-            post = now->next;
-            now->next = pre;
-            pre = now;
-            now = post;
+            ListNode *temp = cur->next;
+            cur->next = temp->next;
+            temp->next = pre->next;
+            pre->next = temp;
         }
-        return pre;
+        return pre->next;
     }
     ListNode *reverseKGroup(ListNode *head, int k)
     {
