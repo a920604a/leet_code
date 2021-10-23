@@ -9,6 +9,8 @@
 - 16 3Sum Closest
 - 18 4Sum (Medium)
 - 454 4Sum (Medium)
+- 923 3Sum With Multiplicity (Medium)
+
 
 ```cpp
 vector<int> twoSum(vector<int>& nums, int target) {

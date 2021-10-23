@@ -10,7 +10,7 @@ public:
         // sort(ret.begin(),ret.end());
         // return ret;
 
-        // option 1.1 O(nlogn0) time
+        // option 1.1 O(nlogn) time
         //         sort(nums.begin(), nums.end(), [](int a, int b){
         //             return abs(a)<abs(b);
         //         });
@@ -36,22 +36,16 @@ public:
 
         // option 3 simplify faster option 2
 
-        int n = nums.size();
+        int n = nums.size(), l = 0, r = n - 1;
         vector<int> ret(n, 0);
-        int l = 0, r = n - 1;
-
-        for (int k = n - 1; k > -1; --k)
+        for (int i = r; i > -1; i--)
         {
-            if (abs(nums[l]) >= abs(nums[r]))
+            if (abs(nums[l]) > abs(nums[r]))
             {
-                ret[k] = nums[l] * nums[l];
-                l++;
+                ret[i] = nums[l] * nums[l++];
             }
             else
-            {
-                ret[k] = nums[r] * nums[r];
-                r--;
-            }
+                ret[i] = nums[r] * nums[r--];
         }
         return ret;
     }
