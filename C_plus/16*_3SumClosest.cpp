@@ -3,6 +3,7 @@ class Solution
 public:
     int threeSumClosest(vector<int> &nums, int target)
     {
+        // O(n^2) time and O(1) space
         sort(nums.begin(), nums.end());
         int ret = nums[0] + nums[1] + nums[2];
         int cand = 0;

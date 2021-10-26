@@ -3,64 +3,42 @@ class Solution
 public:
     vector<vector<int> > fourSum(vector<int> &nums, int target)
     {
-        // option 1 O(n^3) use set
-        //         set<vector<int>> res;
-        //         sort(nums.begin(), nums.end());
-        //         int n = nums.size();
-        //         for(int i=0;i<n-3;i++){
-        //             for(int j=i+1;j<n-2;j++){
-        //                 if (j > i + 1 && nums[j] == nums[j - 1]) continue;
-        //                 int left = j+1, right = n-1;
-        //                 while(left<right){
-        //                     int sum = nums[i]+nums[j]+nums[left]+nums[right];
-        //                     if(target ==sum){
-        //                         res.insert({nums[i], nums[j], nums[left], nums[right]});
-        //                         while(left<right && nums[left]==nums[left+1]) left++;
-        //                         while(left<right && nums[right]==nums[right-1]) right--;
-        //                         left++;
-        //                         right--;
-        //                     }
-        //                     else if(target>sum) left++;
-        //                     else right--;
-
-        //                 }
-        //             }
-        //         }
-        //         return vector<vector<int>>(res.begin(), res.end());
-
-        // optnio 2 instead of set , use math 
-        vector<vector<int> > res;
+        // O(n^3) time and O(1) space
         sort(nums.begin(), nums.end());
         int n = nums.size();
-        for (int i = 0; i < n - 3; i++)
+        vector<vector<int> > ret;
+        for (int i = 0; i < n - 3; ++i)
         {
-            if (i > 0 && nums[i] == nums[i - 1])
+            if (i > 0 && nums[i - 1] == nums[i])
                 continue;
-            for (int j = i + 1; j < n - 2; j++)
+            for (int j = i + 1; j < n - 2; ++j)
             {
-                if (j > i + 1 && nums[j] == nums[j - 1])
+                if (j > i + 1 && nums[j - 1] == nums[j])
                     continue;
-                int left = j + 1, right = n - 1;
-                while (left < right)
+
+                int l = j + 1, r = n - 1;
+                int sum = target - nums[i] - nums[j];
+                // avoid overflow
+                while (l < r)
                 {
-                    int sum = nums[i] + nums[j] + nums[left] + nums[right];
-                    if (target == sum)
+                    int eval = nums[l] + nums[r];
+                    if (eval == sum)
                     {
-                        res.push_back({nums[i], nums[j], nums[left], nums[right]});
-                        while (left < right && nums[left] == nums[left + 1])
-                            left++;
-                        while (left < right && nums[right] == nums[right - 1])
-                            right--;
-                        left++;
-                        right--;
+                        ret.push_back({nums[i], nums[j], nums[l], nums[r]});
+                        while (l < r && nums[l] == nums[l + 1])
+                            l++;
+                        while (l < r && nums[r] == nums[r - 1])
+                            r--;
+                        l++;
+                        r--;
                     }
-                    else if (target > sum)
-                        left++;
+                    else if (eval < sum)
+                        l++;
                     else
-                        right--;
+                        r--;
                 }
             }
         }
-        return res;
+        return ret;
     }
 };

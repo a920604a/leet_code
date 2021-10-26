@@ -71,7 +71,7 @@ public:
         return ret;
         
         
-        // optnio 4 stack
+        // optnio 4 monotonic stack
         
 //         stack<int> sta; //存索引 單調堆疊
 //         int ret=0;
@@ -83,8 +83,8 @@ public:
 //                 int t = sta.top(); // 坑的底 
 //                 sta.pop();
 //                 if(sta.empty()) continue; // 不夠形成坑 
-//                 ret +=    (min(height[i], height[sta.top()]) - height[t]) * (i - sta.top() -1 );
-//                 // ret +=    (min(height[i], height[sta.top()]) - height[t]) * (i - sta.top() - 1);
+                ret +=    (min(height[i], height[sta.top()]) - height[t]) * (i - sta.top() -1 );
+                // ret +=    (min(height[i], height[sta.top()]) - height[t]) * (i - sta.top() - 1);
 //                 // 高(剪掉坑的高度) 乘 寬(索引相剪)         
 //                 cout<<ret<<endl;
                 

@@ -103,24 +103,33 @@ void QuickSort(vector<int> &nums, int l, int r)
 
 void Merge(vector<int> &nums, int l, int mid, int r)
 {
-    vector<int> left(nums.begin() + l, nums.begin() + mid + 1);
-    vector<int> right(nums.begin() + mid + 1, nums.begin() + 1 + r);
-    left.push_back(INT_MAX);
-    right.push_back(INT_MAX);
+    if(l>=r) return;
+    vector<int> left(nums.begin() + l, nums.begin() + mid+1);
+    vector<int> right(nums.begin() + mid+1, nums.begin() + r + 1);
 
-    int j = 0, k = 0;
-
-    for (int i = l; i <= r; ++i)
+    int i = 0, j = 0, k = l;
+    while (i < left.size() && j < right.size())
     {
-        if (left[j] <= right[k])
-        {
-            nums[i] = left[j++];
-        }
+        if (left[i] <= right[j])
+            nums[k++] = left[i++];
         else
-        {
-            nums[i] = right[k++];
-        }
+            nums[k++] = right[j++];
+            
     }
+    while (i < left.size())
+        nums[k++] = left[i++];
+    while (j < right.size())
+        nums[k++] = right[j++];
+
+
+    // option 2
+    // left.push_back(INT_MAX);
+    // right.push_back(INT_MAX);
+    // int j=0, k=0;
+    // for(int i=l ;i<=r ;++i){
+    //     if(left[j]<right[k])  nums[i] = left[j++];
+    //     else nums[i] = right[k++];
+    // }
 }
 void MergeSort(vector<int> &nums, int l, int r)
 {

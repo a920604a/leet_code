@@ -31,33 +31,26 @@ public:
         //         return false;
 
         // option 2
-        // binary search
-
-        int l = 0, r = nums.size() - 1;
-
+        // binary search O(logn)
+        int n = nums.size();
+        int l = 0, r = n - 1;
         while (l <= r)
         {
-
             int mid = l + (r - l) / 2;
-
             if (nums[mid] == target)
                 return true;
-
-            else if (nums[r] > nums[mid])
-            { // 右半部遞增
-                if (nums[r] >= target && target > nums[mid])
-                {
+            if (nums[r] > nums[mid])
+            {
+                // 右半部遞增
+                if (target <= nums[r] && target > nums[mid])
                     l = mid + 1;
-                }
                 else
-                    r = mid - 1;
+                    r = mid;
             }
             else if (nums[r] < nums[mid])
-            { // 左半部遞增
-                if (nums[l] <= target && target < nums[mid])
-                {
-                    r = mid - 1;
-                }
+            {
+                if (target < nums[mid] && target >= nums[l])
+                    r = mid;
                 else
                     l = mid + 1;
             }

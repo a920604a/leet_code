@@ -3,49 +3,39 @@ class Solution
 public:
     int threeSumMulti(vector<int> &arr, int target)
     {
-
-        // option 1 brute force
-        // int mod = 1e+9+7;
-        // int cnt = 0;
-        // int n = arr.size();
-        // for(int i=0;i<n-2;++i){
-        //     for(int j=i+1;j<n;++j){
-        //         for(int k=j+1;k<n;++k) cnt += (arr[i]+arr[j]+arr[k]==target)%mod;
-        //     }
-        // }
-        // return cnt;
-
+        // two point O(n^2) time and O(1) space
+        int cnt = 0;
         int mod = 1e+9 + 7;
-        long cnt = 0;
         int n = arr.size();
         sort(arr.begin(), arr.end());
-        for (int i = 0; i < n - 1; ++i)
+        for (int i = 0; i < n - 2; ++i)
         {
-            int j = i + 1, k = n - 1;
-            while (j < k)
+            int l = i + 1, r = n - 1;
+            while (l < r)
             {
-                int sum = arr[i] + arr[j] + arr[k];
+                int sum = arr[i] + arr[l] + arr[r];
                 if (sum == target)
                 {
                     int left = 1, right = 1;
-
-                    while (j + left <= k && arr[j] == arr[j + left])
+                    while (l + left <= r && arr[l + left] == arr[l])
                         left++;
-                    while (j + left <= k - right && arr[k] == arr[k - right])
+                    while (l + left <= r - right && arr[r - right] == arr[r])
                         right++;
-                    if (arr[j] == arr[k])
-                        cnt += (k - j + 1) * (k - j) / 2;
+                    if (arr[l] == arr[r])
+                        cnt += (r - l + 1) * (r - l) / 2;
                     else
                         cnt += left * right;
-                    j += left;
-                    k -= right;
+                    cnt = cnt % mod;
+                    l += left;
+                    r -= right;
                 }
                 else if (sum < target)
-                    j++;
+                    l++;
                 else
-                    k--;
+                    r--;
             }
         }
-        return cnt % mod;
+
+        return cnt;
     }
 };

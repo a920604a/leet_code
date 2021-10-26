@@ -13,13 +13,12 @@ public:
     string longestPalindrome(string s)
     {
 
-        // option 1
+        // option 1 two point O(n^2) time and O(1) space
         //         int start = 0, len = 0;
         //         int n = s.size() ;
         //         for(int i=0;i<n ;){
 
         //             int l = i, r = i;
-        //             cout<<i<<" ";
         //             while(r<n-1 && s[r] == s[r+1] ) r++;
 
         //             i = r+1;

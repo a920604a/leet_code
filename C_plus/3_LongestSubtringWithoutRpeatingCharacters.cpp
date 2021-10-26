@@ -3,7 +3,8 @@ class Solution
 public:
     int lengthOfLongestSubstring(string s)
     {
-        //  option 1 滑動窗口 O(n+m)
+        // option 1 slid window O(n) time and O(n) space worst case
+
         //         int left = 0, right = 0;
         //         unordered_map<char, int> window;
         //         int ret = 0;

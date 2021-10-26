@@ -38,18 +38,15 @@ public:
         // }
         // return {};
 
-        // option 2 Hashing O(n) time and O(n) space
-        unordered_map<int, int> m;
-        for (int i = 0; i < nums.size(); i++)
-        {
-
-            if (m.count(target - nums.at(i)))
-            {
-                return {m[target - nums.at(i)], i};
-            }
-            m[nums.at(i)] = i;
+        // option 2 hashMap O(n) time and O(n) space
+        
+        unordered_map<int,int> mp;
+        int n = nums.size();
+        for(int i=0;i<n;++i){
+            if(mp.count(target - nums[i])) return {mp[target - nums[i]],i};
+            mp[nums[i]]  =i;                                                                    
         }
-        return {};
+        return {-1,-1};
 
         // option 3 API interface
         // 170. Two Sum III - Data structure design

@@ -3,26 +3,27 @@ class Solution
 public:
     int findMin(vector<int> &nums)
     {
-        // option 1
-        //         int l =0, r = nums.size()-1;
-        //         while(l<r){
-        //             int mid = l+(r-l)/2;
-        //             if(nums[mid] > nums[r]) l= mid+1;
-        //             else r= mid;
-        //         }
+        // priority queue O(nlogn)
 
-        //         return nums[l];
+        // priority_queue<int, vector<int>, greater<int>> pq;
+        // for(int n:nums) pq.push(n);
+        // return pq.top();
 
-        // option 2 binary search
-        int l = 0, r = nums.size() - 1, mid = 0;
+        // O(n)
+        // int ret = INT_MAX;
+        // for(int n:nums) ret = min(ret, n);
+        // return ret;
+
+        // binary search
+        int n = nums.size(), l = 0, r = n - 1;
         while (l < r)
         {
-            mid = l + (r - l) / 2;
-            if (nums[mid] < nums[r])
-                r = mid;
-            else
+            int mid = l + (r - l) / 2;
+            if (nums[mid] > nums[r])
                 l = mid + 1;
+            else
+                r = mid;
         }
-        return nums[l];
+        return nums[r];
     }
 };
