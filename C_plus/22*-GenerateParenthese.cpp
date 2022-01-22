@@ -3,9 +3,7 @@ class Solution
 public:
     void traverse(int r, int l, string path, vector<string> &ret)
     {
-        if (l > r)
-            return;
-        if (l < 0 || r < 0)
+        if (l > r || l < 0 || r < 0)
             return;
         if (l == 0 && r == 0)
         {

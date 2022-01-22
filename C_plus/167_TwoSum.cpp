@@ -4,7 +4,7 @@ public:
     vector<int> twoSum(vector<int> &numbers, int target)
     {
         // option 0
-        // // binary search O(nlogn) time and O(1) space
+        // binary search O(nlogn) time and O(1) space
         // 選定 索引為 i 的數字 ，在用binary search 找 另一個數字使總和為target
         int n = numbers.size();
         
@@ -21,8 +21,8 @@ public:
         }
         return {};
 
-        // option 1 binary search O(nlogn) time and O(1) space
-        // two pointer
+        // 
+        // two pointer O(n) time
         // int l =0, r = numbers.size()-1;
         // while(l<r){
         //     if(target == numbers[l] + numbers[r]) return {l+1,r+1};

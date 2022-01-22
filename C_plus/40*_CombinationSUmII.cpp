@@ -18,6 +18,7 @@ public:
         }
         for (int i = begin; i < candidates.size() && target >= candidates[i]; i++)
         {
+            // if(i> l && candidates[i] == candidates[i-1])  continue;
             if (i == begin || candidates[i] != candidates[i - 1])
             {
                 comb.push_back(candidates[i]);

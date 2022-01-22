@@ -20,7 +20,7 @@ public:
                 {
                     j++;
                 }
-                else if (cand > target)
+                else 
                 {
                     k--;
                 }

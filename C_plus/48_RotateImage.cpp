@@ -34,7 +34,6 @@ public:
         // int m = matrix.size(), n =matrix[0].size();
         // for(int i=0;i<m;++i){
         //     for(int j =i+1;j<n;++j){
-        //         //swap (i,j) (j,i)
         //         swap(matrix[i][j], matrix[j][i]);
         //     }
         // }

@@ -1,71 +1,61 @@
 class Solution
 {
 public:
-    void dfs(string digits, int i, unordered_map<int, string> mp, vector<string> &ret, string path)
+    void traverse(string digits, unordered_map<int, string> &dict, vector<string> &ret, string str, int l)
     {
-        if (i == digits.size())
+
+        if (digits.size() == str.size())
         {
-            ret.push_back(path);
+            ret.push_back(str);
             return;
         }
-        for (char c : mp[digits[i] - '0'])
+
+        for (char c : dict[digits[l] - '0'])
         {
-            dfs(digits, i + 1, mp, ret, path + c);
+            traverse(digits, dict, ret, str + c, l + 1);
         }
     }
     vector<string> letterCombinations(string digits)
     {
-
-        unordered_map<int, string> mp = {
-            {2, "abc"},
-            {3, "def"},
-            {4, "ghi"},
-            {5, "jkl"},
-            {6, "mno"},
-            {7, "pqrs"},
-            {8, "tuv"},
-            {9, "wxyz"}};
-
         // DFS
-        // vector<string> ret;
-        // if(digits.size() ==0) return ret;
-        // dfs(digits, 0, mp, ret,"");
-        // return ret;
+        //         vector<string> ret;
+        //         string str;
+
+        //         unordered_map<int, string> dict = {
+        //             {2, "abc"},{3, "def"}, {4,"ghi"}, {5,"jkl"}, {6,"mno"}, {7,"pqrs"}, {8,"tuv"}, {9,"wxyz"}
+        //         };
+        //         if(digits.empty()) return ret;
+        //         traverse(digits,dict, ret, str, 0);
+        //         return ret;
 
         queue<string> q;
-        vector<string> ret;
-        if (digits.size() == 0)
-            return ret;
-        for (char c : mp[digits[0] - '0'])
+        unordered_map<int, string> dict = {
+            {2, "abc"}, {3, "def"}, {4, "ghi"}, {5, "jkl"}, {6, "mno"}, {7, "pqrs"}, {8, "tuv"}, {9, "wxyz"}};
+        for (char c : dict[digits[0] - '0'])
         {
             string d;
             d.push_back(c);
             q.push(d);
         }
 
+        vector<string> ret;
         for (int i = 1; i < digits.size(); ++i)
         {
             int size = q.size();
             for (int j = 0; j < size; ++j)
             {
-                string c = q.front();
+                string temp = q.front();
                 q.pop();
-                for (char d : mp[digits[i] - '0'])
-                {
-                    string temp = c;
-                    temp.push_back(d);
-                    q.push(temp);
-                }
+                for (char c : dict[digits[i] - '0'])
+                    q.push(temp + c);
             }
         }
-        // copy queue to ret
         while (!q.empty())
         {
-            string d = q.front();
-            ret.push_back(d);
+            string s = q.front();
             q.pop();
+            ret.push_back(s);
         }
-
         return ret;
     }
 };

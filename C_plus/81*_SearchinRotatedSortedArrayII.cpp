@@ -30,7 +30,29 @@ public:
         //         }
         //         return false;
 
-        // option 2
+        
+        // option 2 -
+        int n = nums.size();
+        int l =  0, r = n-1;
+        while(l<=r){
+            int mid = l + (r-l)/2;
+            if(nums[mid] == target || nums[l] == target || nums[r] == target) return true;
+            else if(nums[mid] > nums[l]){
+                if(target >= nums[l] && target<= nums[mid]) r = mid-1;
+                else l = mid +1;
+                
+            }
+            else if(nums[mid] < nums[r]){
+                if(target >= nums[mid] && target <= nums[r]) l = mid+1;
+                else r = mid-1;
+            }
+            else l++;
+            
+        }
+        
+        return false;
+        
+        // option 3
         // binary search O(logn)
         int n = nums.size();
         int l = 0, r = n - 1;
