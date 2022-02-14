@@ -11,9 +11,9 @@
 
 # some lists you can follow
 - [Blind Curated 75](https://www.techinterviewhandbook.org/best-practice-questions/) [Blind 75 LeetCode Questions](https://leetcode.com/discuss/general-discussion/460599/blind-75-leetcode-questions)
-- [Grokking-the-Coding-Interview-Patterns](/Grokking-the-Coding-Interview-Patterns)
-- [Cracking the coding interview-part1](/Cracking-the-coding-interview-part1) 
-- [Cracking the coding interview part2](/Cracking-the-coding-interview-part2)
-- [50 Interview Questions](/50-Interview-Questions)
+- [Grokking-the-Coding-Interview-Patterns](https://github.com/a920604a/leetcode/blob/main/Grokking-the-Coding-Interview-Patterns.md)
+- [Cracking the coding interview-part1](https://github.com/a920604a/leetcode/blob/main/Cracking-the-coding-interview-part1.md) 
+- [Cracking the coding interview part2](https://github.com/a920604a/leetcode/blob/main/Cracking-the-coding-interview-part2.md)
+- [50 Interview Questions](https://github.com/a920604a/leetcode/blob/main/50-Interview-Questions.md)
 
 
