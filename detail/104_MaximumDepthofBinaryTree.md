@@ -8,6 +8,7 @@
 求二元樹的最大深度
 
 ## solution
+
 #### dfs
 - 用遞迴方式，求二元樹的深度，終止條件為當節點不存在時`return 0`，否則`1+max(maxDepth(root->left), maxDepth(root->right))`
 ```c++
@@ -25,7 +26,7 @@ public:
 ```c++
 class Solution {
 public:
-    int maxDepth(TreeN
+    int maxDepth(TreeNode* root) {
         queue<TreeNode*>q;
         if(!root) return 0;
         int depth = 0;
@@ -41,7 +42,6 @@ public:
             depth++;
         }
         return depth;
-       
     }
 };
 ```

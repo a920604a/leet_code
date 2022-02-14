@@ -1,0 +1,56 @@
+# 338. Counting Bits
+
+###### tags: `leetcode` `Bit Manipulation` `dp`
+
+## [problem](https://leetcode.com/problems/counting-bits/)
+
+## solution
+
+#### option 1
+
+```c++
+class Solution {
+public:
+    int count(int n){
+        int ret = 0;
+        while(n){
+            ret++;
+            n &= (n-1);
+        }
+        return ret;
+    }
+    vector<int> countBits(int n) {
+        vector<int> ret(n+1,0);
+        //  0   1   2   3   4   5
+        //  0   1   1   2   
+        for(int i=1;i<n+1;++i){
+            ret[i] = count(i);
+        }
+        return ret;
+    }
+};
+```
+#### option 2
+```c++
+class Solution {
+public:
+    vector<int> countBits(int n) {
+        vector<int> ret(n+1,0);
+        //  0   1   2   3   4   5
+        //  0   1   
+        for(int i=1;i<n+1;++i){
+            ret[i] = ret[ i&(i-1)] +1;
+        }
+        return ret;
+    }
+};
+```
+
+## analysis
+- option 1
+    - time complexity `O(nlogn)`
+    - space complexity `O(1)`
+- option 2
+    - time complexity `O(n)`
+    - space complexity `O(1)`
+
