@@ -1,6 +1,6 @@
 # Subarray sum equals k
 
-###### tags: `hash table`
+###### tags: `leetcode` `hash table`
 
 
 ## [question](https://leetcode.com/problems/subarray-sum-equals-k/)

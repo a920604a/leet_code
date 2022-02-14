@@ -1,6 +1,6 @@
 # 78. Subsets
 
-###### tags: `leetcode` `backtracking`
+###### tags: `leetcode` `dfs`
 
 ## [problem](https://leetcode.com/problems/subsets/)
 給定一個陣列，假設其元素都唯一，返回所有的子集。可以是任何順序
