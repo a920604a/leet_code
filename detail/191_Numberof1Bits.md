@@ -5,7 +5,7 @@
 ## [problem](https://leetcode.com/problems/number-of-1-bits/)
 
 ## solution
-利用 `n&(n-1)` 找 n 在二進位有多少個1
+利用 `n&(n-1)` 找 n 在二進位表示中有多少個1
 
 ```c++
 class Solution {

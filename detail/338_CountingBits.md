@@ -6,6 +6,7 @@
 
 ## solution
 
+
 #### option 1
 
 ```c++
@@ -39,7 +40,9 @@ public:
         //  0   1   2   3   4   5
         //  0   1   
         for(int i=1;i<n+1;++i){
-            ret[i] = ret[ i&(i-1)] +1;
+            // ret[i] = ret[ i&(i-1)] +1;
+            if(i%2==0) ret[i] = ret[i/2];
+            else ret[i] = ret[i-1]+1;
         }
         return ret;
     }

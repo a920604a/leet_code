@@ -5,6 +5,7 @@
 ## [problem](https://leetcode.com/problems/reverse-bits/)
 
 ## solution
+利用 `>>i` 取得第i位元
 
 ```c++
 class Solution {

@@ -4,7 +4,7 @@
 
 ## [problem](https://leetcode.com/problems/missing-number/)
 
-給定一維陣列，找出遺失的數字
+給定一維陣列，那一個數字遺失
 
 ## solution
 
