@@ -2,8 +2,8 @@ class MedianFinder
 {
 private:
     //
-    priority_queue<int> up; // 不變，因為C++ 預設小的優先取出
-    priority_queue<int, vector<int>, greater<int> > down;
+    priority_queue<int> up; // 不變，因為C++ 預設從小排到大，從尾部取值，所以大的優先取出
+    priority_queue<int, vector<int>, greater<int> > down; 
 
 public:
     /** initialize your data structure here. */
