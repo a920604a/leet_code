@@ -1,7 +1,7 @@
 # 347. Top K Frequent Elements
 
 
-###### tags: `leetcode` `priority queue`
+###### tags: `leetcode` `heap`
 
 ## [problem](https://leetcode.com/problems/top-k-frequent-elements/)
 

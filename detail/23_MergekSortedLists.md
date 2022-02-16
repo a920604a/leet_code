@@ -1,6 +1,6 @@
 # 23. Merge k Sorted Lists
 
-###### tags: `leetcode` `Linked List` `priority queue`
+###### tags: `leetcode` `Linked List` `heap`
 
 ## [problem](https://leetcode.com/problems/merge-k-sorted-lists/)
 
