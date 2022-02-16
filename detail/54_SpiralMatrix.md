@@ -1,6 +1,6 @@
 # 54. Spiral Matrix
 
-###### tags: `leetcode` 
+###### tags: `leetcode` `Blind Curated 75`
 
 ## [problem](https://leetcode.com/problems/spiral-matrix/)
 

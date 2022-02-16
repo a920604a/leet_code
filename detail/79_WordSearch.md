@@ -1,6 +1,6 @@
 # 79. Word Search
 
-###### tags: `leetcode` `backtracking`
+###### tags: `leetcode` `backtracking` `Blind Curated 75`
 
 
 ## [problem](https://leetcode.com/problems/word-search/)

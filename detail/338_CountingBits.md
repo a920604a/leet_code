@@ -1,6 +1,6 @@
 # 338. Counting Bits
 
-###### tags: `leetcode` `Bit Manipulation` `dp`
+###### tags: `leetcode` `Bit Manipulation` `dp` `Blind Curated 75`
 
 ## [problem](https://leetcode.com/problems/counting-bits/)
 

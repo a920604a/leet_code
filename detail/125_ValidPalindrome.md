@@ -2,7 +2,7 @@
 
 
 
-###### tags: `leetcode` `Two Pointers`
+###### tags: `leetcode` `Two Pointers` `Blind Curated 75`
 
 ## [problem](https://leetcode.com/problems/valid-palindrome/)
 

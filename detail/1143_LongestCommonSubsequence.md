@@ -1,7 +1,7 @@
 # 1143. Longest Common Subsequence
 
 
-###### tags: `leetcode` `dp`
+###### tags: `leetcode` `dp` `Blind Curated 75`
 
 ## [problem](https://leetcode.com/problems/longest-common-subsequence/)
 

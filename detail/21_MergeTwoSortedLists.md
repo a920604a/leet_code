@@ -1,6 +1,6 @@
 # 21. Merge Two Sorted Lists
 
-###### tags: `leetcode` `Linked List`
+###### tags: `leetcode` `Linked List` `Blind Curated 75`
 
 ## [problem](https://leetcode.com/problems/merge-two-sorted-lists/)
 ## solution 

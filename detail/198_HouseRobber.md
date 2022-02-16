@@ -1,6 +1,6 @@
 # 198. House Robber
 
-###### tags: `leetcode` `dp`
+###### tags: `leetcode` `dp` `Blind Curated 75`
 
 ## [problem](https://leetcode.com/problems/house-robber/)
 

@@ -1,6 +1,6 @@
 # 33. Search in Rotated Sorted Array
 
-###### tags: `leetcode` `Binary Search`
+###### tags: `leetcode` `Binary Search` `Blind Curated 75`
 
 
 ## [problem](https://leetcode.com/problems/search-in-rotated-sorted-array/)

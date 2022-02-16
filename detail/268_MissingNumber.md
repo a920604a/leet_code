@@ -1,6 +1,6 @@
 # 268. Missing Number
 
-###### tags: `leetcode` `Bit Manipulation`
+###### tags: `leetcode` `Bit Manipulation` `Blind Curated 75`
 
 ## [problem](https://leetcode.com/problems/missing-number/)
 

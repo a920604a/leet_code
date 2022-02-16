@@ -1,6 +1,6 @@
 # 48. Rotate Image
 
-###### tags: `leetcode` 
+###### tags: `leetcode` `Blind Curated 75`
 
 ## [problem](https://leetcode.com/problems/rotate-image/)
 

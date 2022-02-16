@@ -1,6 +1,6 @@
 # 143. Reorder List
 
-###### tags: `leetcode` `Linked List` `Two pointers`
+###### tags: `leetcode` `Linked List` `Two pointers` `Blind Curated 75`
 
 ## [problem](https://leetcode.com/problems/reorder-list/)
 

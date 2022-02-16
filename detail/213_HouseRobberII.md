@@ -1,5 +1,5 @@
 # 213. House Robber II
-###### tags: `leetcode` `dp`
+###### tags: `leetcode` `dp` `Blind Curated 75`
 
 ## [problem](https://leetcode.com/problems/house-robber-ii/)
 

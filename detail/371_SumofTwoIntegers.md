@@ -1,7 +1,7 @@
 # 371. Sum of Two Integers
 
 
-###### tags: `leetcode` `Bit Manipulation`
+###### tags: `leetcode` `Bit Manipulation` `Blind Curated 75`
 
 ## [problem](https://leetcode.com/problems/sum-of-two-integers/)
 

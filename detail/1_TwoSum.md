@@ -1,6 +1,6 @@
 # 1. Two Sum
 
-###### tags: `leetcode` `hash table`
+###### tags: `leetcode` `hash table` `Blind Curated 75`
 
 
 ## [problem](https://leetcode.com/problems/two-sum/)

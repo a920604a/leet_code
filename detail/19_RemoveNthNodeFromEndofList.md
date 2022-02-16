@@ -1,6 +1,6 @@
 # 19. Remove Nth Node From End of List
 
-###### tags: `leetcode` `Linked List` `Two Pointers`
+###### tags: `leetcode` `Linked List` `Two Pointers` `Blind Curated 75`
 
 ## [problem](https://leetcode.com/problems/remove-nth-node-from-end-of-list/)
 

@@ -1,7 +1,7 @@
 # 104. Maximum Depth of Binary Tree
 
 
-###### tags: `leetcode` `dfs` `bfs`
+###### tags: `leetcode` `dfs` `bfs` `Blind Curated 75`
 
 ## [problem](https://leetcode.com/problems/maximum-depth-of-binary-tree/)
 

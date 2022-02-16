@@ -1,6 +1,6 @@
 # 322. Coin Change
 
-###### tags: `leetcode` `dp`
+###### tags: `leetcode` `dp` `Blind Curated 75`
 
 ## [problem](https://leetcode.com/problems/coin-change/)
 

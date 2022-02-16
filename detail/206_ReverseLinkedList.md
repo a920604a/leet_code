@@ -1,6 +1,6 @@
 # 206. Reverse Linked List
 
-###### tags: `leetcode` `Linked List`
+###### tags: `leetcode` `Linked List` `Blind Curated 75`
 
 ## [problem](https://leetcode.com/problems/reverse-linked-list/)
 

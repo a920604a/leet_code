@@ -1,7 +1,7 @@
 # 141. Linked List Cycle
 
 
-###### tags: `leetcode` `Linked List` `Two Pointers`
+###### tags: `leetcode` `Linked List` `Two Pointers` `Blind Curated 75`
 
 ## [problem](https://leetcode.com/problems/linked-list-cycle/)
 

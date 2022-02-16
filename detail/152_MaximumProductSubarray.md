@@ -1,6 +1,6 @@
 # 152. Maximum Product Subarray
 
-###### tags: `leetcode` `dp`
+###### tags: `leetcode` `dp` `Blind Curated 75`
 
 
 ## [problem](https://leetcode.com/problems/maximum-product-subarray/)

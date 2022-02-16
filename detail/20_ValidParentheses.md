@@ -1,7 +1,7 @@
 # 20. Valid Parentheses
 
 
-###### tags: `leetcode` `stack`
+###### tags: `leetcode` `stack` `Blind Curated 75`
 
 ## [problem](https://leetcode.com/problems/valid-parentheses/)
 

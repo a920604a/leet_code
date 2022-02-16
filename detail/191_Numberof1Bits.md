@@ -1,6 +1,6 @@
 # 191. Number of 1 Bits
 
-###### tags: `leetcode` `Bit Manipulation`
+###### tags: `leetcode` `Bit Manipulation` `Blind Curated 75`
 
 ## [problem](https://leetcode.com/problems/number-of-1-bits/)
 

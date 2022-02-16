@@ -1,7 +1,7 @@
 # 76. Minimum Window Substring
 
 
-###### tags: `leetcode` `Hash table` `Siliding Window`
+###### tags: `leetcode` `Hash table` `Siliding Window` `Blind Curated 75`
 
 ## [problem](https://leetcode.com/problems/minimum-window-substring/)
 

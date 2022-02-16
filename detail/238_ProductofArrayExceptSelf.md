@@ -1,6 +1,6 @@
 # 238. Product of Array Except Self
 
-###### tags: `leetcode` `dp`
+###### tags: `leetcode` `dp` `Blind Curated 75`
 
 ## [problem](https://leetcode.com/problems/product-of-array-except-self/)
 

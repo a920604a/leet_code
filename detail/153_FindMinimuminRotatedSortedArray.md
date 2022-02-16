@@ -1,6 +1,6 @@
 # 153. Find Minimum in Rotated Sorted Array
 
-###### tags: `leetcode` `Binary Search` 
+###### tags: `leetcode` `Binary Search`  `Blind Curated 75`
 
 ## [problem](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/)
 

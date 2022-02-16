@@ -1,7 +1,7 @@
 # 49. Group Anagrams
 
 
-###### tags: `leetcode` `Hash table` 
+###### tags: `leetcode` `Hash table` `Blind Curated 75`
 
 ## [problem](https://leetcode.com/problems/group-anagrams/)
 

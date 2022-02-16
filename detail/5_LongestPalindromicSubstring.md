@@ -1,7 +1,7 @@
 # 5. Longest Palindromic Substring
 
 
-###### tags: `leetcode` `Two Pointers` `dp`
+###### tags: `leetcode` `Two Pointers` `dp` `Blind Curated 75`
 
 ## [problem](https://leetcode.com/problems/longest-palindromic-substring/)
 
