@@ -9,7 +9,7 @@
 找出所有組合總和為target 的子序列，可以重複選取，但每組組合必須唯一。
 ## sloution
 
-- 用遞迴暴力，遍歷每種可能，終止條件`target<0` or 
+- 用遞迴暴力求解，遍歷每種可能，終止條件`target<0`
 - 因為可以重複，所以每次調用`bracktracking(candidates, target - candidates[i], path, ret, i)` 而不是`l+1`。
 
 - version 1 
@@ -69,5 +69,5 @@ public:
 };
 ```
 ## analysis
-- time complexity `O(len(nums)^M)`, M if theight of our recursive
+- time complexity `O(len(nums)^M)`, M is the height of our recursive
 - space complexity `L` , L is the longest combination
