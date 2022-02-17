@@ -6,7 +6,12 @@
 
 
 ## solution 
-利用快慢指標
+- 因為只允許遍歷一遍 one pass，利用快慢指標
+
+先將快指標向右移動 `n` 個單位
+慢指標與快指標一起向右移動，直到快指標到達串列尾部，慢指標的下一個節點則為要移除的節點，`slow->next = slow->next->next;` 移除掉。
+
+
 ```c++
 class Solution {
 public:

@@ -41,6 +41,9 @@ public:
 };
 ```
 #### option 2 - dp
+
+維護一個dp 紀錄遍歷至當前的最大的子陣列和。
+
 ```c++
 class Solution {
 public:
@@ -60,6 +63,9 @@ public:
 };
 ```
 #### option 3 - Kadane’s Algorithm
+
+reduce dp，用變數取代dp array
+
 ```c++
 class Solution {
 public:

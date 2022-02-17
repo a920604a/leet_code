@@ -5,7 +5,12 @@
 
 ## [problem](https://leetcode.com/problems/search-in-rotated-sorted-array/)
 
+在有序陣列，旋轉後，搜尋target的index
 ## solution
+
+- 因為是原先是有順序的，要嘛左半部遞增，要嘛右半部遞增
+- 假如右半部遞增，target剛好落在右半部，則向右搜尋，反之向左搜尋
+- 假如左半部遞增，target剛好落在左半部，則向左搜尋，反之向右搜尋
 
 #### option 1 Brute force
 ```c++

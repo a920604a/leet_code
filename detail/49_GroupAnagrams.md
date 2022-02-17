@@ -35,6 +35,9 @@ public:
 
 ##### option 2
 
+用字元加上出現次數編碼後當作hash table的key，放進hash table
+例如："eat" 編碼後 "a1e1t1"
+
 ```c++
 class Solution {
 public:

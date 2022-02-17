@@ -5,12 +5,16 @@
 
 ## [problem](https://leetcode.com/problems/two-sum/)
 
-一維陣列中找出兩數相加等於target，並返回其索引
+- 一維陣列中找出兩數相加等於target，並返回其索引
 
 
 ## Solution
 
 #### brute force
+
+- 利用兩個index 分別指向兩個不同的數字，找尋哪兩個數字總和為 target
+
+
 ```c++
 class Solution {
 public:

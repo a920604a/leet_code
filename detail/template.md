@@ -27,6 +27,7 @@ Blind Curated 75
     - 139. Word Break
     - 91. Decode Ways
 - String 
+    - 5. Longest Palindromic Substring
     - 647. Palindromic Substrings
     - 424. Longest Repeating Character Replacement
 - Heap
@@ -35,3 +36,5 @@ Blind Curated 75
 - Tree
 - Interval
 - Graph
+
+24. Swap Nodes in Pairs

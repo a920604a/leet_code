@@ -5,10 +5,10 @@
 
 ## [problem](https://leetcode.com/problems/longest-palindromic-substring/)
 
+最長回文子字串
 ## solution
-
 #### option 1 - two pointers
-- 利用雙索引從拜訪到的字元向所向右擴散
+- 利用雙索引，從拜訪到的字元，當拜訪到字元，相鄰字元都一樣，則向左向右擴散
 ```c++
 class Solution {
 public:
@@ -35,6 +35,6 @@ public:
 #### option 2 - *dp
 
 ## analysis
-- option 1 
-    - time complexity `O(n)`
+- option 1 - two pointers
+    - time complexity `O(n^2)`
     - space complexity `O(1)`
