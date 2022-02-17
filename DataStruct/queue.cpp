@@ -1,9 +1,3 @@
-/*
- * @Author: yuan
- * @Date: 2021-06-17 12:49:54
- * @LastEditTime: 2021-07-17 08:42:11
- * @FilePath: /leet_code/DataStruct/queue.cpp
- */
 #include <iostream>
 #include <stack>
 using namespace std;

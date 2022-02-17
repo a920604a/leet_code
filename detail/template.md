@@ -22,6 +22,10 @@ implement code
 
  
 Blind Curated 75
+- Binary
+    - 371. Sum of Two Integers
+- Linked List
+    - 143. Reorder List
 - DP
     - 377. Combination Sum IV
     - 139. Word Break
@@ -32,10 +36,16 @@ Blind Curated 75
     - 424. Longest Repeating Character Replacement
 - Heap
     - 295. Find Median from Data Stream
-
 - Tree
-- Interval
+    - 208. Implement Trie (Prefix Tree)
+    - 124. Binary Tree Maximum Path Sum
+    - 230. Kth Smallest Element in a BST
+    - 297. Serialize and Deserialize Binary Tree
+    - 212. Word Search II
+    - 124. Binary Tree Maximum Path Sum
 - Graph
 
+- Interval
+
 24. Swap Nodes in Pairs
-230. Kth Smallest Element in a BST
+
