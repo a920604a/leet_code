@@ -44,8 +44,14 @@ Blind Curated 75
     - 212. Word Search II
     - 124. Binary Tree Maximum Path Sum
 - Graph
-
+    - 200. Number of Islands
+    - 128. Longest Consecutive Sequence
+    - 133. Clone Graph
+    - 207. Course Schedule
+    - 417. Pacific Atlantic Water Flow
 - Interval
+    - 435. Non-overlapping Intervals
+
 
 24. Swap Nodes in Pairs
 
