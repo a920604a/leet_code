@@ -38,3 +38,4 @@ Blind Curated 75
 - Graph
 
 24. Swap Nodes in Pairs
+230. Kth Smallest Element in a BST
