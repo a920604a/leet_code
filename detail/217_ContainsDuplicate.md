@@ -39,6 +39,10 @@ public:
             s.insert(n);
         }
         return false;
+
+        // unordered_set<int> s;
+        // for(int n:nums) s.insert(n);
+        // return !( nums.size() == s.size());
         
     }
 };
