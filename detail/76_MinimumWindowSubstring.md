@@ -3,11 +3,12 @@
 
 ###### tags: `leetcode` `Hash table` `Siliding Window` `Blind Curated 75`
 
+
 ## [problem](https://leetcode.com/problems/minimum-window-substring/)
 
 ## solution
 
-- 兩指標，分別指向窗口的左右索引，窗口不斷向右移動，當滿族條件時，則收縮左邊的索引。
+- 兩指標，分別指向窗口的左右索引，窗口不斷向右移動，當滿足條件(`window==need`)時，則收縮左邊的索引。
 ```c++
 class Solution {
 public:
@@ -22,6 +23,7 @@ public:
                 if(need[c] == window[c]) valid++;
             }
             while(valid == need.size()){
+                // valid == need.size() 代表window = need
                 if(r-l<len){
                     len = r-l;
                     start = l;
@@ -39,4 +41,4 @@ public:
 ```
 ## analysis
 - time complexity `O(n)`
-- speed complexity `O(n)`
+- speed complexity `O(1)`

@@ -3,14 +3,14 @@
 ###### tags: `leetcode` `Hash table` `Sliding Window` `Blind Curated 75`
 
 ## [problem](https://leetcode.com/problems/longest-substring-without-repeating-characters/)
-Given a string, find the length of the longest substring without repeating characters.
 
+
+Given a string, find the length of the longest substring without repeating characters.
 
 
 ## solution
 
 利用一個hash table 紀錄window中，出現個字元與其次數，然後不斷向右移動window，當，當window內出現某個字元出現大於一次，則開始從左邊收縮，直到滿足個字元都為一
-
 
 ```c++
 class Solution {
@@ -31,6 +31,7 @@ public:
     }
 };
 ```
+
 - 可以用固定大小的vector 代替hash table
 
 ```c++
@@ -56,4 +57,4 @@ public:
 
 ## analysis
 - time complexity `O(n)`
-- space complexity `O(n)`
+- space complexity `O(1)` , 最多26 個英文字母

@@ -13,29 +13,29 @@
 class Solution {
 public:
     bool checkInclusion(string s1, string s2) {
-        unordered_map<char,int>need, window;
+        unordered_map<char, int> need, window;
         for(char c:s1) need[c]++;
-        int l =0,r=0, valid = 0;
-        int n = s1.size(), m=s2.size();
-        while(r<m){
-            char c= s2[r++];
-            if(need.count(c)){
+        int l =0,r=0, n=s2.size(), valid = 0;
+        while(r<n){
+            char c = s2[r++];
+            if(need.find(c)!=need.end()){
                 window[c]++;
-                if(need[c] == window[c]) valid++;
+                if(window[c] == need[c]) valid++;
             }
-            while(r-l==n){
-                if(valid==need.size()) return true;
+            while(valid == need.size()){
+                if(r-l == s1.size()) return true;
                 char d = s2[l++];
-                if(need.count(d)){
-                    if(need[d] == window[d]) valid--;
+                if(need.find(d)!=need.end()){
+                    if(window[d] == need[d] ) valid--;
                     window[d]--;
                 }
             }
         }
-        return false;        
+        return false;
     }
 };
 ```
+- 可以用固定大小的vector 代替hash table
 
 ```c++
 class Solution {
