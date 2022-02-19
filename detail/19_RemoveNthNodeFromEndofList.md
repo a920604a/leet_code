@@ -2,11 +2,13 @@
 
 ###### tags: `leetcode` `Linked List` `Two Pointers` `Blind Curated 75`
 
+
 ## [problem](https://leetcode.com/problems/remove-nth-node-from-end-of-list/)
 
 
 ## solution 
 - 因為只允許遍歷一遍 one pass，利用快慢指標
+- two pointer 不知道串列長度 iterative 
 
 先將快指標向右移動 `n` 個單位
 慢指標與快指標一起向右移動，直到快指標到達串列尾部，慢指標的下一個節點則為要移除的節點，`slow->next = slow->next->next;` 移除掉。

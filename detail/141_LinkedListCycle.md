@@ -5,8 +5,6 @@
 
 ## [problem](https://leetcode.com/problems/linked-list-cycle/)
 
-
-
 ## solution
 two pointer ，slow fast pointers 用於linked list檢查是否包含環
 
@@ -31,14 +29,14 @@ public:
 class Solution {
 public:
     bool hasCycle(ListNode *head) {
-        ListNode *slow = head, *fast =head;
+        if(!head ) return head;
+        ListNode *slow =head, *fast = head;
         while(fast && fast->next){
             fast = fast->next->next;
             slow = slow->next;
             if(slow==fast) return true;
         }
-        return false;
-        
+        return false;        
     }
 };
 ```

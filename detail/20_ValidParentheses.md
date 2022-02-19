@@ -3,35 +3,37 @@
 
 ###### tags: `leetcode` `stack` `Blind Curated 75`
 
-## [problem](https://leetcode.com/problems/valid-parentheses/)
-
+## [problem](https://leetcode.com/problems/merge-two-sorted-lists/)
 
 ## solution 
 
-經典題目，利用stack 將`(` `[` `{` push 進去，如果不是左半部括號，則檢查stack 頂部是否為相對應的右半部括號，如果不是`return false`，如果是pop，並繼續遍歷`string`
-
+- 因為是排序過的list，只要 new 兩個指標分別指向`list1` `list2` 比較大小，小的放進要回傳的串列即可。
 
 ```c++
 class Solution {
 public:
-    bool isValid(string s) {
-        stack<char> sta;
-        for(char c:s){
-            if(c=='(' || c=='[' || c=='{') sta.push(c);
-            else{
-                if(sta.empty()) return false;
-                else if(c==')' && sta.top() == '(') sta.pop();
-                else if(c==']' && sta.top() == '[') sta.pop();
-                else if(c=='}' && sta.top() == '{') sta.pop();
-                else return false;
+    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
+        ListNode * ret = new ListNode(-1), *ans = ret ;
+        // compare each node in two lists
+        while(list1 && list2){
+            if(list1->val < list2->val) {
+                ret->next = list1;
+                list1=list1->next;
             }
+            else{
+                ret->next = list2;
+                list2=list2->next;
+            }
+            ret = ret->next;
         }
-        return sta.empty();
+        if(list1) ret->next = list1;
+        if(list2) ret->next = list2;
+        return ans->next;
     }
 };
 ```
 
+
 ## analysis
 - time complexity `O(n)`
-- space complexity `O(n)`
-
+- space complexity `O(1)`
