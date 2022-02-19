@@ -4,7 +4,8 @@
 
 
 ## [problem](https://leetcode.com/problems/remove-k-digits/)
-
+ 
+給定一個以字串表示的非負數箒數num，移除這個數中的k位數字，使得剩下的數字最小。
 ## solution
 因為越前面位數越大，所以要先被移除，維護一個monotonic stack(從stack頂部遞減)
 
