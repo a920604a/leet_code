@@ -5,7 +5,7 @@
 
 
 ## [problem](https://leetcode.com/problems/contains-duplicate/)
-找出陣列中是否一重複的數字
+找出陣列中是否一個重複的數字，如果有任何數字出現至少兩次則返回`true`，每個數字都不同則返回`false`
 
 ## Solution
 
