@@ -1,5 +1,11 @@
-# 213. House Robber II
-###### tags: `leetcode` `dp` `Blind Curated 75`
+---
+title: 213. House Robber II
+tags:  
+    - dp
+categories: leetcode
+comments: false
+---
+
 
 ## [problem](https://leetcode.com/problems/house-robber-ii/)
 
@@ -22,6 +28,9 @@ public:
         return ret;
     }
     int rob(vector<int>& nums) {
+        // option 1 因為只會發生兩種情況。
+        // 從第一家開始搶，就不能搶第 n-1
+        // 從第二家開始搶，就可以一直搶下去
         int n = nums.size();
         if(n==1) return nums[0];
         int l = 0, r = n-1;
