@@ -1,11 +1,6 @@
----
-title: 169. Majority Element
-tags:  
-    - sorting
-    - hash table
-categories: leetcode
-comments: false
----
+# 169. Majority Element
+
+###### tags: `leetcode` `hash table` `sorting`
 
 
 ## [problem](https://leetcode.com/problems/majority-element/)
@@ -44,7 +39,7 @@ public:
 };
 ```
 
-##### option 3 - vote
+#### option 3 - vote
 ```c++
 class Solution {
 public:
