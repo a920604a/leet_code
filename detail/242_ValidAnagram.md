@@ -34,7 +34,7 @@ public:
 
 ## analysis
 - option 1
-    - time complexity `O(nlogn)`
+    - time complexity `O(n)`
     - space complexity `O(1)`
 - option 2
     - time complexity `O(n)`

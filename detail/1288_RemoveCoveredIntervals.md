@@ -14,32 +14,32 @@ comments: false
 class Solution {
 public:
     int removeCoveredIntervals(vector<vector<int>>& intervals) {
-        int count = 0;
-        // 不斷擴張領土[start, end]
-        sort(intervals.begin(), intervals.end(), [](vector<int>& a, vector<int>& b){
-            if(a[0] == b[0]) return a[1]>b[1];
+        // 排序，按起點升序，起點相同案終點降序
+        
+        sort(intervals.begin(), intervals.end(),[](vector<int>& a, vector<int>&b){
+            if(a[0] == b[0] ) return a[1]>b[1];
             return a[0]<b[0];
         });
-        int start = intervals[0][0], end = intervals[0][1];
-        int n = intervals.size();
+        int n = intervals.size(), start = intervals[0][0], end = intervals[0][1];
+        int remove = 0;
         for(int i=1;i<n;++i){
-            vector<int>& cur = intervals[i];
-            // 完全覆蓋，
-            if(end>=cur[1]){
-                count++;
-            }
-            // 區間重疊，擴張領土
-            else if(end>= cur[0] && end<cur[1]){
+            vector<int> & cur = intervals[i];
+            // [1,4] [3,5] 區間重疊 => 將end 向右擴張
+            if( end >= cur[0] && end<cur[1]){
                 end = cur[1];
-                
             }
-            // non-overlap
+            // [1,4] [2,3] 完全覆蓋 => 可以覆蓋一個區間。
+            else if(end>= cur[0] && end>=cur[1]){
+                remove++;
+            }
+            // [1,2] [4,6] 不重疊
             else{
                 start = cur[0];
                 end = cur[1];
             }
         }
-        return n-count;
+        return n - remove;
+        
     }
 };
 ```
