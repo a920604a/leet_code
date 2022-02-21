@@ -9,7 +9,7 @@ int solution(vector<int> &A)
     // write your code in C++14 (g++ 6.2.0)
 
     // option 1
-    // O(nlogn) or O(n) time
+    // O(nlogn)
     int n = A.size();
     sort(A.begin(), A.end());
     int c = 1;
