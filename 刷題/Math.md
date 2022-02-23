@@ -1,11 +1,19 @@
+---
+title: Math
+categories: 
+    - CS
+    - Algorithm
+comments: false
+---
 
-# Math
 
-###### tags: `interview` `algorithm`
+## 觀念
 
 a^a = 0, a^0 = a 滿足交換性
 
 n & (n-1) 
+
+## 題目
 
 - 191 Number of 1 Bits (Easy)
 - 231 Power of Two (Easy)

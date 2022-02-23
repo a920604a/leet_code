@@ -1,7 +1,12 @@
-# Sliding window
-
-###### tags: `interview` `algorithm`
-
+---
+title: UnionFind
+tags:  
+    - Union Find
+categories: 
+    - CS
+    - Algorithm
+comments: false
+---
 
 method : connect、find、unionSet
 

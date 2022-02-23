@@ -9,6 +9,9 @@ categories:
 comments: false
 ---
 
+
+## 觀念
+
 Prefix Sum 用於快速、频繁地計算一個索引區間内的元素之和。
 ```
 array =         [-2    0   3   -5  2   -1]
@@ -40,6 +43,11 @@ array = [a, b, c+5, d+5, e+5]
 diff = [a, (b-a), (c-b+5), (d-c), (e-d)]
 
 ```
+
+
+
+
+## 題目
 
 Prefix Sum
 - 303 Range Sum Query - Immutable (Easy)

@@ -1,7 +1,16 @@
-# Heap
+---
+title: Heap
+tags:  
+    - heap
+categories: 
+    - CS
+    - Data Structure
+comments: false
+---
 
-###### tags: `interview` `algorithm`
 
+
+## 題目
 
 heap
 - 23. Merge k Sorted Lists (Hard)
