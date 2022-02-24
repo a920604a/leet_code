@@ -32,6 +32,7 @@ comments: false
 補充
 - 2095 Delete the Middle Node of a Linked List (Medium)
 - 2130 Maximum Twin Sum of a Linked List (Medium)
+- 148 Sort List (Medium)
 
 ## implement
 ```c++
