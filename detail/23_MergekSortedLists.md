@@ -82,7 +82,7 @@ public:
 ## analysis 
 - option 1 merge
     - time complexity `O(n^2)`
-    - space complexity `O(n)`
+    - space complexity `O(nk)`
 - option 2 heap
-    - time complexity `O(nlogn)`
-    - space complexity `O(n)`
+    - time complexity `O(nlogk)`
+    - space complexity `O(nk)`
