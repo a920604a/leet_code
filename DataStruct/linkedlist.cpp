@@ -172,30 +172,112 @@ void LinkedList::Reverse(){
     cur->next = pre;
     first = cur;
 }
+
+
+class Node{
+public:
+    int val ;
+    Node *prev, * next;
+    Node(int x){
+        val =x;
+        prev= nullptr;
+        next = nullptr;
+    }
+};
+class DoubleLinkedList{
+private:
+    int size;
+    Node *head, *tail;
+public:
+    
+    DoubleLinkedList(){
+        size = 0;
+        head = new Node(0);
+        tail = new Node(0);
+        head->next = tail;
+        tail->prev = head;
+    }
+    // push back
+    void push_back(int x){
+        Node *node = new Node(x);
+        node->next = tail;
+        node->prev = tail->prev;
+        tail->prev->next = node;
+        tail->prev = node;
+        size++;
+    }
+    void push_front(int x){
+        Node *node = new Node(x);
+        node->next= head->next;
+        head->next->prev = node;
+        head->next = node;
+        node->prev = head;
+        size++;
+    }
+    // pop back
+    void pop_back(){
+        Node *node = tail->prev;
+        // int ret = node->val;
+        if(node == head) return ;
+        tail->prev = node->prev;
+        tail->prev->next = tail;
+        size--;
+        // return node->val;
+    }
+    void pop_front(){
+        Node *node = head->next;
+        if(node == tail) return ;
+        head->next = node->next;
+        node->next->prev = head;
+        size--;
+        // return node->val;
+    }
+    int getSize() {return size;}
+    void print(){
+        Node *p = head->next;
+        for(int i=0;i< size;++i){
+            cout<<p->val<<" ";
+            p=p->next;
+        }
+        cout<<endl;
+    }
+};
+
 int main(){
 
-    LinkedList l;
-    l.Print();
+    // LinkedList l;
+    // l.Print();
+    // l.Push_back(5);
+    // l.Push_back(8);
+    // l.Print();
+    // l.Push_front(3);
+    // l.Push_front(1);
+    // l.Print();
+    // // l.Pop_front();
+    // // l.Pop_front();
+    // // l.Pop_back();
+    // // l.Pop_back();
+    // l.Print();
+    // l.Reverse();
+    // l.Print();
+    // l.Delete(3);
+    // l.Print();
+    // l.Clear();
+    // l.Print();
 
-    
-    l.Push_back(5);
-    l.Push_back(8);
-    l.Print();
-    l.Push_front(3);
-    l.Push_front(1);
-    l.Print();
-    // l.Pop_front();
-    // l.Pop_front();
-    // l.Pop_back();
-    // l.Pop_back();
-    l.Print();
-    l.Reverse();
-    l.Print();
-    l.Delete(3);
-    l.Print();
-    l.Clear();
-    l.Print();
 
+    // DoubleLinkedList
+    DoubleLinkedList* dl = new DoubleLinkedList();
+
+    dl->push_back(1);
+    dl->push_back(3);
+    dl->push_back(5);
+    dl->push_front(-1);
+    dl->push_front(-3);
+    dl->print();
+    dl->pop_front();
+    dl->pop_back();
+    dl->print();
 
     return 0;
 
