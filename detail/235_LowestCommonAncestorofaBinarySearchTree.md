@@ -1,6 +1,10 @@
-# 235. Lowest Common Ancestor of a Binary Search Tree
-
-###### tags: `leetcode` `backtracking` `Blind Curated 75`
+---
+title: 235. Lowest Common Ancestor of a Binary Search Tree
+tags:  
+    - backtracking
+categories: leetcode
+comments: false
+---
 
 
 ## [problem](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/)
@@ -17,6 +21,7 @@
 - 剩餘狀況，則`return root`
 
 #### option 1 - recursive
+
 ```c++
 class Solution {
 public:
@@ -31,8 +36,23 @@ public:
 
 > `if(root->val > p->val && root->val > q->val)` 可改成
 > `if(root->val > max(p->val, q->val) )`
-
-
+- postorder
+沒用到BST特性
+```c++
+class Solution {
+public:
+    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+        if(!root) return root;
+        if(root ==p || root==q) return root;
+        TreeNode *l = lowestCommonAncestor(root->left, p, q);
+        TreeNode *r = lowestCommonAncestor(root->right, p, q);
+        
+        if( l && r) return root;
+        else if(!l) return r;
+        return l;
+    }
+};
+```
 #### option 2 - iterative
 不斷更新root 節點
 
@@ -52,4 +72,4 @@ public:
 ```
 ## analysis
 - time complexity `O(n)` n is node number of tree
-- space complexity `O(h)` h is height of trees
+- space complexity `O(h)` h is height of tree

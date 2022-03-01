@@ -1,6 +1,11 @@
-# 230. Kth Smallest Element in a BST
+---
+title: 230. Kth Smallest Element in a BST
 
-###### tags: `leetcode` `backtracking` `Blind Curated 75`
+tags:  
+    - backtracking
+categories: leetcode
+comments: false
+---
 
 
 ## [problem](https://leetcode.com/problems/kth-smallest-element-in-a-bst/)
@@ -9,8 +14,7 @@
 
 ## solution
 
-目前解答，沒有提供follow up 解法
-
+> follow up 必須先建立一個樹其值存該節點下包含(自己)節點。
 #### option 1 - dfs in-order recursive
 用inorder 拜訪每個節點，每拜訪一個節點 `k--`，直到`k=0`時，便返回節點的值
 

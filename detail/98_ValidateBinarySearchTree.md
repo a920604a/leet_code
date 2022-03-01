@@ -1,6 +1,11 @@
-# 98. Validate Binary Search Tree
+---
+title: 98. Validate Binary Search Tree
+tags:  
+    - backtracking
+categories: leetcode
+comments: false
+---
 
-###### tags: `leetcode` `backtracking` `Blind Curated 75`
 
 ## [problem](https://leetcode.com/problems/validate-binary-search-tree/)
 
@@ -12,7 +17,23 @@
 
 #### option 2 - dfs
 拜訪每一個節點，並檢查該節點的值介於左右孩子的值
-
+```c++
+class Solution {
+public:
+    bool isValidBST(TreeNode *root, long mn, long mx){
+        if(!root) return true;
+        
+        if(root->val <= mn || root->val >= mx ) return false;
+        return isValidBST(root->left, mn, root->val) && isValidBST(root->right, root->val , mx);
+        
+    }
+    bool isValidBST(TreeNode* root) {
+        // avoid overflow
+        long mx = LONG_MAX, mn =LONG_MIN;
+        return isValidBST(root, mn, mx);
+    }
+};
+```
 
 #### option 3
 請參考 `morris traversal` 可以做到 `O(1)` space
