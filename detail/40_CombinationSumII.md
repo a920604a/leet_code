@@ -1,8 +1,11 @@
-# 40. Combination Sum II
+---
+title: 40. Combination Sum II
 
-
-
-###### tags: `leetcode` `backtracking` 
+tags:  
+    - backtracking
+categories: leetcode
+comments: false
+---
 
 ## [problem](https://leetcode.com/problems/combination-sum-ii/)
 
@@ -10,6 +13,7 @@
 ## sloution
 
 `if(i>l && candidates[i-1]==candidates[i]) continue;` skip depulicate
+
 ```c++
 class Solution {
 public:
@@ -20,7 +24,9 @@ public:
             return;
         }
         for(int i=l;i<candidates.size() ; ++i){
+            // avoid duplicate
             if(i>l && candidates[i-1]==candidates[i]) continue;
+            if(target < candidates[i]) return;
             path.push_back(candidates[i]);
             backtracking(candidates, target - candidates[i], i+1, path, ret);
             path.pop_back();

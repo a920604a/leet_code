@@ -1,8 +1,12 @@
-# 39. Combination Sum
+---
+title: 39. Combination Sum
 
+tags:  
+    - backtracking
+categories: leetcode
+comments: false
+---
 
-
-###### tags: `leetcode` `backtracking` 
 
 ## [problem](https://leetcode.com/problems/combination-sum/)
 
@@ -45,6 +49,7 @@ public:
 class Solution {
 public:
     void bracktracking(vector<int>& candidates,int target, vector<int> & path, vector<vector<int>>& ret, int l ){
+        // 終止條件
         if(target<0) return;
         if(target ==0){
             ret.push_back(path);
@@ -53,6 +58,7 @@ public:
         for(int i=l;i<candidates.size(); ++i){
             if(target - candidates[i]<0) return ; //sort
             path.push_back(candidates[i]);
+            // 因為可重複拿取同一元素
             bracktracking(candidates, target - candidates[i], path, ret, i);
             path.pop_back();
         }

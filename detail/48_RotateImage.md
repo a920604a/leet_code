@@ -1,25 +1,53 @@
-# 48. Rotate Image
-
-###### tags: `leetcode` `Blind Curated 75`
+---
+title: 48. Rotate Image
+tags: 
+    - Matrix
+categories: leetcode
+comments: false
+---
 
 ## [problem](https://leetcode.com/problems/rotate-image/)
 
 ## solution 
-先對陣列以行為單位做`reverse`，再逐一對角線對調
+先對陣列以行為單位做`reverse`，再逐一對角線對調。反之亦然
 
 ```c++
 class Solution {
 public:
+    void swap(int &a, int &b){
+        a = a^b;
+        b = a^b;
+        a = a^b;
+    }
+    void reverse(vector<int> & nums){
+        int l = 0 , r = nums.size()-1;
+        while(l<r) swap(nums[l++], nums[r--]);
+    }
     void rotate(vector<vector<int>>& matrix) {
-        reverse(matrix.begin(), matrix.end());
-        int n = matrix.size(), m=matrix[0].size();
-        for(int i = 0;i<n-1;++i){
-            for(int j =i+1 ; j<n;++j){
-                int temp = matrix[i][j];
-                matrix[i][j] = matrix[j][i];
-                matrix[j][i] = temp;
+        //先對角線對調，在每列reverse
+        
+        //  1   2   3
+        //  4   5   6
+        //  7   8   9
+        
+        //  1   4   7
+        //  2   5   8
+        //  3   6   9
+        
+        //  7   4   1
+        //  8   5   2
+        //  9   8   7
+        
+        int n = matrix.size(), m = matrix[0].size();
+        
+        for(int i=0;i<n;++i){
+            for(int j=i+1;j<m;++j){
+                swap(matrix[i][j], matrix[j][i]);
             }
         }
+        
+        for(int i=0;i<n;++i) reverse(matrix[i]);
+        
     }
 };
 ```
