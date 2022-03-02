@@ -1,6 +1,12 @@
-# 392. Is Subsequence
-
-###### tags : `leetcode` `Binary Search` Two Pointers` `dp` `hash table`
+---
+title: 392. Is Subsequence
+tags:  
+    - Binary Search
+    - Two Pointers
+    - dp
+categories: leetcode
+comments: false
+---
 
 ## [problem](https://leetcode.com/problems/is-subsequence/)
 
@@ -12,12 +18,12 @@ class Solution {
 public:
     bool isSubsequence(string s, string t) {
         
-        int i=0, j=0,n=s.size(), m = t.size();
-        while(j<m){
-            if(s[i] == t[j]) i++;
-            j++;
+        int n = t.size(), m = s.size(), j=0;
+        if(n<m) return false;
+        for(int i=0;i<n;++i){
+            if(t[i] == s[j]) j++;
         }
-        return i==n;
+        return j==m;
     }
 };
 ```
