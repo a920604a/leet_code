@@ -1,12 +1,18 @@
-# 354. Russian Doll Envelopes
-
-###### tags: `leetcode` `dp` `Binary Search`
+---
+title: 354. Russian Doll Envelopes
+tags:  
+    - dp
+    - Binary Search
+categories: leetcode
+comments: false
+---
 
 ## [problem](https://leetcode.com/problems/russian-doll-envelopes/)
 
 ## solution 
 
 #### option 1 - dp
+可能會time out
 
 ```c++
 class Solution {
