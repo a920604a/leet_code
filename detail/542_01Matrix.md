@@ -65,6 +65,8 @@ public:
 
 #### option 1
 將 `mat[i][j]=1` 的地方先收集起來
+`ret[x][y] = 1 + ret[p[0]][p[1]];` 
+
 ```c++
 class Solution {
 public:
