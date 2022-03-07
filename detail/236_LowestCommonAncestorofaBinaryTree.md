@@ -1,6 +1,10 @@
-# 236. Lowest Common Ancestor of a Binary Tree
-
-###### tags: `leetcode` `backtracking`
+---
+title: 236. Lowest Common Ancestor of a Binary Tree
+tags:  
+    - backtracking
+categories: leetcode
+comments: false
+---
 
 ## [problem](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/)
 
@@ -43,6 +47,7 @@ public:
         
         if(!root) return root;
         if(root == p || root == q) return root;
+        // post-order
         TreeNode *l = lowestCommonAncestor(root->left, p, q);
         TreeNode *r = lowestCommonAncestor(root->right, p, q);
         if(l && !r) return l;

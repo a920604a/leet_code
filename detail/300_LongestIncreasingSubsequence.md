@@ -1,6 +1,12 @@
-# 300. Longest Increasing Subsequence
+---
+title: 300. Longest Increasing Subsequence
 
-###### tags: `leetcode` `dp` `Binary Search` `Blind Curated 75`
+tags:  
+    - dp
+    - Binary Search
+categories: leetcode
+comments: false
+---
 
 ## [problem](https://leetcode.com/problems/longest-increasing-subsequence/)
 
@@ -21,10 +27,11 @@ public:
         
         int ret = 1;
         for(int i=1;i<n;++i){
+            // 每次確定第 ith 最長子序列
             for(int j=0;j<i;++j){
                 if(nums[i] > nums[j] ) dp[i] = max(dp[i], dp[j]+1);
-                ret = max(ret,dp[i]);
             }
+            ret = max(ret,dp[i]);
         }
         return ret;
     }
