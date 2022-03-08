@@ -12,6 +12,29 @@ comments: false
 
 ## solution
 
+#### option 1 - Two Pointers
+```c++
+class Solution {
+public:
+    ListNode* removeElements(ListNode* head, int val) {
+        ListNode *slow = new ListNode(-1), *fast=head, *ret = slow;
+        slow->next = head;
+        while(fast){
+            if(fast->val!=val) {
+                slow->next = fast;
+                slow=slow->next;
+            }
+            fast=fast->next;
+        }
+        slow->next = nullptr;
+        return ret->next;
+        
+    }
+};
+```
+
+#### option 2 
+
 ```c++
 class Solution {
 public:
@@ -23,6 +46,21 @@ public:
             else cur = cur->next;
         }
         return ret->next;
+    }
+};
+```
+```c++
+class Solution {
+public:
+    ListNode* removeElements(ListNode* head, int val) {
+        ListNode *cur = new ListNode(-1), *ret = cur;
+        cur->next = head;
+        while(cur){
+            while(cur->next && cur->next->val ==val) cur->next=cur->next->next;
+            cur = cur->next;
+        }
+        return ret->next;
+        
     }
 };
 ```
