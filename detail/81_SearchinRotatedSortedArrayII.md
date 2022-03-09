@@ -1,0 +1,45 @@
+---
+title: 81. Search in Rotated Sorted Array II
+
+tags:  
+    - Binary Search
+categories: leetcode
+comments: false
+---
+
+
+## [problem](https://leetcode.com/problems/search-in-rotated-sorted-array-ii/)
+
+
+## solution
+如果最左邊或最右邊與中間一樣，就往將左右索引各移動一個
+
+```c++
+class Solution {
+public:
+    bool search(vector<int>& nums, int target) {
+        int l = 0, r = nums.size()-1;
+        while(l<=r){
+            int mid = l + (r-l)/2;
+            if(nums[mid] == target ) return true;
+            if(nums[mid] < nums[r]){
+                if(nums[mid] < target && target<=nums[r]) l = mid+1;
+                else r = mid -1;
+            }
+            else if(nums[mid] > nums[l]){
+                if(nums[l]<=target && target<nums[mid]) r = mid-1;
+                else l = mid+1;
+            }
+            else {
+                if(nums[mid] == nums[l]) l++;
+                else r--;
+            }
+        }
+        return false;
+    }
+};
+```
+
+## analysis
+- time complexity `O(logn)`
+- space complexity `O(1)`

@@ -27,7 +27,6 @@ public:
         vector<vector<int>> dp = grid;
         int path = 0;
         for(int j=1;j<m;++j) dp[0][j] +=dp[0][j-1];
-        if(n==1) return dp.back().back();
         for(int i=1;i<n;++i){
             for(int j=0;j<m;++j){
                 if(j==0) dp[i][j] += dp[i-1][j];
