@@ -29,6 +29,7 @@ public:
         for(int i=n-2;i>-1;i--){
             for(int j=i+1 ; j<n;++j){
                 if(s[i] == s[j]) dp[i][j] = 2+dp[i+1][j-1];
+                // deleting some or no elements
                 else dp[i][j] = max(dp[i+1][j], dp[i][j-1]);
             }
         }

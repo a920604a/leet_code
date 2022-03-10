@@ -59,9 +59,11 @@ public:
         for(int i=n-1;i>-1 ; i--){
             dp[i][i] = 1;
             for(int j=i+1;j<n;++j){
+                // ex: "tt" 
                 if(s[i] == s[j] && j-i==1){
                     dp[i][j] = 1;
                 }
+                // ex: babab , dp[i+1][j-1]確保 aba 是回文，才將i往左一格 j 往右一格 
                 else if(s[i] == s[j] && dp[i+1][j-1]){
                     dp[i][j] = 1;
                 }
