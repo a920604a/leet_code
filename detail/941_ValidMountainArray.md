@@ -15,14 +15,12 @@ comments: false
 class Solution {
 public:
     bool validMountainArray(vector<int>& arr) {
-        int n = arr.size();
+        int n =arr.size();
         if(n<3) return false;
-        //  0   1   2   1   2 => false
-        int i=0, j=n-1;
-        while(i<j && arr[i+1] > arr[i]) i++;
-        while(i<j && arr[j-1] > arr[j]) j--;
-        if(i==0 || j==n-1) return false;
-        return i==j?true:false;
+        int l =0 , r = n-1;
+        while(l<r && arr[l] < arr[l+1]) l++;
+        while(l<r && arr[r-1] > arr[r]) r--;
+        return (l!=0) && (r!=n-1) &&(l==r);
     }
 };
 ```
