@@ -15,5 +15,4 @@
 - [Cracking the coding interview-part1](https://github.com/a920604a/leetcode/blob/main/Cracking-the-coding-interview-part1.md) 
 - [Cracking the coding interview part2](https://github.com/a920604a/leetcode/blob/main/Cracking-the-coding-interview-part2.md)
 - [50 Interview Questions](https://github.com/a920604a/leetcode/blob/main/50-Interview-Questions.md)
-
-
+- [Algorithm Problem Classification](https://www.programcreek.com/2013/08/leetcode-problem-classification/)
