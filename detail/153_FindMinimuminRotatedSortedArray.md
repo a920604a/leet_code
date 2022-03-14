@@ -10,6 +10,7 @@ comments: false
 
 ## [problem](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/)
 
+各元素唯一
 ## solution
 #### option 1 - Binary Search
 
@@ -17,21 +18,19 @@ comments: false
 class Solution {
 public:
     int findMin(vector<int>& nums) {
-        int n= nums.size();
+        int n = nums.size();
         int l = 0, r = n-1;
-        int ret = INT_MAX;
-        while(l<=r){
+        while(l<r){
             int mid = l + (r-l)/2;
-            ret = min(nums[mid], ret);
-            // 右半部遞增
-            if(nums[mid] < nums[r] ) r = mid-1;
-            // 左半部遞增
-            else l = mid+1;
+            // 代表最小值會在 [mid+1, r] 之間
+            if(nums[mid] > nums[r]) l = mid+1;
+            // 右半部遞增，下次搜尋區間 [l, mid]
+            else if(nums[mid] < nums[r]) r = mid;
         }
-        return ret;
+        return nums[l];
+        
     }
 };
-
 ```
 
 ## analysis

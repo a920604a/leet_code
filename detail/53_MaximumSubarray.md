@@ -1,7 +1,11 @@
-# 53. Maximum Subarray
-
-###### tags: `leetcode` `dp` `Blind Curated 75`
-
+---
+title: 53. Maximum Subarray
+tags:  
+    - dp
+    - Kadane's Algo 
+categories: leetcode
+comments: false
+---
 
 ## [problem](https://leetcode.com/problems/maximum-subarray/)
 

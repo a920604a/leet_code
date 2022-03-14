@@ -53,18 +53,22 @@ public:
 class Solution {
 public:
     vector<int> intersect(vector<int>& nums1, vector<int>& nums2) {
-        // sorting
         vector<int> ret;
         sort(nums1.begin(), nums1.end());
         sort(nums2.begin(), nums2.end());
-        int l = 0,r = 0, n = nums1.size(), m = nums2.size();
-        while( l<n && r<m){
-            if(nums1[l] == nums2[r]){
-                ret.push_back(nums1[l++]);
+        int l=0,r=0, n=nums1.size(), m = nums2.size();
+        while(l<n && r<m){
+            if(nums1[l] == nums2[r]) {
+                ret.push_back(nums1[l]);
+                // while(l+1<n && nums1[l] == nums1[l+1]) l++;
+                // while(r+1<m && nums2[r] == nums2[r+1]) r++;
+                l++;
                 r++;
             }
-            else if(nums1[l] < nums2[r]) l++;
-            else r++;
+            else{
+                if(nums1[l]<nums2[r]) l++;
+                else r++;
+            }
         }
         return ret;
     }
