@@ -31,7 +31,7 @@ public:
 ```
 
 #### option 2  - vote
-
+最多兩個數字出現頻率超過 n/3
 ```c++
 class Solution {
 public:
