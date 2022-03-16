@@ -1,10 +1,16 @@
-# 217. Contains Duplicate
+---
+title: 217. Contains Duplicate
 
+tags:  
+    - hash table
+categories: leetcode
+comments: false
+---
 
-###### tags: `leetcode` `hash table` `Blind Curated 75`
 
 
 ## [problem](https://leetcode.com/problems/contains-duplicate/)
+
 找出陣列中是否一個重複的數字，如果有任何數字出現至少兩次則返回`true`，每個數字都不同則返回`false`
 
 ## Solution
@@ -40,10 +46,7 @@ public:
         }
         return false;
 
-        // unordered_set<int> s;
-        // for(int n:nums) s.insert(n);
-        // return !( nums.size() == s.size());
-        
+        // return !(nums.size()==unordered_set<int>(nums.begin(),nums.end()).size());
     }
 };
 ```
