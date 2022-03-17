@@ -69,29 +69,20 @@ public:
 class Solution {
 public:
     int nthUglyNumber(int n) {
-        if(n <= 0) return false; // get rid of corner cases 
-        if(n == 1) return true; // base case
-        vector<int> dp(n, 0);
-        int t2 = 0, t3 = 0, t5 = 0; //pointers for 2, 3, 5
-        
-        //2*    1   1   2   2   3   4   4   5   6
-        //3*    0   1   1   1   2   2   3   3   4
-        //5*    0   0   0   1   1   1   1   2   2
-        //dp    2   3   4   5   6   8   9   10  12
-        //   
-        
-        dp[0] = 1;
-        for(int i=1;i<n ;++i){
-            dp[i] = min(dp[t2]*2, min(dp[t3]*3, dp[t5]*5) );
+        vector<int> ret = {1};
+        int p2 = 0, p3=0, p5 = 0;
+        while(ret.size() < n){
+            int a = ret[p2]*2, b = ret[p3]*3, c= ret[p5]*5;
             
-            if(dp[i]==dp[t2]*2) t2++;
-            if(dp[i]==dp[t3]*3) t3++;
-            if(dp[i]==dp[t5]*5) t5++;
-            // cout<<t2<<" "<<t3<<" "<<t5<<endl;
-            // cout<<dp[i]<<endl;
+            int mn = min(a,min(b,c));
+            
+            ret.push_back(mn);
+            
+            if(mn == a) p2++;
+            if(mn == b) p3++;
+            if(mn == c) p5++;
         }
-        return dp.back();
-        
+        return ret.back();   
     }
 };
 ```
