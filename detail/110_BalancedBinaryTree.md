@@ -10,17 +10,6 @@ comments: false
 ## solution
 
 ```c++
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
- *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
- * };
- */
 class Solution {
 public:
     int Depth(TreeNode *root){
@@ -37,4 +26,27 @@ public:
     }
 };
 
+```
+
+```c++
+class Solution {
+public:
+    bool ret;
+    int depth(TreeNode *root){
+        if(!root) return 0;
+        int left = depth(root->left);
+        int right = depth(root->right);
+        if(abs(left- right)>1){
+            ret =false;
+        }
+        return 1+max(left, right);
+        
+    }
+    bool isBalanced(TreeNode* root) {
+        ret = true;
+        depth(root);
+        return ret;
+        
+    }
+};
 ```

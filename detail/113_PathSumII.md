@@ -11,17 +11,6 @@ comments: false
 ## solution
 #### option 1 - waste memory
 ```c++
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
- *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
- * };
- */
 class Solution {
 public:
     vector<vector<int>> ret;
@@ -39,7 +28,6 @@ public:
         }
         
         pathSum(root->left, targetSum, path);
-        // path.pop_back();
         pathSum(root->right, targetSum, path);
         path.pop_back();
         
@@ -54,38 +42,20 @@ public:
 };
 ```
 
-#### option 2
+#### option 2 - dfs
 
 ```c++
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
- *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
- * };
- */
 class Solution {
 public:
     vector<vector<int>> ret;
     void pathSum(TreeNode* root, int targetSum, vector<int> &path){
         // 終止條件
-        if(!root){
-            return;
-        }
+        if(!root) return;
         targetSum -= root->val;
         path.push_back(root->val);
         // 插入條件
-        if(!root->left && !root->right){
-            if(targetSum==0) ret.push_back(path);
-            // 因為是call by reference 且所以拜訪完葉子後需要pop
-            path.pop_back();
-            return;
-        }
-        
+        if(target==0 && !root->left && !root->right) ret.push_back(path);
+            // 因為是call by reference 且所以拜訪完葉子後需要pop        
         pathSum(root->left, targetSum, path);
         pathSum(root->right, targetSum, path);
         path.pop_back();
@@ -96,7 +66,6 @@ public:
         // C++ 同一函數名不同參數是可以的，但同一函數名同參數但不同返回型態是不能的
         pathSum(root, targetSum, path);
         return ret;
-        
     }
 };
 ```

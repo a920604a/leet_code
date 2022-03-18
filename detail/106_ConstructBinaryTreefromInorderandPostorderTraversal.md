@@ -1,7 +1,10 @@
-# 106. Construct Binary Tree from Inorder and Postorder Traversal
-
-###### tags: `leetcode` `backtracking`
-
+---
+title: 106. Construct Binary Tree from Inorder and Postorder Traversal
+tags:  
+    - backtracking
+categories: leetcode
+comments: false
+---
 
 ## [problem](https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/)
 
@@ -13,24 +16,22 @@
 ```c++
 class Solution {
 public:
-    TreeNode* construct(vector<int> & inorder, int il, int ir, vector<int> & postorder, int pl, int pr){
-        if(il> ir || pl > pr) return nullptr;
-        
+    TreeNode *build(vector<int> & inorder, int il, int ir, vector<int>& postorder, int pl, int pr){
+        if(il>ir) return nullptr;
         TreeNode *root = new TreeNode(postorder[pr]);
         int idx = -1;
-        for(int i=il;i<=ir;++i){
+        for(int i= il;i<=ir;++i){
             if(inorder[i] == root->val){
-                idx =i;
+                idx = i ;
                 break;
             }
         }
-        root->left = construct(inorder, il, idx-1, postorder, pl, pl+idx-il-1);
-        root->right = construct(inorder, idx+1, ir, postorder, pl+idx-il, pr-1);
+        root->left = build(inorder, il, idx-1, postorder, pl, pl+idx-il-1) ;
+        root->right = build(inorder, idx+1, ir, postorder, pl+idx-il, pr-1);
         return root;
     }
     TreeNode* buildTree(vector<int>& inorder, vector<int>& postorder) {
-        return construct(inorder, 0, inorder.size()-1, postorder, 0, postorder.size()-1);
-        
+        return build(inorder, 0, inorder.size()-1, postorder, 0, postorder.size()-1);
     }
 };
 ```
