@@ -39,23 +39,19 @@ public:
 */
 
 class Solution {
-private:
-    unordered_map<Node*, Node*> visited;
 public:
-    Node * dfs(Node *node){
+    unordered_map<Node* , Node*> visited;
+    Node* cloneGraph(Node* node) {
+        if(!node ) return node;
+        // 避免陷入無限循環
         if(visited.find(node)!=visited.end()) return visited[node];
-        
-        if(!node) return nullptr;
-        
-        Node* clone = new Node(node->val);
+        Node *clone = new Node(node->val);
         visited[node] = clone;
-        for(Node * n:node->neighbors){
-            clone->neighbors.push_back(dfs(n));
+        for(Node* n:node->neighbors){
+            clone->neighbors.push_back(cloneGraph(n));
         }
         return visited[node];
-    }
-    Node* cloneGraph(Node* node) {
-        return dfs(node);
+        
     }
 };
 ```
