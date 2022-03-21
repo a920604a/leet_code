@@ -11,32 +11,19 @@ comments: false
 
 
 ## solution
+#### option 1 - dfs
 ```c++
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
- *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
- * };
- */
 class Solution {
 public:
     int ret = 0;
     void traverse(TreeNode * root, int path){
         if(!root) return;
-        path*=10;
-        path+=root->val;
+        path = 10*path + root->val;
         // 提前終止
         if(!root->left && !root->right){
-            // cout<<path<<endl;
             ret+=path;
             return;
         }
-        
         traverse(root->left, path);
         traverse(root->right, path);
         
@@ -45,6 +32,33 @@ public:
         
         traverse(root, 0);
         return ret;
+    }
+};
+```
+
+#### option 2 - bfs
+```c++
+class Solution {
+public:
+    int sumNumbers(TreeNode* root) {
+        //  bfs
+        if(!root) return 0;
+        queue<pair<TreeNode *,int> >  q;
+        q.push({root, root->val});
+        int depth = 0, ret = 0;
+        while(!q.empty()){
+            int size = q.size();
+            for(int _ = 0;_<size ; ++_){
+                auto [p,val] = q.front(); q.pop();
+                
+                if(!p->left && !p->right) ret+=val;
+                if(p->left) q.push({p->left, 10*val+p->left->val});
+                if(p->right) q.push({p->right, 10*val+p->right->val});
+                
+            }
+        }
+        return ret;
+        
     }
 };
 ```

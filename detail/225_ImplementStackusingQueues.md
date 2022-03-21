@@ -69,6 +69,68 @@ public:
 
 ```
 
+
+#### option 1
+```c++
+class MyStack {
+private:
+    queue<int> q1, q2;
+public:
+    MyStack() {
+        
+    }
+    
+    void push(int x) {
+        if(empty()) q1.push(x);
+        else{
+            if(q1.size()>0){
+                q2.push(x);
+                int size = q1.size();
+                while(size >0){
+                    q2.push(q1.front());
+                    q1.pop();
+                    size--;
+                }
+            }
+            else if(q2.size() > 0){
+                q1.push(x);
+                int size = q2.size();
+                while(size>0){
+                    q1.push(q2.front());
+                    q2.pop();
+                    size--;
+                }
+            }
+        }
+        
+    }
+    
+    int pop() {
+        if(q1.size()>0) {
+            int t = q1.front();
+            q1.pop();
+            return t;
+        }
+        else if(q2.size()>0) {
+            int t = q2.front();
+            q2.pop();
+            return t;
+        }
+        return 0;
+    }
+    
+    int top() {
+       if(q1.size()>0) return q1.front();
+        else if(q2.size()>0) return q2.front();
+        return 0; 
+    }
+    
+    bool empty() {
+        return q1.empty() && q2.empty();
+    }
+};
+
+```
 ## analysis
 - pop and top operation time complexity `O(n)`
 - space complexity `O(n)`

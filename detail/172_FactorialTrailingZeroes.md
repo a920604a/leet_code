@@ -1,6 +1,11 @@
-# 172. Factorial Trailing Zeroes
-
-###### tags: `leetcode`
+---
+title: 172. Factorial Trailing Zeroes
+tags:  
+    - dp
+    - backtracking
+categories: leetcode
+comments: false
+---
 
 ## [problem](https://leetcode.com/problems/factorial-trailing-zeroes/)
 

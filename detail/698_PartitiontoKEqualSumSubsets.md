@@ -12,6 +12,8 @@ comments: false
 
 
 ## solution
+
+#### option 1 - dfs , maybe TLE
 ```c++
 class Solution {
 public:

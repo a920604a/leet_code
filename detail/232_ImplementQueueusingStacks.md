@@ -60,7 +60,48 @@ public:
 
 
 ```
+#### option 1
+```c++
+class MyQueue {
+private:
+    stack<int>temp;
+    stack<int>value;
+public:
+    MyQueue() {
+        
+    }
+    void push(int x) {
+        if(value.empty()) value.push(x);
+        else{
+            while(!value.empty()){
+                temp.push(value.top());
+                value.pop();
+            }
+            value.push(x);
+            while(!temp.empty()){
+                value.push(temp.top());
+                temp.pop();
+            }
+        }
+        
+    }
+    
+    int pop() {
+        int ret = value.top(); 
+        value.pop();
+        return ret;
+    }
+    
+    int peek() {
+        return value.top();
+    }
+    
+    bool empty() {
+        return value.empty();
+    }
+};
 
+```
 ## analysis
 - pop and peek operation time complexity `O(n)`
 - space complexity `O(n)`
