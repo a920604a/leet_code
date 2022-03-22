@@ -1,6 +1,10 @@
-# 62. Unique Paths
-
-###### tags: `leetcode` `dp` `Blind Curated 75`
+---
+title: 62. Unique Paths
+tags:  
+    - dp
+categories: leetcode
+comments: false
+---
 
 ## [problem](https://leetcode.com/problems/unique-paths/)
 
@@ -47,6 +51,20 @@ public:
 ```
 
 #### option 3 use math
+```c++
+class Solution {
+public:
+    int uniquePaths(int m, int n) {
+        double num = 1, denom = 1;
+        int small = m > n ? n : m;
+        for (int i = 1; i <= small - 1; ++i) {
+            num *=( m + n - 1 - i);
+            denom *= i;
+        }
+        return (int)(num / denom);
+    }
+};
+```
 ## analysis
 - option 1
     - time complexity `O(n*m)`
@@ -54,3 +72,6 @@ public:
 - option 2
     - time complexity `O(n*m)`
     - space complexity `O(n)`
+- option 2
+    - time complexity `O(n)`
+    - space complexity `O(1)`

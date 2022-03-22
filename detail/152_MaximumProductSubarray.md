@@ -1,7 +1,11 @@
-# 152. Maximum Product Subarray
+---
+title: 152. Maximum Product Subarray
 
-###### tags: `leetcode` `dp` `Blind Curated 75`
-
+tags:  
+    - dp
+categories: leetcode
+comments: false
+---
 
 ## [problem](https://leetcode.com/problems/maximum-product-subarray/)
 
@@ -16,18 +20,12 @@
 class Solution {
 public:
     int maxProduct(vector<int>& nums) {
-        int n =nums.size();
-        vector<int> mn(n,1), mx(n,1);
-        mn[0] = nums[0], mx[0] = nums[0];
-        //      2   3   -2  4
-        //mn    2   3   -6  -24
-        //mx    2   6   -2  4
-        
-        
-        int ret = nums[0];
+        int n= nums.size(), ret = nums[0];
+        vector<int> mx(n,0), mn(n,0);
+        mx[0] = mn[0] = nums[0];
         for(int i=1;i<n;++i){
-            mn[i] = min(nums[i], min(mn[i-1]*nums[i], mx[i-1]*nums[i]));
-            mx[i] = max(nums[i], max(mn[i-1]*nums[i], mx[i-1]*nums[i]));
+            mn[i] = min(min(mx[i-1]*nums[i],mn[i-1]*nums[i]), nums[i]);
+            mx[i] = max(max(mx[i-1]*nums[i],mn[i-1]*nums[i]), nums[i]);
             ret = max(ret, mx[i]);
         }
         return ret;
