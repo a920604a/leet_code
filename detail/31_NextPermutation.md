@@ -29,7 +29,7 @@ public:
         int j = n-1;
         while(j>0 && nums[j-1] >= nums[j] ) j--;
         if(j==0){
-            sort(nums.begin(),nums.end());
+            reverse(nums.begin(), nums.end());
             return;
         }
         int pivot=j-1;
@@ -37,7 +37,6 @@ public:
         while(bigger > pivot && nums[bigger] <= nums[pivot]) bigger--;
         swap(nums[pivot], nums[bigger]);
         reverse(nums.begin()+pivot+1, nums.end());
-        
     }
 };
 ```

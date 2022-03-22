@@ -36,6 +36,32 @@ public:
     }
 };
 ```
+```c++
+class Solution {
+public:
+    vector<vector<int>> ret;
+    vector<bool> visited;
+    void dfs(vector<int> & nums, vector<int> & path){
+        if(path.size() == nums.size()){
+            ret.push_back(path);
+        }
+        for(int i=0;i<nums.size();++i){
+            if(visited[i]) continue;
+            path.push_back(nums[i]);
+            visited[i] = true;
+            dfs(nums, path);
+            path.pop_back();
+            visited[i] = false;
+        }
+    }
+    vector<vector<int>> permute(vector<int>& nums) {
+        vector<int> path;
+        visited = vector<bool> (nums.size(), false) ;
+        dfs(nums, path);
+        return ret;      
+    }
+};
+```
 
 
 #### option 2 - math
