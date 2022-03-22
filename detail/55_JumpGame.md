@@ -1,7 +1,12 @@
-# 55. Jump Game
+---
+title: 55. Jump Game
 
-
-###### tags: `leetcode` `dp` `Blind Curated 75`
+tags:  
+    - dp
+    - greedy
+categories: leetcode
+comments: false
+---
 
 ## [problem](https://leetcode.com/problems/jump-game/)
 
@@ -63,10 +68,11 @@ public:
         int n =nums.size();
         int canReach = 0;
         for(int i=0;i<n-1;++i){
+            if(canReach<i) return false;
             canReach = max(canReach, i+nums[i]);
-            if(canReach<=i) return false;
+            
         }
-        return canReach>=n-1?true:false;
+        return true;
     }
 };
 ```

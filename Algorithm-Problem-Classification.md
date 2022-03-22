@@ -88,6 +88,7 @@ comments: false
 - *336 Palindrome Pairs
 - 356 Line Reflection (Premium)
 - *205 Isomorphic Strings
+> 290. Word Pattern
 
 
 #### Sum subarray related problems [3]
@@ -336,24 +337,71 @@ comments: false
 - *388 Longest Absolute File Path
 - *394 Decode String
 - Evaluate Math Expression
-## DFS
-Partition to K Equal Sum Subsets
-Permutations, Permutations II, Permutation Sequence, Number of Squareful Arrays
-Generate Parentheses
-Combination Sum (DFS), II (DFS), III (DFS), IV (DP)
-Wildcard Matching, Regular Expression Matching, Expressive Words
+## DFS [28]
+- 698 Partition to K Equal Sum Subsets
+- 46 Permutations
+- 47 Permutations II
+- *60 Permutation Sequence
+> *31 Next Permutation
+- *996 Number of Squareful Arrays
+- *22 Generate Parentheses
+- 39 Combination Sum
+- 40 Combination Sum II
+- 216 Combination Sum III
+- *377 Combination Sum IV
+- *44 Wildcard Matching
+- *10 Regular Expression Matching
+- *809 Expressive Words
 - Get Target Using Number List And Arithmetic Operations
 - 293 Flip Game (Premium)
 - 294 Flip Game II (Premium)
-Word Pattern
+- 290 Word Pattern
 - 291 Word Pattern II (Premium)
 - 87 Scramble String
-Remove Invalid Parentheses
-Shortest Palindrome
-Lexicographical Numbers
-Combinations (DFS)
-Letter Combinations of a Phone Number (DFS)
-Restore IP Addresses
+- *301 Remove Invalid Parentheses
+- *214 Shortest Palindrome
+- *386 Lexicographical Numbers
+- 77 Combinations
+- 17 Letter Combinations of a Phone Number
+- *93 Restore IP Addresses
 - 254 Factor Combinations (Premium)
-Subsets, Subsets II
+- 78 Subsets
+- 90 Subsets II
 
+##  Dynamic Programming
+- 322 Coin Change
+- *131 Palindrome Partitioning
+- *132 Palindrome Partitioning II
+- 198 House Robber
+- 213 House Robber II
+- 337 House Robber III
+- 55 Jump Game
+- 45 Jump Game II
+Best Time to Buy and Sell Stock , II, III , IV
+- 121 Best Time to Buy and Sell Stock
+- 122 Best Time to Buy and Sell Stock II
+> 309. Best Time to Buy and Sell Stock with Cooldown
+> 714. Best Time to Buy and Sell Stock with Transaction Fee
+- *123 Best Time to Buy and Sell Stock III
+- *188 Best Time to Buy and Sell Stock IV
+Dungeon Game
+Decode Ways
+Perfect Squares
+Word Break
+Word Break II
+- 727 Minimum Window Subsequence (Premium)
+Maximal Square
+Minimum Path Sum
+Unique Paths
+Unique Paths II
+- 256 Paint House (Premium)
+- 265 Paint House II (Premium)
+Maximum Subarray
+Maximum Product Subarray
+
+#### DP--2D
+Edit Distance
+Distinct Subsequences Total
+Longest Palindromic Substring
+Longest Common Subsequence
+- Longest Common Substring

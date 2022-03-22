@@ -35,9 +35,28 @@ public:
 ```
 
 
-#### option 2 - gredy
+#### option 2 - greedy
 ```c++
-
+class Solution {
+public:
+    int jump(vector<int>& nums) {
+        int lastReach = 0;
+	    int reach = 0;
+        int step = 0;
+        int n = nums.size();
+        for(int i=0;i<=reach && i< n; ++i){
+            if(i>lastReach){
+                // update;
+                step++;
+                lastReach = reach;
+            }
+            reach = max(reach, nums[i]+i);
+            
+        }
+        if(reach <n-1) return 0;
+        return step;
+    }
+};
 ```
 
 ## analysis
