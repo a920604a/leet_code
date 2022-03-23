@@ -1,7 +1,12 @@
-# 371. Sum of Two Integers
+---
+title: 371. Sum of Two Integers
 
+tags:  
+    - Bit Manipulation
+categories: leetcode
+comments: false
+---
 
-###### tags: `leetcode` `Bit Manipulation` `Blind Curated 75`
 
 ## [problem](https://leetcode.com/problems/sum-of-two-integers/)
 
@@ -35,17 +40,11 @@ int add(int a, int b){
 class Solution {
 public:
     int getSum(int a, int b) {
-        
-        int sum = 0, count =0 ;
-        if(b==0) return a;
-        while(b!=0){
-            sum = a^b;
-            count = (a&b & 0x7fffffff)<<1;
-            a=sum;
-            b=count;
-            
+        while(a){
+            int carry = (a&b&0x7fffffff)<<1, sum = a^b;
+            a = carry, b = sum;
         }
-        return sum;
+        return b;
     }
 };
 ```
@@ -54,10 +53,9 @@ public:
 class Solution {
 public:
     int getSum(int a, int b) {
-        if(b==0) return a;
-        int sum = a^b;
-        int count = (a&b& 0x7fffffff)<<1;
-        return getSum(sum, count);        
+        if(a==0) return b;
+        int carry = (a&b&0x7fffffff)<<1, sum = a^b;
+        return getSum(carry, sum);
     }
 };
 ```

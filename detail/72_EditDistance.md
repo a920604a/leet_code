@@ -42,9 +42,7 @@ public:
                         dp[i-1][j-1] // replace
                         ) +1;
                 else dp[i][j] = dp[i-1][j-1];
-                // cout<<dp[i][j]<<" ";
             }
-            // cout<<endl;
         }
         return dp.back().back();
     }

@@ -1,11 +1,18 @@
-# 338. Counting Bits
+---
+title: 338. Counting Bits
 
-###### tags: `leetcode` `Bit Manipulation` `dp` `Blind Curated 75`
+tags:  
+    - Bit Manipulation
+    - dp
+categories: leetcode
+comments: false
+---
 
 ## [problem](https://leetcode.com/problems/counting-bits/)
 
 ## solution
 
+如果i不是2的指數，那 `i&(i-1)` 可以找到比i小的2的指數
 
 #### option 1
 
@@ -43,6 +50,22 @@ public:
             // ret[i] = ret[ i&(i-1)] +1;
             if(i%2==0) ret[i] = ret[i/2];
             else ret[i] = ret[i-1]+1;
+        }
+        return ret;
+    }
+};
+```
+#### option 3
+```c++
+class Solution {
+public:
+    vector<int> countBits(int n) {
+        vector<int> ret(n+1,0);
+        //  0   1   2   3   4   5   6   7   8   
+        //  0   1   1   2   1   2   2   3   1
+        for(int i=1;i<=n;++i){
+            if( (i&(i-1))==0) ret[i] = 1;
+            else ret[i] = ret[i&(i-1)]+1;
         }
         return ret;
     }

@@ -25,7 +25,7 @@ private:
     vector<int> vec;
     // key 存 list的索引，因為key 必須唯一， value 存value
     // key 存vec的value，value 唯一 , value存索引
-    unordered_map<int,int> mp;
+    unordered_map<int,int> val2idx;
     
 public:
     RandomizedSet() {
@@ -33,21 +33,21 @@ public:
     }
     
     bool insert(int val) {
-        if(mp.find(val) !=mp.end()) return false;
-        mp[val] = vec.size();
+        if(val2idx.find(val) !=val2idx.end()) return false;
+        val2idx[val] = vec.size();
         vec.push_back(val);
         return true;
     }
     
     bool remove(int val) {
         
-        if(mp.find(val)==mp.end()) return false;
+        if(val2idx.find(val)==val2idx.end()) return false;
         // 重點，需要從vector移除指定元素，但必須要O(1)
-        int idx = mp[val];
-        mp[vec.back()] = idx;
+        int idx = val2idx[val];
+        val2idx[vec.back()] = idx;
         swap(vec[idx], vec.back());
         // remove the last element, this 
-        mp.erase(val);
+        val2idx.erase(val);
         vec.pop_back();
         return true;
     }
@@ -57,12 +57,4 @@ public:
         
     }
 };
-
-/**
- * Your RandomizedSet object will be instantiated and called as such:
- * RandomizedSet* obj = new RandomizedSet();
- * bool param_1 = obj->insert(val);
- * bool param_2 = obj->remove(val);
- * int param_3 = obj->getRandom();
- */
 ```
