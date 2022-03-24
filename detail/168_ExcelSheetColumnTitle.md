@@ -1,5 +1,7 @@
 ---
 title: 168. Excel Sheet Column Title
+tags: 
+    - Math
 categories: leetcode
 comments: false
 ---

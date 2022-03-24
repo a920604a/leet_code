@@ -2,6 +2,7 @@
 title: 202. Happy Number
 tags: 
     - Two Pointers
+    - Math
 categories: leetcode
 comments: false
 ---

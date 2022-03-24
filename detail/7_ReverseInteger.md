@@ -1,6 +1,12 @@
-# 7. Reverse Integer
+---
+title: 7. Reverse Integer
 
-###### tags: `leetcode` `Bit Manipulation` 
+tags:  
+    - Bit Manipulation
+    - Math
+categories: leetcode
+comments: false
+---
 
 ## [problem](https://leetcode.com/problems/reverse-integer/)
 Given a 32-bit signed integer, reverse digits of an integer.
@@ -8,7 +14,7 @@ Given a 32-bit signed integer, reverse digits of an integer.
 
 ## solution
 - 要注意是否會overflow，在每次將結果加到ret變數時都必須檢查是否overflow
-
+#### option 1
 ```c++
 class Solution {
 public:
@@ -27,4 +33,5 @@ public:
 ## analysis
 - time complexity `O(1)`
 - space complexity `O(1)`
+
 
