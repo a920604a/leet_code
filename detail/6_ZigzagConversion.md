@@ -5,6 +5,7 @@ comments: false
 ---
 ## [problem](https://leetcode.com/problems/zigzag-conversion/)
 ## solution
+mod
 ```c++
 class Solution {
 public:
