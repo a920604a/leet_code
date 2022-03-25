@@ -66,6 +66,22 @@ public:
     }
 };
 ```
+#### option 3 - follow up
+```c++
+class Solution {
+public:
+    int minimumTotal(vector<vector<int>>& triangle) {
+        int n = triangle.size();
+        vector<int> dp(triangle.back());
+        for(int i=(int)triangle.size()-2;i>-1 ; i--){
+            for(int j =0;j<=i; ++j){
+                dp[j] = min(dp[j], dp[j+1]) + triangle[i][j];
+            }
+        }
+        return dp[0];
+    }
+};
+```
 ## analysis
 - time complexity `O(nm)`
-- space complexity `O(nm)` `O(1)` in-place
+- space complexity `O(nm)` `O(1)` in-place `O(n)`

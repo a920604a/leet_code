@@ -9,6 +9,7 @@ comments: false
 ## [problem](https://leetcode.com/problems/broken-calculator/)
 
 ## solution 
+- iterative
 ```c++
 class Solution {
 public:
@@ -23,6 +24,19 @@ public:
 };
 ```
 
+- recursive
+```c++
+class Solution {
+public:
+    int brokenCalc(int startValue, int target) {
+        if(startValue==target ) return 0;
+        if(startValue > target) return startValue-target;
+        if( target%2==1) return 1+brokenCalc(startValue, target+1);
+        else return 1+brokenCalc(startValue, target/2);
+        
+    }
+};
+```
 ## analysis
 - time complexity `O(logn)`
 - space complexity `O(1)`
