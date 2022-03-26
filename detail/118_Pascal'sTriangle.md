@@ -2,6 +2,7 @@
 title: 118. Pascal's Triangle
 tags:  
     - dp
+    - Math
 categories: leetcode
 comments: false
 ---
@@ -34,4 +35,4 @@ public:
 
 ## analysis
 - time complexity `O(n)`
-- space complexity `O(1)`
+- space complexity `O(nm)`
