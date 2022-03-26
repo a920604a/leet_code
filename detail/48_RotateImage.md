@@ -8,7 +8,8 @@ comments: false
 
 ## [problem](https://leetcode.com/problems/rotate-image/)
 
-## solution 
+## solution
+#### option 1 
 先對陣列以行為單位做`reverse`，再逐一對角線對調。反之亦然
 
 ```c++
@@ -51,7 +52,25 @@ public:
     }
 };
 ```
-
+#### option 2
+```c++
+class Solution {
+public:
+    void rotate(vector<vector<int>>& matrix) {
+        int n = matrix.size();
+        for(int i=0;i<n;++i){
+            for(int j=i;j<n-1-i;++j){
+                int tmp = matrix[i][j];
+                matrix[i][j] = matrix[n - 1 - j][i];
+                matrix[n - 1 - j][i] = matrix[n - 1 - i][n - 1 - j];
+                matrix[n - 1 - i][n - 1 - j] = matrix[j][n - 1 - i];
+                matrix[j][n - 1 - i] = tmp;
+            }
+        }
+        
+    }
+};
+```
 ## analysis
 - time complexity `O(n^2)`
 - space complexity `O(1)`
