@@ -12,7 +12,7 @@ comments: false
 
 
 ## solution
-如果最左邊或最右邊與中間一樣，就往將左右索引各移動一個
+如果最左邊或最右邊與中間一樣(因為可能重複數值)，就往將右索引往左移動一個
 
 ```c++
 class Solution {
@@ -26,7 +26,7 @@ public:
             // 右半部遞增
             else if(nums[mid] < nums[r]){
                 if(nums[mid] < target && target<= nums[r]) l = mid+1;
-                else r = mid-1;w
+                else r = mid-1;
             }
             else if(nums[mid] > nums[r]){
                 if(nums[l] <= target && target < nums[mid]) r = mid-1;
