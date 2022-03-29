@@ -1,7 +1,11 @@
-# 141. Linked List Cycle
-
-
-###### tags: `leetcode` `Linked List` `Two Pointers` `Blind Curated 75`
+---
+title: 141. Linked List Cycle
+tags:  
+    - Linked List
+    - Two Pointers
+categories: leetcode
+comments: false
+---
 
 ## [problem](https://leetcode.com/problems/linked-list-cycle/)
 

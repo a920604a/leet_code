@@ -1,6 +1,11 @@
-# 169. Majority Element
-
-###### tags: `leetcode` `hash table` `sorting`
+---
+title: 169. Majority Element
+tags:  
+    - sorting
+    - hash table
+categories: leetcode
+comments: false
+---
 
 
 ## [problem](https://leetcode.com/problems/majority-element/)

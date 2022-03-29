@@ -1,8 +1,13 @@
-# 216. Combination Sum III
+---
+title: 216. Combination Sum III
+
+tags:  
+    - backtracking
+categories: leetcode
+comments: false
+---
 
 
-
-###### tags: `leetcode` `backtracking` 
 
 ## [problem](https://leetcode.com/problems/combination-sum-iii/)
 

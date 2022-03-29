@@ -1,6 +1,11 @@
-# 190. Reverse Bits
+---
+title: 190. Reverse Bits
 
-###### tags: `leetcode` `Bit Manipulation` `Blind Curated 75`
+tags:  
+    - Bit Manipulation
+categories: leetcode
+comments: false
+---
 
 ## [problem](https://leetcode.com/problems/reverse-bits/)
 

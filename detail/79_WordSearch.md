@@ -1,7 +1,11 @@
-# 79. Word Search
+---
+title: 79. Word Search
 
-###### tags: `leetcode` `backtracking` `Blind Curated 75`
-
+tags:  
+    - backtracking
+categories: leetcode
+comments: false
+---
 
 ## [problem](https://leetcode.com/problems/word-search/)
 

@@ -1,6 +1,11 @@
-# 206. Reverse Linked List
+---
+title: 206. Reverse Linked List
 
-###### tags: `leetcode` `Linked List` `Blind Curated 75`
+tags:  
+    - Linked List
+categories: leetcode
+comments: false
+---
 
 ## [problem](https://leetcode.com/problems/reverse-linked-list/)
 

@@ -1,6 +1,12 @@
-# 21. Merge Two Sorted Lists
+---
+title: 21. Merge Two Sorted Lists
 
-###### tags: `leetcode` `Linked List` `Blind Curated 75`
+tags:  
+    - Linked List
+categories: leetcode
+comments: false
+---
+
 
 ## [problem](https://leetcode.com/problems/merge-two-sorted-lists/)
 
@@ -13,6 +19,7 @@ class Solution {
 public:
     ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
         ListNode * ret = new ListNode(-1), *ans = ret ;
+        // compare each node in two lists
         while(list1 && list2){
             if(list1->val < list2->val) {
                 ret->next = list1;

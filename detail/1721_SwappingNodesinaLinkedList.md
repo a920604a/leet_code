@@ -10,41 +10,22 @@ comments: false
 
 
 ## solution
+
+#### option 1 - 複寫值
 ```c++
-/**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode() : val(0), next(nullptr) {}
- *     ListNode(int x) : val(x), next(nullptr) {}
- *     ListNode(int x, ListNode *next) : val(x), next(next) {}
- * };
- */
 class Solution {
 public:
-    int getSize(ListNode * head){
-        int size = 0;
-        for(;head;head=head->next) size++;
-        return size;
-    }
     ListNode* swapNodes(ListNode* head, int k) {
-        
-        int size = getSize(head);
-        int a = k-1;
-        ListNode *l=head, *r=head;
-        while(a--){
-            l=l->next;
-        }
-        int b = size-k;
-        while(b--) r=r->next;
-        //swap value
+        int size = 0;
+        for(ListNode *p = head;p;p=p->next) size++;
+        int a = k, b = size-k;
+        ListNode *l = head, *r = head;
+        while(--a) l=l->next;
+        while(b--) r = r->next;
         int temp = l->val;
         l->val = r->val;
         r->val = temp;
         return head;
-        
-        
     }
 };
 ```

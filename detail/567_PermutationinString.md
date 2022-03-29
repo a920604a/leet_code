@@ -1,7 +1,12 @@
-# 567. Permutation in String
+---
+title: 567. Permutation in String
 
+tags:  
+    - Sliding Window
+categories: leetcode
+comments: false
+---
 
-###### tags: `leetcode` `Sliding Window`
 
 ## [problem](https://leetcode.com/problems/permutation-in-string/)
 

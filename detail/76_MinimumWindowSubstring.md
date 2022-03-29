@@ -1,7 +1,12 @@
-# 76. Minimum Window Substring
+---
+title: 76. Minimum Window Substring
 
-
-###### tags: `leetcode` `Hash table` `Siliding Window` `Blind Curated 75`
+tags:  
+    - hash table
+    - Sliding Window
+categories: leetcode
+comments: false
+---
 
 
 ## [problem](https://leetcode.com/problems/minimum-window-substring/)

@@ -62,15 +62,14 @@ class Solution {
 public:
     int firstMissingPositive(vector<int>& nums) {
         int n = nums.size();
-        vector<int> vec(n+1,0);
-        for(int a:nums){
-             if (a > 0 && a < n + 1) vec[a]++;
+        vector<bool> vec(n+1, false);
+        for(int i=0;i<n;++i){
+            if(nums[i] >= 0 && nums[i]<=n) vec[nums[i]] = true;
         }
-        for(int i=1;i<n+1;++i){
-            if(vec[i] == 0) return i;
+        for(int i=1;i<n+1;i++){
+            if(vec[i] == false) return i;
         }
-        return vec.size();
-        
+        return n+1;
     }
 };
 ```
@@ -84,12 +83,11 @@ public:
     int firstMissingPositive(vector<int>& nums) {
         int n = nums.size();
         for(int i=0;i<n;++i){
-            while(nums[i]>=1 && nums[i]<=n && nums[i]!=nums[nums[i]-1] ) swap(nums[i], nums[nums[i]-1]);
+            while(nums[i]>=1 && nums[i]<=n && nums[i]!= nums[nums[i]-1]) swap(nums[i], nums[nums[i]-1]) ;
         }
-        for(int i=0;i<n;++i){
+        for(int i=0;i<n ;++i){
             if(nums[i]!=i+1) return i+1;
         }
-        
         return n+1;
     }
 };
@@ -103,7 +101,7 @@ public:
     - space complexity `O(k)`
 - option 3
     - time complexity `O(n)`
-    - space complexity `O(1)`
+    - space complexity `O(n)`
 - option 4
     - time complexity `O(n)`
     - space complexity `O(1)`

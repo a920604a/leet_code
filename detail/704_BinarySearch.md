@@ -1,6 +1,11 @@
-# 704. Binary Search
+---
+title: 704. Binary Search
+tags:  
+    - Binary Search
+categories: leetcode
+comments: false
+---
 
-###### tags: `leetcode` `Binary Search`
 
 
 ## [problem](https://leetcode.com/problems/binary-search/)
@@ -25,7 +30,7 @@ public:
     }
 };
 ```
-- right bound
+- left bound
 ```c++
 class Solution {
 public:

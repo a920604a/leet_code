@@ -1,6 +1,11 @@
-# 389. Find the Difference
+---
+title: 389. Find the Difference
 
-###### tags: `leetcode` `Bit Manipulation`
+tags:  
+    - Bit Manipulation
+categories: leetcode
+comments: false
+---
 
 ## [problem](https://leetcode.com/problems/find-the-difference/)
 

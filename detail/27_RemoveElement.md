@@ -1,6 +1,10 @@
-# 27. Remove Element
-
-###### tags: `leetcode` `Two Pointers`
+---
+title: 27. Remove Element
+tags:  
+    - Two Pointers
+categories: leetcode
+comments: false
+---
 
 
 ## [problem](https://leetcode.com/problems/remove-element/)

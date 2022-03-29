@@ -1,6 +1,10 @@
-# 102. Binary Tree Level Order Traversal
-
-###### tags: `leetcode` `bfs` `Blind Curated 75`
+---
+title: 102. Binary Tree Level Order Traversal
+tags:  
+    - bfs
+categories: leetcode
+comments: false
+---
 
 
 ## [problem](https://leetcode.com/problems/binary-tree-level-order-traversal/)

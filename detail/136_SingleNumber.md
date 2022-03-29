@@ -1,6 +1,12 @@
-# 136. Single Number
+---
+title: 136. Single Number
 
-###### tags: `leetcode` `Bit Manipulation`
+tags:  
+    - Bit Manipulation
+categories: leetcode
+comments: false
+---
+
 
 ## [problem](https://leetcode.com/problems/single-number/)
 

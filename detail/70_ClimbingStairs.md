@@ -1,6 +1,11 @@
-# 70. Climbing Stairs
+---
+title: 70. Climbing Stairs
 
-###### tags: `leetcode` `dp` `Blind Curated 75`
+tags:  
+    - dp
+categories: leetcode
+comments: false
+---
 
 ## [problem](https://leetcode.com/problems/climbing-stairs/)
 

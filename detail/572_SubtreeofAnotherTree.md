@@ -1,6 +1,10 @@
-# 572. Subtree of Another Tree
-
-###### tags: `leetcode` `backtracking` `Blind Curated 75`
+---
+title: 572. Subtree of Another Tree
+tags:  
+    - backtracking
+categories: leetcode
+comments: false
+---
 
 ## [problem](https://leetcode.com/problems/subtree-of-another-tree/)
 

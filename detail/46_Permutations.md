@@ -89,3 +89,7 @@ public:
     }
 };
 ```
+
+## analysis
+- time complexity `O(n)` n 節點個數
+- space complexity `O(n)` n 節點個數

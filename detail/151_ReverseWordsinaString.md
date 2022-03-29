@@ -12,25 +12,28 @@ comments: false
 ```c++
 class Solution {
 public:
-    vector<string> split(string s){
-        vector<string> ret;
-        string path;
-        for(char c:s){
-            if(c==' '){
-                if(!path.empty()) ret.push_back(path);
-                path="";
-            }
-            else path+=c;
-        }
-        if(!path.empty()) ret.push_back(path);
-        return ret;
-    }
     string reverseWords(string s) {
-        vector<string> ret = split(s);
+        vector<string> ret;
+        string cur;
+        int n = s.size();
+        for(int i=0;i<n ; ++i){
+            char c =s[i];
+            if(c == ' '){
+                if(!cur.empty()) ret.push_back(cur);
+                cur.clear();
+                while(i<n && s[i+1] ==' ') i++;
+            }
+            else cur+=c;
+        }
+        if(!cur.empty()) ret.push_back(cur);
         reverse(ret.begin(), ret.end());
-        string ans ;
-        for(string str:ret) ans+=str+" ";
-        return ans.substr(0, ans.size()-1);   
+        string ans;
+        for(int i=0;i<ret.size() ; ++i){
+            ans+=ret[i];
+            if(i!=ret.size()-1) ans+=' ';
+        }
+        return ans;
+        
     }
 };
 ```
@@ -40,34 +43,31 @@ public:
 class Solution {
 public:
     string reverseWords(string s) {
-        string ret;
-        int i= 0;
-        for(int j=0;j<s.size() ; ++j){
-            if(s[j] == ' '){
-                reverse(s.begin()+i, s.begin()+j);
+        
+        int pre = 0, n = s.size();
+        for(int i=0;i< n; ++i){
+            char c = s[i];
+            if(c==' '){
+                reverse(s.begin()+pre, s.begin()+i);
                 // avoid extra space
-                while(j<s.size() && s[j+1] == ' ') j++;
-                i = j+1;
+                while(i+1<n && s[i+1] ==' ') i++;
+                pre = i+1;
             }
         }
-        reverse(s.begin()+i, s.end());
-        // trim
-        int l =0;
-        while(l<s.size() && s[l]==' ') l++;
-        s= s.substr(l, s.size()-l);
         
+        reverse(s.begin()+pre, s.end());
         reverse(s.begin(), s.end());
         // trim
-        l =0;
-        while(l<s.size() && s[l] ==' ') l++;
-        s= s.substr(l, s.size()-l);
-        
+        int l=0, r = s.size()-1;
+        while(l<r && s[l] == ' ') l++;
+        while(l<r && s[r] ==' ') r--;
+        s = s.substr(l, r-l+1);
+        string ret;
         for(char c:s){
-            if(ret.back() == ' ' && c== ' ') continue;
-            ret+=c;   
+            if(ret.back() ==' ' &&  c==' ') continue;
+            ret+=c;
         }
         return ret;
-        
     }
 };
 ```
@@ -77,7 +77,7 @@ public:
     - time complexity `O(n)`
     - space complexity `O(n)`
 - option 2
-    - time complexity `O(n^2)`
+    - time complexity `O(n)`
     - space complexity `O(1)`
 
 

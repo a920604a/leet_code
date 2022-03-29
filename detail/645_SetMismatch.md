@@ -1,7 +1,11 @@
-# 645. Set Mismatch
+---
+title: 645. Set Mismatch
 
-###### tags: `leetcode` `Bit Manipulation`
-
+tags:  
+    - Bit Manipulation
+categories: leetcode
+comments: false
+---
 
 ## [problem](https://leetcode.com/problems/set-mismatch/)
 

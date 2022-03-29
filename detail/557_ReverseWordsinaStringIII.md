@@ -13,18 +13,20 @@ comments: false
 class Solution {
 public:
     void reverse(string &s, int l, int r){
-        while(l<r) swap(s[l++], s[r--]);        
+        while(l<r) swap(s[l++], s[r--]);
     }
     string reverseWords(string s) {
-        int l =0, r =0;
-        int n = s.size();
-        while(r<n){
-            while(l<n && s[l]==' ') l++;
-            r = l+1;
-            while(r<n && s[r]!=' ') r++;
-            reverse(s, l, r-1);
-            l = r+1;
+        int pre = 0;
+        for(int i=0;i<s.size() ;++i){
+            char c =s[i];
+            if(c==' '){
+                // reverse(s.begin()+pre, s.begin()+i);
+                reverse(s, pre, i-1);
+                pre = i+1;
+            }
         }
+        // reverse(s.begin()+pre, s.end());
+        reverse(s, pre, s.size()-1);
         return s;
     }
 };

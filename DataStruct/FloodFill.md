@@ -20,5 +20,7 @@ comments: false
 - 1905 Count Sub Islands (Medium)
 - 694 Number of Distinct Islands (Medium, Premium)
 
+- 1992 Find All Groups of Farmland
+
 ## 觀念
 基本上都可以用`dfs` `bfs` 解決

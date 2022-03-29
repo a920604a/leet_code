@@ -1,7 +1,13 @@
-# 104. Maximum Depth of Binary Tree
+---
+title: 104. Maximum Depth of Binary Tree
 
+tags:  
+    - backtracking
+    - bfs
+categories: leetcode
+comments: false
+---
 
-###### tags: `leetcode` `dfs` `bfs` `Blind Curated 75`
 
 ## [problem](https://leetcode.com/problems/maximum-depth-of-binary-tree/)
 
@@ -47,7 +53,7 @@ public:
 ```
 ## analysis
 
-- dfs 
+- backtracking 
 time complexity `O(n)`
 space complexity `O(logN)`
 - bfs 

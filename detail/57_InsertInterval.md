@@ -1,6 +1,11 @@
-# 57. Insert Interval
+---
+title: 57. Insert Interval
+tags:  
+    - Interval
+categories: leetcode
+comments: false
+---
 
-###### tags: `leetcode` `Interval` `Blind Curated 75`
 
 ## [problem](https://leetcode.com/problems/insert-interval/)
 

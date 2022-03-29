@@ -1,6 +1,13 @@
-# 191. Number of 1 Bits
+---
+title: 191. Number of 1 Bits
 
-###### tags: `leetcode` `Bit Manipulation` `Blind Curated 75`
+tags:  
+    - Bit Manipulation
+categories: leetcode
+comments: false
+---
+
+
 
 ## [problem](https://leetcode.com/problems/number-of-1-bits/)
 

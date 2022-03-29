@@ -1,6 +1,12 @@
-# 23. Merge k Sorted Lists
+---
+title: 23. Merge k Sorted Lists
 
-###### tags: `leetcode` `Linked List` `heap`
+tags:  
+    - Linked List
+    - Heap
+categories: leetcode
+comments: false
+---
 
 ## [problem](https://leetcode.com/problems/merge-k-sorted-lists/)
 
@@ -42,7 +48,7 @@ public:
 };
 ```
 
-#### option 2 - priority queue
+#### option 2 - heap
 建立一個 `priority_queue` 來儲存每個linked list的頭。
 在遍歷pq，每次從`priority_queue`取出最小的linked list 頭，從`priority_queue` pop，再儲存linked list head->next。直到`priority_queue` 為空 
 
@@ -85,4 +91,4 @@ public:
     - space complexity `O(nk)`
 - option 2 heap
     - time complexity `O(nlogk)`
-    - space complexity `O(nk)`
+    - space complexity `O(n)k`

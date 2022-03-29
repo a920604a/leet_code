@@ -1,7 +1,11 @@
-# 49. Group Anagrams
+---
+title: 49. Group Anagrams
 
-
-###### tags: `leetcode` `Hash table` `Blind Curated 75`
+tags:  
+    - hash table
+categories: leetcode
+comments: false
+---
 
 ## [problem](https://leetcode.com/problems/group-anagrams/)
 

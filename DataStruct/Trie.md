@@ -21,8 +21,8 @@ comments: false
 - 140 Word Break II (Hard)
 - 212 Word Search II (Hard)
 - 336 Palindrome Pairs (Hard)
-
-
+- 676 Implement Magic Dictionary (Medium)
+- 720 Longest Word in Dictionary (Medium)
 ## 觀念
 
 - Binary Tree 

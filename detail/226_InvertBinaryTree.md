@@ -1,6 +1,12 @@
-# 226. Invert Binary Tree
- 
-###### tags: `leetcode` `bfs` `backtracking` `Blind Curated 75`
+---
+title: 226. Invert Binary Tree
+tags:  
+    - bfs
+    - backtracking
+categories: leetcode
+---
+
+
 
 
 ## [problem](https://leetcode.com/problems/invert-binary-tree/)
@@ -14,12 +20,15 @@ class Solution {
 public:
     TreeNode* invertTree(TreeNode* root) {
         if(!root) return root;
+        // post-order
+        
+        root->left = invertTree(root->left);
+        root->right = invertTree(root->right);
+
         TreeNode* temp = root->left;
         root->left = root->right;
         root->right = temp;
         
-        root->left = invertTree(root->left);
-        root->right = invertTree(root->right);
         return root;
     }
 };

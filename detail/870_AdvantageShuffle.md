@@ -1,6 +1,10 @@
-# 870. Advantage Shuffle
-
-###### tags: `leetcode` `sorting` `heap`
+---
+title: 870. Advantage Shuffle
+tags:  
+    - sorting
+categories: leetcode
+comments: false
+---
 
 
 ## [problem](https://leetcode.com/problems/advantage-shuffle/)

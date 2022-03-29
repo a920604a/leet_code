@@ -1,6 +1,12 @@
-# 3. Longest Substring Without Repeating Characters
+---
+title: 3. Longest Substring Without Repeating Characters
 
-###### tags: `leetcode` `Hash table` `Sliding Window` `Blind Curated 75`
+tags: 
+    - hash table
+    - Sliding Window
+categories: leetcode
+comments: false
+---
 
 ## [problem](https://leetcode.com/problems/longest-substring-without-repeating-characters/)
 

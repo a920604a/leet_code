@@ -1,6 +1,11 @@
-# 239. Sliding Window Maximum
-###### tags: `leetcode`  `Slidinw window` `monotonic queue`
-
+---
+title: 239. Sliding Window Maximum
+tags:  
+    - Sliding Window
+    - monotonic queue
+categories: leetcode
+comments: false
+---
 
 ## [problem](https://leetcode.com/problems/sliding-window-maximum/)
 

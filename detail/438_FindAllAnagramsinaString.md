@@ -1,5 +1,12 @@
-# 438. Find All Anagrams in a String
-#### ## tags: `leetcode` `hash table` `Sliding Window`
+---
+title: 438. Find All Anagrams in a String
+tags:  
+    - hash table
+    - Sliding Window
+categories: leetcode
+comments: false
+---
+
 
 ## [problem](https://leetcode.com/problems/find-all-anagrams-in-a-string/)
 

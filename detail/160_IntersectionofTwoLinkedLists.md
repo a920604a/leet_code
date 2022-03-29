@@ -1,6 +1,11 @@
-# 160. Intersection of Two Linked Lists
-
-###### tags: `leetcode` `Linked List` `Two Pointers`
+---
+title: 160. Intersection of Two Linked Lists
+tags:  
+    - Linked List
+    - Two Pointers
+categories: leetcode
+comments: false
+---
 
 
 ## [problem](https://leetcode.com/problems/intersection-of-two-linked-lists/)

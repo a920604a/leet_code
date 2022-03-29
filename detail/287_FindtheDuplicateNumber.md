@@ -13,7 +13,35 @@ comments: false
 
 ## solution
 
-
+- option 0
+```c++
+class Solution {
+public:
+    int findDuplicate(vector<int>& nums) {
+        int n = nums.size();
+        for(int i=0;i<n;++i){
+            int idx = abs(nums[i])-1;
+            // number has visited/ modified
+            if(nums[idx]<0) return idx+1;
+            else nums[idx] *=-1;
+        }
+        return -1;   
+    }
+};
+```
+- sorting
+```c++
+class Solution {
+public:
+    int findDuplicate(vector<int>& nums) {
+        sort(nums.begin(), nums.end());
+        for(int i=1;i<nums.size();++i){
+            if(nums[i] == nums[i-1]) return nums[i];
+        }
+        return -1;
+    }
+};
+```
 #### option 1 - Two Pointers
 - 利用兩個索引，一個跑的慢，一個跑得快，並找出相交位置。找到後一個從原點開始再跑，另一個從相遇地點開始跑。在遇到則為答案
 
@@ -46,23 +74,7 @@ public:
 };
 ```
 
-#### option 2 - index
 
-```c++
-class Solution {
-public:
-    int findDuplicate(vector<int>& nums) {
-        int n = nums.size();
-        for(int i=0;i<n;++i){
-            int idx = abs(nums[i])-1;
-            // number has visited
-            if(nums[idx]<0) return idx+1;
-            else nums[idx] *=-1;
-        }
-        return -1;   
-    }
-};
-```
 ## analysis
 - time complexity `O(n)`
 - space complexity `O(1)`

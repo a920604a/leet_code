@@ -1,6 +1,13 @@
-# 1. Two Sum
+---
+title: 1. Two Sum
 
-###### tags: `leetcode` `hash table` `Blind Curated 75`
+tags:  
+    - hash table
+categories: leetcode
+comments: false
+---
+
+
 
 
 ## [problem](https://leetcode.com/problems/two-sum/)
@@ -11,9 +18,7 @@
 ## Solution
 
 #### brute force
-
 - 利用兩個index 分別指向兩個不同的數字，找尋哪兩個數字總和為 target
-
 
 ```c++
 class Solution {
@@ -59,7 +64,8 @@ public:
 ```
 
 #### hash table
-- 利用hash table 紀錄出現過元素及其索引，
+- 利用hash table 紀錄出現過元素及其索引
+
 ```c++
 class Solution {
 public:

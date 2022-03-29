@@ -1,6 +1,10 @@
-# 793. Preimage Size of Factorial Zeroes Function
-
-###### tags: `leetcode` `Binary Search`
+---
+title: 793. Preimage Size of Factorial Zeroes Function
+tags:  
+    - Binary Search
+categories: leetcode
+comments: false
+---
 
 
 

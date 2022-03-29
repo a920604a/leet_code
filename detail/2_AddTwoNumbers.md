@@ -1,6 +1,10 @@
-# 2. Add Two Numbers
-
-###### tags: `leetcode` `Linked List`
+---
+title: 2. Add Two Numbers
+tags:  
+    - Linked List
+categories: leetcode
+comments: false
+---
 
 ## [problem](https://leetcode.com/problems/add-two-numbers/)
 

@@ -1,6 +1,10 @@
-# 1011. Capacity To Ship Packages Within D Days
-
-###### tags: `leetcode` `Binary Search`
+---
+title: 1011. Capacity To Ship Packages Within D Days
+tags:  
+    - Binary Search
+categories: leetcode
+comments: false
+---
 
 
 ## [problem](https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/)

@@ -1,5 +1,9 @@
-# 73. Set Matrix Zeroes
-###### tags: `leetcode`  `Blind Curated 75`
+---
+title: 73. Set Matrix Zeroes
+
+categories: leetcode
+comments: false
+---
 
 ## [problem](https://leetcode.com/problems/set-matrix-zeroes/)
 

@@ -12,12 +12,24 @@ comments: false
 
 ## complexity
 
-| case         | Bubble sort | insertion sort | selection sort | merge sort | quick sort | Radix Sort |
-| ------------ | ----------- | -------------- | -------------- | ---------- | ---------- | ---------- |
-| best case    | $N$         | $N$            | $N^2$          | $NlogN$    | $NlogN$    |      kN      |
-| average case | $N^2$       | $N^2$          | $N^2$          | $NlogN$    | $NlogN$    |            |
-| worst case   | $N^2$       | $N^2$          | $N^2$          | $NlogN$    | $N^2$      |            |
-| Memory       | 1       | 1           | 1        | Depends    | logN   |            |
+| Complexity | Best case  | Average case | Worst case             | Memory space        | Stable     |
+| ---------- | ---------- | ------------ | ---------------------- | ------------------- | ---------- |
+| Bubble     | `O(N)`     | `O(N^2)`     | `O(N^2)`               | 1                   | stable     |
+| Insertion  | `O(N)`     | `O(N^2)`     | `O(N^2)`               | 1                   | stable     |
+| Selection  | `O(N^2)`   | `O(N^2)`     | `O(N^2)`               | 1                   | non-stable |
+| Merge      | `O(NlogN)` | `O(NlogN)`   | `O(NlogN)`             | `O(N)`              |            |
+| Quick      | `O(NlogN)` | `O(NlogN)`   | `O(N^2)`               | `O(N)` or `O(logN)` | non-stable |
+| Radix      | `O(KN)`    |              |                        |                     |            |
+| Count      | `O(N+K)`   | `O(N+K)`     | `O(N+K)`               | `O(N+K)`            |            |
+| Bucket     | `O(N+K)`   | `O(N+K)`     | `O(N^2)`               | `O(N+K)`                    | stable     |
+| Shell      | `O(NlogN)` |              | `O(N^2)`~`O(nlog^2 N)` | 1                   | non-stable |
+| Heap       | `O(NlogN)` | `O(NlogN)`   | `O(NlogN)`             | 1                   | non-stable |
+
+
+
+
+
+Count sort 計算每個鍵值的出現次數，並用額外的陣列保存
 
 
 ## implement

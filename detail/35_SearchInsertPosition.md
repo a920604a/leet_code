@@ -1,6 +1,11 @@
-# 35. Search Insert Position
+---
+title: 35. Search Insert Position
+tags:  
+    - Binary Search
+categories: leetcode
+comments: false
+---
 
-###### tags: `leetcode` `Binary Search`
 
 
 ## [problem](https://leetcode.com/problems/search-insert-position/)

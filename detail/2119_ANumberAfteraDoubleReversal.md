@@ -1,6 +1,11 @@
-# 2119. A Number After a Double Reversal
+---
+title: 2119. A Number After a Double Reversal
 
-###### tags: `leetcode` `Bit Manipulation`
+tags:  
+    - Bit Manipulation
+categories: leetcode
+comments: false
+---
 
 
 ## [problem](https://leetcode.com/problems/a-number-after-a-double-reversal/)

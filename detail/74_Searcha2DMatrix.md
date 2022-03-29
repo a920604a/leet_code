@@ -34,21 +34,21 @@ public:
 ```c++
 class Solution {
 public:
-    bool BinarySearch(vector<int>& nums, int target){
-        int l = 0, r = nums.size();
-        while(l<r){
+    bool BinarySearch(vector<int> & nums, int target){
+        int l = 0, r = nums.size()-1;
+        while(l<=r){
             int mid = l + (r-l)/2;
             if(nums[mid] == target) return true;
             else if(nums[mid] < target) l = mid+1;
-            else r = mid;
+            else r = mid -1;
         }
         return false;
     }
     bool searchMatrix(vector<vector<int>>& matrix, int target) {
         
-        int n = matrix.size(), m = matrix[0].size();
+        int n = matrix.size(), m= matrix[0].size();
         for(int i=0;i<n;++i){
-            if(target >= matrix[i][0] && target  <= matrix[i][m-1]){
+            if(target >=matrix[i][0] && target<= matrix[i][m-1]){
                 if(BinarySearch(matrix[i], target)) return true;
             }
         }

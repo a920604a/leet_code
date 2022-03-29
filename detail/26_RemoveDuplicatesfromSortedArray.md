@@ -1,6 +1,10 @@
-# 26. Remove Duplicates from Sorted Array
-
-###### tags: `leetcode` `Two Pointers`
+---
+title: 26. Remove Duplicates from Sorted Array
+tags:  
+    - Two Pointers
+categories: leetcode
+comments: false
+---
 
 ## [problem](https://leetcode.com/problems/remove-duplicates-from-sorted-array/)
 

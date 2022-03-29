@@ -1,6 +1,10 @@
-# 54. Spiral Matrix
-
-###### tags: `leetcode` `Blind Curated 75`
+---
+title: 54. Spiral Matrix
+tags: 
+    - Matrix
+categories: leetcode
+comments: false
+---
 
 ## [problem](https://leetcode.com/problems/spiral-matrix/)
 
@@ -11,28 +15,28 @@
 class Solution {
 public:
     vector<int> spiralOrder(vector<vector<int>>& matrix) {
-        vector<int> path;
-        set<pair<int,int>> visited;
-        vector<int> acts = {0,1,0,-1};
-        int n = matrix.size(), m = matrix[0].size();
-        int times = n*m;
-        int i=0,j=-1, a=0;
-        while(times-- >0){
-            int x = i+acts[a%4], y = j+acts[(a+1)%4];
-            while(x< 0 || x>n-1 || y<0 || y>m-1 || visited.find(make_pair(x,y))!=visited.end()){
-                a++;
-                x = i + acts[a%4];
-                y = j + acts[(a+1)%4];
-            }
+        vector<int> ret;
+        vector<int> d = {0,1,0,-1};
+        int n= matrix.size(), m= matrix[0].size();
+        vector<bool> visited(m*n,false);
+        int i = 0, j=-1, a = 0;
+        for(int _ = 0;_<n*m; ++_){
             
-            path.push_back(matrix[x][y]);
-            visited.insert(make_pair(x,y));
-            i=x, j=y;
+            int x = i+d[a%4], y = j+d[(a+1)%4];
+            while(x < 0 || y<0 || x>n-1 || y>m-1 || visited[x*m+y]){
+                a++;
+                x = i+d[a%4];
+                y = j+d[(a+1)%4];
+            }
+            visited[x*m+y] = true;
+            ret.push_back(matrix[x][y]);
+            i = x;
+            j = y;
         }
-        return path;
+        return ret;
     }
 };
 ```
 ## analysis
-- time complexity `O(*m)`
+- time complexity `O(n*m)`
 - space complexity `O(n*m)`

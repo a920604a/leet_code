@@ -1,6 +1,10 @@
-# 496. Next Greater Element I
-
-###### tags: `leetcode` `monotonic stack`
+---
+title: 496. Next Greater Element I
+tags:  
+    - monotonic stack
+categories: leetcode
+comments: false
+---
 
 
 ## [problem](https://leetcode.com/problems/next-greater-element-i/submissions/)
@@ -105,7 +109,6 @@ public:
             }
             monoSta.push(i);
         }
-        for(int r:ret) cout<<r<<" ";
         vector<int>ans;
         for(int q:nums1){
             ans.push_back(ret[index[q]]);

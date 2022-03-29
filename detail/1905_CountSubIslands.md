@@ -33,6 +33,7 @@ public:
         
         for(int i=0;i<n;++i){
             for(int j=0;j<m;++j){
+                // 如果grid2 的島嶼但不是grid1的島嶼，淹沒
                 // 這個島於肯定不是子島嶼，淹沒
                 if(grid1[i][j] == 0 && grid2[i][j] == 1) dfs(grid2, i, j);
             }

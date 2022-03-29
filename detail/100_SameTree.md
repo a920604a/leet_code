@@ -1,7 +1,12 @@
-# 100. Same Tree
+---
+title: 100. Same Tree
 
-###### tags: `leetcode` `bfs` `backtracking` `Blind Curated 75`
-
+tags:  
+    - bfs
+    - backtracking
+categories: leetcode
+comments: false
+---
 
 
 ## [problem](https://leetcode.com/problems/same-tree/)

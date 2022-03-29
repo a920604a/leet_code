@@ -1,6 +1,11 @@
-# 137. Single Number II
+---
+title: 137. Single Number II
 
-###### tags: `leetcode` `Bit Manipulation`
+tags:  
+    - Bit Manipulation
+categories: leetcode
+comments: false
+---
 
 ## [problem](https://leetcode.com/problems/single-number-ii/)
 

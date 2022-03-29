@@ -1,7 +1,11 @@
-# 242. Valid Anagram
+---
+title: 242. Valid Anagram
 
-
-###### tags: `leetcode` `hash table` `Blind Curated 75`
+tags:  
+    - hash table
+categories: leetcode
+comments: false
+---
 
 ## [problem](https://leetcode.com/problems/valid-anagram/)
 

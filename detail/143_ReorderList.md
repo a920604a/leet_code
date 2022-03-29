@@ -1,6 +1,12 @@
-# 143. Reorder List
+---
+title: 143. Reorder List
 
-###### tags: `leetcode` `Linked List` `Two pointers` `Blind Curated 75`
+tags:  
+    - Linked List
+    - Two Pointers
+categories: leetcode
+comments: false
+---
 
 ## [problem](https://leetcode.com/problems/reorder-list/)
 

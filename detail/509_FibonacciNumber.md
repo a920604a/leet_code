@@ -1,6 +1,10 @@
-# 509. Fibonacci Number
-
-###### tags: `leetcode` `dp`
+---
+title: 509. Fibonacci Number
+tags:  
+    - dp
+categories: leetcode
+comments: false
+---
 
 
 ## [problem](https://leetcode.com/problems/fibonacci-number/)

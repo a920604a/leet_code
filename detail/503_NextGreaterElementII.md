@@ -1,6 +1,10 @@
-# 503. Next Greater Element II
-
-###### tags: `leetcode` `monotonic stack`
+---
+title: 503. Next Greater Element II
+tags:  
+    - monotonic stack
+categories: leetcode
+comments: false
+---
 
 
 ## [problem](https://leetcode.com/problems/next-greater-element-ii/)

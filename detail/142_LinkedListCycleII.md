@@ -1,6 +1,11 @@
-# 142. Linked List Cycle II
-
-###### tags: `leetcode` `Two Pointers`
+---
+title: 142. Linked List Cycle II
+tags:  
+    - Linked List
+    - Two Pointers
+categories: leetcode
+comments: false
+---
 
 ## [problem](https://leetcode.com/problems/linked-list-cycle-ii/)
 

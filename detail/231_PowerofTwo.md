@@ -1,6 +1,11 @@
-# 231. Power of Two
+---
+title: 231. Power of Two
 
-###### tags: `leetcode` `Bit Manipulation`
+tags:  
+    - Bit Manipulation
+categories: leetcode
+comments: false
+---
 
 ## [problem](https://leetcode.com/problems/power-of-two/)
 

@@ -1,7 +1,12 @@
-# 1143. Longest Common Subsequence
+---
+title: 1143. Longest Common Subsequence
 
+tags:  
+    - dp
+categories: leetcode
+comments: false
+---
 
-###### tags: `leetcode` `dp` `Blind Curated 75`
 
 ## [problem](https://leetcode.com/problems/longest-common-subsequence/)
 

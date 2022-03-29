@@ -13,31 +13,38 @@ comments: false
 ## solution
 #### option 1 - recursive
 ```c++
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
 class Solution {
 public:
     ListNode *left ;
-    ListNode* traverse(ListNode* right, int &ret){
-        if(!right) return nullptr;
-        if(!right->next){
-            ret = max(ret, right->val+left->val);
-            return right;
-        }
+    int maxTwinSum;
+    void traverse(ListNode *right){
+        if(!right) return;
+        // postorder
+        traverse(right->next);
         
-        ListNode *node = traverse(right->next, ret);
+        maxTwinSum = max(maxTwinSum, left->val + right->val);
         left = left->next;
-        ret = max(ret, right->val+left->val);
-        return node;
-        
         
     }
     int pairSum(ListNode* head) {
-        //recursive
+        // must be even length
+        // Palindrome
+        
+        // init.
         left = head;
-        int ret = 0;
-        traverse(left,ret);
-        
-        return ret;
-        
+        maxTwinSum =0;
+        traverse(head);
+        return maxTwinSum;
     }
 };
 ```

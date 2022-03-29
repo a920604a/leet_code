@@ -1,7 +1,11 @@
-# 347. Top K Frequent Elements
+---
+title: 347. Top K Frequent Elements
 
-
-###### tags: `leetcode` `heap`
+tags:  
+    - Heap
+categories: leetcode
+comments: false
+---
 
 ## [problem](https://leetcode.com/problems/top-k-frequent-elements/)
 

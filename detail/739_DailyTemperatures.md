@@ -1,6 +1,10 @@
-# 739. Daily Temperatures
-
-###### tags: `leetcode` `monotonic stack`
+---
+title: 739. Daily Temperatures
+tags:  
+    - monotonic stack
+categories: leetcode
+comments: false
+---
 
 ## [problem](https://leetcode.com/problems/daily-temperatures/)
 

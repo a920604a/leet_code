@@ -1,7 +1,10 @@
-# 283. Move Zeroes
-
-###### tags: `leetcode` `Two Pointers`
-
+---
+title: 283. Move Zeroes
+tags:  
+    - Two Pointers
+categories: leetcode
+comments: false
+---
 
 
 

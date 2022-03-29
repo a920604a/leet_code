@@ -46,6 +46,9 @@ public:
     }
 };
 ```
+## analysis
+- time complexity `O(n!)` n indices
+- space complexity `O(n!)` n indices
 
 
 #### option 2 - set

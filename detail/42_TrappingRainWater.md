@@ -1,6 +1,11 @@
-# 42. Trapping Rain Water
-
-###### tags: `leetcode` `dp` `monotonic stack`
+---
+title: 42. Trapping Rain Water
+tags:  
+    - dp
+    - monotonic stack
+categories: leetcode
+comments: false
+---
 
 ## [problem](https://leetcode.com/problems/trapping-rain-water/)
 

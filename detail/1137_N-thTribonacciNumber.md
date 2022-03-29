@@ -1,6 +1,10 @@
-# 1137. N-th Tribonacci Number
-
-###### tags: `leetcode` `dp`
+---
+title: 1137. N-th Tribonacci Number
+tags:  
+    - dp
+categories: leetcode
+comments: false
+---
 
 
 ## [problem](https://leetcode.com/problems/n-th-tribonacci-number/)

@@ -15,9 +15,10 @@ method : connect、find、unionSet
 
 
 - 547 Number of Provinces
+- 947 Most Stones Removed with Same Row or Column 
 
 
-框架
+## 框架
 ```cpp
 class UF{
 private:

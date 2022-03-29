@@ -1,6 +1,10 @@
-# 977. Squares of a Sorted Array
-
-###### tags: `leetcode` `Two Pointers`
+---
+title: 977. Squares of a Sorted Array
+tags:  
+    - Two Pointers
+categories: leetcode
+comments: false
+---
 
 ## [problem](https://leetcode.com/problems/squares-of-a-sorted-array/)
 
