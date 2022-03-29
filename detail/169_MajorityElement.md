@@ -10,7 +10,7 @@ comments: false
 
 ## [problem](https://leetcode.com/problems/majority-element/)
 
-## solution
+## solution 
 count sorting ，memory 會爆掉
 
 #### option 1 - sorting
@@ -21,7 +21,7 @@ public:
         // 會超過n/2 次
         // sorting 完取中間
         sort(nums.begin(), nums.end());
-        return nums[nums.size()/2];
+        return nums[(nums.size()-1)/2];
     }
 };
 ```

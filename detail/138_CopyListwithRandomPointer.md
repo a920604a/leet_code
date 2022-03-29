@@ -25,12 +25,10 @@ public:
             ret->next = new Node(p->val);
             ret = ret->next;
             mp[p] = ret;
-            ret->next = p->next;
         }
         
         for(Node *p = head;p;p=p->next){
-            Node *random = p->random;
-            mp[p]->random = mp[random];
+            mp[p]->random = mp[p->random];
         }
         return ans->next;
     }
@@ -38,6 +36,46 @@ public:
 ```
 
 #### option 2 
+將兩件列先合併，在賦予random
+`cur->next->random = cur->random->next;`
+在將兩串列拆開
+```c++
+
+class Solution {
+public:
+    Node* copyRandomList(Node* head) {
+        if(!head) return nullptr;
+        Node *cur = head;
+        while(cur){
+            Node *t = new Node(cur->val);
+            t->next = cur->next;
+            cur->next = t;
+            cur = t->next;
+        }
+        cur = head;
+        while(cur){
+            if(cur->random){
+                cur->next->random = cur->random->next;
+            }
+            cur = cur->next->next;
+        }
+        cur = head;
+        Node *ret = head->next;
+        while(cur){
+            Node *t = cur->next;
+            cur->next = t->next;
+            if(t->next) t->next = t->next->next;
+            cur=cur->next;
+        }
+        return ret;
+        
+    }
+};
+```
 ## analysis
-- time complexity `O(n)`
-- space complexity `O(n)`
+- option 1
+    - time complexity `O(nlogn)`
+    - space complexity `O(n)`
+- option 2
+    - time complexity `O(n)`
+    - space complexity `O(1)`

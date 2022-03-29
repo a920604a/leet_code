@@ -48,6 +48,21 @@ public:
 
 ```
 
+#### option 3 - without loop , using recursive
+```c++
+class Solution {
+public:
+    void reverseString(vector<char>& s) {
+        if(s.size() != 1){
+        char temp = s[0];
+        s.erase(s.begin());
+        reverseString(s);
+        s.push_back(temp);
+       }
+    }
+};
+```
+
 ## analysis
 - option 1 - Two Pointers
     - time complexity `O(n)`
