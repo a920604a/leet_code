@@ -24,9 +24,7 @@ public:
     }
     
     bool isPalindrome(string s) {
-        if(s.empty()) return true;
-        int n= s.size()-1;
-        int l=0, r =n;
+        int l=0, r =s.size()-1;
         while(l<r){
             while(l<r && !isValid(s[l])) l++;
             while(l<r && !isValid(s[r])) r--;

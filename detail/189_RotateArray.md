@@ -9,7 +9,7 @@ comments: false
 ## solution
 
 
-#### option 1 
+#### option 1  - mod 
 ```c++
 class Solution {
 public:
