@@ -14,7 +14,7 @@ comments: false
 
 ## solution
 
-
+#### option 1 - dp
 ```c++
 class Solution {
 public:
@@ -40,7 +40,9 @@ public:
     }
 };
 ```
+#### option 2 - Hunt–Szymanski Algorithm
+
 
 ## analysis
-- time complexity `O(n*m)`
+- time complexity `O(n*m)` 
 - space complexity `O(n*m)`

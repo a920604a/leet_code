@@ -14,25 +14,22 @@ comments: false
 class Solution {
 public:
     int deleteAndEarn(vector<int>& nums) {
-
-        // 3    4   2
-        
-        //  0   0   2   3   4
-        //  0   0   2   3   6
-        
-        //  0   0   4   9   4   
-        //  0   0   4   9   9
-        
-        int n = nums.size();
-        vector<int> ret(10001, 0);
-        for(int n :nums) ret[n]+=n;
-        int ans = 0;
-        for(int i=2;i<10001;++i){
-            ret[i] = max(ret[i-2]+ret[i] , ret[i-1]);
+        //  
+        vector<int> dp(10001,0);
+        for(int n:nums) dp[n]++;
+        for(int i=1;i<=10000;++i) dp[i] = i*dp[i];
+        int ret = 0;
+        ret = max(dp[0], dp[1]);
+        for(int i=2;i<=10000;++i){
+            dp[i] = max(dp[i-2]+dp[i], dp[i-1]);
+            ret = max(ret, dp[i]);
         }
-        return ret[10000];
+        return ret;
+        
     }
 };
 ```
 
 ## analysis
+- time complexity `O(n)`
+- space complexity `O(1)`
