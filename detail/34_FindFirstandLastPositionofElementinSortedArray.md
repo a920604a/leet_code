@@ -37,17 +37,17 @@ public:
 class Solution {
 public:
     vector<int> searchRange(vector<int>& nums, int target) {
-        int n = nums.size();
-        int l = 0, r = n;
+        if(nums.empty()) return {-1,-1};
+        int l = 0 , r = nums.size();
         while(l<r){
-            int mid = l + (r-l)/2;
-            if(nums[mid] < target) l = mid+1;
-            else r= mid;
+            int mid = l +(r-l)/2;
+            if(nums[mid]>=target) r= mid;
+            else l = mid+1;
         }
-        if(l<0 || l>n-1 || nums[l]!=target) return {-1,-1};
-        int j = l;
-        while(j+1<n && nums[j] == nums[j+1]) j++;
-        return {l,j};
+        if(l<0 || l>nums.size()-1 || nums[l]!=target) return {-1,-1};
+        r = l;
+        while(r<nums.size()-1 && nums[r+1] == nums[l] ) r++;
+        return {l,r};
     }
 };
 ```## analysis
