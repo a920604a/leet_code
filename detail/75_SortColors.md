@@ -1,7 +1,7 @@
 ---
 title: 75. Sort Colors
 tags:
-    - Randomized
+    - Two Pointers
 categories: leetcode
 comments: false
 ---
@@ -9,29 +9,31 @@ comments: false
 ## [problem](https://leetcode.com/problems/sort-colors/)
 
 ## solution
-#### option 1 - STL to store
+- sorting
 ```c++
-
 class Solution {
 public:
     void sortColors(vector<int>& nums) {
-        // 統計0,1,(2) 個數
-        int c0 = 0, c1 = 0, n = nums.size();
-        for(int i:nums){
-            if(i==0) c0++;
-            else if(i==1) c1++;
+        return sort(nums.begin(),nums.end());
+    }
+};
+
+```
+#### option 1 - STL to store
+```c++
+class Solution {
+public:
+    void sortColors(vector<int>& nums) {
+        int zeros = 0, ones = 0, seconds = 0;
+        for(int n:nums){
+            if(n==0) zeros++;
+            else if(n==1) ones++;
+            else seconds++;
         }
-        // assign value
-        int i=0;
-        while(c0>0 && i<n){
-            nums[i++] = 0;
-            c0--;
-        }
-        while(c1>0 && i<n){
-            nums[i++] = 1;
-            c1--;
-        }
-        while(i<n) nums[i++] = 2;
+        int i=0, n = nums.size();
+        while(i<n && zeros>0){nums[i++] = 0;zeros--;}
+        while(i<n && ones>0){nums[i++] = 1;ones--;}
+        while(i<n && seconds>0){nums[i++] = 2;seconds--;}
         
     }
 };
@@ -42,26 +44,34 @@ public:
 class Solution {
 public:
     void sortColors(vector<int>& nums) {
-        
-        
         // because of only three colors
         // two pass
         // slow fast pointer to swap
         // setting zero
-        int slow = -1, fast = 0, n = nums.size();
-        while(fast<n){
-            if(nums[fast] == 0){
-                swap(nums[++slow], nums[fast]);
-            }
+        int slow = 0, fast = 0, n= nums.size();
+        while(fast < n){
+            if(nums[fast]==0) swap(nums[fast], nums[slow++]);
             fast++;
         }
-        fast = slow+1;
-        while(fast<n){
-            if(nums[fast] == 1) swap(nums[++slow], nums[fast]);
+        fast = slow;
+        while(fast < n){
+            if(nums[fast]==1) swap(nums[fast], nums[slow++]);
             fast++;
         }
         
-        
+    }
+};
+```
+#### option 3 Two Pointer , One Pass
+```c++
+class Solution {
+public:
+    void sortColors(vector<int>& nums) {
+        int n = nums.size() , red = 0, blue = n-1;
+        for(int i=0;i<=blue;++i){
+            if(nums[i] == 0) swap(nums[i], nums[red++]);
+            else if(nums[i]==2) swap(nums[i--], nums[blue--]);
+        }
     }
 };
 ```
@@ -70,5 +80,8 @@ public:
     - time complexity `O(n)`
     - space complexity `O(1)`
 - option 2
+    - time complexity `O(n)`
+    - space complexity `O(1)`
+- option 3
     - time complexity `O(n)`
     - space complexity `O(1)`
