@@ -16,22 +16,19 @@ class Solution {
 public:
     vector<vector<int>> generateMatrix(int n) {
         vector<vector<int>> ret(n, vector<int>(n,0));
-        int cur = 1;
-        int i =0, j=-1, a=0;
-        vector<int> d = {0,1,0,-1};
-        vector<bool> visited(n*n, false);
-        for(int _=0;_<n*n;++_){
+        vector<bool> visited(n*n,false);
+        int a[4] = {0,1,0,-1};
+        int i = 0, j=-1, t =1, k=0;
+        while(t<=n*n){
             
-            int x = i+d[a%4], y = j+d[(a+1)%4];
-            while( x<0 || x>n-1 || y<0 || y>n-1 || visited[x*n+y]){
-                a++;
-                x = i+d[a%4];
-                y = j+d[(a+1)%4];
+            int x = i+a[k%4] ,  y = j+a[(k+1)%4];
+            while(x<0 || y<0 || x>n-1 || y>n-1 || visited[x*n+y]){
+                k++;
+                x = i+a[k%4] ,  y = j+a[(k+1)%4];
             }
-            
             visited[x*n+y] = true;
-            ret[x][y] = cur++;
-            i = x, j =y;
+            ret[x][y] = t++;
+            i = x, j = y;
         }
         return ret;
     }

@@ -1,6 +1,5 @@
 ---
 title: 300. Longest Increasing Subsequence
-
 tags:  
     - dp
     - Binary Search
@@ -40,32 +39,33 @@ public:
 
 #### option 2 - *Binary Search 
 更多可以參考`patience sorting`
-
-
 ```c++
 class Solution {
 public:
     int lengthOfLIS(vector<int>& nums) {
-        //      10  9   2   5   3   7   101 18
-        //top   0   0   0   0   0   0   0   0  
-        //
-        int n = nums.size();
+        int piles = 0, n=nums.size();
         vector<int> top(n,0);
-        int piles = 0;
-        for(int i=0;i<n;++i){
+        for(int i=0;i<n ; ++i){
             int poker = nums[i];
             int l =0, r = piles;
             // 從top 陣列可視範圍 l-r 區間找到poker放入的位置，使得top 是單調遞增陣列
+            
             while(l<r){
                 int mid = l + (r-l)/2;
-                if(top[mid] == poker ) r= mid;
-                else if(top[mid] < poker) l = mid+1;
+                if(top[mid] == poker) r = mid;
+                else if(top[mid] < poker ) l = mid+1;
                 else r = mid;
+                
             }
             // 插入的位置不在陣列可視範圍內
             if(l==piles) piles++;
             // 將poker 放進陣列top
             top[l] = poker;
+            
+            //  2   3   7   18 
+            //  9   5   101
+            //  10
+            
         }
         return piles;
     }

@@ -18,15 +18,28 @@ class Solution {
 public:
     int maxArea(vector<int>& height) {
         int n = height.size();
-        int sum = 0;
-        int l =0,r = n-1;
+        int l = 0,r =n-1, ret = 0;
         while(l<r){
-            sum = max(sum, (r-l)*min(height[l], height[r]));
-            if(height[l] < height[r]) l++;
-            else r--;
+            ret = max(ret, (r-l)*min(height[l], height[r]));
+            height[l] < height[r] ? ++l : --r;
         }
-        return sum;
-        
+        return ret;
+    }
+};
+```
+
+```c++
+class Solution {
+public:
+    int maxArea(vector<int>& height) {
+        int res = 0, i = 0, j = height.size() - 1;
+        while (i < j) {
+            int h = min(height[i], height[j]);
+            res = max(res, h * (j - i));
+            while (i < j && h == height[i]) ++i;
+            while (i < j && h == height[j]) --j;
+        }
+        return res;
     }
 };
 ```
