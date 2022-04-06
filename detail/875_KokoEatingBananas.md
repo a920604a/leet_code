@@ -45,7 +45,32 @@ public:
     }
 };
 ```
-
+```c++
+class Solution {
+public:
+    int cost(vector<int> &piles, int speed){
+        int hours = 0;
+        for(int p:piles){
+            hours+=p/speed;
+            if(p%speed) hours++;
+        }
+        return hours;
+    }
+    int minEatingSpeed(vector<int>& piles, int h) {
+        int l =1 , r  = 1;
+        for(int p:piles) r = max(r, p);
+        while(l<=r){
+            int mid = l+ (r-l)/2;
+            int hours = cost(piles, mid);
+            // eat fast
+            if(hours <= h ) r = mid-1;
+            // eat slow
+            else if(hours > h) l = mid+1;
+        }
+        return l;
+    }
+};
+```
 ## analysis
 - time complexity `O(nlogm)` , n is number of piles and m os range of k
 - space complexity `O(1)`

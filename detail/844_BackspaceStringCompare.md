@@ -12,21 +12,19 @@ comments: false
 ```c++
 class Solution {
 public:
-    bool backspaceCompare(string s, string t) {
-        
-        string a,b;
+    string process(string s){
+        string ret ;
         for(char c:s){
-            if(c!='#') a+=c;
-            else{
-                if(!a.empty()) a.pop_back();
+            if(c=='#'){
+                if(!ret.empty()) ret.pop_back();
             }
+            else ret+=c;
         }
-        for(char c:t){
-            if(c!='#') b+=c;
-            else{
-                if(!b.empty()) b.pop_back();
-            }
-        }
+        return ret;
+    }
+    bool backspaceCompare(string s, string t) {
+        string ret, ans;
+        string a = process(s), b = process(t);
         return a==b;
     }
 };
