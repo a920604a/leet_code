@@ -1,8 +1,7 @@
 ---
 title: 238. Product of Array Except Self
-
 tags:  
-    - dp
+    - Prefix Sum
 categories: leetcode
 comments: false
 ---
@@ -35,24 +34,25 @@ public:
 };
 ```
 
-#### option 2
+#### option 2 - reduce 
 
 ```c++
 class Solution {
 public:
     vector<int> productExceptSelf(vector<int>& nums) {
-        int n =nums.size();
-        vector<int> ret(n,1);
-        for(int i=n-2;i>-1;--i) ret[i] = nums[i+1]*ret[i+1];
-        //      1   2   3   4
-        //      24  12  4   1 => ret
-        //left  1   1   2   6
-        int left = 1;
+        int n = nums.size();
+        vector<int> left(n,1), right(n,1);
+        //  1   2   3   4   
+        //l     1   2   6
+        //r 24  12  4   
+        //  
+        for(int i=n-2;i>-1;i--) right[i] = right[i+1]*nums[i+1];
+        int cur = 1;
         for(int i=1;i<n;++i){
-            left *= nums[i-1];
-            ret[i] = ret[i] * left;
+            cur*=nums[i-1];
+            right[i] *= cur;
         }
-        return ret;
+        return right;
     }
 };
 ```

@@ -48,7 +48,7 @@ class Solution {
 public:
     vector<int> findAnagrams(string s, string p) {
         vector<int> need(26,0), window(26,0), ret;
-        int l =0, r = 0, m =p.size(), n=s.size();
+        int m =p.size(), n=s.size();
         for(char c:p) need[c-'a']++;
         for(int i=0;i<n;++i){
             window[s[i]-'a']++;

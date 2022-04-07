@@ -1,7 +1,7 @@
 ---
 title: 334. Increasing Triplet Subsequence
 tags:
-    - dp
+    - greedy
     - Two Pointers
 categories: leetcode
 comments: false
@@ -35,31 +35,6 @@ public:
     }
 };
 ```
-- Binary search
-```c++
-class Solution {
-public:
-    bool increasingTriplet(vector<int>& nums) {
-        int piles = 0, n = nums.size();
-        vector<int> top(n,0);
-        for(int i=0;i<n;++i){
-            int poker = nums[i];
-            int l=0, r = piles;
-            while(l<r){
-                int mid = l + (r-l)/2;
-                if(top[mid] > poker) r = mid ;
-                else if(top[mid] == poker) r  = mid;
-                else l = mid +1;
-            }
-            if(l==piles) piles++;
-            top[l] = poker;
-        }
-        
-        return piles>=3;
-    }
-};
-```
-
 #### option 1 - dp
 維護兩陣列
 > 152 Maximum Product Subarray
@@ -105,18 +80,44 @@ public:
     }
 };
 ```
+#### option 3 - Binary search
+```c++
+class Solution {
+public:
+    bool increasingTriplet(vector<int>& nums) {
+        int piles = 0, n = nums.size();
+        vector<int> top(n,0);
+        for(int i=0;i<n;++i){
+            int poker = nums[i];
+            int l=0, r = piles;
+            while(l<r){
+                int mid = l + (r-l)/2;
+                if(top[mid] > poker) r = mid ;
+                else if(top[mid] == poker) r  = mid;
+                else l = mid +1;
+            }
+            if(l==piles) piles++;
+            top[l] = poker;
+        }
+        
+        return piles>=3;
+    }
+};
+```
+
+
 ## analysis
 
 
 - TLE
     - time complexity `O(n^2)`
     - space complexity `O(n)`
-- Binary search
-    - time complexity `O(nlogn)`
-    - space complexity `O(n)`
 - option 1
     - time complexity `O(n)`
     - space complexity `O(n)`
 - option 2
     - time complexity `O(n)`
+    - space complexity `O(n)`
+- option 3 - Binary search
+    - time complexity `O(nlogn)`
     - space complexity `O(n)`

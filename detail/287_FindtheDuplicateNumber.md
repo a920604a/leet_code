@@ -12,8 +12,23 @@ comments: false
 給定一維陣列，找出重複一遍的數字，其餘數字皆為不重複。不能修改原陣列。
 
 ## solution
-
-- option 0
+- set stl
+```c++
+class Solution {
+public:
+    int findDuplicate(vector<int>& nums) {
+        unordered_set<int> s;
+        for(int n:nums){
+            if(s.count(n)) return n;
+            s.insert(n);
+        }
+        return -1;
+        
+       
+    }
+};
+```
+- modify value
 ```c++
 class Solution {
 public:
