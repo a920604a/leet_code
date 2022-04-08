@@ -19,7 +19,7 @@ public:
         size = k;
         for(int n:nums){
             pq.push(n);
-            if(pq.size() > k) pq.pop();
+            if(pq.size() > size) pq.pop();
         }
     }
     int add(int val) {
@@ -29,10 +29,6 @@ public:
     }
 };
 
-/**
- * Your KthLargest object will be instantiated and called as such:
- * KthLargest* obj = new KthLargest(k, nums);
- * int param_1 = obj->add(val);
- */
 ```
+- 實現BST
 
