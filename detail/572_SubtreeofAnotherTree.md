@@ -31,7 +31,25 @@ public:
     }
 };
 ```
-
+```c++
+class Solution {
+public:
+    bool isSame(TreeNode *a, TreeNode *b){
+        
+        if(!a && !b) return true;
+        if(!a || !b) return false;
+        if(a->val != b->val ) return false;
+        else return isSame(a->left, b->left) && isSame(a->right, b->right);
+    }
+    bool isSubtree(TreeNode* root, TreeNode* subRoot) {
+        if(!root && !subRoot) return true;
+        if(!root || !subRoot) return false;
+        bool ret = false;
+        if(root->val == subRoot->val) ret =  isSame(root, subRoot);
+        return isSubtree(root->left, subRoot ) || isSubtree(root->right, subRoot) || ret;
+    }
+};
+```
 #### option 2
 將兩棵樹的每個葉子的left child 補上 "#"，並將樹的節點用字串方式相連接，問題就變成字串是否有在另一字串裡。
 

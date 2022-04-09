@@ -24,28 +24,54 @@ class Solution {
 public:
     vector<int> topKFrequent(vector<int>& nums, int k) {
         vector<int> ret;
-        unordered_map<int,int> mp;
-        for(int n:nums) mp[n]++;
-        auto cmp  = [](vector<int> & a, vector<int>& b){
-            return a[1]<b[1];
+        auto cmp = [](vector<int> &a, vector<int> &b){
+            return a[1] < b[1];
         };
-        priority_queue<vector<int>, vector<vector<int>>, decltype(cmp)> pq(cmp);
-        for(auto m:mp){
-            vector<int> temp(2,0);
-            temp[0] = m.first;
-            temp[1] = m.second;
-            pq.push(temp);
-        }
-        while(!pq.empty() && k-->0){
-            vector<int> temp = pq.top();
+        priority_queue<vector<int>,vector<vector<int>>, decltype(cmp)> pq(cmp);
+        unordered_map<int,int> mp;
+        for(int a:nums) mp[a]++;
+        for( auto m:mp) pq.push({m.first, m.second});
+        while(k--){
+            ret.push_back(pq.top()[0]);
             pq.pop();
-            ret.push_back(temp[0]);
-            
+        }
+        
+        return ret;
+        
+    }
+};
+```
+#### option 2 - bucket sorting
+```c++
+class Solution {
+public:
+    vector<int> topKFrequent(vector<int>& nums, int k) {
+        unordered_map<int,int> mp;
+        for(int a:nums) mp[a]++;
+        vector<vector<int>> bucket(nums.size());
+        int f = 0;
+        for(auto m:mp){
+            bucket[m.second-1].push_back(m.first);
+            f = max(f, m.second-1);
+        }
+        bucket.resize(f+1);
+        vector<int> ret;
+        for(int i = f;i>-1 ; i--){
+            int cur = bucket[i].size()-1;
+            while(k > 0 && cur > -1 ){
+                ret.push_back(bucket[i][cur--]);
+                k--;
+            }
         }
         return ret;
     }
 };
 ```
 ## analysis
-- time complexity `O(nlogn)`
-- space complexity `O()`
+- option 1
+    - time complexity `O(nlogK)`
+    - space complexity `O(n)`
+- option 2
+    - time complexity `O(n)`
+    - space complexity `O(n)`
+    
