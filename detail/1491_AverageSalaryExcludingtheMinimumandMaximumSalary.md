@@ -1,7 +1,7 @@
 ---
 title: 1491. Average Salary Excluding the Minimum and Maximum Salary
 tags: 
-    - sort
+    - sorting
 categories: leetcode
 comments: false
 ---
