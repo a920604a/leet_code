@@ -2,6 +2,7 @@
 title: 222. Count Complete Tree Nodes
 tags:  
     - backtracking
+    - Binary Search
 categories: leetcode
 comments: false
 ---
@@ -32,5 +33,5 @@ public:
 };
 ```
 ## analysis
-- time complexity `O(n)`
+- time complexity `O(logn)`
 - space complexity `O(n)`

@@ -49,23 +49,22 @@ public:
 ```c++
 class Solution {
 public:
-    vector<vector<int>>  ret;
-    void backtracking(vector<vector<int>>& graph, vector<int> & path, int cur){
-        path.push_back(cur);
-        if(path.back() == graph.size()-1){
+    vector<vector<int>> ret;
+    void dfs(vector<vector<int>> &graph, vector<int> &path, int start){
+        
+        path.push_back(start);
+        if(!path.empty() && path.back() == graph.size()-1){
             ret.push_back(path);
-            return;
         }
-        
-        for(int nei : graph[cur]){
-            backtracking(graph, path, nei);
-            path.pop_back();
+        for(auto a:graph[start]){
+            dfs(graph, path, a);
         }
-        
+        path.pop_back();
     }
+    
     vector<vector<int>> allPathsSourceTarget(vector<vector<int>>& graph) {
         vector<int> path;
-        backtracking(graph, path, 0);
+        dfs(graph, path, 0);
         return ret;
         
     }

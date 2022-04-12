@@ -8,7 +8,7 @@ categories: leetcode
 comments: false
 ---
 
-## [problem]()
+## [problem](https://leetcode.com/problems/surrounded-regions/)
 
 ## solution
 #### option 1 - dfs
@@ -23,16 +23,6 @@ public:
         dfs(board,i-1,j);
         dfs(board,i,j+1);
         dfs(board,i,j-1);
-        
-    }
-    void dfsX(vector<vector<char>> & board, int i, int j){
-        int n = board.size(), m = board[0].size();
-        if(i<0 || j<0 || i>n-1 || j>m-1 || board[i][j] != 'O') return;
-        board[i][j] = 'X';
-        dfsX(board,i+1,j);
-        dfsX(board,i-1,j);
-        dfsX(board,i,j+1);
-        dfsX(board,i,j-1);
         
     }
     void solve(vector<vector<char>>& board) {

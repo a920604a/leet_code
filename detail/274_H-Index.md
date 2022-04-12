@@ -23,7 +23,21 @@ public:
     }
 };
 ```
-
+```c++
+class Solution {
+public:
+    int hIndex(vector<int>& citations) {
+        int ret= 0 ,n=citations.size();
+        sort(citations.rbegin(), citations.rend());
+        
+        
+        for(int i=0;i<n;++i){
+            if(citations[i]>i) ret++;
+        }
+        return ret;
+    }
+};
+```
 #### option 2 - binary search
 ```c++
 class Solution {
@@ -42,7 +56,28 @@ public:
     }
 };
 ```
-
+```c++
+class Solution {
+public:
+    int hIndex(vector<int>& citations) {
+        int ret= 0 ,n=citations.size();
+        sort(citations.rbegin(), citations.rend());
+        //  0   1   2   3   4
+        //  6   5   3   1   0
+        
+        //  0   1   2
+        //  3   1   1
+        int l = 0, r = n;
+        while(l<r){
+            int mid = l +(r-l)/2;
+            if(citations[mid]>mid) l = mid+1;
+            else r= mid;
+            
+        }
+        return l;
+    }
+};
+```
 ## analysis
 - time complexity `O(nlogn)`
 - space complexity `O(1)`
