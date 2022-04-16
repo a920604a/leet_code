@@ -33,7 +33,28 @@ public:
     }
 };
 ```
+```c
+#define min(a,b) (a<b)?a:b
 
+int jump(int* nums, int numsSize){
+    
+    int *dp = malloc(sizeof(int)*numsSize);
+    for(int i=0;i<numsSize;++i) *(dp+i) = 10001;
+
+    //  2   3   1   1   4
+    //  0   1   1   +   +
+    //  0   1   1      
+    *dp = 0;
+    for(int i=0;i<numsSize;++i){
+        for(int j = i+1;j<=i+*(nums+i) && j<numsSize ;j++){
+            *(dp+j) = min(1+*(dp+i), *(dp+j));
+        }
+    }
+    
+    return *(dp+numsSize-1);
+
+}
+```
 
 #### option 2 - greedy
 ```c++

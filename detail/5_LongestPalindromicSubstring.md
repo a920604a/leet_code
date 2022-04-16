@@ -38,6 +38,33 @@ public:
     }
 };
 ```
+```c
+
+
+char * longestPalindrome(char * s){
+    int len = 1, start = 0;
+    int size ;
+    for(size =0;s[size]!='\0';size++);
+    for(int i=0;i<size;){
+        int l=i,r=i;
+        while(r+1<size && s[r+1] == s[r]) r++;
+        i = r+1;
+        while(l-1>-1 && r+1<size && s[l-1] == s[r+1]){
+            l--;
+            r++;
+        }
+        if(r-l+1 > len){
+            len = r-l+1;
+            start = l;
+        }
+    }
+    char *ret = malloc(sizeof(char)*(len+1));
+    for(int i=start;i<start+len;++i) ret[i-start] = s[i];
+    ret[len] = '\0';
+    return ret;
+
+}
+```
 #### option 2 - dp
 
 ```c++

@@ -44,3 +44,18 @@ public:
     }
 };
 ```
+```c++
+class Solution {
+public:
+    int cur =0;
+    TreeNode* convertBST(TreeNode* root) {
+        if(!root) return root;
+        
+        convertBST(root->right);
+        cur+=root->val;
+        root->val = cur;
+        convertBST(root->left);
+        return root;
+    }
+};
+```

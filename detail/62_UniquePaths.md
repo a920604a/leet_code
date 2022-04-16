@@ -49,7 +49,23 @@ public:
     }
 };
 ```
-
+```c
+int uniquePaths(int m, int n){
+    int *dp = malloc(sizeof(int)*n);
+    //  0   1   1   1   1   1   1
+    //  1   2   3   4   5   6   7   
+    //  1   3   6   10  15  21  28
+    
+    for(int i=0;i<m;++i){
+        for(int j=0;j<n;++j){
+            if(i==0 && j==0) *(dp+j) = 1;
+            else if(i==0 || j==0) *(dp+j) = 1;
+            else *(dp+j) += *(dp+j-1);
+        }
+    }
+    return *(dp+n-1);
+}
+```
 #### option 3 use math
 ```c++
 class Solution {

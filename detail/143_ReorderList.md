@@ -21,48 +21,44 @@ comments: false
 ```c++
 class Solution {
 public:
-    ListNode * reverseList(ListNode *head){
-        ListNode *pre = new ListNode(-1), *cur = head;
-        pre->next= head;
-        while(cur->next){
-            ListNode *post = cur->next;
-            cur->next = post->next;
-            post->next = pre->next;
-            pre->next = post;
+    ListNode* reverse(ListNode *head){
+        ListNode *pre = new ListNode(-1);
+        pre->next = head;
+        while(head->next){
+            ListNode *temp = head->next;
+            head->next = temp->next;
+            temp->next = pre->next;
+            pre->next = temp;
         }
         return pre->next;
     }
     void reorderList(ListNode* head) {
-        if(!head || !head->next) return;
-        ListNode *slow = head, *fast = head, *pre = slow;
-        while(fast && fast->next){
-            fast = fast->next->next;
-            pre = slow;
-            slow =slow->next;
-        }
-        if(fast) {
-            pre = slow;
-            slow = slow->next;
+        if(!head ||!head->next) return;
+        int size = 0;
+        for(ListNode *p = head;p;p=p->next) size++;
+        ListNode *a = head, *b = head, *pre = nullptr;
+        int mid = size/2;
+        while(mid--){
+            pre =b;
+            b=b->next;
         }
         pre->next = nullptr;
-        // reverse slow
-        ListNode * head2 = reverseList(slow);
-        
-        ListNode *ans = new ListNode(-1), *ret = ans;
-        ret->next = head;
-        while(head || head2){
-            if(head){
-                ret->next = head;
-                head = head->next;
-                ret =ret->next;
+        ListNode *r  = reverse(b);
+        ListNode * p = a;
+        a=a->next;
+        while(a || r){
+            if(r){
+                p->next = r;
+                r=r->next;
+                p=p->next;
             }
-            if(head2){
-                ret->next = head2;
-                head2 = head2->next;
-                ret = ret->next;
+            if(a){
+                p->next = a;
+                a=a->next;
+                p=p->next;
             }
         }
-        head = ans->next;
+        p->next = nullptr;
     }
 };
 ```
@@ -91,6 +87,35 @@ public:
             
         }
         sta.top()->next = nullptr;
+        
+    }
+};
+```
+
+```c++
+class Solution {
+public:
+    void reorderList(ListNode* head) {
+        if(!head || !head->next) return ;
+        stack<ListNode *> sta;
+        ListNode * p =head;
+        while(p){
+            sta.push(p);
+            p=p->next;
+        }
+        ListNode *cur = head, *post = head->next;
+        while(sta.top()!=post){
+            cur->next = sta.top();
+            sta.pop();
+            cur=cur->next;
+            
+            if(sta.top()==post) break;
+            cur->next = post;
+            cur=cur->next;
+            post=post->next;
+        }
+        cur->next = sta.top();
+        cur->next->next= nullptr;
         
     }
 };
