@@ -26,6 +26,9 @@ public:
         for(int i=4;i>-1 ;i--){
             int times = mock/mp[i];
             times = min((long)times, copy[i]);
+            // 剩餘 ATM 該種幣值的數量 與 貪婪地一次可取該幣別的最大數量
+            // Amount of this currency remaining in the bank
+            // 考慮到 ATM 剩餘數量不足以去做提款的動作
             mock -= times*mp[i];
             copy[i]-=times;
             used[i]+=times;
