@@ -2,6 +2,7 @@
 title: 94. Binary Tree Inorder Traversal
 tags: 
     - backtracking
+    - stack
 categories: leetcode
 comments: false
 ---
@@ -9,18 +10,9 @@ comments: false
 ## [problem](https://leetcode.com/problems/binary-tree-inorder-traversal/)
 
 ## solution
+#### option 1 - dfs
 ```c++
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
- *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
- * };
- */
+
 class Solution {
 public:
     void inorder(TreeNode* root, vector<int>& ret){
@@ -33,6 +25,31 @@ public:
     vector<int> inorderTraversal(TreeNode* root) {
         vector<int> ret;
         inorder(root, ret);
+        return ret;
+    }
+};
+```
+
+#### option 2 - iterative + stack
+```c++
+class Solution {
+public:
+    vector<int> inorderTraversal(TreeNode* root) {
+        stack<TreeNode*> sta;
+        TreeNode *p = root;
+        vector<int> ret;
+        while (p || !sta.empty()) {
+            while (p) { // L
+                sta.push(p);
+                p=p->left; 
+            }
+            p = sta.top();
+            sta.pop();
+            ret.push_back(p->val);  // V
+            p = p->right;   // R
+            
+            
+        }
         return ret;
     }
 };

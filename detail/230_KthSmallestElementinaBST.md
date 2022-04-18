@@ -42,7 +42,25 @@ public:
 ```
 > 也可以inorder traverse方式拜訪節點並存在vector ，最後在`return vector[k];` 即可
 
-
+```c++
+class Solution {
+public:
+    int ret;
+    void dfs(TreeNode *root, int *k){
+        if(!root) return;
+        dfs(root->left, k);
+        (*k)--;
+        if(*k==0){
+            ret=root->val;
+        }
+        dfs(root->right,k);
+    }
+    int kthSmallest(TreeNode* root, int k) {
+        dfs(root,&k);
+        return ret;
+    }
+};
+```
 #### option 2 dfs in-order iterative
 需要一個stack ，將當下拜訪到的節點的左子樹都每一個節點push 進去stack
 如果拜訪到的是空節點，那則會從stack 頂部取得拜訪節點。
