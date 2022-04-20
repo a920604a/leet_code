@@ -12,27 +12,25 @@ comments: false
 ```c++
 class BSTIterator {
 private:
-    vector<int> vec;
-    int cur ;
+    vector<int> nums;
+    int cur =0;
 public:
+    BSTIterator(TreeNode* root) {
+        preorder(root);
+        
+    }
     void preorder(TreeNode *root){
         if(!root) return;
         preorder(root->left);
-        vec.push_back(root->val);
+        nums.push_back(root->val);
         preorder(root->right);
     }
-    BSTIterator(TreeNode* root) {
-        preorder(root);
-        cur = 0;
-    }
-    
     int next() {
-        return vec[cur++];
+        return nums[cur++];
     }
     
     bool hasNext() {
-        return cur<vec.size();
-        
+        return cur!=nums.size();
     }
 };
 ```
@@ -55,6 +53,8 @@ public:
         TreeNode * p = sta.top();
         sta.pop();
         int ret = p->val;
+        // 以p 為樹根 左半部已經拜訪完畢
+        // 從右子樹找下一個拜訪的點，並放入stack
         if(p->right){
             p=p->right;
             while(p){

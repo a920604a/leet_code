@@ -48,12 +48,10 @@ public:
         if(!root) return root;
         if(root == p || root == q) return root;
         // post-order
-        TreeNode *l = lowestCommonAncestor(root->left, p, q);
-        TreeNode *r = lowestCommonAncestor(root->right, p, q);
-        if(l && !r) return l;
-        else if(r && !l) return r;
-        else if(l && r) return root;
-        return nullptr;
+        TreeNode *left = lowestCommonAncestor(root->left, p, q);
+        TreeNode *right = lowestCommonAncestor(root->right, p, q);
+        if(left && right) return root;
+        return left==nullptr?right:left;
     }
 };
 ```
