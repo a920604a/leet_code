@@ -7,6 +7,7 @@ comments: false
 ## [problem](https://leetcode.com/problems/binary-search-tree-iterator/)
 
 ## solution
+#### option 1 - STL to store
 事先先拜訪過各節點並存下來，再用一個指標指向當前位置
 ```c++
 class BSTIterator {
@@ -71,4 +72,4 @@ public:
 ```
 ## analysis
 - time complexity `O(1)`
-- space complexity `O(1)`
+- space complexity `O(h)`

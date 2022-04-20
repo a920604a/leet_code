@@ -38,7 +38,7 @@ public:
     }
 };
 ```
-#### option 2 - swap
+#### option 2 - recursive + preorder + two Pointers
 因為只會有兩個節點放錯位置且inorder遍歷應該是有序的，故先找到哪兩個節點在交換
 
 ```c++
@@ -64,7 +64,37 @@ public:
 ```
 
 
-#### option 3 - Morris traverse
+#### option 3 - stack + preorder 
+```c++
+class Solution {
+public:
+    void recoverTree(TreeNode* root) {
+        TreeNode *pre = nullptr, *a = nullptr, *b = nullptr;
+        stack<TreeNode*>sta;
+        TreeNode *p = root;
+        while(p || !sta.empty()){
+            while(p){
+                sta.push(p);
+                p=p->left;
+            }
+            p = sta.top();
+            sta.pop();
+            if (pre) {
+                if (pre->val > p->val) {
+                    if (!a) a = pre;
+                    b = p;
+                }
+            }
+            pre = p;
+            p=p->right;
+        }
+        swap(a->val, b->val);
+        
+    }
+};
+```
+#### option 4 - Morris traverse
+## analysis
 ## analysis
 - option 1
     - time complexity `O(n)`

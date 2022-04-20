@@ -43,9 +43,7 @@ public:
                 sta.pop();
                 continue;
             }
-            else{
-                ans+=ret[i];
-            }
+            ans+=ret[i];
         }
         reverse(ans.begin(),ans.end());
         return ans;
