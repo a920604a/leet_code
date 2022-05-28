@@ -1,6 +1,5 @@
 ---
 title: 2278. Percentage of Letter in String
-tags:
 categories: leetcode
 comments: false
 ---
