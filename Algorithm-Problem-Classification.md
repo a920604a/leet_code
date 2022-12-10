@@ -283,6 +283,7 @@ comments: false
 - 199 Binary Tree Right Side View
 - 235 Lowest Common Ancestor of a Binary Search Tree
 - 236 Lowest Common Ancestor of a Binary Tree
+- *1026. Maximum Difference Between Node and Ancestor
 - 508 Most Frequent Subtree Sum
 - *331 Verify Preorder Serialization of a Binary Tree
 - 116 Populating Next Right Pointers in Each Node
@@ -368,7 +369,7 @@ comments: false
 - 78 Subsets
 - 90 Subsets II
 
-##  Dynamic Programming
+##  Dynamic Programming [31]
 - 322 Coin Change
 - *131 Palindrome Partitioning
 - *132 Palindrome Partitioning II
@@ -377,31 +378,132 @@ comments: false
 - 337 House Robber III
 - 55 Jump Game
 - 45 Jump Game II
-Best Time to Buy and Sell Stock , II, III , IV
 - 121 Best Time to Buy and Sell Stock
 - 122 Best Time to Buy and Sell Stock II
 > 309. Best Time to Buy and Sell Stock with Cooldown
 > 714. Best Time to Buy and Sell Stock with Transaction Fee
 - *123 Best Time to Buy and Sell Stock III
 - *188 Best Time to Buy and Sell Stock IV
-Dungeon Game
-Decode Ways
-Perfect Squares
-Word Break
-Word Break II
+- *174 Dungeon Game
+- *91 Decode Ways
+- *279 Perfect Squares
+- *139 Word Break
+- *140 Word Break II
 - 727 Minimum Window Subsequence (Premium)
-Maximal Square
-Minimum Path Sum
-Unique Paths
-Unique Paths II
+- *221 Maximal Square
+- 64 Minimum Path Sum
+- 62 Unique Paths
+- *63 Unique Paths II
 - 256 Paint House (Premium)
 - 265 Paint House II (Premium)
-Maximum Subarray
-Maximum Product Subarray
+- 53 Maximum Subarray
+- 152 Maximum Product Subarray
 
 #### DP--2D
-Edit Distance
-Distinct Subsequences Total
-Longest Palindromic Substring
-Longest Common Subsequence
+- 72 Edit Distance
+> 583. Delete Operation for Two Strings
+> 712. Minimum ASCII Delete Sum for Two Strings
+- 115 Distinct Subsequences Total
+- 5 Longest Palindromic Substring
+- 1143 Longest Common Subsequence
+> 516. Longest Palindromic Subsequence
 - Longest Common Substring
+
+
+## Data Structure Design [6]
+- *146 LRU Cache
+- 380 Insert Delete GetRandom O(1)
+- *381 Insert Delete GetRandom O(1) - Duplicates allowed
+- Insert Delete GetMostFrequent O(1)
+- 379 Design Phone Directory (Premium)
+- *355 Design Twitter
+
+## Bit Manipulation [12]
+
+- 136 Single Number
+- *137 Single Number II
+> 260. Single Number III
+- [Maximum Binary Gap](https://app.codility.com/programmers/lessons/1-iterations/binary_gap/)
+- 191 Number of 1 Bits
+- 190 Reverse Bits
+- *187 Repeated DNA Sequences
+- 201 Bitwise AND of Numbers Range
+- *371 Sum of Two Integers
+- 338 Counting Bits
+- *318 Maximum Product of Word Lengths
+- *89 Gray Code
+- *393 UTF-8 Validation
+
+
+
+## Graph [6]
+
+#### topological sort
+- *207 Course Schedule
+- *210 Course Schedule II
+- *310 Minimum Height Trees
+
+#### BFS/DFS
+- 26. Graph Valid Tree (Premium)
+- 133 Clone Graph
+- *332 Reconstruct Itinerary
+
+##  Math/Numbers
+
+#### power
+- 50 Pow(x,n)
+- 231 Power of Two
+- 326 Power of Three
+- 342 Power of Four
+- *372 Super Pow
+
+#### /%
+- 7 Reverse Integer
+- 9 Palindrome Number
+
+- *400 Nth Digit
+- *166 Fraction to Recurring Decimal
+- 171 Excel Sheet Column Number
+- 168 Excel Sheet Column Title
+- *172 Factorial Trailing Zeroes
+- 202 Happy Number
+- 204 Count Primes
+- *66 Plus One
+- 29 Divide Two Integers
+- 43 Multiply Strings
+- *149 Max Points on a Line
+- *343 Integer Break
+- 258 Add Digits
+- *368 Largest Divisible Subset
+- 357 Count Numbers with Unique Digits
+- *787 Rotated Digits
+- *402 Remove K Digits
+
+
+#### Other
+- *179 Largest Number
+- 120 Triangle
+- *8 String to Integer
+- 28 Implement strStr()
+- 6 ZigZag Conversion
+- 67 Add Binary
+- 58 Length of Last Word
+- 299 Bulls and Cows
+- *71 Simplify Path
+- *165 Compare Version Numbers
+- 118 Pascal's Triangle
+- 119 Pascal's Triangle II
+- 38 Count and Say
+- *224 Basic Calculator
+- *227 Basic Calculator II
+- *223 Rectangle Area
+- 162 Find Peak Element
+- *273 Integer to English Words
+- 68 Text Justification
+- 134 Gas Station
+- *335 Self Crossing
+- *330 Patching Array
+- 292 Nim Game
+- 319 Bulb Switcher
+- 276 Paint Fence (Premium)
+- 339 Nested List Weight Sum (Premium)
